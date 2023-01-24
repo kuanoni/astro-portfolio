@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = Pick<CollectionEntry<'project'>, 'data' | 'body'>;
+
+const { data: { title, tags, thumbnail }, body }: Props  = Astro.props;
+---
+<article>
+    <h1>{title}</h1>
+    {tags.map(tag => <h2>{tag}</h2>)}
+    {thumbnail && <img src={thumbnail} alt="xd">}
+</article>
