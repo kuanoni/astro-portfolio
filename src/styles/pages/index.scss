@@ -7,6 +7,25 @@
 		background-size: 125% 125%;
 		background-repeat: no-repeat;
 		background-position: bottom;
+
+		.waves {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 120px;
+			background-position: bottom;
+			background-repeat: repeat-x;
+
+			&.dark-waves {
+				background-image: url('images/svg/dark-waves.svg');
+			}
+
+			&.light-waves {
+				background-image: url('images/svg/light-waves.svg');
+				background-position-x: 35%;
+			}
+		}
 	}
 
 	&__ocean-transition-bg {
