@@ -1,9 +1,11 @@
 ---
 import HeaderLink from './HeaderLink.astro';
+import '@styles/components/Header.scss';
 ---
 
 <header>
 	<nav>
+		<a href='/' class='brand'>KAK</a>
 		<HeaderLink href='/'>Home</HeaderLink>
 		<HeaderLink href='/blog'>Blog</HeaderLink>
 		<HeaderLink href='/about'>About</HeaderLink>
