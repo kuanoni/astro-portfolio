@@ -1,0 +1,16 @@
+.hero {
+	&__sky-bg {
+		position: relative;
+		height: 80vh;
+		background-color: $c-skyBlue;
+		background-image: url('images/svg/sky-tornado.svg');
+		background-size: 125% 125%;
+		background-repeat: no-repeat;
+		background-position: bottom;
+	}
+
+	&__ocean-transition-bg {
+		height: 20vh;
+		background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
+	}
+}
