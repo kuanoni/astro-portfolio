@@ -7,23 +7,34 @@
 		background-size: 125% 125%;
 		background-repeat: no-repeat;
 		background-position: bottom;
+		overflow: hidden;
 
 		.waves {
 			position: absolute;
 			bottom: 0;
-			left: 0;
-			right: 0;
+			width: 200%;
 			height: 120px;
 			background-position: bottom;
 			background-repeat: repeat-x;
+			transform: translateX(-50%);
 
 			&.dark-waves {
 				background-image: url('images/svg/dark-waves.svg');
+				animation: move 60s linear infinite;
 			}
 
 			&.light-waves {
 				background-image: url('images/svg/light-waves.svg');
 				background-position-x: 35%;
+			}
+
+			@keyframes move {
+				0% {
+					transform: translateX(-50%);
+				}
+				100% {
+					transform: translateX(0%);
+				}
 			}
 		}
 	}
@@ -35,6 +46,6 @@
 }
 
 .projects {
-	height: 100vh;
+	height: 120vh;
 	background-color: $c-deepOcean;
 }
