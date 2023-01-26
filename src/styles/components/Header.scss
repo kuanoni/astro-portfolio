@@ -5,6 +5,11 @@ header {
 	right: 0;
 	background-color: $c-orange;
 	z-index: z(header);
+	transition: background-color 0.2s cubic-bezier(0, 0.55, 1, 0.48);
+
+	&.submerged {
+		background-color: $c-oxford-blue;
+	}
 
 	nav {
 		display: flex;

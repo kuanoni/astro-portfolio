@@ -22,5 +22,10 @@ import '@styles/pages/index.scss';
 			</section>
 			<section class='projects'></section>
 		</main>
+		<script>
+			import setClassOnIntersection from 'src/utils/setClassOnIntersection';
+
+			setClassOnIntersection('.hero__ocean-transition-bg', 'header', null, null, 'submerged');
+		</script>
 	</body>
 </html>
