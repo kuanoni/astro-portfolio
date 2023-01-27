@@ -23,9 +23,16 @@ import '@styles/pages/index.scss';
 			<section class='projects'></section>
 		</main>
 		<script>
-			import setClassOnIntersection from 'src/utils/setClassOnIntersection';
+			import createIntersectionObserver from 'src/utils/createIntersectionObserver';
 
-			setClassOnIntersection('.hero__ocean-transition-bg', 'header', null, null, 'submerged');
+			const header = document.querySelector('header');
+			const observed = document.querySelector('.hero__ocean-transition-bg');
+
+			if (observed)
+				createIntersectionObserver(observed, (i) => {
+					if (i.above || i.below) header?.classList.add('submerged');
+					else header?.classList.remove('submerged');
+				});
 		</script>
 	</body>
 </html>
