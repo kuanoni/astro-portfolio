@@ -1,8 +1,10 @@
 ---
+import { Image } from '@astrojs/image/components';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import '@styles/pages/index.scss';
+import face from '../images/face.png';
 ---
 
 <!DOCTYPE html>
@@ -18,7 +20,17 @@ import '@styles/pages/index.scss';
 					<div class='hero__intro'>
 						<h1 class='hero__intro-header'>Hi, my name is Kainoa Araiza K.</h1>
 						<div class='intro-container'>
-							<div class='intro-container__profile-container'></div>
+							<div class='hero__intro-border'></div>
+							<div class='intro-container__profile-container'>
+								<Image src={face} width={321} height={382} alt='my face' />
+							</div>
+							<div class='intro-container__content'>
+								<p>I'm a highly motivated <strong>front-end developer</strong> from Washington, US.</p>
+								<p>
+									I'm interested in a wide range of web technologies such as serverless functions,
+									WebSockets and PWA. I'm always striving to grow and learn something new.
+								</p>
+							</div>
 						</div>
 					</div>
 					<div class='waves light-waves'></div>
