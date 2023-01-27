@@ -2,21 +2,6 @@ $z-indexes: ('modal', 'header', 'base');
 
 $page-width: 1066px;
 
-:root {
-	--c-deepOcean: #000814ff;
-	--c-oxford-blue: #001d3dff;
-	--c-oceanSurface: #003566ff;
-	--c-skyBlue: #00b4d8ff;
-	--c-seafoam: #81bbb2ff;
-	--c-blood: #aa3333ff;
-	--c-orange: #da390bff;
-	--c-salmon: #f56c5eff;
-	--c-spotlight: #ffd60aff;
-	--c-cloth: #ede0d4ff;
-	--c-textLight: #ffffff;
-	--c-textDark: #111011;
-}
-
 $c-deepOcean: var(--c-deepOcean);
 $c-oxford-blue: var(--c-oxford-blue);
 $c-oceanSurface: var(--c-oceanSurface);
