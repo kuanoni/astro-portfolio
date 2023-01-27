@@ -1,4 +1,16 @@
 .hero {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
+	height: 70vh;
+	background-color: $c-skyBlue;
+	background-image: svg-load('sky-tornado.svg');
+	background-repeat: no-repeat;
+	background-position: bottom;
+	overflow: hidden;
+	background-size: 125% 125%;
+
 	&__intro {
 		width: $page-width;
 		margin: 0 auto;
@@ -57,65 +69,76 @@
 
 			&__content {
 				grid-area: content;
+				display: flex;
+				flex-direction: column;
 				padding: 2rem;
+				font-size: 1.25rem;
+
 				p {
-					margin: 1rem 0;
-					font-size: 1.25rem;
+					margin-bottom: 1rem;
 					letter-spacing: 0.5px;
-					&:first-child {
-						margin-top: 0;
+				}
+
+				.content-btns {
+					margin-top: auto;
+					margin-left: auto;
+
+					a {
+						display: inline-block;
+						padding: 0.25rem 2rem;
+						margin-right: 2rem;
+						font-size: 1em;
+						font-family: 'Merriweather';
+						text-decoration: none;
+
+						&.contact {
+							color: $c-spotlight;
+							background-color: $c-blood;
+						}
+
+						&.work {
+							color: $c-textLight;
+							background-color: $c-seafoam;
+						}
 					}
 				}
 			}
 		}
 	}
 
-	&__sky-bg {
-		display: flex;
-		align-items: flex-end;
-		position: relative;
-		height: 70vh;
-		background-color: $c-skyBlue;
-		background-image: svg-load('sky-tornado.svg');
-		background-repeat: no-repeat;
+	.waves {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 200%;
+		height: 120px;
+		background-repeat: repeat-x;
 		background-position: bottom;
-		overflow: hidden;
-		background-size: 125% 125%;
 
-		.waves {
-			position: absolute;
-			bottom: 0;
-			width: 200%;
-			height: 120px;
-			background-repeat: repeat-x;
-			background-position: bottom;
-			transform: translateX(-50%);
-
-			@keyframes move {
-				0% {
-					transform: translateX(-50%);
-				}
-				100% {
-					transform: translateX(0%);
-				}
+		@keyframes move {
+			0% {
+				transform: translateX(0%);
 			}
-
-			&.dark-waves {
-				background-image: svg-load('dark-waves.svg');
-				animation: move 60s linear infinite;
-			}
-
-			&.light-waves {
-				background-image: svg-load('light-waves.svg');
-				background-position-x: 35%;
+			100% {
+				transform: translateX(50%);
 			}
 		}
-	}
 
-	&__ocean-transition-bg {
-		height: 30vh;
-		background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
+		&.dark-waves {
+			background-image: svg-load('dark-waves.svg');
+			animation: move 45s linear infinite;
+		}
+
+		&.light-waves {
+			background-image: svg-load('light-waves.svg');
+			animation: move 45s linear reverse infinite;
+			bottom: 8px;
+		}
 	}
+}
+.about {
+	height: 30vh;
+	background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
 }
 
 .projects {
