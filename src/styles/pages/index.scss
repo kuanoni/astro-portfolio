@@ -44,7 +44,7 @@
 				grid-area: picture;
 				height: 100%;
 				padding: 1rem;
-				background: url('images/svg/confetti-doodles.svg');
+				background-image: svg-load('confetti-doodles.svg');
 				background-size: 150%;
 				aspect-ratio: 1 / 1;
 
@@ -76,7 +76,7 @@
 		position: relative;
 		height: 70vh;
 		background-color: $c-skyBlue;
-		background-image: url('images/svg/sky-tornado.svg');
+		background-image: svg-load('sky-tornado.svg');
 		background-repeat: no-repeat;
 		background-position: bottom;
 		overflow: hidden;
@@ -101,12 +101,12 @@
 			}
 
 			&.dark-waves {
-				background-image: url('images/svg/dark-waves.svg');
+				background-image: svg-load('dark-waves.svg');
 				animation: move 60s linear infinite;
 			}
 
 			&.light-waves {
-				background-image: url('images/svg/light-waves.svg');
+				background-image: svg-load('light-waves.svg');
 				background-position-x: 35%;
 			}
 		}
