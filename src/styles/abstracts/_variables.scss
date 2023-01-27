@@ -1,6 +1,6 @@
 $z-indexes: ('modal', 'header', 'base');
 
-$page-width: 1066px;
+$page-width: min(1066px, 95vw);
 $b-rad: 8px;
 
 $c-deepOcean: var(--c-deepOcean);
