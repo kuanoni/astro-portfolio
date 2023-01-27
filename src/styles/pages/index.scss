@@ -1,0 +1,51 @@
+.hero {
+	&__sky-bg {
+		position: relative;
+		height: 60vh;
+		background-color: $c-skyBlue;
+		background-image: url('images/svg/sky-tornado.svg');
+		background-repeat: no-repeat;
+		background-position: bottom;
+		overflow: hidden;
+		background-size: 125% 125%;
+
+		.waves {
+			position: absolute;
+			bottom: 0;
+			width: 200%;
+			height: 120px;
+			background-repeat: repeat-x;
+			background-position: bottom;
+			transform: translateX(-50%);
+
+			@keyframes move {
+				0% {
+					transform: translateX(-50%);
+				}
+				100% {
+					transform: translateX(0%);
+				}
+			}
+
+			&.dark-waves {
+				background-image: url('images/svg/dark-waves.svg');
+				animation: move 60s linear infinite;
+			}
+
+			&.light-waves {
+				background-image: url('images/svg/light-waves.svg');
+				background-position-x: 35%;
+			}
+		}
+	}
+
+	&__ocean-transition-bg {
+		height: 40vh;
+		background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
+	}
+}
+
+.projects {
+	height: 120vh;
+	background-color: $c-deepOcean;
+}
