@@ -52,20 +52,7 @@ import boat from '../images/svg/boat.svg';
 			import createIntersectionObserver from 'src/utils/createIntersectionObserver';
 
 			const header = document.querySelector('header');
-			const introHeader = document.querySelector('.hero__intro-header');
-			const introContainer = document.querySelector('.intro-container');
 			const hero = document.querySelector('.hero');
-
-			if (introHeader)
-				createIntersectionObserver(introHeader, (i) => {
-					if (i.above) {
-						introHeader.classList.add('submerged');
-						introContainer.classList.add('submerged');
-					} else {
-						introHeader.classList.remove('submerged');
-						introContainer.classList.remove('submerged');
-					}
-				});
 
 			if (hero)
 				createIntersectionObserver(hero, (i) => {
