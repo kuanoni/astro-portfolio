@@ -49,16 +49,17 @@ import boat from '../images/svg/boat.svg';
 		</main>
 
 		<script>
-			import createIntersectionObserver from 'src/utils/createIntersectionObserver';
+			import ObserverManager from 'src/utils/ObserverManager';
 
 			const header = document.querySelector('header');
 			const hero = document.querySelector('.hero');
 
-			if (hero)
-				createIntersectionObserver(hero, (i) => {
-					if (i.above) header?.classList.add('submerged');
-					else header?.classList.remove('submerged');
-				});
+			const observerManager = new ObserverManager();
+
+			observerManager.subscribe('.hero', (i) => {
+				if (i.above) header?.classList.add('submerged');
+				else header?.classList.remove('submerged');
+			});
 		</script>
 	</body>
 </html>
