@@ -1,0 +1,13 @@
+---
+import '@styles/components/LinkButton.scss';
+
+interface Props {
+	href: string;
+	classes?: string | string[];
+}
+const { href, classes }: Props = Astro.props;
+---
+
+<a href={href} class:list={['a-btn', ...[classes]]}>
+	<slot />
+</a>

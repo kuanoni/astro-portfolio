@@ -2,15 +2,19 @@
 import { Image } from '@astrojs/image/components';
 import profile from '../images/profile.webp';
 import boat from '../images/svg/boat.svg';
+import LinkButton from './LinkButton.astro';
 ---
 
 <section class='hero'>
 	<div class='hero__intro'>
-		<h1 class='hero__intro-header'>Hi, my name is Kainoa Araiza K.</h1>
+		<h1 class='hero__intro-header'>
+			Hi, my name is
+			<span> Kainoa Araiza K.</span>
+		</h1>
 		<div class='intro-container'>
 			<div class='hero__intro-border'></div>
 			<div class='intro-container__profile-container'>
-				<Image src={profile} width={321} height={382} alt='my face' />
+				<Image src={profile} width={416} height={416} alt='my face' />
 			</div>
 			<div class='intro-container__content'>
 				<p>I'm a highly motivated <strong>front-end developer</strong> from Washington, US.</p>
@@ -19,8 +23,8 @@ import boat from '../images/svg/boat.svg';
 					I'm always striving to grow and learn something new.
 				</p>
 				<div class='content-btns'>
-					<a href='#' class='work'>View my work</a>
-					<a href='#' class='contact'>Contact me!</a>
+					<LinkButton href='#' classes='work'>View my work</LinkButton>
+					<LinkButton href='#' classes='contact'>Contact me!</LinkButton>
 				</div>
 			</div>
 		</div>
