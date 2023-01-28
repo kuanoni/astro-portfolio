@@ -121,11 +121,6 @@
 				}
 			}
 
-			&.submerged {
-				opacity: 0;
-				animation: none;
-			}
-
 			&__profile-container {
 				height: 100%;
 				background-image: svg-load('confetti-doodles.svg');
@@ -162,6 +157,14 @@
 						text-decoration: none;
 						font-family: 'Merriweather';
 						font-size: 1em;
+						box-shadow: 0px 3px 1px 1px rgba(0, 0, 0, 0.25);
+						transform-origin: bottom;
+						transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+						&:hover {
+							transform: scale(0.97);
+							box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
+						}
 
 						&.contact {
 							background-color: $c-blood;
