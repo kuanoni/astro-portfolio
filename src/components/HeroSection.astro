@@ -2,6 +2,7 @@
 import { Image } from '@astrojs/image/components';
 import profile from '../images/profile.webp';
 import boat from '../images/svg/boat.svg';
+import LinkButton from './LinkButton.astro';
 ---
 
 <section class='hero'>
@@ -22,8 +23,8 @@ import boat from '../images/svg/boat.svg';
 					I'm always striving to grow and learn something new.
 				</p>
 				<div class='content-btns'>
-					<a href='#' class='work'>View my work</a>
-					<a href='#' class='contact'>Contact me!</a>
+					<LinkButton href='#' classes='work'>View my work</LinkButton>
+					<LinkButton href='#' classes='contact'>Contact me!</LinkButton>
 				</div>
 			</div>
 		</div>
