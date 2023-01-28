@@ -1,0 +1,33 @@
+---
+import { Image } from '@astrojs/image/components';
+import profile from '../images/profile.webp';
+import boat from '../images/svg/boat.svg';
+---
+
+<section class='hero'>
+	<div class='hero__intro'>
+		<h1 class='hero__intro-header'>Hi, my name is Kainoa Araiza K.</h1>
+		<div class='intro-container'>
+			<div class='hero__intro-border'></div>
+			<div class='intro-container__profile-container'>
+				<Image src={profile} width={321} height={382} alt='my face' />
+			</div>
+			<div class='intro-container__content'>
+				<p>I'm a highly motivated <strong>front-end developer</strong> from Washington, US.</p>
+				<p>
+					I'm interested in a wide range of web technologies such as serverless functions, WebSockets and PWA.
+					I'm always striving to grow and learn something new.
+				</p>
+				<div class='content-btns'>
+					<a href='#' class='work'>View my work</a>
+					<a href='#' class='contact'>Contact me!</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='waves light-waves'></div>
+	<div class='boat-wrapper'>
+		<img class='boat' src={boat} alt='boat' />
+	</div>
+	<div class='waves dark-waves'></div>
+</section>
