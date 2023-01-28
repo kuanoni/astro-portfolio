@@ -3,7 +3,7 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	height: 70vh;
+	min-height: 70vh;
 	background-color: $c-skyBlue;
 	background-image: svg-load('sky-tornado.svg');
 	background-repeat: no-repeat;
@@ -50,9 +50,11 @@
 	&__intro {
 		width: $page-width;
 		margin: 0 auto;
+		margin-bottom: 4rem;
 		z-index: z('base');
 
 		&-header {
+			margin-top: 2rem;
 			margin-bottom: 2rem;
 			text-align: center;
 			line-height: 1;
@@ -64,6 +66,14 @@
 			text-shadow: 0px 2px 2px #333;
 			animation: fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 			animation-delay: 1s;
+
+			@include for-size(phone, down) {
+				font-size: 2.25rem;
+			}
+
+			@include for-size(phone-sm, down) {
+				font-size: 2rem;
+			}
 
 			@keyframes fade-in {
 				0% {
@@ -108,12 +118,18 @@
 			background-color: $c-cloth;
 			overflow: hidden;
 			opacity: 0;
-			grid-template-columns: 300px 1fr;
-			grid-template-rows: auto 300px;
+			grid-template-columns: auto 1fr;
+			grid-template-rows: auto 1fr;
 			grid-template-areas: 'border border' 'picture content';
 			box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
 			animation: fade-in2 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 			animation-delay: 1s;
+
+			@include for-size(tablet, down) {
+				grid-template-columns: 1fr;
+				grid-template-rows: auto auto 1fr;
+				grid-template-areas: 'border' 'picture' 'content';
+			}
 
 			@keyframes fade-in2 {
 				0% {
@@ -127,15 +143,19 @@
 			}
 
 			&__profile-container {
-				height: 100%;
+				display: flex;
 				background-image: svg-load('confetti-doodles.svg');
 				grid-area: picture;
-				background-size: 150%;
-				aspect-ratio: 1 / 1;
+				background-size: contain;
 
 				img {
-					width: 100%;
-					height: 100%;
+					max-height: 20rem;
+					margin: auto 0;
+					aspect-ratio: 1 / 1;
+
+					@include for-size(tablet, down) {
+						margin: 0 auto;
+					}
 				}
 			}
 
@@ -146,14 +166,35 @@
 				font-size: 1.25rem;
 				grid-area: content;
 
+				@include for-size(desktop-sm, down) {
+					font-size: 1.125rem;
+				}
+
+				@include for-size(tablet-sm, down) {
+					padding: 32px 16px;
+				}
+
 				p {
 					margin-bottom: 1rem;
 					letter-spacing: 0.5px;
 				}
 
 				.content-btns {
+					display: grid;
+					justify-content: end;
+					row-gap: 16px;
+					column-gap: 16px;
 					margin-top: auto;
-					margin-left: auto;
+					grid-template-columns: repeat(auto-fit, 12rem);
+
+					@include for-size(tablet, down) {
+						justify-content: start;
+					}
+
+					@include for-size(tablet-sm, down) {
+						justify-content: start;
+						grid-template-columns: 1fr;
+					}
 				}
 			}
 		}
