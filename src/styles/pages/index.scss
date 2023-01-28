@@ -1,7 +1,7 @@
 .hero {
 	display: flex;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
 	position: relative;
 	height: 70vh;
 	background-color: $c-skyBlue;
@@ -10,6 +10,13 @@
 	background-position: bottom;
 	overflow: hidden;
 	background-size: 125% 125%;
+
+	.boat {
+		position: absolute;
+		right: 20%;
+		bottom: 16px;
+		width: 100px;
+	}
 
 	&__intro {
 		width: $page-width;

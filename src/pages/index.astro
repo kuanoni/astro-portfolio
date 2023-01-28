@@ -5,6 +5,8 @@ import Header from '../components/Header.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import '@styles/pages/index.scss';
 import face from '../images/face.png';
+import profile from '../images/profile.webp';
+import boat from '../images/svg/boat.svg';
 ---
 
 <!DOCTYPE html>
@@ -21,7 +23,7 @@ import face from '../images/face.png';
 					<div class='intro-container'>
 						<div class='hero__intro-border'></div>
 						<div class='intro-container__profile-container'>
-							<Image src={face} width={321} height={382} alt='my face' />
+							<Image src={profile} width={321} height={382} alt='my face' />
 						</div>
 						<div class='intro-container__content'>
 							<p>I'm a highly motivated <strong>front-end developer</strong> from Washington, US.</p>
@@ -37,6 +39,7 @@ import face from '../images/face.png';
 					</div>
 				</div>
 				<div class='waves light-waves'></div>
+				<img class='boat' src={boat} alt='boat' />
 				<div class='waves dark-waves'></div>
 			</section>
 			<section class='about'></section>
