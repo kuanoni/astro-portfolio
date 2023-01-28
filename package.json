@@ -11,8 +11,12 @@
         "astro": "astro"
     },
     "dependencies": {
-        "astro": "^2.0.0",
+        "@astrojs/image": "^0.13.0",
         "@astrojs/mdx": "^0.14.0",
-        "@astrojs/sitemap": "^1.0.0"
+        "@astrojs/sitemap": "^1.0.0",
+        "astro": "^2.0.2"
+    },
+    "devDependencies": {
+        "postcss-inline-svg": "^5.0.0"
     }
 }

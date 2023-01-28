@@ -1,48 +1,219 @@
 .hero {
-	&__sky-bg {
-		position: relative;
-		height: 60vh;
-		background-color: $c-skyBlue;
-		background-image: url('images/svg/sky-tornado.svg');
-		background-repeat: no-repeat;
-		background-position: bottom;
-		overflow: hidden;
-		background-size: 125% 125%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	height: 70vh;
+	background-color: $c-skyBlue;
+	background-image: svg-load('sky-tornado.svg');
+	background-repeat: no-repeat;
+	background-position: bottom;
+	overflow: hidden;
+	background-size: 125% 125%;
 
-		.waves {
-			position: absolute;
-			bottom: 0;
-			width: 200%;
-			height: 120px;
-			background-repeat: repeat-x;
-			background-position: bottom;
-			transform: translateX(-50%);
+	.boat-wrapper {
+		position: absolute;
+		right: 0%;
+		bottom: 16px;
+		width: 100px;
+		height: 100px;
+		animation: move2 480s linear infinite;
+		animation-delay: -50s;
 
-			@keyframes move {
+		@keyframes move2 {
+			0% {
+				transform: translateX(100%);
+			}
+			100% {
+				transform: translateX(-100vw);
+			}
+		}
+		img {
+			height: 100px;
+			transform-origin: bottom;
+			animation: rock 4s ease infinite;
+
+			@keyframes rock {
 				0% {
-					transform: translateX(-50%);
+					transform: rotate(3deg);
+				}
+				50% {
+					transform: rotate(-3deg);
 				}
 				100% {
-					transform: translateX(0%);
+					transform: rotate(3deg);
 				}
-			}
-
-			&.dark-waves {
-				background-image: url('images/svg/dark-waves.svg');
-				animation: move 60s linear infinite;
-			}
-
-			&.light-waves {
-				background-image: url('images/svg/light-waves.svg');
-				background-position-x: 35%;
 			}
 		}
 	}
 
-	&__ocean-transition-bg {
-		height: 40vh;
-		background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
+	&__intro {
+		width: $page-width;
+		margin: 0 auto;
+		z-index: z('base');
+
+		&-header {
+			margin-bottom: 2rem;
+			text-align: center;
+			line-height: 1;
+			color: $c-textLight;
+			font-family: 'Merriweather';
+			font-size: 3rem;
+			font-weight: 700;
+			opacity: 0;
+			text-shadow: 0px 2px 2px #333;
+			animation: fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+			animation-delay: 1s;
+
+			@keyframes fade-in {
+				0% {
+					opacity: 0;
+					transform: translateY(-1em);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			&.submerged {
+				opacity: 0;
+				animation: none;
+			}
+		}
+
+		&-border {
+			width: 100%;
+			height: 1rem;
+			border-top-left-radius: $b-rad;
+			border-top-right-radius: $b-rad;
+			background: repeating-linear-gradient(
+				90deg,
+				$c-spotlight,
+				$c-spotlight 32px,
+				$c-salmon 32px,
+				$c-salmon 50px
+			);
+			grid-area: border;
+		}
+
+		.intro-container {
+			display: grid;
+			border-radius: $b-rad;
+			background-color: $c-cloth;
+			overflow: hidden;
+			opacity: 0;
+			grid-template-columns: 300px 1fr;
+			grid-template-rows: auto 300px;
+			grid-template-areas: 'border border' 'picture content';
+			box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
+			animation: fade-in2 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+			animation-delay: 1s;
+
+			@keyframes fade-in2 {
+				0% {
+					opacity: 0;
+					transform: translateY(4rem);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			&__profile-container {
+				height: 100%;
+				background-image: svg-load('confetti-doodles.svg');
+				grid-area: picture;
+				background-size: 150%;
+				aspect-ratio: 1 / 1;
+
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			&__content {
+				display: flex;
+				flex-direction: column;
+				padding: 2rem;
+				font-size: 1.25rem;
+				grid-area: content;
+
+				p {
+					margin-bottom: 1rem;
+					letter-spacing: 0.5px;
+				}
+
+				.content-btns {
+					margin-top: auto;
+					margin-left: auto;
+
+					a {
+						display: inline-block;
+						margin-right: 2rem;
+						padding: 0.25rem 2rem;
+						text-decoration: none;
+						font-family: 'Merriweather';
+						font-size: 1em;
+						box-shadow: 0px 3px 1px 1px rgba(0, 0, 0, 0.25);
+						transform-origin: bottom;
+						transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+						&:hover {
+							transform: scale(0.97);
+							box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
+						}
+
+						&.contact {
+							background-color: $c-blood;
+							color: $c-spotlight;
+						}
+
+						&.work {
+							background-color: $c-seafoam;
+							color: $c-textLight;
+						}
+					}
+				}
+			}
+		}
 	}
+
+	.waves {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 200%;
+		height: 49px;
+		background-repeat: repeat-x;
+		background-position: bottom;
+
+		@keyframes move {
+			0% {
+				transform: translateX(0%);
+			}
+			100% {
+				transform: translateX(50%);
+			}
+		}
+
+		&.dark-waves {
+			background-image: svg-load('dark-waves.svg');
+			animation: move 45s linear infinite;
+		}
+
+		&.light-waves {
+			bottom: 8px;
+			background-image: svg-load('light-waves.svg');
+			animation: move 45s linear reverse infinite;
+		}
+	}
+}
+.about {
+	height: 30vh;
+	background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
 }
 
 .projects {
