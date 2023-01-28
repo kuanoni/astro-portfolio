@@ -76,6 +76,11 @@
 				}
 			}
 
+			span {
+				line-height: 0;
+				white-space: nowrap;
+			}
+
 			&.submerged {
 				opacity: 0;
 				animation: none;
