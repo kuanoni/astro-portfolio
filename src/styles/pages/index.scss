@@ -11,11 +11,40 @@
 	overflow: hidden;
 	background-size: 125% 125%;
 
-	.boat {
+	.boat-wrapper {
 		position: absolute;
-		right: 20%;
+		right: 0%;
 		bottom: 16px;
 		width: 100px;
+		height: 100px;
+		animation: move2 480s linear infinite;
+		animation-delay: -50s;
+
+		@keyframes move2 {
+			0% {
+				transform: translateX(100%);
+			}
+			100% {
+				transform: translateX(-100vw);
+			}
+		}
+		img {
+			height: 100px;
+			transform-origin: bottom;
+			animation: rock 4s ease infinite;
+
+			@keyframes rock {
+				0% {
+					transform: rotate(3deg);
+				}
+				50% {
+					transform: rotate(-3deg);
+				}
+				100% {
+					transform: rotate(3deg);
+				}
+			}
+		}
 	}
 
 	&__intro {
