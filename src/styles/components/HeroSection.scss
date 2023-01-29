@@ -28,7 +28,7 @@
 	}
 }
 
-@keyframes title-fade-in {
+@keyframes fade-in-down {
 	0% {
 		opacity: 0;
 		transform: translateY(-1em);
@@ -39,7 +39,7 @@
 	}
 }
 
-@keyframes picture-fade-in {
+@keyframes fade-in-up {
 	0% {
 		opacity: 0;
 		transform: translateY(4rem);
@@ -77,20 +77,15 @@
 			font-weight: 700;
 			opacity: 0;
 			text-shadow: 0px 1px 3px #333;
-			animation: title-fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+			animation: fade-in-down 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 			animation-delay: 1s;
 
 			@include for-size(phone, down) {
-				font-size: 2.25rem;
+				font-size: 2.5rem;
 			}
 
 			@include for-size(phone-sm, down) {
 				font-size: 2rem;
-			}
-
-			span {
-				line-height: 0;
-				white-space: nowrap;
 			}
 		}
 
@@ -99,28 +94,32 @@
 			text-align: center;
 			opacity: 0;
 			text-shadow: 0px 1px 3px #333;
-			animation: title-fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+			animation: fade-in-down 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 			animation-delay: 1.75s;
+
+			@include for-size(phone, down) {
+				font-size: 1rem;
+			}
+		}
+
+		span {
+			line-height: 0;
+			white-space: nowrap;
 		}
 	}
 
 	.picture {
 		width: min-content;
 		margin: 0 auto;
+		margin-bottom: 2rem;
 		border-radius: $b-rad;
 		background-color: $c-cloth;
 		overflow: hidden;
 		opacity: 0;
 		z-index: z('base');
 		box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
-		animation: picture-fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		animation: fade-in-up 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 		animation-delay: 1s;
-
-		@include for-size(tablet, down) {
-			grid-template-columns: 1fr;
-			grid-template-rows: auto auto 1fr;
-			grid-template-areas: 'border' 'picture' 'content';
-		}
 
 		.border {
 			width: 100%;
@@ -134,14 +133,12 @@
 				$c-salmon 32px,
 				$c-salmon 50px
 			);
-			grid-area: border;
 		}
 
 		&__wrapper {
 			display: flex;
 			padding: 0 32px;
 			background-image: svg-load('confetti-doodles.svg');
-			grid-area: picture;
 			background-size: contain;
 
 			img {
@@ -155,6 +152,26 @@
 					margin: 0 auto;
 				}
 			}
+		}
+	}
+
+	.btns {
+		font-size: 1.25rem;
+		opacity: 0;
+		z-index: z('base');
+		animation: fade-in-up 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		animation-delay: 1.75s;
+
+		@include for-size(phone, down) {
+			font-size: 1.125rem;
+
+			& a:not(:last-child) {
+				margin-right: 1.5rem;
+			}
+		}
+
+		& a:not(:last-child) {
+			margin-right: 2rem;
 		}
 	}
 

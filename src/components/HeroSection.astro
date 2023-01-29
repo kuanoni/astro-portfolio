@@ -3,6 +3,7 @@ import { Image } from '@astrojs/image/components';
 import profile from '../images/profile.webp';
 import boat from '../images/svg/boat.svg';
 import '@styles/components/HeroSection.scss';
+import LinkButton from './LinkButton.astro';
 ---
 
 <section class='hero'>
@@ -11,13 +12,20 @@ import '@styles/components/HeroSection.scss';
 			Hi, my name is
 			<span>Kainoa Araiza K.</span>
 		</h1>
-		<h3 class='subtitle'>I'm a highly motivated <strong>front-end developer</strong> from Washington, US.</h3>
+		<h3 class='subtitle'>
+			I'm a highly motivated <strong>front-end developer</strong> from
+			<span> Washington, US.</span>
+		</h3>
 	</div>
 	<div class='picture'>
 		<div class='border'></div>
 		<div class='picture__wrapper'>
 			<Image src={profile} width={416} height={416} alt='my face' />
 		</div>
+	</div>
+	<div class='btns'>
+		<LinkButton href='#' classes='work'>See my work</LinkButton>
+		<LinkButton href='#' classes='contact'>Contact me</LinkButton>
 	</div>
 	<div class='waves light-waves' aria-hidden='true'></div>
 	<div class='boat' aria-hidden='true'>
