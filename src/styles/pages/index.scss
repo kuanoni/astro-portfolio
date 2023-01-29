@@ -1,5 +1,17 @@
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+		transform: translateY(-1em);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 .hero {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	position: relative;
@@ -11,7 +23,7 @@
 	overflow: hidden;
 	background-size: 125% 125%;
 
-	.boat-wrapper {
+	.boat {
 		position: absolute;
 		right: 0%;
 		bottom: 16px;
@@ -28,6 +40,7 @@
 				transform: translateX(-100vw);
 			}
 		}
+
 		img {
 			height: 100px;
 			transform-origin: bottom;
@@ -231,6 +244,106 @@
 		}
 	}
 }
+
+.header {
+	max-width: $page-width;
+	margin-bottom: 2rem;
+	color: $c-textLight;
+	font-family: 'Merriweather';
+}
+
+.title {
+	text-align: center;
+	line-height: 1;
+	font-size: 3rem;
+	font-weight: 700;
+	opacity: 0;
+	text-shadow: 0px 1px 3px #333;
+	animation: fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+	animation-delay: 1s;
+
+	@include for-size(phone, down) {
+		font-size: 2.25rem;
+	}
+
+	@include for-size(phone-sm, down) {
+		font-size: 2rem;
+	}
+
+	span {
+		line-height: 0;
+		white-space: nowrap;
+	}
+}
+
+.subtitle {
+	margin-top: 1rem;
+	text-align: center;
+	opacity: 0;
+	text-shadow: 0px 1px 3px #333;
+	animation: fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+	animation-delay: 2s;
+}
+
+.picture {
+	width: min-content;
+	margin: 0 auto;
+	border-radius: $b-rad;
+	background-color: $c-cloth;
+	overflow: hidden;
+	opacity: 0;
+	z-index: z('base');
+	box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
+	animation: fade-in2 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+	animation-delay: 1s;
+
+	@include for-size(tablet, down) {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto 1fr;
+		grid-template-areas: 'border' 'picture' 'content';
+	}
+
+	@keyframes fade-in2 {
+		0% {
+			opacity: 0;
+			transform: translateY(4rem);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.border {
+		width: 100%;
+		height: 1rem;
+		border-top-left-radius: $b-rad;
+		border-top-right-radius: $b-rad;
+		background: repeating-linear-gradient(90deg, $c-spotlight, $c-spotlight 32px, $c-salmon 32px, $c-salmon 50px);
+		grid-area: border;
+	}
+
+	&__wrapper {
+		display: flex;
+		padding: 0 32px;
+		background-image: svg-load('confetti-doodles.svg');
+		grid-area: picture;
+		background-size: contain;
+
+		img {
+			$size: min(318px, calc(calc(100vw - 64px) - 5vw));
+			max-width: $size;
+			max-height: $size;
+			margin: auto 0;
+			aspect-ratio: 1 / 1;
+
+			@include for-size(tablet, down) {
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
 .about {
 	height: 30vh;
 	background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
