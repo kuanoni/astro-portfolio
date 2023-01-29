@@ -1,0 +1,197 @@
+@keyframes waves-move {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(50%);
+	}
+}
+
+@keyframes boat-move {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(-100vw);
+	}
+}
+
+@keyframes boat-sway {
+	0% {
+		transform: rotate(3deg);
+	}
+	50% {
+		transform: rotate(-3deg);
+	}
+	100% {
+		transform: rotate(3deg);
+	}
+}
+
+@keyframes title-fade-in {
+	0% {
+		opacity: 0;
+		transform: translateY(-1em);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes picture-fade-in {
+	0% {
+		opacity: 0;
+		transform: translateY(4rem);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.hero {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	min-height: 90vh;
+	background-color: $c-skyBlue;
+	background-image: svg-load('sky-tornado.svg');
+	background-repeat: no-repeat;
+	background-position: bottom;
+	overflow: hidden;
+	background-size: 125% 125%;
+
+	.header {
+		max-width: $page-width;
+		margin-bottom: 2rem;
+		color: $c-textLight;
+		font-family: 'Merriweather';
+
+		.title {
+			text-align: center;
+			line-height: 1;
+			font-size: 3rem;
+			font-weight: 700;
+			opacity: 0;
+			text-shadow: 0px 1px 3px #333;
+			animation: title-fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+			animation-delay: 1s;
+
+			@include for-size(phone, down) {
+				font-size: 2.25rem;
+			}
+
+			@include for-size(phone-sm, down) {
+				font-size: 2rem;
+			}
+
+			span {
+				line-height: 0;
+				white-space: nowrap;
+			}
+		}
+
+		.subtitle {
+			margin-top: 1rem;
+			text-align: center;
+			opacity: 0;
+			text-shadow: 0px 1px 3px #333;
+			animation: title-fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+			animation-delay: 1.75s;
+		}
+	}
+
+	.picture {
+		width: min-content;
+		margin: 0 auto;
+		border-radius: $b-rad;
+		background-color: $c-cloth;
+		overflow: hidden;
+		opacity: 0;
+		z-index: z('base');
+		box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
+		animation: picture-fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+		animation-delay: 1s;
+
+		@include for-size(tablet, down) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto auto 1fr;
+			grid-template-areas: 'border' 'picture' 'content';
+		}
+
+		.border {
+			width: 100%;
+			height: 1rem;
+			border-top-left-radius: $b-rad;
+			border-top-right-radius: $b-rad;
+			background: repeating-linear-gradient(
+				90deg,
+				$c-spotlight,
+				$c-spotlight 32px,
+				$c-salmon 32px,
+				$c-salmon 50px
+			);
+			grid-area: border;
+		}
+
+		&__wrapper {
+			display: flex;
+			padding: 0 32px;
+			background-image: svg-load('confetti-doodles.svg');
+			grid-area: picture;
+			background-size: contain;
+
+			img {
+				$size: min(318px, calc(calc(100vw - 64px) - 5vw));
+				max-width: $size;
+				max-height: $size;
+				margin: auto 0;
+				aspect-ratio: 1 / 1;
+
+				@include for-size(tablet, down) {
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+
+	.boat {
+		position: absolute;
+		right: 0%;
+		bottom: 16px;
+		width: 100px;
+		height: 100px;
+		animation: boat-move 480s linear infinite;
+		animation-delay: -50s;
+
+		img {
+			height: 100px;
+			transform-origin: bottom;
+			animation: boat-sway 4s ease infinite;
+		}
+	}
+
+	.waves {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 200%;
+		height: 49px;
+		background-repeat: repeat-x;
+		background-position: bottom;
+
+		&.dark-waves {
+			background-image: svg-load('dark-waves.svg');
+			animation: waves-move 45s linear infinite;
+		}
+
+		&.light-waves {
+			bottom: 8px;
+			background-image: svg-load('light-waves.svg');
+			animation: waves-move 45s linear reverse infinite;
+		}
+	}
+}
