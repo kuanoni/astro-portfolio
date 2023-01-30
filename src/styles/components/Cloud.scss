@@ -1,0 +1,83 @@
+@keyframes clouds-move {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+.clouds-container {
+	position: absolute;
+	top: 0;
+	width: 100%;
+
+	.cloud-wrapper {
+		position: absolute;
+		opacity: 0.85;
+		z-index: z(base);
+		width: 200vw;
+		animation: clouds-move 360s linear infinite;
+
+		.cloud-clone-middle {
+			right: 50%;
+			display: none;
+		}
+
+		.cloud-clone-right {
+			right: 0;
+		}
+
+		.cloud {
+			$b: 6vh;
+			$w: $b * 2.9166;
+			$h: $b;
+
+			position: absolute;
+			width: $w;
+			max-height: $h;
+			margin-top: $h * 0.75;
+			border-radius: 100px;
+			background: linear-gradient(#f2f9fe 5%, #d6f0fd 100%);
+			aspect-ratio: 350 / 210;
+			transform: translateX(-100%) scale((math.div(100, math.random($limit: 30)) * 1%) + 50%);
+		}
+
+		.cloud::after,
+		.cloud::before {
+			position: absolute;
+			background: linear-gradient(#f2f9fe 5%, #d6f0fd 100%);
+			z-index: -1;
+			content: ' ';
+			opacity: inherit;
+		}
+
+		.cloud::after {
+			top: -41.7%;
+			left: 14.3%;
+			width: 28.6%;
+			height: 83.3%;
+			border-radius: 50%;
+		}
+
+		.cloud::before {
+			top: -75%;
+			right: 14.3%;
+			width: 51.4%;
+			height: 150%;
+			border-radius: 50%;
+		}
+
+		.shadow {
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			width: 90%;
+			border-radius: 50%;
+			background: #000;
+			z-index: -1;
+			box-shadow: 0 0 25px 3px rgba(0, 0, 0, 0.3);
+			transform: translateX(-50%);
+		}
+	}
+}
