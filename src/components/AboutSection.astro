@@ -7,9 +7,9 @@ import '@styles/components/AboutSection.scss';
 </section>
 
 <script>
-	import observerManager from '../utils/ObserverManager';
+	import MiddleIoManager from 'src/utils/MiddleIoManager';
 
-	observerManager.subscribe('.about h2.title', (i, e) => {
-		if (i.inside && !i.partialAbove && !i.partialBelow) e.classList.add('slide-in');
+	MiddleIoManager.subscribe('.about h2.title', (f, e) => {
+		if (f.middle) e.classList.add('slide-in');
 	});
 </script>
