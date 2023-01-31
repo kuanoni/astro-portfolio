@@ -25,9 +25,7 @@ import HeroSection from 'src/components/HeroSection.astro';
 			const header = document.querySelector('header');
 			const hero = document.querySelector('.hero');
 
-			const observerManager = new ObserverManager();
-
-			observerManager.subscribe('.hero', (i) => {
+			ObserverManager.subscribe('.hero', (i) => {
 				if (i.above) header?.classList.add('submerged');
 				else header?.classList.remove('submerged');
 			});
