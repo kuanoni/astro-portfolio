@@ -1,4 +1,4 @@
-import IoManager from './IOManager';
+import IoManager from './IoManager';
 
 interface iFlags {
 	middle: boolean;
