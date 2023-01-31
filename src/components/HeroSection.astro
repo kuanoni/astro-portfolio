@@ -2,36 +2,34 @@
 import { Image } from '@astrojs/image/components';
 import profile from '../images/profile.webp';
 import boat from '../images/svg/boat.svg';
+import '@styles/components/HeroSection.scss';
 import LinkButton from './LinkButton.astro';
 ---
 
 <section class='hero'>
-	<div class='hero__intro'>
-		<h1 class='hero__intro-header'>
+	<div class='header'>
+		<h1 class='title'>
 			Hi, my name is
-			<span> Kainoa Araiza K.</span>
+			<span>Kainoa Araiza K.</span>
 		</h1>
-		<div class='intro-container'>
-			<div class='hero__intro-border'></div>
-			<div class='intro-container__profile-container'>
-				<Image src={profile} width={416} height={416} alt='my face' />
-			</div>
-			<div class='intro-container__content'>
-				<p>I'm a highly motivated <strong>front-end developer</strong> from Washington, US.</p>
-				<p>
-					I'm interested in a wide range of web technologies such as serverless functions, WebSockets and PWA.
-					I'm always striving to grow and learn something new.
-				</p>
-				<div class='content-btns'>
-					<LinkButton href='#' classes='work'>View my work</LinkButton>
-					<LinkButton href='#' classes='contact'>Contact me!</LinkButton>
-				</div>
-			</div>
+		<h3 class='subtitle'>
+			I'm a highly motivated <strong>front-end developer</strong> from
+			<span> Washington, US.</span>
+		</h3>
+	</div>
+	<div class='picture'>
+		<div class='border'></div>
+		<div class='picture__wrapper'>
+			<Image src={profile} width={416} height={416} alt='my face' />
 		</div>
 	</div>
-	<div class='waves light-waves'></div>
-	<div class='boat-wrapper'>
-		<img class='boat' src={boat} alt='boat' />
+	<div class='btns'>
+		<LinkButton href='#' classes='work'>See my work</LinkButton>
+		<LinkButton href='#' classes='contact'>Contact me</LinkButton>
 	</div>
-	<div class='waves dark-waves'></div>
+	<div class='waves light-waves' aria-hidden='true'></div>
+	<div class='boat' aria-hidden='true'>
+		<img src={boat} alt='boat' />
+	</div>
+	<div class='waves dark-waves' aria-hidden='true'></div>
 </section>
