@@ -1,4 +1,4 @@
-type ObserverCallback = (i: IntersectedFlags) => void;
+type ObserverCallback = (intersectedFlags: IntersectedFlags, observedElement: Element) => void;
 
 interface ObserverCallbacks {
 	[i: string]: ObserverCallback[];
@@ -19,7 +19,7 @@ class ObserverManager {
 		this.observerCallbacks = {};
 	}
 
-	subscribe(query: string, cb: (i: IntersectedFlags) => void) {
+	subscribe(query: string, cb: ObserverCallback) {
 		const element = document.querySelector(query);
 		if (!element) return console.error(`Element query failed: ${query}`);
 
@@ -50,7 +50,7 @@ class ObserverManager {
 					below: elRect.top > rootRect.bottom,
 				};
 
-				this.observerCallbacks[query].forEach((callback) => callback(intersected));
+				this.observerCallbacks[query].forEach((callback) => callback(intersected, element));
 			},
 			{ threshold: [0, 1] }
 		);
