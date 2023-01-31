@@ -12,7 +12,7 @@ interface IntersectedFlags {
 	below: boolean;
 }
 
-export default class ObserverManager {
+class ObserverManager {
 	observerCallbacks: ObserverCallbacks;
 
 	constructor() {
@@ -60,3 +60,7 @@ export default class ObserverManager {
 		observer.observe(element);
 	}
 }
+
+const observerManager = new ObserverManager();
+
+export default observerManager;
