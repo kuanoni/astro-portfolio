@@ -21,12 +21,11 @@ import AboutSection from 'src/components/AboutSection.astro';
 		</main>
 
 		<script>
-			import ObserverManager from 'src/utils/ObserverManager';
+			import EdgesIoManager from 'src/utils/EdgesIoManager';
 
 			const header = document.querySelector('header');
-			const hero = document.querySelector('.hero');
 
-			ObserverManager.subscribe('.hero', (i) => {
+			EdgesIoManager.subscribe('.hero', (i) => {
 				if (i.above) header?.classList.add('submerged');
 				else header?.classList.remove('submerged');
 			});
