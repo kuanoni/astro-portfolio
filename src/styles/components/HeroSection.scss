@@ -50,19 +50,53 @@
 	}
 }
 
+@keyframes spin-sky {
+	0% {
+		transform: translate(-25%, -50%) rotate(0deg);
+	}
+	100% {
+		transform: translate(-25%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes spin-sky-p {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
 .hero {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	position: relative;
 	min-height: 90vh;
 	background-color: $c-skyBlue;
-	background-image: svg-load('sky-tornado.svg');
-	background-repeat: no-repeat;
-	background-position: bottom;
 	overflow: hidden;
-	background-size: 125% 125%;
+
+	&::before {
+		top: -5%;
+		left: 0;
+		width: 200vw;
+		height: 200vw;
+		background-image: svg-load('sky-tornado.svg');
+		background-repeat: no-repeat;
+		overflow: hidden;
+		animation: spin-sky 240s linear reverse infinite;
+		@include pseudo;
+
+		@media (orientation: portrait) {
+			left: 50%;
+			width: 200vh;
+			height: 200vh;
+			animation-name: spin-sky-p;
+		}
+	}
 
 	.header {
 		max-width: $page-width;
@@ -137,7 +171,6 @@
 
 		&__wrapper {
 			display: flex;
-			padding: 0 32px;
 			background-image: svg-load('confetti-doodles.svg');
 			background-size: contain;
 
