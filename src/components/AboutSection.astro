@@ -7,9 +7,14 @@ import '@styles/components/AboutSection.scss';
 </section>
 
 <script>
+	import EdgesIoManager from 'src/utils/EdgesIoManager';
 	import MiddleIoManager from 'src/utils/MiddleIoManager';
 
 	MiddleIoManager.subscribe('.about h2.title', (f, e) => {
-		if (f.middle) e.classList.add('slide-in');
+		if (f.middle || f.aboveMiddle) e.classList.add('slide-in');
+	});
+
+	EdgesIoManager.subscribe('.about h2.title', (f, e) => {
+		if (f.below) e.classList.remove('slide-in');
 	});
 </script>
