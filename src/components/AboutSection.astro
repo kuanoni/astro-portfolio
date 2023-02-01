@@ -15,11 +15,9 @@ import CardSmall from './blocks/CardSmall.astro';
 ---
 
 <section class='about'>
-	<div class='header'>
-		<!-- <h2 class='title'>About me</h2> -->
-	</div>
 	<div class='body'>
 		<div class='content'>
+			<h2>About me</h2>
 			<p>
 				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, impedit accusamus ducimus enim unde
 				molestiae perferendis accusantium saepe culpa ea optio, adipisci ab facere blanditiis facilis officia
@@ -50,16 +48,6 @@ import CardSmall from './blocks/CardSmall.astro';
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores modi soluta eveniet debitis, fugit
 					ab maxime esse quibusdam numquam, est ea assumenda.
 				</CardSmall>
-				<!-- <CardSmall
-                
-					title='MongoDB'
-					image={mongodb}
-					iconStyle='padding: 2px; background-color: #FFFFFF; border-radius: 50%;'
-				>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae pariatur quia officiis, quas
-					voluptatem ipsum? Architecto!
-				</CardSmall
-            > -->
 				<CardSmall title='Figma' image={figma} iconStyle='padding: 4px; background-color: #212121;'>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime magni, rem, cum voluptate pariatur
 					eaque illum iusto debitis dolorum iure natus eum similique, repudiandae tempore. Pariatur.
@@ -106,6 +94,7 @@ import CardSmall from './blocks/CardSmall.astro';
 	import MiddleIoManager from 'src/utils/MiddleIoManager';
 
 	const section = document.querySelector('section.about');
+
 	if (section) {
 		MiddleIoManager.subscribe('.about .body', (f, e) => {
 			if (f.middle || f.aboveMiddle) section.classList.add('slide-in');
