@@ -1,8 +1,9 @@
 ---
+import '@styles/components/blocks/SmallCard.scss';
 const { title, image, iconStyle } = Astro.props;
 ---
 
-<article>
+<article class='card-small'>
 	<div class='card-bg'></div>
 	<h4>{title}</h4>
 	<img src={image} alt={`${title} logo`} style={iconStyle || ''} />
