@@ -3,18 +3,77 @@ import '@styles/components/AboutSection.scss';
 ---
 
 <section class='about'>
-	<h2 class='title'>About me</h2>
+	<div class='header'>
+		<h2 class='title'>About me</h2>
+	</div>
+	<div class='body'>
+		<div class='content'>
+			<p>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, impedit accusamus ducimus enim unde
+				molestiae perferendis accusantium saepe culpa ea optio, adipisci ab facere blanditiis facilis officia
+				quam. Quisquam optio veniam sed commodi consequuntur doloribus, debitis alias voluptatum impedit ea.
+			</p>
+			<div class='tech-cards'>
+				<article class='card'>
+					<h4>Javascript</h4>
+
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit odio, ducimus consequuntur
+						recusandae cumque obcaecati tenetur.
+					</p>
+				</article>
+				<article class='card'>
+					<h4>React.js</h4>
+					<p>
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores debitis vitae modi ipsum culpa
+						quam incidunt blanditiis, minima eos, obcaecati quisquam iste veniam.
+					</p>
+				</article>
+				<article class='card'>
+					<h4>HTML/CSS/Sass</h4>
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, vero dolore sapiente
+						tempora minima molestias reiciendis facere cum.
+					</p>
+				</article>
+			</div>
+		</div>
+		<div class='resume'>
+			<div class='resume-label'>Skills</div>
+			<div class='resume-info'>
+				<ul>
+					<li>Frontend Development 💻</li>
+					<li>Backend Development 🧩</li>
+					<li>Game Development 🎮</li>
+				</ul>
+			</div>
+			<div class='resume-label'>Location</div>
+			<div class='resume-info'>🇺🇸 Vancouver, WA</div>
+			<div class='resume-label'>Email</div>
+			<div class='resume-info'>kainoaaraiza@gmail.com</div>
+			<div class='resume-label'>Languages</div>
+			<div class='resume-info'>
+				<ul>
+					<li>English</li>
+					<li>Spanish</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </section>
 
 <script>
 	import EdgesIoManager from 'src/utils/EdgesIoManager';
 	import MiddleIoManager from 'src/utils/MiddleIoManager';
 
-	MiddleIoManager.subscribe('.about h2.title', (f, e) => {
-		if (f.middle || f.aboveMiddle) e.classList.add('slide-in');
-	});
+	const section = document.querySelector('section.about');
+	if (section) {
+		MiddleIoManager.subscribe('.about .header', (f, e) => {
+			if (f.middle || f.aboveMiddle) section.classList.add('slide-in');
+		});
 
-	EdgesIoManager.subscribe('.about h2.title', (f, e) => {
-		if (f.below) e.classList.remove('slide-in');
-	});
+		EdgesIoManager.subscribe('.about .header', (f, e) => {
+			if (f.below) section.classList.remove('slide-in');
+		});
+	}
 </script>
