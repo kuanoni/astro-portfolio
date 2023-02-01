@@ -4,6 +4,7 @@ header {
 	right: 0;
 	left: 0;
 	background-color: $c-orange;
+	font-family: 'Playfair Display';
 	z-index: z(header);
 	transition: background-color 0.2s cubic-bezier(0, 0.55, 1, 0.48);
 
