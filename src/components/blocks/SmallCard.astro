@@ -1,0 +1,12 @@
+---
+const { title, image, iconStyle } = Astro.props;
+---
+
+<article>
+	<div class='card-bg'></div>
+	<h4>{title}</h4>
+	<img src={image} alt={`${title} logo`} style={iconStyle || ''} />
+	<p>
+		<slot />
+	</p>
+</article>
