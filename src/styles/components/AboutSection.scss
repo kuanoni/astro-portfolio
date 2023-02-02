@@ -43,6 +43,7 @@
 
 		@include for-size(tablet, down) {
 			flex-direction: column;
+			padding-top: 64px;
 		}
 
 		@include for-size(desktop-sm, down) {
