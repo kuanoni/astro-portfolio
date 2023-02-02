@@ -38,7 +38,6 @@
 		max-width: $page-width;
 		margin-top: 64px;
 		padding-top: 96px;
-
 		padding-bottom: 32px;
 
 		@include for-size(tablet, down) {
@@ -153,7 +152,7 @@
 				}
 
 				a:hover img {
-					transform: translateY(-4px);
+					transform: translateY(-3px);
 				}
 
 				a,
