@@ -3,6 +3,7 @@
 	padding: 16px;
 	background-color: rgba(255, 255, 255, 0.06);
 	border-radius: $b-rad;
+	cursor: default;
 	transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
 
 	&.see-more {
@@ -18,24 +19,25 @@
 
 	.card-bg {
 		position: absolute;
-		inset: 0 0 0 0;
+		border-radius: $b-rad;
 		overflow: hidden;
+		inset: 0 0 0 0;
 		pointer-events: none;
 
 		&::before {
-			@include pseudo;
-			width: 125%;
 			top: 50%;
 			left: 50%;
-			aspect-ratio: 1 / 1;
-			opacity: 0;
+			width: 125%;
 			background: radial-gradient(ellipse at top, #64e2e6, transparent),
 				radial-gradient(ellipse at bottom, #9f950c, transparent);
+			opacity: 0;
 			z-index: -1;
+			aspect-ratio: 1 / 1;
 			transition: opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1),
 				transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 			transform: translate(-50%, -50%);
 			transform-origin: center;
+			@include pseudo;
 		}
 	}
 
@@ -56,9 +58,9 @@
 		width: 32px;
 		height: 32px;
 		border-radius: 4px;
-		transform: translate(25%, -25%);
 		overflow: hidden;
 		z-index: 2;
+		transform: translate(25%, -25%);
 	}
 
 	p {
