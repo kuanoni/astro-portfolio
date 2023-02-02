@@ -62,6 +62,10 @@
 		overflow: hidden;
 		z-index: 2;
 		transform: translate(25%, -25%);
+
+		@include for-size(phone, down) {
+			transform: translate(-25%, 25%);
+		}
 	}
 
 	p {
