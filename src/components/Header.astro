@@ -6,9 +6,27 @@ import '@styles/components/Header.scss';
 <header>
 	<nav>
 		<a href='/' class='brand'>KAK</a>
-		<HeaderLink href='/'>Home</HeaderLink>
+		<HeaderLink href='/#home'>Home</HeaderLink>
+		<HeaderLink href='/#about'>About</HeaderLink>
 		<HeaderLink href='/blog'>Blog</HeaderLink>
-		<HeaderLink href='/about'>About</HeaderLink>
 		<HeaderLink href='https://github.com/withastro/astro' target='_blank'>GitHub</HeaderLink>
 	</nav>
 </header>
+
+<script>
+	const pathname = window.location.pathname;
+	const hashLinks = document.querySelectorAll(`a[href^="${pathname}#"]`);
+
+	hashLinks.forEach((link) => {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+
+			const targetId = link.getAttribute('href');
+			if (!targetId) return;
+			const target = document.querySelector(targetId.replaceAll(pathname, ''));
+			if (!target) return;
+
+			target.scrollIntoView({ behavior: 'smooth' });
+		});
+	});
+</script>
