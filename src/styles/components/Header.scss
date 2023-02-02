@@ -16,11 +16,13 @@ header {
 		}
 
 		& .links a {
-			background-color: $c-oceanSurface;
+			@include for-size(tablet-sm, down) {
+				background-color: $c-oceanSurface;
 
-			&:hover,
-			&:active {
-				background-color: $c-seafoam;
+				&:hover,
+				&:active {
+					background-color: $c-seafoam;
+				}
 			}
 		}
 	}
