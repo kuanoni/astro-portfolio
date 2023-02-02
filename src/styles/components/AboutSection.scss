@@ -46,19 +46,37 @@
 
 		.content {
 			opacity: 0;
+		@include for-size(tablet, down) {
+			flex-direction: column;
+		}
+
+		@include for-size(desktop-sm, down) {
+			gap: 32px;
+		}
 
 			.tech-cards {
 				display: grid;
 				gap: 20px;
 				margin-top: 32px;
 				grid-template-columns: 1fr 1fr 1fr;
+
+				@include for-size(tablet-sm, down) {
+					grid-template-columns: 1fr 1fr;
+
+					.see-more {
+						grid-column: auto;
+					}
+				}
+
+				@include for-size(phone, down) {
+					gap: 8px;
+					grid-template-columns: 1fr;
+				}
 			}
 		}
 
 		.resume {
-			min-width: 300px;
 			font-size: 1.15rem;
-			opacity: 0;
 
 			&-label {
 				line-height: 1.5;
