@@ -10,31 +10,85 @@ header {
 
 	&.submerged {
 		background-color: $c-oxford-blue;
+
+		& .container {
+			background-color: $c-oxford-blue;
+		}
 	}
 
-	nav {
+	.container {
+		position: relative;
 		display: flex;
-		align-items: center;
 		max-width: $page-width;
+		margin: auto;
+		background-color: $c-orange;
+		align-items: center;
 		height: 3.5rem;
-		margin: 0 auto;
+		transition: background-color 0.2s cubic-bezier(0, 0.55, 1, 0.48);
 
-		.brand {
-			margin-right: auto;
-			margin-left: 0;
-			line-height: 1.25;
-			font-size: 2rem;
+		@include for-size(tablet-sm, down) {
+			max-width: 100%;
+		}
+	}
 
-			&:hover {
-				text-decoration: none;
-			}
+	.brand {
+		margin-right: auto;
+		margin-left: 0;
+		color: $c-textLight;
+		text-decoration: none;
+		line-height: 1.25;
+		font-size: 2rem;
+
+		@include for-size(tablet-sm, down) {
+			margin-left: 32px;
+			line-height: 1.75;
+		}
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+header nav {
+	display: flex;
+
+	@include for-size(tablet-sm, down) {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		flex-direction: column;
+		align-items: flex-start;
+		transform: translateY(50%);
+		z-index: -1;
+	}
+
+	.links {
+		display: flex;
+
+		@include for-size(tablet-sm, down) {
+			flex-direction: column;
+			width: 100%;
 		}
 
 		a {
-			margin-left: 2rem;
-			text-decoration: none;
+			margin-left: 32px;
 			color: $c-textLight;
+			text-decoration: none;
 			font-size: 1.25rem;
+
+			@include for-size(tablet-sm, down) {
+				width: 100%;
+				margin-left: 0;
+				padding: 0 32px;
+				background-color: $c-blood;
+				line-height: 1.75;
+
+				&:hover {
+					background-color: $c-salmon;
+				}
+			}
 
 			&:hover {
 				text-decoration: underline;

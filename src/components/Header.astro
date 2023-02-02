@@ -4,13 +4,17 @@ import '@styles/components/Header.scss';
 ---
 
 <header>
-	<nav>
+	<div class='container'>
 		<a href='/' class='brand'>KAK</a>
-		<HeaderLink href='/#home'>Home</HeaderLink>
-		<HeaderLink href='/#about'>About</HeaderLink>
-		<HeaderLink href='/blog'>Blog</HeaderLink>
-		<HeaderLink href='https://github.com/withastro/astro' target='_blank'>GitHub</HeaderLink>
-	</nav>
+		<nav>
+			<div class='links'>
+				<HeaderLink href='/#home'>Home</HeaderLink>
+				<HeaderLink href='/#about'>About</HeaderLink>
+				<HeaderLink href='/blog'>Blog</HeaderLink>
+				<HeaderLink href='https://github.com/withastro/astro' target='_blank'>GitHub</HeaderLink>
+			</div>
+		</nav>
+	</div>
 </header>
 
 <script>
