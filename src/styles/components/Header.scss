@@ -95,6 +95,12 @@ header nav {
 		bottom: 0;
 		left: 0;
 		z-index: -1;
+		transform: translateY(0%);
+		transition: 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+
+		&.open {
+			transform: translateY(100%);
+		}
 	}
 
 	.links {

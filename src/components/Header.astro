@@ -34,4 +34,23 @@ import '@styles/components/Header.scss';
 			target.scrollIntoView({ behavior: 'smooth' });
 		});
 	});
+
+	const nav = document.querySelector('header nav');
+	const navToggleBtn = document.querySelector('.nav-toggle-btn');
+	if (nav && navToggleBtn)
+		navToggleBtn.addEventListener('click', (e) => {
+			const isOpen = nav.classList.toggle('open');
+
+			e.stopImmediatePropagation();
+
+			// when it's open, a click anywhere on the page should close it
+			if (isOpen)
+				document.body.addEventListener(
+					'click',
+					() => {
+						nav.classList.remove('open');
+					},
+					{ once: true }
+				);
+		});
 </script>
