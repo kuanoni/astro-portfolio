@@ -1,6 +1,7 @@
 ---
 import '@styles/components/AboutSection.scss';
 import { Image } from '@astrojs/image/components';
+import CardSmall from './blocks/CardSmall.astro';
 
 import astro from '../images/svg/brand-logos/logos-astro.svg';
 import javascript from '../images/svg/brand-logos/logos-javascript.svg';
@@ -12,7 +13,13 @@ import react from '../images/svg/brand-logos/logos-react.svg';
 import sass from '../images/svg/brand-logos/logos-sass.svg';
 import figma from '../images/svg/brand-logos/logos-figma.svg';
 import typescript from '../images/svg/brand-logos/logos-typescript-icon.svg';
-import CardSmall from './blocks/CardSmall.astro';
+
+import github from '../images/svg/brand-logos/socials/logos-github.svg';
+import gitlab from '../images/svg/brand-logos/socials/logos-gitlab.svg';
+import linkedin from '../images/svg/brand-logos/socials/logos-linkedin-icon.svg';
+import stackoverflow from '../images/svg/brand-logos/socials/logos-stackoverflow-icon.svg';
+import dev from '../images/svg/brand-logos/socials/fa-brands-dev.svg';
+
 import profile from '../images/profile.webp';
 ---
 
@@ -68,7 +75,7 @@ import profile from '../images/profile.webp';
 			</div>
 		</div>
 		<div class='resume'>
-			<Image src={profile} width={416} height={416} alt='my face' />
+			<Image src={profile} class='resume-picture' width={416} height={416} alt='my face' />
 			<div class='resume-content'>
 				<div class='resume-label'>Skills</div>
 				<div class='resume-info'>
@@ -88,6 +95,13 @@ import profile from '../images/profile.webp';
 						<li>English</li>
 						<li>Spanish</li>
 					</ul>
+				</div>
+				<div class='resume-links'>
+					<a href='#' title='Github'><img src={github} alt='Github' /></a>
+					<a href='#' title='Gitlab'><img src={gitlab} alt='Gitlab' /></a>
+					<a href='#' title='Linkedin'><img src={linkedin} alt='Linkedin' /></a>
+					<a href='#' title='Stack Overflow'><img src={stackoverflow} alt='Stack Overflow' /></a>
+					<a href='#' title='DEV'><img src={dev} alt='DEV' /></a>
 				</div>
 			</div>
 		</div>
