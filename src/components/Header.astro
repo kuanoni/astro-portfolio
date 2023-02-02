@@ -4,13 +4,18 @@ import '@styles/components/Header.scss';
 ---
 
 <header>
-	<nav>
+	<div class='container'>
 		<a href='/' class='brand'>KAK</a>
-		<HeaderLink href='/#home'>Home</HeaderLink>
-		<HeaderLink href='/#about'>About</HeaderLink>
-		<HeaderLink href='/blog'>Blog</HeaderLink>
-		<HeaderLink href='https://github.com/withastro/astro' target='_blank'>GitHub</HeaderLink>
-	</nav>
+		<button class='nav-toggle-btn'> </button>
+		<nav>
+			<div class='links'>
+				<HeaderLink href='/#home'>Home</HeaderLink>
+				<HeaderLink href='/#about'>About</HeaderLink>
+				<HeaderLink href='/blog'>Blog</HeaderLink>
+				<HeaderLink href='https://github.com/withastro/astro' target='_blank'>GitHub</HeaderLink>
+			</div>
+		</nav>
+	</div>
 </header>
 
 <script>
@@ -29,4 +34,23 @@ import '@styles/components/Header.scss';
 			target.scrollIntoView({ behavior: 'smooth' });
 		});
 	});
+
+	const nav = document.querySelector('header nav');
+	const navToggleBtn = document.querySelector('.nav-toggle-btn');
+	if (nav && navToggleBtn)
+		navToggleBtn.addEventListener('click', (e) => {
+			const isOpen = nav.classList.toggle('open');
+
+			e.stopImmediatePropagation();
+
+			// when it's open, a click anywhere on the page should close it
+			if (isOpen)
+				document.body.addEventListener(
+					'click',
+					() => {
+						nav.classList.remove('open');
+					},
+					{ once: true }
+				);
+		});
 </script>
