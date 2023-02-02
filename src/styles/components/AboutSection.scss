@@ -18,23 +18,19 @@
 	}
 }
 
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
 .about {
 	min-height: 30vh;
 	padding-bottom: 1px;
 	background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
-
-	&.slide-in {
-		.header {
-			animation: slide-in-left 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-		}
-		.content {
-			animation: fade-in 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-		}
-
-		.resume {
-			animation: fade-in 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-		}
-	}
 
 	.body {
 		display: flex;
@@ -44,8 +40,6 @@
 
 		padding-bottom: 32px;
 
-		.content {
-			opacity: 0;
 		@include for-size(tablet, down) {
 			flex-direction: column;
 		}
@@ -54,6 +48,15 @@
 			gap: 32px;
 		}
 
+		&.fade-in {
+			animation: fade-in 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+		}
+
+		&.fade-out {
+			animation: fade-out 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+		}
+
+		.content {
 			.tech-cards {
 				display: grid;
 				gap: 20px;

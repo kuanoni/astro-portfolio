@@ -90,18 +90,15 @@ import CardSmall from './blocks/CardSmall.astro';
 </section>
 
 <script>
-	import EdgesIoManager from 'src/utils/EdgesIoManager';
 	import MiddleIoManager from 'src/utils/MiddleIoManager';
 
-	const section = document.querySelector('section.about');
-
-	if (section) {
-		MiddleIoManager.subscribe('.about .body', (f, e) => {
-			if (f.middle || f.aboveMiddle) section.classList.add('slide-in');
-		});
-
-		EdgesIoManager.subscribe('.about .body', (f, e) => {
-			if (f.below) section.classList.remove('slide-in');
-		});
-	}
+	MiddleIoManager.subscribe('section.about .body', (f, e) => {
+		if (f.middle || f.aboveMiddle) {
+			e.classList.add('fade-in');
+			e.classList.remove('fade-out');
+		} else {
+			e.classList.remove('fade-in');
+			e.classList.add('fade-out');
+		}
+	});
 </script>
