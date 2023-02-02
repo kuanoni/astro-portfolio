@@ -57,6 +57,10 @@
 		}
 
 		.content {
+			p.intro {
+				color: $c-textMedium;
+			}
+
 			.tech-cards {
 				display: grid;
 				gap: 20px;
@@ -79,7 +83,29 @@
 		}
 
 		.resume {
+			display: grid;
+			gap: 16px;
 			font-size: 1.15rem;
+			grid-template-columns: 1fr;
+			grid-template-rows: min-content auto;
+
+			@include for-size(tablet, down) {
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: auto;
+			}
+
+			@include for-size(phone, down) {
+				grid-template-columns: 1fr;
+			}
+
+			img {
+				height: auto;
+				border-radius: $b-rad;
+
+				@include for-size(phone, down) {
+					max-width: 300px;
+				}
+			}
 
 			&-label {
 				line-height: 1.5;

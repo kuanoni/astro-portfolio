@@ -1,5 +1,6 @@
 ---
 import '@styles/components/AboutSection.scss';
+import { Image } from '@astrojs/image/components';
 
 import astro from '../images/svg/brand-logos/logos-astro.svg';
 import javascript from '../images/svg/brand-logos/logos-javascript.svg';
@@ -12,13 +13,14 @@ import sass from '../images/svg/brand-logos/logos-sass.svg';
 import figma from '../images/svg/brand-logos/logos-figma.svg';
 import typescript from '../images/svg/brand-logos/logos-typescript-icon.svg';
 import CardSmall from './blocks/CardSmall.astro';
+import profile from '../images/profile.webp';
 ---
 
-<section class='about'>
+<section id='about' class='about'>
 	<div class='body'>
 		<div class='content'>
 			<h2>About me</h2>
-			<p>
+			<p class='intro'>
 				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, impedit accusamus ducimus enim unde
 				molestiae perferendis accusantium saepe culpa ea optio, adipisci ab facere blanditiis facilis officia
 				quam. Quisquam optio veniam sed commodi consequuntur doloribus, debitis alias voluptatum impedit ea.
@@ -66,24 +68,27 @@ import CardSmall from './blocks/CardSmall.astro';
 			</div>
 		</div>
 		<div class='resume'>
-			<div class='resume-label'>Skills</div>
-			<div class='resume-info'>
-				<ul>
-					<li>Frontend Development 💻</li>
-					<li>Backend Development 🧩</li>
-					<li>Game Development 🎮</li>
-				</ul>
-			</div>
-			<div class='resume-label'>Location</div>
-			<div class='resume-info'>🇺🇸 Vancouver, WA</div>
-			<div class='resume-label'>Email</div>
-			<div class='resume-info'>kainoaaraiza@gmail.com</div>
-			<div class='resume-label'>Languages</div>
-			<div class='resume-info'>
-				<ul>
-					<li>English</li>
-					<li>Spanish</li>
-				</ul>
+			<Image src={profile} width={416} height={416} alt='my face' />
+			<div class='resume-content'>
+				<div class='resume-label'>Skills</div>
+				<div class='resume-info'>
+					<ul>
+						<li>Frontend Development 💻</li>
+						<li>Backend Development 🧩</li>
+						<li>Game Development 🎮</li>
+					</ul>
+				</div>
+				<div class='resume-label'>Location</div>
+				<div class='resume-info'>🇺🇸 Vancouver, WA</div>
+				<div class='resume-label'>Email</div>
+				<div class='resume-info'>kainoaaraiza@gmail.com</div>
+				<div class='resume-label'>Languages</div>
+				<div class='resume-info'>
+					<ul>
+						<li>English</li>
+						<li>Spanish</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
