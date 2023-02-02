@@ -1,0 +1,109 @@
+---
+import '@styles/components/AboutSection.scss';
+import { Image } from '@astrojs/image/components';
+
+import astro from '../images/svg/brand-logos/logos-astro.svg';
+import javascript from '../images/svg/brand-logos/logos-javascript.svg';
+import kotlin from '../images/svg/brand-logos/logos-kotlin-icon.svg';
+import mongodb from '../images/svg/brand-logos/logos-mongodb-icon.svg';
+import nextjs from '../images/svg/brand-logos/logos-nextjs-icon.svg';
+import python from '../images/svg/brand-logos/logos-python.svg';
+import react from '../images/svg/brand-logos/logos-react.svg';
+import sass from '../images/svg/brand-logos/logos-sass.svg';
+import figma from '../images/svg/brand-logos/logos-figma.svg';
+import typescript from '../images/svg/brand-logos/logos-typescript-icon.svg';
+import CardSmall from './blocks/CardSmall.astro';
+import profile from '../images/profile.webp';
+---
+
+<section id='about' class='about'>
+	<div class='body'>
+		<div class='content'>
+			<h2>About me</h2>
+			<p class='intro'>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, impedit accusamus ducimus enim unde
+				molestiae perferendis accusantium saepe culpa ea optio, adipisci ab facere blanditiis facilis officia
+				quam. Quisquam optio veniam sed commodi consequuntur doloribus, debitis alias voluptatum impedit ea.
+			</p>
+			<div class='tech-cards'>
+				<CardSmall title='Javascript' image={javascript}>
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit odio, ducimus consequuntur recusandae
+					cumque obcaecati tenetur.
+				</CardSmall>
+				<CardSmall title='Typescript' image={typescript}>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore maiores culpa harum quis ipsum ipsa
+					voluptas possimus minus quisquam.
+				</CardSmall>
+				<CardSmall title='Sass' image={sass}>
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, vero dolore sapiente tempora
+					minima molestias reiciendis facere cum.
+				</CardSmall>
+				<CardSmall title='React.js' image={react} iconStyle='padding: 2px; background-color: #212121;'>
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores debitis vitae modi ipsum culpa
+					quam incidunt blanditiis, minima eos, obcaecati quisquam iste veniam.
+				</CardSmall>
+				<CardSmall title='Next.js' image={nextjs}>
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus impedit harum voluptate! Nostrum
+					cumque sequi hic iusto omnis quisquam iste quidem sed!
+				</CardSmall>
+				<CardSmall title='Astro' image={astro} iconStyle='padding: 4px; background-color: #FFFFFF;'>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores modi soluta eveniet debitis, fugit
+					ab maxime esse quibusdam numquam, est ea assumenda.
+				</CardSmall>
+				<CardSmall title='Figma' image={figma} iconStyle='padding: 4px; background-color: #212121;'>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime magni, rem, cum voluptate pariatur
+					eaque illum iusto debitis dolorum iure natus eum similique, repudiandae tempore. Pariatur.
+				</CardSmall>
+				<article class='card-small see-more'>
+					<div class='card-bg'></div>
+					<h4>And many more...</h4>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nobis tenetur voluptatem ea eius
+						assumenda iste fugiat ipsa numquam sequi cum atque fugit quisquam maiores provident quibusdam
+						omnis nisi doloribus nesciunt, quis, id perspiciatis dignissimos voluptate? Consequuntur quaerat
+						dolores cum eum dolorum voluptatum ipsa eius autem aut voluptate, nesciunt delectus ex labore
+						nobis neque accusamus magnam debitis ipsum a aliquid!
+					</p>
+				</article>
+			</div>
+		</div>
+		<div class='resume'>
+			<Image src={profile} width={416} height={416} alt='my face' />
+			<div class='resume-content'>
+				<div class='resume-label'>Skills</div>
+				<div class='resume-info'>
+					<ul>
+						<li>Frontend Development 💻</li>
+						<li>Backend Development 🧩</li>
+						<li>Game Development 🎮</li>
+					</ul>
+				</div>
+				<div class='resume-label'>Location</div>
+				<div class='resume-info'>🇺🇸 Vancouver, WA</div>
+				<div class='resume-label'>Email</div>
+				<div class='resume-info'>kainoaaraiza@gmail.com</div>
+				<div class='resume-label'>Languages</div>
+				<div class='resume-info'>
+					<ul>
+						<li>English</li>
+						<li>Spanish</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	import MiddleIoManager from 'src/utils/MiddleIoManager';
+
+	MiddleIoManager.subscribe('section.about .body', (f, e) => {
+		if (f.middle || f.aboveMiddle) {
+			e.classList.add('fade-in');
+			e.classList.remove('fade-out');
+		} else {
+			e.classList.remove('fade-in');
+			e.classList.add('fade-out');
+		}
+	});
+</script>

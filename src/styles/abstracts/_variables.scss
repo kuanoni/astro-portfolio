@@ -3,7 +3,7 @@ $z-indexes: ('modal', 'header', 'base');
 $breakpoints: (
 	phone-sm: 320px,
 	phone: 420px,
-	tablet-sm: 484px,
+	tablet-sm: 512px,
 	tablet: 768px,
 	desktop-sm: 1025px,
 	desktop: 1600px,
@@ -23,4 +23,5 @@ $c-salmon: var(--c-salmon);
 $c-spotlight: var(--c-spotlight);
 $c-cloth: var(--c-cloth);
 $c-textLight: var(--c-textLight);
+$c-textMedium: var(--c-textMedium);
 $c-textDark: var(--c-textDark);

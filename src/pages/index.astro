@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import '@styles/pages/index.scss';
 import HeroSection from 'src/components/HeroSection.astro';
+import AboutSection from 'src/components/AboutSection.astro';
 ---
 
 <!DOCTYPE html>
@@ -15,17 +16,16 @@ import HeroSection from 'src/components/HeroSection.astro';
 		<Header title={SITE_TITLE} />
 		<main>
 			<HeroSection />
-			<section class='about'></section>
+			<AboutSection />
 			<section class='projects'></section>
 		</main>
 
 		<script>
-			import ObserverManager from 'src/utils/ObserverManager';
+			import EdgesIoManager from 'src/utils/EdgesIoManager';
 
 			const header = document.querySelector('header');
-			const hero = document.querySelector('.hero');
 
-			ObserverManager.subscribe('.hero', (i) => {
+			EdgesIoManager.subscribe('.hero', (i) => {
 				if (i.above) header?.classList.add('submerged');
 				else header?.classList.remove('submerged');
 			});

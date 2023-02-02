@@ -69,15 +69,9 @@
 }
 
 .hero {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	position: relative;
 	min-height: 90vh;
+	justify-content: center;
 	background-color: $c-skyBlue;
-	overflow: hidden;
 
 	&::before {
 		top: -5%;
@@ -105,40 +99,17 @@
 		font-family: 'Merriweather';
 
 		.title {
-			text-align: center;
-			line-height: 1;
-			font-size: 3rem;
-			font-weight: 700;
 			opacity: 0;
 			text-shadow: 0px 1px 3px #333;
 			animation: fade-in-down 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 			animation-delay: 1s;
-
-			@include for-size(phone, down) {
-				font-size: 2.5rem;
-			}
-
-			@include for-size(phone-sm, down) {
-				font-size: 2rem;
-			}
 		}
 
 		.subtitle {
-			margin-top: 1rem;
-			text-align: center;
 			opacity: 0;
 			text-shadow: 0px 1px 3px #333;
 			animation: fade-in-down 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 			animation-delay: 1.75s;
-
-			@include for-size(phone, down) {
-				font-size: 1rem;
-			}
-		}
-
-		span {
-			line-height: 0;
-			white-space: nowrap;
 		}
 	}
 

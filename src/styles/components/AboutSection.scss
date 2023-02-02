@@ -1,0 +1,145 @@
+@keyframes slide-in-left {
+	0% {
+		opacity: 0;
+		transform: translateX(-50%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.about {
+	min-height: 30vh;
+	padding-bottom: 1px;
+	background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
+
+	.body {
+		display: flex;
+		gap: 48px;
+		max-width: $page-width;
+		margin-top: 128px;
+
+		padding-bottom: 32px;
+
+		@include for-size(tablet, down) {
+			flex-direction: column;
+		}
+
+		@include for-size(desktop-sm, down) {
+			gap: 32px;
+		}
+
+		&.fade-in {
+			animation: fade-in 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+		}
+
+		&.fade-out {
+			animation: fade-out 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+		}
+
+		.content {
+			p.intro {
+				color: $c-textMedium;
+			}
+
+			.tech-cards {
+				display: grid;
+				gap: 20px;
+				margin-top: 32px;
+				grid-template-columns: 1fr 1fr 1fr;
+
+				@include for-size(tablet-sm, down) {
+					grid-template-columns: 1fr 1fr;
+
+					.see-more {
+						grid-column: auto;
+					}
+				}
+
+				@include for-size(phone, down) {
+					gap: 8px;
+					grid-template-columns: 1fr;
+				}
+			}
+		}
+
+		.resume {
+			display: grid;
+			gap: 16px;
+			font-size: 1.15rem;
+			grid-template-columns: 1fr;
+			grid-template-rows: min-content auto;
+
+			@include for-size(tablet, down) {
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: auto;
+			}
+
+			@include for-size(phone, down) {
+				grid-template-columns: 1fr;
+			}
+
+			img {
+				height: auto;
+				border-radius: $b-rad;
+
+				@include for-size(phone, down) {
+					max-width: 300px;
+				}
+			}
+
+			&-label {
+				line-height: 1.5;
+				font-size: 0.875em;
+				font-weight: 600;
+				&:not(:first-child) {
+					margin-top: 16px;
+				}
+			}
+
+			&-info {
+				color: $c-textMedium;
+				line-height: 1.25;
+				font-size: 0.75em;
+
+				ul {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 8px;
+					margin-top: 2px;
+					padding: 0;
+					list-style: none;
+				}
+
+				li {
+					display: inline;
+					padding: 0.125em 0.5em;
+					border: 1px solid $c-seafoam;
+					border-radius: 9999px;
+					line-height: 1.25;
+					white-space: nowrap;
+					font-weight: 300;
+				}
+			}
+		}
+	}
+}
