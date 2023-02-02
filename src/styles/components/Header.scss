@@ -14,38 +14,72 @@ header {
 		& .container {
 			background-color: $c-oxford-blue;
 		}
+
+		& .links a {
+			background-color: $c-oceanSurface;
+
+			&:hover,
+			&:active {
+				background-color: $c-seafoam;
+			}
+		}
 	}
 
 	.container {
-		position: relative;
 		display: flex;
+		align-items: center;
+		position: relative;
 		max-width: $page-width;
+		height: 3.5rem;
 		margin: auto;
 		background-color: $c-orange;
-		align-items: center;
-		height: 3.5rem;
 		transition: background-color 0.2s cubic-bezier(0, 0.55, 1, 0.48);
 
 		@include for-size(tablet-sm, down) {
 			max-width: 100%;
 		}
-	}
 
-	.brand {
-		margin-right: auto;
-		margin-left: 0;
-		color: $c-textLight;
-		text-decoration: none;
-		line-height: 1.25;
-		font-size: 2rem;
+		.brand {
+			margin-right: auto;
+			margin-left: 0;
+			color: $c-textLight;
+			text-decoration: none;
+			line-height: 1.25;
+			font-size: 2rem;
 
-		@include for-size(tablet-sm, down) {
-			margin-left: 32px;
-			line-height: 1.75;
+			@include for-size(tablet-sm, down) {
+				margin-left: 32px;
+				line-height: 1.75;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
 		}
 
-		&:hover {
-			text-decoration: none;
+		.nav-toggle-btn {
+			display: none;
+			height: 36px;
+			margin-right: 32px;
+			padding: 0;
+			max-width: 100%;
+			aspect-ratio: 1 / 1;
+			background-image: svg-load('hamburger.svg');
+			background-size: 100%;
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+			transform-origin: center;
+			transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+
+			&:hover,
+			&:active {
+				transform: scale(1.05);
+			}
+
+			@include for-size(tablet-sm, down) {
+				display: block;
+			}
 		}
 	}
 }
@@ -54,13 +88,12 @@ header nav {
 	display: flex;
 
 	@include for-size(tablet-sm, down) {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
 		flex-direction: column;
 		align-items: flex-start;
-		transform: translateY(50%);
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
 		z-index: -1;
 	}
 
@@ -85,7 +118,8 @@ header nav {
 				background-color: $c-blood;
 				line-height: 1.75;
 
-				&:hover {
+				&:hover,
+				&:active {
 					background-color: $c-salmon;
 				}
 			}
