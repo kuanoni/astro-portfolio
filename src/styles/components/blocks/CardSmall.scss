@@ -27,7 +27,8 @@
 		&::before {
 			top: 50%;
 			left: 50%;
-			width: 125%;
+			min-width: 125%;
+			min-height: 125%;
 			background: radial-gradient(ellipse at top, #64e2e6, transparent),
 				radial-gradient(ellipse at bottom, #9f950c, transparent);
 			opacity: 0;
