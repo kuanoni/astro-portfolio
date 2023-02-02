@@ -22,26 +22,26 @@ class IoManager<Flags> {
 	}
 
 	subscribe(query: string, cb: IntersectedCallback<Flags>) {
-		const element = document.querySelector(query);
-		if (!element) return console.error(`Element query failed: ${query}`);
+		const elements = document.querySelectorAll(query);
 
-		// if callback array at key "query" exists, we don't need to make another observer
-		if (this.#observedElements[query]) {
+		// initialize observedElements index if not already
+		if (!this.#observedElements[query]) this.#observedElements[query] = [];
+
+		elements.forEach((element) => {
+			// add callback to the queue
 			this.#observedElements[query].push(cb);
-			return;
-		}
 
-		this.#observedElements[query] = [cb];
+			// create observer
+			const observer = new IntersectionObserver((entries) => {
+				// call each callback
+				this.#observedElements[query].forEach((callback) => {
+					callback(this.#createIFlags(entries), element);
+				});
+			}, this.#ioInit);
 
-		const observer = new IntersectionObserver((entries) => {
-			this.#observedElements[query].forEach((callback) => {
-				const e = document.querySelector(query);
-				if (!e) throw new Error(`Element not found. Query: ${query}`);
-				callback(this.#createIFlags(entries), e);
-			});
-		}, this.#ioInit);
-
-		observer.observe(element);
+			//activate observer
+			observer.observe(element);
+		});
 	}
 }
 
