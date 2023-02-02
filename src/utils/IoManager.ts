@@ -31,10 +31,14 @@ class IoManager<Flags> {
 			return;
 		}
 
-		this.#observedElements[query] = [];
+		this.#observedElements[query] = [cb];
 
 		const observer = new IntersectionObserver((entries) => {
-			cb(this.#createIFlags(entries), element);
+			this.#observedElements[query].forEach((callback) => {
+				const e = document.querySelector(query);
+				if (!e) throw new Error(`Element not found. Query: ${query}`);
+				callback(this.#createIFlags(entries), e);
+			});
 		}, this.#ioInit);
 
 		observer.observe(element);
