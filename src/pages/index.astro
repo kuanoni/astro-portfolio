@@ -13,6 +13,7 @@ import AboutSection from 'src/components/AboutSection.astro';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<div id='home'></div>
 		<Header title={SITE_TITLE} />
 		<main>
 			<HeroSection />
@@ -25,10 +26,11 @@ import AboutSection from 'src/components/AboutSection.astro';
 
 			const header = document.querySelector('header');
 
-			EdgesIoManager.subscribe('.hero', (i) => {
-				if (i.above) header?.classList.add('submerged');
-				else header?.classList.remove('submerged');
-			});
+			if (header)
+				EdgesIoManager.subscribe('.hero', (f) => {
+					if (f.above) header.classList.add('submerged');
+					else header.classList.remove('submerged');
+				});
 		</script>
 	</body>
 </html>
