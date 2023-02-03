@@ -1,14 +1,14 @@
 @font-face {
 	font-family: 'Playfair Display';
-	src: url('fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+	src: url('/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
 	font-weight: 100 1000;
 }
 
 @font-face {
 	font-family: 'Merriweather';
-	src: url('fonts/Merriweather-BlackItalic.woff2') format('woff2'),
-		url('fonts/Merriweather-BlackItalic.woff') format('woff'),
-		url('fonts/Merriweather-BlackItalic.ttf') format('truetype');
+	src: url('/fonts/Merriweather-BlackItalic.woff2') format('woff2'),
+		url('/fonts/Merriweather-BlackItalic.woff') format('woff'),
+		url('/fonts/Merriweather-BlackItalic.ttf') format('truetype');
 	font-weight: 900;
 	font-style: italic;
 	font-display: swap;
@@ -16,8 +16,8 @@
 
 @font-face {
 	font-family: 'Merriweather';
-	src: url('fonts/Merriweather-Black.woff2') format('woff2'), url('fonts/Merriweather-Black.woff') format('woff'),
-		url('fonts/Merriweather-Black.ttf') format('truetype');
+	src: url('/fonts/Merriweather-Black.woff2') format('woff2'), url('/fonts/Merriweather-Black.woff') format('woff'),
+		url('/fonts/Merriweather-Black.ttf') format('truetype');
 	font-weight: 900;
 	font-style: normal;
 	font-display: swap;
@@ -25,8 +25,8 @@
 
 @font-face {
 	font-family: 'Merriweather';
-	src: url('fonts/Merriweather-Bold.woff2') format('woff2'), url('fonts/Merriweather-Bold.woff') format('woff'),
-		url('fonts/Merriweather-Bold.ttf') format('truetype');
+	src: url('/fonts/Merriweather-Bold.woff2') format('woff2'), url('/fonts/Merriweather-Bold.woff') format('woff'),
+		url('/fonts/Merriweather-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 	font-display: swap;
@@ -34,9 +34,9 @@
 
 @font-face {
 	font-family: 'Merriweather';
-	src: url('fonts/Merriweather-BoldItalic.woff2') format('woff2'),
-		url('fonts/Merriweather-BoldItalic.woff') format('woff'),
-		url('fonts/Merriweather-BoldItalic.ttf') format('truetype');
+	src: url('/fonts/Merriweather-BoldItalic.woff2') format('woff2'),
+		url('/fonts/Merriweather-BoldItalic.woff') format('woff'),
+		url('/fonts/Merriweather-BoldItalic.ttf') format('truetype');
 	font-weight: bold;
 	font-style: italic;
 	font-display: swap;
@@ -44,8 +44,8 @@
 
 @font-face {
 	font-family: 'Merriweather';
-	src: url('fonts/Merriweather-Light.woff2') format('woff2'), url('fonts/Merriweather-Light.woff') format('woff'),
-		url('fonts/Merriweather-Light.ttf') format('truetype');
+	src: url('/fonts/Merriweather-Light.woff2') format('woff2'), url('/fonts/Merriweather-Light.woff') format('woff'),
+		url('/fonts/Merriweather-Light.ttf') format('truetype');
 	font-weight: 300;
 	font-style: normal;
 	font-display: swap;
@@ -53,8 +53,8 @@
 
 @font-face {
 	font-family: 'Merriweather';
-	src: url('fonts/Merriweather-Italic.woff2') format('woff2'), url('fonts/Merriweather-Italic.woff') format('woff'),
-		url('fonts/Merriweather-Italic.ttf') format('truetype');
+	src: url('/fonts/Merriweather-Italic.woff2') format('woff2'), url('/fonts/Merriweather-Italic.woff') format('woff'),
+		url('/fonts/Merriweather-Italic.ttf') format('truetype');
 	font-weight: normal;
 	font-style: italic;
 	font-display: swap;
@@ -62,8 +62,9 @@
 
 @font-face {
 	font-family: 'Merriweather';
-	src: url('fonts/Merriweather-Regular.woff2') format('woff2'), url('fonts/Merriweather-Regular.woff') format('woff'),
-		url('fonts/Merriweather-Regular.ttf') format('truetype');
+	src: url('/fonts/Merriweather-Regular.woff2') format('woff2'),
+		url('/fonts/Merriweather-Regular.woff') format('woff'),
+		url('/fonts/Merriweather-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
@@ -71,9 +72,9 @@
 
 @font-face {
 	font-family: 'Merriweather';
-	src: url('fonts/Merriweather-LightItalic.woff2') format('woff2'),
-		url('fonts/Merriweather-LightItalic.woff') format('woff'),
-		url('fonts/Merriweather-LightItalic.ttf') format('truetype');
+	src: url('/fonts/Merriweather-LightItalic.woff2') format('woff2'),
+		url('/fonts/Merriweather-LightItalic.woff') format('woff'),
+		url('/fonts/Merriweather-LightItalic.ttf') format('truetype');
 	font-weight: 300;
 	font-style: italic;
 	font-display: swap;
