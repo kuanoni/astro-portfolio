@@ -11,7 +11,7 @@ const __dirname = dirname(__filename);
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://kuanoni.github.io',
 	integrations: [mdx(), sitemap(), image()],
 	vite: {
 		resolve: {
