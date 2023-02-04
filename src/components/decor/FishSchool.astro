@@ -30,7 +30,7 @@ for (let i = 0; i < amount; i++) {
 	const img = fishImages[randNum(fishImages.length)];
 	const size = randNum(fishSizeRange[1], fishSizeRange[0]);
 	const animationDelay = randNum(7) / 10;
-	const animationDuration = randNum(25, 17.5) / 10;
+	const animationDuration = randNum(16, 10) / 10;
 
 	// creates a "grid" of cells and tries to disperse the fish between the cells,
 	// with one fish max per cell
@@ -47,23 +47,35 @@ for (let i = 0; i < amount; i++) {
 
 	const cell = cellsTaken.slice(-1).flat();
 
+	// calculate actual position
 	const left = cell[0] * (areaSize / amount) + randNum(maxOffset);
 	const top = cell[1] * (areaSize / amount) + randNum(maxOffset);
 
-	const style = `left: ${left}px;
+	const containerStyle = `left: ${left}px;
     top: ${top}px; 
     width: ${size}px; 
-    height: ${size}px; 
-    animation-delay: ${animationDelay}s; 
-    animation-duration: ${animationDuration}s;`;
+    height: ${size}px;
+    animation: fish-jump ${animationDuration * 0.25}s ease-in ${animationDelay}s forwards, 
+    fish-swim-away ${animationDuration * 0.6}s ease-in ${animationDuration * 0.4 + animationDelay}s forwards;`;
+
+	const imgStyle = `animation: fish-turn ${
+		animationDuration * 0.4
+	}s ease-in forwards; animation-delay: ${animationDelay}s;`;
 
 	fishList.push({
 		img,
-		style,
+		imgStyle,
+		containerStyle,
 	});
 }
 ---
 
 <div class:list={['fish-school', className]} style={`width: ${areaSize}px; height: ${areaSize}px;`}>
-	{fishList.map((fish) => <img src={fish.img} class='fish' style={fish.style} />)}
+	{
+		fishList.map((fish) => (
+			<div class='fish' style={fish.containerStyle}>
+				<img src={fish.img} style={fish.imgStyle} />
+			</div>
+		))
+	}
 </div>
