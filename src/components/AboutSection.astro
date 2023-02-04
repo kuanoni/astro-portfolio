@@ -21,6 +21,7 @@ import stackoverflow from '../images/svg/brand-logos/socials/logos-stackoverflow
 import dev from '../images/svg/brand-logos/socials/fa-brands-dev.svg';
 
 import profile from '../images/profile.webp';
+import face from '../images/face.png';
 import FishSchool from './decor/FishSchool.astro';
 ---
 
@@ -28,6 +29,7 @@ import FishSchool from './decor/FishSchool.astro';
 	<div class='fish-container'>
 		<FishSchool class='top-right' amount={8} sizeRange={[16, 28]} />
 		<FishSchool class='bottom-left go-left' amount={4} sizeRange={[16, 28]} />
+		<FishSchool class='bottom-right' amount={4} sizeRange={[16, 28]} />
 	</div>
 	<div id='about' class='body'>
 		<div class='content'>
@@ -80,7 +82,7 @@ import FishSchool from './decor/FishSchool.astro';
 			</div>
 		</div>
 		<div class='resume'>
-			<Image src={profile} class='resume-picture' width={416} height={416} alt='my face' />
+			<Image src={face} class='resume-picture' width={321} height={382} alt='my face' />
 			<div class='resume-content'>
 				<div class='resume-label'>Skills</div>
 				<div class='resume-info'>
