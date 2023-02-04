@@ -199,20 +199,28 @@
 		.top-right {
 			top: 200px;
 			right: 5%;
+
+			@include for-size(tablet, down) {
+				top: 50px;
+			}
 		}
 
 		.bottom-left {
-			bottom: 150px;
+			bottom: 250px;
 			left: 5%;
 
-			@include for-size(tablet, down) {
-				display: none;
+			@include for-size(phone, down) {
+				bottom: 640px;
 			}
 		}
 
 		.bottom-right {
 			right: 0;
-			bottom: 50px;
+			bottom: 15px;
+
+			@include for-size(tablet, down) {
+				bottom: 110px;
+			}
 		}
 	}
 }
