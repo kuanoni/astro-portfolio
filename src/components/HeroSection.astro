@@ -4,9 +4,11 @@ import profile from '../images/profile.webp';
 import boat from '../images/svg/boat.svg';
 import '@styles/components/HeroSection.scss';
 import LinkButton from './LinkButton.astro';
+import Clouds from './Clouds.astro';
 ---
 
 <section class='hero'>
+	<Clouds amount={4} />
 	<div class='header'>
 		<h1 class='title'>
 			Hi, my name is
