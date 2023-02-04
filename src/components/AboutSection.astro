@@ -21,9 +21,14 @@ import stackoverflow from '../images/svg/brand-logos/socials/logos-stackoverflow
 import dev from '../images/svg/brand-logos/socials/fa-brands-dev.svg';
 
 import profile from '../images/profile.webp';
+import FishSchool from './decor/FishSchool.astro';
 ---
 
 <section class='about'>
+	<div class='fish-container'>
+		<FishSchool class='top-right' amount={8} sizeRange={[16, 28]} />
+		<FishSchool class='bottom-left go-left' amount={4} sizeRange={[16, 28]} />
+	</div>
 	<div id='about' class='body'>
 		<div class='content'>
 			<h2>About me</h2>
@@ -109,7 +114,13 @@ import profile from '../images/profile.webp';
 </section>
 
 <script>
+	import EdgesIoManager from 'src/utils/EdgesIoManager';
 	import MiddleIoManager from 'src/utils/MiddleIoManager';
+
+	EdgesIoManager.subscribe('section.about .fish-school', (f, e) => {
+		if (f.inside || f.partialAbove || f.partialBelow) e.classList.remove('stay-still');
+		if (f.below) e.classList.add('stay-still');
+	});
 
 	MiddleIoManager.subscribe('section.about .body', (f, e) => {
 		if (f.middle || f.aboveMiddle) {

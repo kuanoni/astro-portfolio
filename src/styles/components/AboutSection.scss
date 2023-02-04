@@ -39,6 +39,7 @@
 		margin-top: 64px;
 		padding-top: 96px;
 		padding-bottom: 32px;
+		opacity: 0;
 
 		@include for-size(tablet, down) {
 			flex-direction: column;
@@ -51,6 +52,7 @@
 
 		&.fade-in {
 			animation: fade-in 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+			animation-delay: 0.5s;
 		}
 
 		&.fade-out {
@@ -108,6 +110,10 @@
 				}
 			}
 
+			&-content {
+				position: relative;
+			}
+
 			&-label {
 				line-height: 1.5;
 				font-size: 0.875em;
@@ -162,6 +168,29 @@
 					height: $size;
 				}
 			}
+		}
+	}
+
+	.fish-container {
+		position: absolute;
+		width: 100%;
+		max-width: $page-width;
+		height: 100%;
+		margin: 0 auto;
+
+		.top-right {
+			top: 200px;
+			right: 5%;
+		}
+
+		.top-left {
+			top: 130px;
+			left: 0;
+		}
+
+		.bottom-left {
+			bottom: 50px;
+			left: 5%;
 		}
 	}
 }

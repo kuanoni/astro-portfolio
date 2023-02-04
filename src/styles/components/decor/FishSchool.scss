@@ -1,0 +1,57 @@
+@keyframes fish-jump {
+	0% {
+		transform: translate(0%, 0%);
+	}
+	50% {
+		transform: translate(-85%, 8%);
+	}
+	100% {
+		transform: translate(-60%, -4%);
+	}
+}
+
+@keyframes fish-turn {
+	0% {
+		transform: perspective(700px) rotate3d(0, 1, 0, 0deg);
+	}
+	100% {
+		transform: translate(60%, 4%) perspective(700px) rotate3d(0, 1, 0, -180deg);
+	}
+}
+
+@keyframes fish-swim-away {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(300px);
+	}
+}
+
+.fish-school {
+	position: absolute;
+	pointer-events: none;
+
+	&.stay-still {
+		& .fish {
+			animation: none !important;
+		}
+
+		& img {
+			animation: none !important;
+		}
+	}
+
+	&.go-right {
+		transform: rotateY(0deg);
+	}
+
+	&.go-left {
+		transform: rotateY(180deg);
+	}
+
+	.fish {
+		position: absolute;
+	}
+}

@@ -22,7 +22,7 @@ const EdgesIoManager = new IoManager<iFlags>(
 			// element top is above viewport top, but element is visible
 			partialAbove: entry.isIntersecting && elRect.top < rootRect.top,
 			// element is fully visible
-			inside: entry.isIntersecting && entry.intersectionRatio === 1,
+			inside: elRect.top > rootRect.top && elRect.bottom < rootRect.bottom,
 			// element bottom is below viewport bottom, but element is visible
 			partialBelow: entry.isIntersecting && elRect.bottom > rootRect.bottom,
 			// element top is below viewport bottom
