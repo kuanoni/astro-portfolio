@@ -52,7 +52,7 @@
 
 		&.fade-in {
 			animation: fade-in 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-			animation-delay: 1s;
+			animation-delay: 0.5s;
 		}
 
 		&.fade-out {
@@ -173,14 +173,24 @@
 
 	.fish-container {
 		position: absolute;
-		max-width: $page-width;
 		width: 100%;
+		max-width: $page-width;
 		height: 100%;
 		margin: 0 auto;
 
-		.fish-school {
-			right: min(25%, 300px);
+		.top-right {
 			top: 200px;
+			right: 5%;
+		}
+
+		.top-left {
+			top: 130px;
+			left: 0;
+		}
+
+		.bottom-left {
+			bottom: 50px;
+			left: 5%;
 		}
 	}
 }
