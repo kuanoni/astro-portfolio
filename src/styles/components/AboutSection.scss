@@ -94,7 +94,7 @@
 
 			@include for-size(tablet, down) {
 				grid-template-columns: 1fr 1fr;
-				grid-template-rows: auto;
+				grid-template-rows: min-content;
 			}
 
 			@include for-size(phone, down) {
@@ -104,14 +104,27 @@
 			&-picture {
 				height: auto;
 				border-radius: $b-rad;
+				object-fit: contain;
+
+				@include for-size(tablet, down) {
+					height: 100%;
+				}
 
 				@include for-size(phone, down) {
-					max-width: 300px;
+					height: auto;
+					max-height: 300px;
+					margin: 0 auto;
 				}
 			}
 
 			&-content {
 				position: relative;
+
+				@include for-size(phone, down) {
+					padding: 16px 8px;
+					background-color: rgba(255, 255, 255, 0.06);
+					border-radius: $b-rad;
+				}
 			}
 
 			&-label {
@@ -151,7 +164,12 @@
 			&-links {
 				display: flex;
 				justify-content: space-between;
+				max-width: 240px;
 				margin-top: 32px;
+
+				@include for-size(phone, down) {
+					margin: 32px auto 0px auto;
+				}
 
 				img {
 					transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
@@ -183,14 +201,18 @@
 			right: 5%;
 		}
 
-		.top-left {
-			top: 130px;
-			left: 0;
+		.bottom-left {
+			bottom: 150px;
+			left: 5%;
+
+			@include for-size(tablet, down) {
+				display: none;
+			}
 		}
 
-		.bottom-left {
+		.bottom-right {
+			right: 0;
 			bottom: 50px;
-			left: 5%;
 		}
 	}
 }
