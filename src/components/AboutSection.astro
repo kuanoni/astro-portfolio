@@ -20,14 +20,15 @@ import linkedin from '../images/svg/brand-logos/socials/logos-linkedin-icon.svg'
 import stackoverflow from '../images/svg/brand-logos/socials/logos-stackoverflow-icon.svg';
 import dev from '../images/svg/brand-logos/socials/fa-brands-dev.svg';
 
-import profile from '../images/profile.webp';
+import face from '../images/face.webp';
 import FishSchool from './decor/FishSchool.astro';
 ---
 
 <section class='about'>
 	<div class='fish-container'>
 		<FishSchool class='top-right' amount={8} sizeRange={[16, 28]} />
-		<FishSchool class='bottom-left go-left' amount={4} sizeRange={[16, 28]} />
+		<FishSchool class='bottom-left go-left' amount={3} sizeRange={[16, 28]} />
+		<FishSchool class='bottom-right' amount={5} sizeRange={[16, 28]} />
 	</div>
 	<div id='about' class='body'>
 		<div class='content'>
@@ -80,11 +81,11 @@ import FishSchool from './decor/FishSchool.astro';
 			</div>
 		</div>
 		<div class='resume'>
-			<Image src={profile} class='resume-picture' width={416} height={416} alt='my face' />
+			<Image src={face} class='resume-picture' width={321} height={382} alt='my face' />
 			<div class='resume-content'>
 				<div class='resume-label'>Skills</div>
 				<div class='resume-info'>
-					<ul>
+					<ul class='skills'>
 						<li>Frontend Development 💻</li>
 						<li>Backend Development 🧩</li>
 						<li>Game Development 🎮</li>

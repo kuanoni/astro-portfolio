@@ -93,8 +93,12 @@
 			grid-template-rows: min-content auto;
 
 			@include for-size(tablet, down) {
+				gap: 32px;
+				padding: 16px 8px;
+				background-color: $c-t-white;
+				border-radius: $b-rad;
 				grid-template-columns: 1fr 1fr;
-				grid-template-rows: auto;
+				grid-template-rows: min-content;
 			}
 
 			@include for-size(phone, down) {
@@ -104,9 +108,16 @@
 			&-picture {
 				height: auto;
 				border-radius: $b-rad;
+				object-fit: contain;
+
+				@include for-size(tablet, down) {
+					height: 100%;
+				}
 
 				@include for-size(phone, down) {
-					max-width: 300px;
+					height: auto;
+					max-height: 300px;
+					margin: 0 auto;
 				}
 			}
 
@@ -135,12 +146,19 @@
 					margin-top: 2px;
 					padding: 0;
 					list-style: none;
+
+					&.skills {
+						@include for-size(phone, down) {
+							flex-direction: column;
+						}
+					}
 				}
 
 				li {
 					display: inline;
+					width: min-content;
 					padding: 0.125em 0.5em;
-					border: 1px solid $c-seafoam;
+					border: 1px solid $c-t-blue;
 					border-radius: 9999px;
 					line-height: 1.25;
 					white-space: nowrap;
@@ -151,7 +169,12 @@
 			&-links {
 				display: flex;
 				justify-content: space-between;
+				max-width: 240px;
 				margin-top: 32px;
+
+				@include for-size(phone, down) {
+					margin: 32px auto 0px auto;
+				}
 
 				img {
 					transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
@@ -181,16 +204,28 @@
 		.top-right {
 			top: 200px;
 			right: 5%;
-		}
 
-		.top-left {
-			top: 130px;
-			left: 0;
+			@include for-size(tablet, down) {
+				top: 50px;
+			}
 		}
 
 		.bottom-left {
-			bottom: 50px;
+			bottom: 250px;
 			left: 5%;
+
+			@include for-size(phone, down) {
+				bottom: 640px;
+			}
+		}
+
+		.bottom-right {
+			right: 0;
+			bottom: 15px;
+
+			@include for-size(tablet, down) {
+				bottom: 110px;
+			}
 		}
 	}
 }
