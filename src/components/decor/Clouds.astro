@@ -1,5 +1,10 @@
 ---
 import '@styles/components/Cloud.scss';
+
+interface Props {
+	amount: number;
+}
+
 const { amount } = Astro.props;
 
 const staticStyles = new Array(amount).fill({}).map((_, i) => {
