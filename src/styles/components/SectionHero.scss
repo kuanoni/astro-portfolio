@@ -28,28 +28,6 @@
 	}
 }
 
-@keyframes fade-in-down {
-	0% {
-		opacity: 0;
-		transform: translateY(-1em);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes fade-in-up {
-	0% {
-		opacity: 0;
-		transform: translateY(4rem);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
 @keyframes spin-sky {
 	0% {
 		transform: translate(-25%, -50%) rotate(0deg);
@@ -143,7 +121,6 @@
 
 		&__wrapper {
 			display: flex;
-			background-image: svg-load('confetti-doodles.svg');
 			background-size: contain;
 
 			img {
