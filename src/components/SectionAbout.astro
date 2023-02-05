@@ -1,7 +1,8 @@
 ---
 import '@styles/components/SectionAbout.scss';
 import { Image } from '@astrojs/image/components';
-import CardSmall from './blocks/CardSmall.astro';
+import CardSmall from '@components/blocks/CardSmall.astro';
+import FishSchool from '@components/decor/FishSchool.astro';
 
 import astro from '@images/svg/brand-logos/logos-astro.svg';
 import javascript from '@images/svg/brand-logos/logos-javascript.svg';
@@ -18,7 +19,6 @@ import stackoverflow from '@images/svg/brand-logos/socials/logos-stackoverflow-i
 import dev from '@images/svg/brand-logos/socials/fa-brands-dev.svg';
 
 import face from '@images/face.webp';
-import FishSchool from './decor/FishSchool.astro';
 ---
 
 <section class='about'>
@@ -112,8 +112,8 @@ import FishSchool from './decor/FishSchool.astro';
 </section>
 
 <script>
-	import EdgesIoManager from 'src/utils/EdgesIoManager';
-	import MiddleIoManager from 'src/utils/MiddleIoManager';
+	import EdgesIoManager from '@utils/EdgesIoManager';
+	import MiddleIoManager from '@utils/MiddleIoManager';
 
 	EdgesIoManager.subscribe('section.about .fish-school', (f, e) => {
 		if (f.inside || f.partialAbove || f.partialBelow) e.classList.remove('stay-still');
