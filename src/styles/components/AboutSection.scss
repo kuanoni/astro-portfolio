@@ -93,6 +93,10 @@
 			grid-template-rows: min-content auto;
 
 			@include for-size(tablet, down) {
+				gap: 32px;
+				padding: 16px 8px;
+				background-color: $c-t-white;
+				border-radius: $b-rad;
 				grid-template-columns: 1fr 1fr;
 				grid-template-rows: min-content;
 			}
@@ -119,12 +123,6 @@
 
 			&-content {
 				position: relative;
-
-				@include for-size(phone, down) {
-					padding: 16px 8px;
-					background-color: rgba(255, 255, 255, 0.06);
-					border-radius: $b-rad;
-				}
 			}
 
 			&-label {
@@ -148,12 +146,19 @@
 					margin-top: 2px;
 					padding: 0;
 					list-style: none;
+
+					&.skills {
+						@include for-size(phone, down) {
+							flex-direction: column;
+						}
+					}
 				}
 
 				li {
 					display: inline;
+					width: min-content;
 					padding: 0.125em 0.5em;
-					border: 1px solid $c-seafoam;
+					border: 1px solid $c-t-blue;
 					border-radius: 9999px;
 					line-height: 1.25;
 					white-space: nowrap;
