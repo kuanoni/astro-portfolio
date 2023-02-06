@@ -1,20 +1,17 @@
 ---
+import { Icon } from 'astro-icon';
 import { getCollection } from 'astro:content';
 import LinkButton from '@components/blocks/LinkButton.astro';
-import react from '@images/svg/brand-logos/logos-react.svg';
-import javascript from '@images/svg/brand-logos/logos-javascript.svg';
-import sass from '@images/svg/brand-logos/logos-sass.svg';
-import figma from '@images/svg/brand-logos/logos-figma.svg';
 import '@styles/components/SectionProjects.scss';
 
 // Get all entries from a collection. Requires the name of the collection as an argument.
 const allProjects = await getCollection('project');
 
 const techLogos: { [i: string]: string } = {
-	react,
-	javascript,
-	sass,
-	figma,
+	react: 'react',
+	javascript: 'javascript',
+	sass: 'sass',
+	figma: 'figma',
 };
 
 function capitalize(s: string) {
@@ -36,7 +33,7 @@ function capitalize(s: string) {
 						<ul>
 							{project.data.techs.map((tech) => (
 								<li>
-									<img src={techLogos[tech]} alt='' />
+									<Icon pack='logos' name={techLogos[tech]} />
 									<span>{capitalize(tech)}</span>
 								</li>
 							))}
