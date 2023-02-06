@@ -152,16 +152,28 @@
 					margin: 32px auto 0px auto;
 				}
 
-				img {
+				svg {
 					transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 				}
 
-				a:hover img {
+				[astro-icon='logos:linkedin-icon'] {
+					background-image: linear-gradient(#fff, #fff);
+					background-size: 90% 90%;
+					background-position: center;
+					background-repeat: no-repeat;
+				}
+
+				[astro-icon='logos:github-icon'] path,
+				[astro-icon='dev'] path {
+					fill: $c-textMedium;
+				}
+
+				a:hover svg {
 					transform: translateY(-3px);
 				}
 
 				a,
-				img {
+				svg {
 					$size: 24px;
 					width: $size;
 					height: $size;

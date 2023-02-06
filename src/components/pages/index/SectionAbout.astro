@@ -4,12 +4,6 @@ import { Image } from '@astrojs/image/components';
 import CardSmall from '@components/blocks/CardSmall.astro';
 import FishSchool from '@components/decor/FishSchool.astro';
 
-import github from '@images/svg/brand-logos/socials/logos-github.svg';
-import gitlab from '@images/svg/brand-logos/socials/logos-gitlab.svg';
-import linkedin from '@images/svg/brand-logos/socials/logos-linkedin-icon.svg';
-import stackoverflow from '@images/svg/brand-logos/socials/logos-stackoverflow-icon.svg';
-import dev from '@images/svg/brand-logos/socials/fa-brands-dev.svg';
-
 import face from '@images/face.webp';
 import { Icon } from 'astro-icon';
 ---
@@ -100,11 +94,17 @@ import { Icon } from 'astro-icon';
 					</ul>
 				</div>
 				<div class='resume-links'>
-					<a href='#' title='Github'><img src={github} alt='Github' /></a>
-					<a href='#' title='Gitlab'><img src={gitlab} alt='Gitlab' /></a>
-					<a href='#' title='Linkedin'><img src={linkedin} alt='Linkedin' /></a>
-					<a href='#' title='Stack Overflow'><img src={stackoverflow} alt='Stack Overflow' /></a>
-					<a href='#' title='DEV'><img src={dev} alt='DEV' /></a>
+					<a href='#' title='Github'>
+						<Icon pack='logos' name='github-icon' />
+					</a>
+					<a href='#' title='Gitlab'> <Icon pack='logos' name='gitlab' /></a>
+					<a href='#' title='Linkedin'> <Icon pack='logos' name='linkedin-icon' /></a>
+					<a href='#' title='Stack Overflow'>
+						<Icon pack='logos' name='stackoverflow-icon' />
+					</a>
+					<a href='#' title='DEV'>
+						<Icon name='dev' />
+					</a>
 				</div>
 			</div>
 		</div>
