@@ -31,8 +31,13 @@
 		}
 
 		.content {
+			h2 {
+				font-family: 'Playfair Display';
+				font-size: 1.75rem;
+			}
 			p.intro {
 				color: $c-textMedium;
+				font-size: 0.875rem;
 			}
 
 			.tech-cards {
