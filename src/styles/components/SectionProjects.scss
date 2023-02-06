@@ -72,14 +72,30 @@
 			}
 		}
 
-		.btns {
+		.links {
 			margin-top: auto;
 
 			.a-btn {
+				padding: 0.25em 1em;
 				color: black;
 
 				&:not(:last-child) {
 					margin-right: 32px;
+				}
+
+				span,
+				svg {
+					vertical-align: middle;
+				}
+
+				span {
+					line-height: 1.5;
+					margin-right: 4px;
+				}
+
+				svg {
+					display: inline;
+					height: 1.15em;
 				}
 			}
 
