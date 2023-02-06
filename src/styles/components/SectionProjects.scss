@@ -8,13 +8,15 @@
 	row-gap: 32px;
 	max-width: $page-width;
 	padding: 32px;
+	margin-bottom: 116px;
 	background: radial-gradient(100% 120% at 0% 0%, rgba(100, 226, 230, 0.25) 0%, rgba(0, 0, 0, 0) 100%),
 		radial-gradient(100% 120% at 100% 100%, rgba(159, 149, 12, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
 	border-radius: $b-rad;
 	grid-template-areas: 'text action' 'preview preview';
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr auto;
 
 	.text-content {
+		padding-right: 32px;
 		border-right: 1px solid $c-t-white;
 		grid-area: text;
 
@@ -30,10 +32,10 @@
 			font-size: 0.875rem;
 		}
 	}
+
 	.action-content {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
 		padding-left: 32px;
 		grid-area: action;
 
@@ -43,26 +45,51 @@
 
 		ul {
 			display: flex;
+			flex-wrap: wrap;
 			gap: 16px;
 			padding: 0;
 			list-style: none;
+
 			li {
+				white-space: nowrap;
+				font-size: 0.875rem;
+
+				img,
+				span {
+					vertical-align: middle;
+				}
+
+				span {
+					line-height: 1;
+					margin-left: 0.25em;
+					color: $c-textMedium;
+				}
+
+				img {
+					display: inline;
+					height: 1.15em;
+				}
 			}
 		}
 
 		.btns {
+			margin-top: auto;
+
 			.a-btn {
-				margin-right: 32px;
 				color: black;
+
+				&:not(:last-child) {
+					margin-right: 32px;
+				}
 			}
 
 			.read-more {
 				background-color: $c-blood;
 			}
-			.live-link {
+			.view-source {
 				background-color: $c-seafoam;
 			}
-			.view-source {
+			.live-link {
 				background-color: $c-spotlight;
 			}
 		}
