@@ -2,8 +2,9 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from 'src/config';
 import BaseHead from '@components/BaseHead.astro';
 import Header from '@components/Header.astro';
-import HeroSection from '@components/pages/index/SectionHero.astro';
-import AboutSection from '@components/pages/index/SectionAbout.astro';
+import SectionHero from '@components/pages/index/SectionHero.astro';
+import SectionAbout from '@components/pages/index/SectionAbout.astro';
+import SectionProjects from '@components/pages/index/SectionProjects.astro';
 import '@styles/pages/index.scss';
 ---
 
@@ -16,9 +17,9 @@ import '@styles/pages/index.scss';
 		<div id='home'></div>
 		<Header title={SITE_TITLE} />
 		<main>
-			<HeroSection />
-			<AboutSection />
-			<section class='projects'></section>
+			<SectionHero />
+			<SectionAbout />
+			<SectionProjects />
 		</main>
 
 		<script>
