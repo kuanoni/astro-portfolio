@@ -54,7 +54,7 @@
 				white-space: nowrap;
 				font-size: 0.875rem;
 
-				img,
+				svg,
 				span {
 					vertical-align: middle;
 				}
@@ -65,7 +65,7 @@
 					color: $c-textMedium;
 				}
 
-				img {
+				svg {
 					display: inline;
 					height: 1.15em;
 				}
@@ -94,6 +94,7 @@
 			}
 		}
 	}
+
 	.preview-images {
 		display: grid;
 		gap: 24px;

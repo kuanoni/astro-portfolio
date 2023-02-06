@@ -4,21 +4,8 @@ import { Image } from '@astrojs/image/components';
 import CardSmall from '@components/blocks/CardSmall.astro';
 import FishSchool from '@components/decor/FishSchool.astro';
 
-import astro from '@images/svg/brand-logos/logos-astro.svg';
-import javascript from '@images/svg/brand-logos/logos-javascript.svg';
-import nextjs from '@images/svg/brand-logos/logos-nextjs-icon.svg';
-import react from '@images/svg/brand-logos/logos-react.svg';
-import sass from '@images/svg/brand-logos/logos-sass.svg';
-import figma from '@images/svg/brand-logos/logos-figma.svg';
-import typescript from '@images/svg/brand-logos/logos-typescript-icon.svg';
-
-import github from '@images/svg/brand-logos/socials/logos-github.svg';
-import gitlab from '@images/svg/brand-logos/socials/logos-gitlab.svg';
-import linkedin from '@images/svg/brand-logos/socials/logos-linkedin-icon.svg';
-import stackoverflow from '@images/svg/brand-logos/socials/logos-stackoverflow-icon.svg';
-import dev from '@images/svg/brand-logos/socials/fa-brands-dev.svg';
-
 import face from '@images/face.webp';
+import { Icon } from 'astro-icon';
 ---
 
 <section class='about'>
@@ -36,33 +23,40 @@ import face from '@images/face.webp';
 				quam. Quisquam optio veniam sed commodi consequuntur doloribus, debitis alias voluptatum impedit ea.
 			</p>
 			<div class='tech-cards'>
-				<CardSmall title='Javascript' image={javascript}>
+				<CardSmall title='Javascript' icon={'javascript'}>
+					<Icon pack='logos' name='javascript' slot='icon' />
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit odio, ducimus consequuntur recusandae
 					cumque obcaecati tenetur.
 				</CardSmall>
-				<CardSmall title='Typescript' image={typescript}>
+				<CardSmall title='Typescript'>
+					<Icon pack='logos' name='typescript-icon' slot='icon' />
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore maiores culpa harum quis ipsum ipsa
 					voluptas possimus minus quisquam.
 				</CardSmall>
-				<CardSmall title='Sass' image={sass}>
+				<CardSmall title='Sass'>
+					<Icon name='sass' slot='icon' />
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, vero dolore sapiente tempora
 					minima molestias reiciendis facere cum.
 				</CardSmall>
-				<CardSmall title='React.js' image={react} iconStyle='padding: 2px; background-color: #212121;'>
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores debitis vitae modi ipsum culpa
-					quam incidunt blanditiis, minima eos, obcaecati quisquam iste veniam.
+				<CardSmall title='React'>
+					<Icon pack='logos' name='react' style='padding: 2px; background-color: #212121;' slot='icon' />
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores debitis vitae modi ipsum culpa quam
+					incidunt blanditiis, minima eos, obcaecati quisquam iste veniam.
 				</CardSmall>
-				<CardSmall title='Next.js' image={nextjs}>
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus impedit harum voluptate! Nostrum
-					cumque sequi hic iusto omnis quisquam iste quidem sed!
+				<CardSmall title='Next.js'>
+					<Icon name='nextjs' slot='icon' />
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus impedit harum voluptate! Nostrum cumque
+					sequi hic iusto omnis quisquam iste quidem sed!
 				</CardSmall>
-				<CardSmall title='Astro' image={astro} iconStyle='padding: 4px; background-color: #FFFFFF;'>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores modi soluta eveniet debitis, fugit
-					ab maxime esse quibusdam numquam, est ea assumenda.
+				<CardSmall title='Astro'>
+					<Icon pack='logos' name='astro' style='padding: 4px; background-color: #fff;' slot='icon' />
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores modi soluta eveniet debitis, fugit ab
+					maxime esse quibusdam numquam, est ea assumenda.
 				</CardSmall>
-				<CardSmall title='Figma' image={figma} iconStyle='padding: 4px; background-color: #212121;'>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime magni, rem, cum voluptate pariatur
-					eaque illum iusto debitis dolorum iure natus eum similique, repudiandae tempore. Pariatur.
+				<CardSmall title='Figma'>
+					<Icon pack='logos' name='figma' style='padding: 4px; background-color: #212121;' slot='icon' />
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime magni, rem, cum voluptate pariatur eaque
+					illum iusto debitis dolorum iure natus eum similique, repudiandae tempore. Pariatur.
 				</CardSmall>
 				<article class='card-small see-more'>
 					<div class='card-bg'></div>
@@ -100,11 +94,17 @@ import face from '@images/face.webp';
 					</ul>
 				</div>
 				<div class='resume-links'>
-					<a href='#' title='Github'><img src={github} alt='Github' /></a>
-					<a href='#' title='Gitlab'><img src={gitlab} alt='Gitlab' /></a>
-					<a href='#' title='Linkedin'><img src={linkedin} alt='Linkedin' /></a>
-					<a href='#' title='Stack Overflow'><img src={stackoverflow} alt='Stack Overflow' /></a>
-					<a href='#' title='DEV'><img src={dev} alt='DEV' /></a>
+					<a href='#' title='Github'>
+						<Icon pack='logos' name='github-icon' />
+					</a>
+					<a href='#' title='Gitlab'> <Icon pack='logos' name='gitlab' /></a>
+					<a href='#' title='Linkedin'> <Icon pack='logos' name='linkedin-icon' /></a>
+					<a href='#' title='Stack Overflow'>
+						<Icon pack='logos' name='stackoverflow-icon' />
+					</a>
+					<a href='#' title='DEV'>
+						<Icon name='dev' />
+					</a>
 				</div>
 			</div>
 		</div>
