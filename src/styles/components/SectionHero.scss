@@ -144,6 +144,18 @@
 		animation: fade-in-up 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 		animation-delay: 1.75s;
 
+		a {
+			&.contact {
+				background-color: $c-blood;
+				color: $c-spotlight;
+			}
+
+			&.work {
+				background-color: $c-seafoam;
+				color: $c-textLight;
+			}
+		}
+
 		@include for-size(phone, down) {
 			font-size: 1.125rem;
 
