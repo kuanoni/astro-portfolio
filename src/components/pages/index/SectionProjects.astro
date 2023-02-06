@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import '@styles/components/SectionProjects.scss';
+import LinkButton from '@components/blocks/LinkButton.astro';
+
+// Get all entries from a collection. Requires the name of the collection as an argument.
+const allProjects = await getCollection('project');
+---
+
+<section class='projects'>
+	{
+		allProjects.map(async (project) => {
+			return (
+				<article class='project-card'>
+					<div class='text-content'>
+						<h2>{project.data.title}</h2>
+						<p>{project.body}</p>
+					</div>
+					<div class='action-content'>
+						<h3>Technology Used</h3>
+						<ul>
+							{project.data.techs.map((tech) => (
+								<li>{tech}</li>
+							))}
+						</ul>
+						<div class='btns'>
+							<LinkButton href='#' classes='read-more'>
+								Read More
+							</LinkButton>
+							<LinkButton href='#' classes='live-link'>
+								Live Link
+							</LinkButton>
+							<LinkButton href='#' classes='view-source'>
+								View Source
+							</LinkButton>
+						</div>
+					</div>
+					<div class='preview-images'>
+						<img class='desktop' src={project.data.previewDesktop} alt='project preview' />
+						<img class='mobile' src={project.data.previewMobile} alt='project preview' />
+						<img class='tablet' src={project.data.previewTablet} alt='project preview' />
+					</div>
+				</article>
+			);
+		})
+	}
+</section>
