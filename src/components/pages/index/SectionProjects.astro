@@ -3,63 +3,16 @@ import { Icon } from 'astro-icon';
 import { getCollection } from 'astro:content';
 import LinkButton from '@components/blocks/LinkButton.astro';
 import '@styles/components/SectionProjects.scss';
+import ProjectCard from '@components/blocks/ProjectCard.astro';
 
 // Get all entries from a collection. Requires the name of the collection as an argument.
 const allProjects = await getCollection('project');
-
-const techLogos: { [i: string]: string } = {
-	react: 'react',
-	javascript: 'javascript',
-	sass: 'sass',
-	figma: 'figma',
-};
-
-function capitalize(s: string) {
-	if (s.length > 1) return s.charAt(0).toUpperCase() + s.substring(1);
-}
 ---
 
 <section class='projects'>
 	{
 		allProjects.map(async (project) => {
-			return (
-				<article class='project-card'>
-					<div class='text-content'>
-						<h2>{project.data.title}</h2>
-						<p>{project.body}</p>
-					</div>
-					<div class='action-content'>
-						<h3>Technologies Used</h3>
-						<ul>
-							{project.data.techs.map((tech) => (
-								<li>
-									<Icon pack='logos' name={techLogos[tech]} />
-									<span>{capitalize(tech)}</span>
-								</li>
-							))}
-						</ul>
-						<div class='links'>
-							<LinkButton href='#' class='live-link'>
-								<span>Live</span>
-								<Icon name='octicon:link-external-24' />
-							</LinkButton>
-							<LinkButton href='#' class='view-source'>
-								<span>Source</span>
-								<Icon name='carbon:code' />
-							</LinkButton>
-							<LinkButton href='#' class='read-more'>
-								<span>Read More</span>
-								<Icon name='carbon:book' />
-							</LinkButton>
-						</div>
-					</div>
-					<div class='preview-images'>
-						<img class='desktop' src={project.data.previewDesktop} alt='project preview' />
-						<img class='mobile' src={project.data.previewMobile} alt='project preview' />
-						<img class='tablet' src={project.data.previewTablet} alt='project preview' />
-					</div>
-				</article>
-			);
+			return <ProjectCard data={project.data} body={project.body} />;
 		})
 	}
 </section>

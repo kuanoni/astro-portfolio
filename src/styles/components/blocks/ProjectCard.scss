@@ -1,0 +1,142 @@
+.project-card {
+	display: grid;
+	row-gap: 32px;
+	max-width: $page-width;
+	padding: 32px;
+	margin-bottom: 116px;
+	background: radial-gradient(100% 120% at 0% 0%, rgba(100, 226, 230, 0.25) 0%, rgba(0, 0, 0, 0) 100%),
+		radial-gradient(100% 120% at 100% 100%, rgba(159, 149, 12, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+	border-radius: $b-rad;
+	grid-template-areas: 'text action' 'preview preview';
+	grid-template-columns: 1fr auto;
+
+	.text-content {
+		padding-right: 32px;
+		border-right: 1px solid $c-t-white;
+		grid-area: text;
+
+		h2 {
+			line-height: 1.25;
+			font-family: 'Playfair Display';
+			font-size: 2rem;
+		}
+
+		p {
+			margin-top: 16px;
+			color: $c-textMedium;
+			font-size: 0.875rem;
+		}
+	}
+
+	.action-content {
+		display: flex;
+		flex-direction: column;
+		padding-left: 32px;
+		grid-area: action;
+
+		h3 {
+			font-size: 1.5rem;
+		}
+
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 16px;
+			padding: 0;
+			list-style: none;
+
+			li {
+				white-space: nowrap;
+				font-size: 0.875rem;
+
+				svg,
+				span {
+					vertical-align: middle;
+				}
+
+				span {
+					line-height: 1;
+					margin-left: 0.25em;
+					color: $c-textMedium;
+				}
+
+				svg {
+					display: inline;
+					height: 1.15em;
+				}
+			}
+		}
+
+		.links {
+			margin-top: auto;
+
+			.a-btn {
+				padding: 0.25em 1em;
+				color: black;
+
+				&:not(:last-child) {
+					margin-right: 32px;
+				}
+
+				span,
+				svg {
+					vertical-align: middle;
+				}
+
+				span {
+					line-height: 1.5;
+					margin-right: 4px;
+				}
+
+				svg {
+					display: inline;
+					height: 1.15em;
+				}
+			}
+
+			.read-more {
+				background-color: $c-blood;
+			}
+			.view-source {
+				background-color: $c-seafoam;
+			}
+			.live-link {
+				background-color: $c-spotlight;
+			}
+		}
+	}
+
+	.preview-images {
+		display: grid;
+		gap: 24px;
+		width: 100%;
+		margin-bottom: -116px;
+		grid-area: preview;
+		grid-template-columns: 1587fr 503fr 810fr;
+		grid-template-areas: 'desktop mobile tablet';
+
+		@include for-size(tablet, down) {
+			grid-template-columns: 503fr 810fr;
+			grid-template-rows: auto auto;
+			grid-template-areas:
+				'desktop desktop'
+				'mobile tablet';
+		}
+
+		img {
+			object-fit: contain;
+		}
+
+		.desktop {
+			grid-area: desktop;
+		}
+
+		.tablet {
+			grid-area: tablet;
+		}
+
+		.mobile {
+			grid-area: mobile;
+		}
+	}
+}

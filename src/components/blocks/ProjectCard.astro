@@ -1,0 +1,63 @@
+---
+import { Icon } from 'astro-icon';
+import type { CollectionEntry } from 'astro:content';
+import LinkButton from './LinkButton.astro';
+import '@styles/components/blocks/ProjectCard.scss';
+
+type Props = Pick<CollectionEntry<'project'>, 'data' | 'body'>;
+
+const {
+	data: { title, techs, previewDesktop, previewTablet, previewMobile },
+	body,
+}: Props = Astro.props;
+
+const techLogoNames: { [i: string]: string } = {
+	react: 'logos:react',
+	javascript: 'logos:javascript',
+	sass: 'logos:sass',
+	figma: 'logos:figma',
+};
+
+function capitalize(s: string) {
+	if (s.length > 1) return s.charAt(0).toUpperCase() + s.substring(1);
+}
+---
+
+<article class='project-card'>
+	<div class='text-content'>
+		<h2>{title}</h2>
+		<p>{body}</p>
+	</div>
+	<div class='action-content'>
+		<h3>Technologies Used</h3>
+		<ul>
+			{
+				techs.map((tech) => (
+					<li>
+						<Icon name={techLogoNames[tech]} />
+						<span>{capitalize(tech)}</span>
+					</li>
+				))
+			}
+		</ul>
+		<div class='links'>
+			<LinkButton href='#' class='live-link'>
+				<span>Live</span>
+				<Icon name='octicon:link-external-24' />
+			</LinkButton>
+			<LinkButton href='#' class='view-source'>
+				<span>Source</span>
+				<Icon name='carbon:code' />
+			</LinkButton>
+			<LinkButton href='#' class='read-more'>
+				<span>Read More</span>
+				<Icon name='carbon:book' />
+			</LinkButton>
+		</div>
+	</div>
+	<div class='preview-images'>
+		<img class='desktop' src={previewDesktop} alt={`${title} desktop preview`} />
+		<img class='mobile' src={previewMobile} alt={`${title} mobile preview`} />
+		<img class='tablet' src={previewTablet} alt={`${title} tablet preview`} />
+	</div>
+</article>
