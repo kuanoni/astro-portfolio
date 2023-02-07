@@ -26,6 +26,16 @@
 			color: $c-textMedium;
 			font-size: 0.875rem;
 		}
+
+		a.read-more {
+			color: $c-orange;
+			text-decoration: none;
+			font-size: 0.875rem;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 
 	.action-content {
