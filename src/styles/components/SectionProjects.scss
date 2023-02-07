@@ -1,5 +1,8 @@
 .projects {
-	padding: 256px 0;
 	background-color: $c-deepOcean;
-	gap: 128px;
+
+	.title {
+		margin-top: 40vh;
+		margin-bottom: 40vh;
+	}
 }

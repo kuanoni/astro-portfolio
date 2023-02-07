@@ -10,6 +10,9 @@ const allProjects = await getCollection('project');
 ---
 
 <section class='projects'>
+	<div class='header'>
+		<h2 class='title'>Let's look at some of my work</h2>
+	</div>
 	{
 		allProjects.map(async (project) => {
 			return <ProjectCard data={project.data} body={project.body} />;
