@@ -28,12 +28,13 @@
 		}
 
 		a.read-more {
-			color: $c-orange;
+			color: $c-salmon;
 			text-decoration: none;
 			font-size: 0.875rem;
+			text-decoration: underline;
 
 			&:hover {
-				text-decoration: underline;
+				color: $c-orange;
 			}
 		}
 	}
@@ -108,11 +109,13 @@
 			}
 
 			.view-source {
-				background-color: $c-seafoam;
+				border: 2px solid $c-seafoam;
+				color: $c-seafoam;
 			}
 
 			.live-link {
-				background-color: $c-spotlight;
+				border: 2px solid $c-spotlight;
+				color: $c-spotlight;
 			}
 		}
 	}
