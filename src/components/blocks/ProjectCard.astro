@@ -18,6 +18,13 @@ const techLogoNames: { [i: string]: string } = {
 	figma: 'logos:figma',
 };
 
+function cleanTechName(s: string) {
+	return s
+		.split('_')
+		.map((substring) => capitalize(substring))
+		.join(' ');
+}
+
 function capitalize(s: string) {
 	if (s.length > 1) return s.charAt(0).toUpperCase() + s.substring(1);
 }
@@ -35,7 +42,7 @@ function capitalize(s: string) {
 				techs.map((tech) => (
 					<li>
 						<Icon name={techLogoNames[tech]} />
-						<span>{capitalize(tech)}</span>
+						<span>{cleanTechName(tech)}</span>
 					</li>
 				))
 			}
