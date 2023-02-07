@@ -25,7 +25,7 @@ main > section {
 		.subtitle {
 			margin-top: 1rem;
 			text-align: center;
-			font-size: 1.17em;
+			font-size: 1.125rem;
 
 			@include for-size(phone, down) {
 				font-size: 1rem;
