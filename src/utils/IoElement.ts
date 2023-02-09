@@ -3,10 +3,9 @@ import IM from './IoManager';
 export default class IoElement {
 	element: Element;
 
-	constructor(query: string) {
-		const e = document.querySelector(query);
-		if (!e) throw new Error(`Element not found for query '${query}'.`);
-		this.element = e;
+	constructor(element: Element | null) {
+		if (!element) throw new Error(`IoElement: Constructor element cannot be null.`);
+		this.element = element;
 	}
 
 	subscribe(slice: SliceName, callback: SubscriptionCallback) {
