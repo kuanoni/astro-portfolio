@@ -21,6 +21,27 @@ const allProjects = await getCollection('project');
 <script>
 	import IoElement from '@utils/IoElement';
 
+	const title = new IoElement(document.querySelector('section.projects .header .title'));
+	title.subscribe('middleBottom', (f, e) => {
+		if (f.top.above) {
+			e.classList.add('fade-in');
+			e.classList.remove('fade-out');
+		} else {
+			e.classList.remove('fade-in');
+			e.classList.add('fade-out');
+		}
+	});
+
+	title.subscribe('middleTop', (f, e) => {
+		if (f.top.above) {
+			e.classList.remove('fade-in');
+			e.classList.add('fade-out');
+		} else {
+			e.classList.add('fade-in');
+			e.classList.remove('fade-out');
+		}
+	});
+
 	const projectCards = document.querySelectorAll('.project-card');
 
 	projectCards.forEach((card) => {

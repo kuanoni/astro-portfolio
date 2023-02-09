@@ -1,8 +1,20 @@
 .projects {
 	background-color: $c-deepOcean;
 
-	.title {
-		margin-top: 40vh;
-		margin-bottom: 40vh;
+	.header {
+		padding-top: 40vh;
+		padding-bottom: 30vh;
+
+		.title {
+			opacity: 0;
+
+			&.fade-in {
+				animation: fade-in 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+			}
+
+			&.fade-out {
+				animation: fade-out 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+			}
+		}
 	}
 }
