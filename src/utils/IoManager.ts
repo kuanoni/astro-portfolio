@@ -12,7 +12,7 @@ class IoManager {
 	}
 
 	#createIo(init?: IntersectionObserverInit) {
-		return new IntersectionObserver((entries) => {
+		return new IntersectionObserver((entries, observer) => {
 			for (const entry of entries) {
 				const { target: element, rootBounds: rootRect, boundingClientRect: elementRect } = entry;
 
@@ -24,8 +24,21 @@ class IoManager {
 					bottom: this.#getEdgeFlags(elementRect.bottom, rootRect),
 				};
 
+				const slice =
+					observer.rootMargin === '0% 0% -100% 0%'
+						? 'top'
+						: observer.rootMargin === '-25% 0% -75% 0%'
+						? 'middleTop'
+						: observer.rootMargin === '-50% 0% -50% 0%'
+						? 'middle'
+						: observer.rootMargin === '-75% 0% -25% 0%'
+						? 'middleBottom'
+						: observer.rootMargin === '-100% 0% 0% 0%'
+						? 'bottom'
+						: '';
+
 				// send flags to element through a custom event
-				const event = new CustomEvent<IoFlags>('intersection', { detail: flags });
+				const event = new CustomEvent<IoFlags>(`intersection_${slice}`, { detail: flags });
 				element.dispatchEvent(event);
 			}
 		}, init);
