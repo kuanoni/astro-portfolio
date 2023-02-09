@@ -1,7 +1,5 @@
 ---
-import { Icon } from 'astro-icon';
 import { getCollection } from 'astro:content';
-import LinkButton from '@components/blocks/LinkButton.astro';
 import '@styles/components/SectionProjects.scss';
 import ProjectCard from '@components/blocks/ProjectCard.astro';
 
@@ -19,3 +17,22 @@ const allProjects = await getCollection('project');
 		})
 	}
 </section>
+
+<script>
+	import IoElement from '@utils/IoElement';
+
+	const projectCards = document.querySelectorAll('.project-card');
+
+	projectCards.forEach((card) => {
+		const ioCard = new IoElement(card);
+		ioCard.subscribe('middle', (f, e) => {
+			if (f.top.above && f.bottom.below) {
+				e.classList.add('fade-in');
+				e.classList.remove('fade-out');
+			} else {
+				e.classList.add('fade-out');
+				e.classList.remove('fade-in');
+			}
+		});
+	});
+</script>
