@@ -113,21 +113,25 @@ import { Icon } from 'astro-icon';
 </section>
 
 <script>
-	// import EdgesIoManager from '@utils/EdgesIoManager';
-	// import MiddleIoManager from '@utils/MiddleIoManager';
+	import IoElement from '@utils/IoElement';
 
-	// EdgesIoManager.subscribe('section.about .fish-school', (f, e) => {
-	// 	if (f.inside || f.partialAbove || f.partialBelow) e.classList.remove('stay-still');
-	// 	if (f.below) e.classList.add('stay-still');
-	// });
+	const body = new IoElement(document.querySelector('section.about .body'));
+	body.subscribe('middle', (f, e) => {
+		if (f.top.above) {
+			e.classList.add('fade-in');
+			e.classList.remove('fade-out');
+		} else {
+			e.classList.remove('fade-in');
+			e.classList.add('fade-out');
+		}
+	});
 
-	// MiddleIoManager.subscribe('section.about .body', (f, e) => {
-	// 	if (f.middle || f.aboveMiddle) {
-	// 		e.classList.add('fade-in');
-	// 		e.classList.remove('fade-out');
-	// 	} else {
-	// 		e.classList.remove('fade-in');
-	// 		e.classList.add('fade-out');
-	// 	}
-	// });
+	const fishSchools = document.querySelectorAll('section.about .fish-school');
+	fishSchools.forEach((fishSchool) => {
+		const ioFishSchool = new IoElement(fishSchool);
+		ioFishSchool.subscribe('bottom', (f, e) => {
+			if (f.top.above) e.classList.remove('stay-still');
+			else e.classList.add('stay-still');
+		});
+	});
 </script>

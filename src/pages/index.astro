@@ -23,15 +23,16 @@ import '@styles/pages/index.scss';
 		</main>
 
 		<script>
-			// import EdgesIoManager from '@utils/EdgesIoManager';
+			import IoElement from '@utils/IoElement';
 
-			// const header = document.querySelector('header');
+			const header = document.querySelector('header');
+			const hero = new IoElement(document.querySelector('section.hero'));
+			hero.subscribe('top', (f) => {
+				if (!header) return console.error('header element not found.');
 
-			// if (header)
-			// 	EdgesIoManager.subscribe('.hero', (f) => {
-			// 		if (f.above) header.classList.add('submerged');
-			// 		else header.classList.remove('submerged');
-			// 	});
+				if (f.bottom.above) header.classList.add('submerged');
+				else header.classList.remove('submerged');
+			});
 		</script>
 	</body>
 </html>
