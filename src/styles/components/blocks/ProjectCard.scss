@@ -12,6 +12,16 @@
 	grid-template-areas: 'text action' 'preview preview';
 	grid-template-columns: 1fr auto;
 
+	opacity: 0;
+
+	&.fade-in {
+		animation: fade-in 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+	}
+
+	&.fade-out {
+		animation: fade-out 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+	}
+
 	.text-content {
 		padding-right: 32px;
 		border-right: 1px solid $c-t-white;
