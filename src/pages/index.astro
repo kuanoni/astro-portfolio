@@ -23,15 +23,15 @@ import '@styles/pages/index.scss';
 		</main>
 
 		<script>
-			import EdgesIoManager from '@utils/EdgesIoManager';
+			// import EdgesIoManager from '@utils/EdgesIoManager';
 
-			const header = document.querySelector('header');
+			// const header = document.querySelector('header');
 
-			if (header)
-				EdgesIoManager.subscribe('.hero', (f) => {
-					if (f.above) header.classList.add('submerged');
-					else header.classList.remove('submerged');
-				});
+			// if (header)
+			// 	EdgesIoManager.subscribe('.hero', (f) => {
+			// 		if (f.above) header.classList.add('submerged');
+			// 		else header.classList.remove('submerged');
+			// 	});
 		</script>
 	</body>
 </html>
