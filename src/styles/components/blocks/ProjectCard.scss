@@ -4,7 +4,7 @@
 	display: grid;
 	row-gap: 32px;
 	max-width: $page-width;
-	margin-bottom: calc($images-hangoff + 40vh);
+	margin-bottom: $images-hangoff;
 	padding: 32px;
 	background: radial-gradient(100% 100% at 0% 0%, rgba(100, 226, 230, 0.25) 0%, rgba(100, 226, 230, 0.01) 100%),
 		radial-gradient(100% 100% at 100% 100%, rgba(100, 226, 230, 0.25) 0%, rgba(0, 0, 0, 0) 100%);

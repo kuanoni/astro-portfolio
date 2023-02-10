@@ -1,8 +1,15 @@
 .projects {
 	background-color: $c-deepOcean;
+	padding-bottom: 256px;
 
 	.header {
 		padding-top: 30vh;
 		padding-bottom: 30vh;
+	}
+
+	.body {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
 	}
 }
