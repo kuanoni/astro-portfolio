@@ -8,13 +8,13 @@ import face from '@images/face.webp';
 import { Icon } from 'astro-icon';
 ---
 
-<section class='about'>
+<section id='about' class='about'>
 	<div class='fish-container'>
 		<FishSchool class='top-right' amount={8} sizeRange={[16, 28]} />
 		<FishSchool class='bottom-left go-left' amount={3} sizeRange={[16, 28]} />
 		<FishSchool class='bottom-right' amount={5} sizeRange={[16, 28]} />
 	</div>
-	<div id='about' class='body'>
+	<div class='body' data-aos='fade' data-aos-mirror='true' data-aos-offset='300'>
 		<div class='content'>
 			<h2>About me</h2>
 			<p class='intro'>
@@ -111,27 +111,3 @@ import { Icon } from 'astro-icon';
 		</div>
 	</div>
 </section>
-
-<script>
-	import IoElement from '@utils/IoElement';
-
-	const body = new IoElement(document.querySelector('section.about .body'));
-	body.subscribe('middle', (f, e) => {
-		if (f.top.above) {
-			e.classList.add('fade-in');
-			e.classList.remove('fade-out');
-		} else {
-			e.classList.remove('fade-in');
-			e.classList.add('fade-out');
-		}
-	});
-
-	const fishSchools = document.querySelectorAll('section.about .fish-school');
-	fishSchools.forEach((fishSchool) => {
-		const ioFishSchool = new IoElement(fishSchool);
-		ioFishSchool.subscribe('bottom', (f, e) => {
-			if (f.top.above) e.classList.remove('stay-still');
-			else e.classList.add('stay-still');
-		});
-	});
-</script>

@@ -8,52 +8,20 @@ const allProjects = await getCollection('project');
 ---
 
 <section class='projects'>
-	<div class='header'>
+	<div
+		class='header'
+		data-aos='fade-out-zoom'
+		data-aos-mirror='true'
+		data-aos-anchor='section.about .body'
+		data-aos-offset='300'
+	>
 		<h2 class='title'>Let's look at some of my work</h2>
 	</div>
-	{
-		allProjects.map(async (project) => {
-			return <ProjectCard data={project.data} body={project.body} />;
-		})
-	}
+	<div class='body'>
+		{
+			allProjects.map(async (project) => {
+				return <ProjectCard data={project.data} body={project.body} />;
+			})
+		}
+	</div>
 </section>
-
-<script>
-	import IoElement from '@utils/IoElement';
-
-	const title = new IoElement(document.querySelector('section.projects .header .title'));
-	title.subscribe('middleBottom', (f, e) => {
-		if (f.top.above) {
-			e.classList.add('fade-in');
-			e.classList.remove('fade-out');
-		} else {
-			e.classList.remove('fade-in');
-			e.classList.add('fade-out');
-		}
-	});
-
-	title.subscribe('middleTop', (f, e) => {
-		if (f.top.above) {
-			e.classList.remove('fade-in');
-			e.classList.add('fade-out');
-		} else {
-			e.classList.add('fade-in');
-			e.classList.remove('fade-out');
-		}
-	});
-
-	const projectCards = document.querySelectorAll('.project-card');
-
-	projectCards.forEach((card) => {
-		const ioCard = new IoElement(card);
-		ioCard.subscribe('middle', (f, e) => {
-			if (f.top.above && f.bottom.below) {
-				e.classList.add('fade-in');
-				e.classList.remove('fade-out');
-			} else {
-				e.classList.add('fade-out');
-				e.classList.remove('fade-in');
-			}
-		});
-	});
-</script>

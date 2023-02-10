@@ -62,7 +62,7 @@
 		height: 32px;
 		border-radius: 4px;
 		overflow: hidden;
-		z-index: 2;
+		z-index: z(base);
 		transform: translate(25%, -25%);
 
 		@include for-size(phone, down) {

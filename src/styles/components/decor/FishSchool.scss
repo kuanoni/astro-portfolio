@@ -33,16 +33,6 @@
 	position: absolute;
 	pointer-events: none;
 
-	&.stay-still {
-		& .fish {
-			animation: none !important;
-		}
-
-		& img {
-			animation: none !important;
-		}
-	}
-
 	&.go-right {
 		transform: rotateY(0deg);
 	}
