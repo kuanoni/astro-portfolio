@@ -111,27 +111,3 @@ import { Icon } from 'astro-icon';
 		</div>
 	</div>
 </section>
-
-<script>
-	import IoElement from '@utils/IoElement';
-
-	const body = new IoElement(document.querySelector('section.about .body'));
-	body.subscribe('middle', (f, e) => {
-		if (f.top.above) {
-			e.classList.add('fade-in');
-			e.classList.remove('fade-out');
-		} else {
-			e.classList.remove('fade-in');
-			e.classList.add('fade-out');
-		}
-	});
-
-	const fishSchools = document.querySelectorAll('section.about .fish-school');
-	fishSchools.forEach((fishSchool) => {
-		const ioFishSchool = new IoElement(fishSchool);
-		ioFishSchool.subscribe('bottom', (f, e) => {
-			if (f.top.above) e.classList.remove('stay-still');
-			else e.classList.add('stay-still');
-		});
-	});
-</script>
