@@ -12,6 +12,18 @@
 	grid-template-areas: 'text action' 'preview preview';
 	grid-template-columns: 1fr auto;
 
+	@include for-size(tablet, down) {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'text'
+			'action'
+			'preview';
+	}
+
+	@include for-size(tablet-sm, down) {
+		padding: 32px 16px;
+	}
+
 	.text-content {
 		padding-right: 32px;
 		border-right: 1px solid $c-t-white;
@@ -48,8 +60,13 @@
 		padding-left: 32px;
 		grid-area: action;
 
+		@include for-size(tablet, down) {
+			margin: 0;
+			padding: 0;
+			margin-right: auto;
+		}
+
 		h3 {
-			font-size: 1.5rem;
 			white-space: nowrap;
 		}
 
