@@ -1,6 +1,5 @@
 ---
 import '../styles/main.scss';
-import 'aos/dist/aos.css';
 
 export interface Props {
 	title: string;
@@ -43,5 +42,8 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 
 <script>
 	import AOS from 'aos';
-	AOS.init();
+
+	AOS.init({
+		easing: 'ease-in-cubic',
+	});
 </script>
