@@ -1,0 +1,29 @@
+[data-aos][data-aos][data-aos-easing='ease-in-cubic'],
+body[data-aos-easing='ease-in-cubic'] [data-aos] {
+	transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+[data-aos][data-aos][data-aos-duration='400'],
+body[data-aos-duration='400'] [data-aos] {
+	transition-duration: 0.4s;
+}
+
+[data-aos='fade-zoom'] {
+	opacity: 0;
+	transform: scale(0.95);
+	transition-property: transform, opacity;
+
+	&.aos-animate {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+[data-aos='fade'] {
+	opacity: 0;
+	transition-property: transform, opacity;
+
+	&.aos-animate {
+		opacity: 1;
+	}
+}
