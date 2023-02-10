@@ -70,7 +70,12 @@ for (let i = 0; i < amount; i++) {
 }
 ---
 
-<div class:list={['fish-school', className]} style={`width: ${areaSize}px; height: ${areaSize}px;`}>
+<div
+	class:list={['fish-school', className]}
+	style={`width: ${areaSize}px; height: ${areaSize}px;`}
+	data-aos='swim-away'
+	data-aos-offset='0'
+>
 	{
 		fishList.map((fish) => (
 			<div class='fish' style={fish.containerStyle} aria-hidden='true'>
