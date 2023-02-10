@@ -50,20 +50,23 @@
 
 		h3 {
 			font-size: 1.5rem;
+			white-space: nowrap;
 		}
 
 		ul {
 			display: grid;
 			gap: 8px;
+			column-gap: 16px;
+			height: 100%;
 			margin-bottom: 32px;
 			padding: 0;
 			list-style: none;
-			grid-auto-flow: column;
-			grid-template-rows: repeat(4, 1fr);
+			grid-template-rows: repeat(auto-fill, 26px);
+			grid-template-columns: 1fr 1fr;
 
 			li {
-				white-space: nowrap;
 				font-size: 0.875rem;
+				white-space: nowrap;
 
 				svg,
 				span {
@@ -71,14 +74,16 @@
 				}
 
 				span {
-					margin-left: 0.25em;
+					padding-left: 0.25em;
 					color: $c-textMedium;
 					line-height: 1;
+					white-space: nowrap;
 				}
 
 				svg {
 					display: inline;
 					height: 1.15em;
+					aspect-ratio: 1 / 1;
 				}
 			}
 		}
