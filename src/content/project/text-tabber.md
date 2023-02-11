@@ -2,6 +2,8 @@
 techs: [javascript, react, sass, redux]
 previewDesktop: 'src/images/projects/text-tabber/preview-desktop.webp'
 previewMobile: 'src/images/projects/text-tabber/preview-mobile.webp'
+liveUrl: 'https://text-tabber.com/'
+sourceUrl: 'https://github.com/kuanoni/react-guitar-tab-app'
 ---
 
 ## Text Tabber

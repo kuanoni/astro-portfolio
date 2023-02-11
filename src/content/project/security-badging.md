@@ -1,7 +1,9 @@
 ---
-techs: ['javascript', 'react', react_query, 'sass', figma]
+techs: [javascript, react, express, mongoDB, sass, figma]
 previewDesktop: 'src/images/projects/security-badging-system/preview-desktop.webp'
 previewMobile: 'src/images/projects/security-badging-system/preview-mobile.webp'
+liveUrl: 'https://security-badging-system.web.app/'
+sourceUrl: 'https://github.com/kuanoni/react-security-badging-system'
 ---
 
 ## Security Badging System
