@@ -8,7 +8,7 @@ sourceUrl: 'https://github.com/kuanoni/streamer-hub'
 
 ## KroyOoz.tv
 
-The ultimate hub for fans of the (_fake_) streaming personality, KroyOoz!
+The ultimate hub for fans of the (_made up_) streaming personality, KroyOoz!
 
 Features a robust **real-time chat** where fans can **sign up** and talk amongst eachother while watching the embedded stream.
 
