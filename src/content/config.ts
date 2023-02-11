@@ -5,7 +5,6 @@ const projectCollection = defineCollection({
 		title: z.string(),
 		techs: z.array(z.string()),
 		previewDesktop: z.string().optional(),
-		previewTablet: z.string().optional(),
 		previewMobile: z.string().optional(),
 	}),
 });

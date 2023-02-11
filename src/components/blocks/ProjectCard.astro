@@ -7,7 +7,7 @@ import '@styles/components/blocks/ProjectCard.scss';
 type Props = Pick<CollectionEntry<'project'>, 'data' | 'body'>;
 
 const {
-	data: { title, techs, previewDesktop, previewTablet, previewMobile },
+	data: { title, techs, previewDesktop, previewMobile },
 	body,
 }: Props = Astro.props;
 
@@ -66,6 +66,5 @@ function capitalize(s: string) {
 	<div class='preview-images'>
 		<img class='desktop' src={previewDesktop} alt={`${title} desktop preview`} />
 		<img class='mobile' src={previewMobile} alt={`${title} mobile preview`} />
-		<img class='tablet' src={previewTablet} alt={`${title} tablet preview`} />
 	</div>
 </article>

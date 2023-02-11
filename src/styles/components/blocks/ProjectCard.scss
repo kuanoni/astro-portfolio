@@ -13,6 +13,7 @@
 	grid-template-columns: 1fr auto;
 
 	@include for-size(tablet, down) {
+		gap: 16px;
 		grid-template-columns: 1fr;
 		grid-template-areas:
 			'text'
@@ -29,6 +30,13 @@
 		border-right: 1px solid $c-t-white;
 		grid-area: text;
 
+		@include for-size(tablet, down) {
+			padding-right: 0;
+			padding-bottom: 16px;
+			border-right: none;
+			border-bottom: 1px solid $c-t-white;
+		}
+
 		h2 {
 			line-height: 1.25;
 			font-family: 'Playfair Display';
@@ -44,8 +52,8 @@
 		a.read-more {
 			color: $c-salmon;
 			text-decoration: none;
-			font-size: 0.875rem;
 			text-decoration: underline;
+			font-size: 0.875rem;
 
 			&:hover {
 				color: $c-orange;
@@ -62,8 +70,9 @@
 
 		@include for-size(tablet, down) {
 			margin: 0;
-			padding: 0;
 			margin-right: auto;
+			margin-bottom: 16px;
+			padding: 0;
 		}
 
 		h3 {
@@ -82,8 +91,8 @@
 			grid-template-columns: 1fr 1fr;
 
 			li {
-				font-size: 0.875rem;
 				white-space: nowrap;
+				font-size: 0.875rem;
 
 				svg,
 				span {
@@ -133,13 +142,13 @@
 			}
 
 			.view-source {
-				border: 2px solid $c-seafoam;
 				color: $c-seafoam;
+				border: 2px solid $c-seafoam;
 			}
 
 			.live-link {
-				border: 2px solid $c-spotlight;
 				color: $c-spotlight;
+				border: 2px solid $c-spotlight;
 			}
 		}
 	}
@@ -150,15 +159,15 @@
 		width: 100%;
 		margin-bottom: -$images-hangoff;
 		grid-area: preview;
-		grid-template-columns: 1587fr 503fr 810fr;
-		grid-template-areas: 'desktop mobile tablet';
+		grid-template-columns: 1587fr 503fr;
+		grid-template-areas: 'desktop mobile';
 
-		@include for-size(tablet, down) {
-			grid-template-columns: 503fr 810fr;
-			grid-template-rows: auto auto;
+		@include for-size(tablet-sm, down) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto auto auto;
 			grid-template-areas:
-				'desktop desktop'
-				'mobile tablet';
+				'desktop'
+				'mobile';
 		}
 
 		img {
@@ -170,6 +179,7 @@
 		}
 
 		.tablet {
+			display: none;
 			grid-area: tablet;
 		}
 
