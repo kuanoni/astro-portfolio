@@ -1,8 +1,9 @@
 .projects {
-	background-color: $c-deepOcean;
 	padding-bottom: 256px;
+	background-color: $c-deepOcean;
 
 	.header {
+		max-width: $page-width;
 		padding-top: 30vh;
 		padding-bottom: 30vh;
 	}
