@@ -10,7 +10,7 @@ type Props = {
 
 const { project }: Props = Astro.props;
 
-const { techs, previewDesktop, previewMobile } = project.data;
+const { techs, previewDesktop, previewMobile, liveUrl, sourceUrl } = project.data;
 
 const { Content, headings } = await project.render();
 
@@ -58,14 +58,22 @@ function capitalize(s: string) {
 			}
 		</ul>
 		<div class='links'>
-			<LinkButton href='#' class='live-link'>
-				<span>Live</span>
-				<Icon name='octicon:link-external-16' />
-			</LinkButton>
-			<LinkButton href='#' class='view-source'>
-				<span>Source</span>
-				<Icon name='mdi:application-brackets-outline' />
-			</LinkButton>
+			{
+				liveUrl && (
+					<LinkButton href={liveUrl} class='live-link'>
+						<span>Live</span>
+						<Icon name='octicon:link-external-16' />
+					</LinkButton>
+				)
+			}
+			{
+				sourceUrl && (
+					<LinkButton href={sourceUrl} class='view-source'>
+						<span>Source</span>
+						<Icon name='mdi:application-brackets-outline' />
+					</LinkButton>
+				)
+			}
 		</div>
 	</div>
 	<div class='preview-images'>
