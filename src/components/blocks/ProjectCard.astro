@@ -1,0 +1,70 @@
+---
+import { Icon } from 'astro-icon';
+import type { CollectionEntry } from 'astro:content';
+import LinkButton from './LinkButton.astro';
+import '@styles/components/blocks/ProjectCard.scss';
+
+type Props = Pick<CollectionEntry<'project'>, 'data' | 'body'>;
+
+const {
+	data: { title, techs, previewDesktop, previewMobile },
+	body,
+}: Props = Astro.props;
+
+const techLogoNames: { [i: string]: string } = {
+	react: 'logos:react',
+	javascript: 'logos:javascript',
+	sass: 'logos:sass',
+	figma: 'logos:figma',
+	react_query: 'reactQuery',
+	mongodb: 'logos:mongodb-icon',
+	express: 'skill-icons:expressjs-dark',
+	redux: 'logos:redux',
+};
+
+function cleanTechName(s: string) {
+	return s
+		.split('_')
+		.map((substring) => capitalize(substring))
+		.join(' ');
+}
+
+function capitalize(s: string) {
+	if (s.length > 1) return s.charAt(0).toUpperCase() + s.substring(1);
+}
+---
+
+<article class='project-card' data-aos='fade-zoom' data-aos-mirror='true' data-aos-anchor-placement='top-center'>
+	<div class='text-content'>
+		<h2>{title}</h2>
+		<p>{body}</p>
+		<a href='#' class='read-more'>Read More...</a>
+	</div>
+	<div class='action-content'>
+		<h3>Technologies Used</h3>
+		<ul>
+			{
+				techs.map((tech) => (
+					<li>
+						<Icon name={techLogoNames[tech]} />
+						<span>{cleanTechName(tech)}</span>
+					</li>
+				))
+			}
+		</ul>
+		<div class='links'>
+			<LinkButton href='#' class='live-link'>
+				<span>Live</span>
+				<Icon name='octicon:link-external-16' />
+			</LinkButton>
+			<LinkButton href='#' class='view-source'>
+				<span>Source</span>
+				<Icon name='mdi:application-brackets-outline' />
+			</LinkButton>
+		</div>
+	</div>
+	<div class='preview-images'>
+		<img class='desktop' src={previewDesktop} alt={`${title} desktop preview`} />
+		<img class='mobile' src={previewMobile} alt={`${title} mobile preview`} />
+	</div>
+</article>

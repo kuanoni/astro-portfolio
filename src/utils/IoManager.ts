@@ -1,48 +1,65 @@
-interface IntersectedCallback<Flags> {
-	(flags: Flags, element: Element): void;
-}
+class IoManager {
+	#sliceObservers: SliceObservers;
 
-interface ObservedElements<Flags> {
-	[i: string]: IntersectedCallback<Flags>[];
-}
-
-interface CreateIFlags<Flags> {
-	(entries: IntersectionObserverEntry[]): Flags;
-}
-
-class IoManager<Flags> {
-	#observedElements: ObservedElements<Flags>;
-	#createIFlags: CreateIFlags<Flags>;
-	#ioInit: IntersectionObserverInit;
-
-	constructor(createIFlags: CreateIFlags<Flags>, ioInit: IntersectionObserverInit) {
-		this.#observedElements = {};
-		this.#createIFlags = createIFlags;
-		this.#ioInit = ioInit;
+	constructor() {
+		this.#sliceObservers = {
+			top: this.#createIo({ rootMargin: '0% 0% -100% 0%' }),
+			middleTop: this.#createIo({ rootMargin: '-25% 0% -75% 0%' }),
+			middle: this.#createIo({ rootMargin: '-50% 0% -50% 0%' }),
+			middleBottom: this.#createIo({ rootMargin: '-75% 0% -25% 0%' }),
+			bottom: this.#createIo({ rootMargin: '-100% 0% 0% 0%' }),
+		};
 	}
 
-	subscribe(query: string, cb: IntersectedCallback<Flags>) {
-		const elements = document.querySelectorAll(query);
+	#createIo(init?: IntersectionObserverInit) {
+		return new IntersectionObserver((entries, observer) => {
+			for (const entry of entries) {
+				const { target: element, rootBounds: rootRect, boundingClientRect: elementRect } = entry;
 
-		// initialize observedElements index if not already
-		if (!this.#observedElements[query]) this.#observedElements[query] = [];
+				if (!rootRect) throw new Error('rootRect not found.');
 
-		elements.forEach((element) => {
-			// add callback to the queue
-			this.#observedElements[query].push(cb);
+				// create flags that indicate the location of the top and bottom of the element relative to the viewport slice
+				const flags: IoFlags = {
+					top: this.#getEdgeFlags(elementRect.top, rootRect),
+					bottom: this.#getEdgeFlags(elementRect.bottom, rootRect),
+				};
 
-			// create observer
-			const observer = new IntersectionObserver((entries) => {
-				// call each callback
-				this.#observedElements[query].forEach((callback) => {
-					callback(this.#createIFlags(entries), element);
-				});
-			}, this.#ioInit);
+				const slice =
+					observer.rootMargin === '0% 0% -100% 0%'
+						? 'top'
+						: observer.rootMargin === '-25% 0% -75% 0%'
+						? 'middleTop'
+						: observer.rootMargin === '-50% 0% -50% 0%'
+						? 'middle'
+						: observer.rootMargin === '-75% 0% -25% 0%'
+						? 'middleBottom'
+						: observer.rootMargin === '-100% 0% 0% 0%'
+						? 'bottom'
+						: '';
 
-			//activate observer
-			observer.observe(element);
-		});
+				// send flags to element through a custom event
+				const event = new CustomEvent<IoFlags>(`intersection_${slice}`, { detail: flags });
+				element.dispatchEvent(event);
+			}
+		}, init);
+	}
+
+	subscribe(slice: SliceName, ioElement: IoElement) {
+		this.#sliceObservers[slice].observe(ioElement.element);
+	}
+
+	// calculates flags that indicate the location of the slice (a coordinate on the Y axis) relative to the viewport
+	#getEdgeFlags(sliceY: number, rootRect: DOMRect): EdgeFlags {
+		// viewport top and bottom
+		const rTop = rootRect.top,
+			rBot = rootRect.bottom;
+
+		return {
+			above: sliceY < rTop,
+			below: sliceY > rBot,
+		};
 	}
 }
 
-export default IoManager;
+const IM = new IoManager();
+export default IM;

@@ -47,12 +47,14 @@
 	}
 
 	h4 {
+		font-family: 'Playfair Display';
 		margin-bottom: 8px;
-		line-height: 1.5;
+		line-height: 1;
+		font-size: 1.125rem;
 		font-weight: 600;
 	}
 
-	img {
+	svg {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -60,7 +62,7 @@
 		height: 32px;
 		border-radius: 4px;
 		overflow: hidden;
-		z-index: 2;
+		z-index: z(base);
 		transform: translate(25%, -25%);
 
 		@include for-size(phone, down) {

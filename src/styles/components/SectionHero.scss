@@ -75,7 +75,7 @@
 		margin-bottom: 2rem;
 		color: $c-textLight;
 		font-family: 'Merriweather';
-		z-index: 1;
+		z-index: z(base);
 
 		.title {
 			opacity: 0;
@@ -100,7 +100,7 @@
 		border-radius: $b-rad;
 		overflow: hidden;
 		opacity: 0;
-		z-index: z('base');
+		z-index: z(base);
 		box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
 		animation: fade-in-up 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 		animation-delay: 1s;
@@ -140,9 +140,21 @@
 	.btns {
 		font-size: 1.25rem;
 		opacity: 0;
-		z-index: z('base');
+		z-index: z(base);
 		animation: fade-in-up 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 		animation-delay: 1.75s;
+
+		a {
+			&.contact {
+				background-color: $c-blood;
+				color: $c-spotlight;
+			}
+
+			&.work {
+				background-color: $c-seafoam;
+				color: $c-textLight;
+			}
+		}
 
 		@include for-size(phone, down) {
 			font-size: 1.125rem;

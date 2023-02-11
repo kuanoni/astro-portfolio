@@ -1,6 +1,6 @@
 .about {
-	min-height: 30vh;
-	padding-bottom: 1px;
+	justify-content: center;
+	min-height: 100vh;
 	background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
 
 	.body {
@@ -10,29 +10,34 @@
 		margin-top: 64px;
 		padding-top: 96px;
 		padding-bottom: 32px;
-		opacity: 0;
+		z-index: z(base);
 
 		@include for-size(tablet, down) {
 			flex-direction: column;
-			padding-top: 64px;
+			padding-top: 0px;
 		}
 
 		@include for-size(desktop-sm, down) {
 			gap: 32px;
 		}
 
-		&.fade-in {
-			animation: fade-in 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-			animation-delay: 0.5s;
-		}
-
-		&.fade-out {
-			animation: fade-out 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-		}
-
 		.content {
+			h2 {
+				font-family: 'Playfair Display';
+				font-size: 1.75rem;
+
+				@include for-size(tablet-sm, down) {
+					padding: 0 16px;
+				}
+			}
+
 			p.intro {
 				color: $c-textMedium;
+				font-size: 0.875rem;
+
+				@include for-size(tablet-sm, down) {
+					padding: 0 16px;
+				}
 			}
 
 			.tech-cards {
@@ -65,8 +70,7 @@
 
 			@include for-size(tablet, down) {
 				gap: 32px;
-				padding: 16px 8px;
-				background-color: $c-t-white;
+				padding: 16px;
 				border-radius: $b-rad;
 				grid-template-columns: 1fr 1fr;
 				grid-template-rows: min-content;
@@ -147,16 +151,28 @@
 					margin: 32px auto 0px auto;
 				}
 
-				img {
+				svg {
 					transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 				}
 
-				a:hover img {
+				[astro-icon='logos:linkedin-icon'] {
+					background-image: linear-gradient(#fff, #fff);
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: 90% 90%;
+				}
+
+				[astro-icon='logos:github-icon'] path,
+				[astro-icon='dev'] path {
+					fill: $c-textMedium;
+				}
+
+				a:hover svg {
 					transform: translateY(-3px);
 				}
 
 				a,
-				img {
+				svg {
 					$size: 24px;
 					width: $size;
 					height: $size;
