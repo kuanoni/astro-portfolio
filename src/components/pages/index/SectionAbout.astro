@@ -6,6 +6,7 @@ import FishSchool from '@components/decor/FishSchool.astro';
 
 import face from '@images/face.webp';
 import { Icon } from 'astro-icon';
+import { DEV_URL, GITHUB_URL, GITLAB_URL, LINKEDIN_URL, STACK_OVERFLOW_URL } from 'src/config';
 ---
 
 <section id='about' class='about'>
@@ -94,19 +95,18 @@ import { Icon } from 'astro-icon';
 					</ul>
 				</div>
 				<div class='resume-links'>
-					<a href='#' title='Github'>
+					<a href={GITHUB_URL} title='Github'>
 						<Icon pack='logos' name='github-icon' />
 					</a>
-					<a href='#' title='Gitlab'> <Icon pack='logos' name='gitlab' /></a>
-					<a href='#' title='Linkedin'> <Icon pack='logos' name='linkedin-icon' /></a>
-					<a href='#' title='Stack Overflow'>
+					<a href={GITLAB_URL} title='Gitlab'> <Icon pack='logos' name='gitlab' /></a>
+					<a href={LINKEDIN_URL} title='Linkedin'> <Icon pack='logos' name='linkedin-icon' /></a>
+					<a href={STACK_OVERFLOW_URL} title='Stack Overflow'>
 						<Icon pack='logos' name='stackoverflow-icon' />
 					</a>
-					<a href='#' title='DEV'>
+					<a href={DEV_URL} title='DEV'>
 						<Icon name='dev' />
 					</a>
 				</div>
-				<div class='resume-label'>View full resume</div>
 			</div>
 		</div>
 	</div>
