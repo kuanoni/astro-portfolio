@@ -1,7 +1,7 @@
 .about {
-	background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
-	min-height: 100vh;
 	justify-content: center;
+	min-height: 100vh;
+	background: linear-gradient(180deg, $c-oceanSurface 0%, $c-deepOcean 100%);
 
 	.body {
 		display: flex;
@@ -14,7 +14,7 @@
 
 		@include for-size(tablet, down) {
 			flex-direction: column;
-			padding-top: 64px;
+			padding-top: 0px;
 		}
 
 		@include for-size(desktop-sm, down) {
@@ -25,10 +25,19 @@
 			h2 {
 				font-family: 'Playfair Display';
 				font-size: 1.75rem;
+
+				@include for-size(tablet-sm, down) {
+					padding: 0 16px;
+				}
 			}
+
 			p.intro {
 				color: $c-textMedium;
 				font-size: 0.875rem;
+
+				@include for-size(tablet-sm, down) {
+					padding: 0 16px;
+				}
 			}
 
 			.tech-cards {
@@ -61,8 +70,7 @@
 
 			@include for-size(tablet, down) {
 				gap: 32px;
-				padding: 16px 8px;
-				background-color: $c-t-white;
+				padding: 16px;
 				border-radius: $b-rad;
 				grid-template-columns: 1fr 1fr;
 				grid-template-rows: min-content;
@@ -149,9 +157,9 @@
 
 				[astro-icon='logos:linkedin-icon'] {
 					background-image: linear-gradient(#fff, #fff);
-					background-size: 90% 90%;
-					background-position: center;
 					background-repeat: no-repeat;
+					background-position: center;
+					background-size: 90% 90%;
 				}
 
 				[astro-icon='logos:github-icon'] path,
