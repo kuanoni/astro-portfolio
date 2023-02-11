@@ -54,14 +54,20 @@
 			font-size: 0.875rem;
 		}
 
+		strong {
+			color: $c-spotlight;
+			font-weight: 400;
+		}
+
 		a {
-			color: $c-salmon;
+			color: $c-skyBlue;
 			text-decoration: none;
 			text-decoration: underline;
 			font-size: 0.875rem;
+			font-weight: 700;
 
 			&:hover {
-				color: $c-orange;
+				color: $c-blood;
 			}
 		}
 	}
