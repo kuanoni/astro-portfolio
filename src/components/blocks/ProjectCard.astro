@@ -10,7 +10,8 @@ type Props = {
 
 const { project }: Props = Astro.props;
 
-const { techs, previewDesktop, previewMobile, liveUrl, sourceUrl } = project.data;
+const { techs, previewDesktop, previewMobile, color, liveUrl, sourceUrl } = project.data;
+const cardGlow = color ? color : '#ffffff33';
 
 const { Content, headings } = await project.render();
 
@@ -81,3 +82,9 @@ function capitalize(s: string) {
 		<img class='mobile' src={previewMobile} alt={`mobile preview`} />
 	</div>
 </article>
+
+<style define:vars={{ cardGlow }}>
+	article.project-card .preview-images::before {
+		background: radial-gradient(40% 35% at 50% 60%, var(--cardGlow) 0%, #ffdb1900 100%);
+	}
+</style>

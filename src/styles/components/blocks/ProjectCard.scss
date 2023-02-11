@@ -184,6 +184,12 @@
 			}
 		}
 
+		&::before {
+			z-index: -1;
+			inset: -25% -25% -25% -25%;
+			@include pseudo;
+		}
+
 		img {
 			object-fit: contain;
 
