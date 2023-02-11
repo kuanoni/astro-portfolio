@@ -4,12 +4,15 @@ import type { CollectionEntry } from 'astro:content';
 import LinkButton from './LinkButton.astro';
 import '@styles/components/blocks/ProjectCard.scss';
 
-type Props = Pick<CollectionEntry<'project'>, 'data' | 'body'>;
+type Props = {
+	project: CollectionEntry<'project'>;
+};
 
-const {
-	data: { title, techs, previewDesktop, previewMobile },
-	body,
-}: Props = Astro.props;
+const { project }: Props = Astro.props;
+
+const { techs, previewDesktop, previewMobile } = project.data;
+
+const { Content, headings } = await project.render();
 
 const techLogoNames: { [i: string]: string } = {
 	react: 'logos:react',
@@ -36,8 +39,7 @@ function capitalize(s: string) {
 
 <article class='project-card' data-aos='fade-zoom' data-aos-mirror='true' data-aos-anchor-placement='top-center'>
 	<div class='text-content'>
-		<h2>{title}</h2>
-		<p>{body}</p>
+		<Content />
 		<a href='#' class='read-more'>Read More...</a>
 	</div>
 	<div class='action-content'>
@@ -64,7 +66,7 @@ function capitalize(s: string) {
 		</div>
 	</div>
 	<div class='preview-images'>
-		<img class='desktop' src={previewDesktop} alt={`${title} desktop preview`} />
-		<img class='mobile' src={previewMobile} alt={`${title} mobile preview`} />
+		<img class='desktop' src={previewDesktop} alt={`desktop preview`} />
+		<img class='mobile' src={previewMobile} alt={`mobile preview`} />
 	</div>
 </article>
