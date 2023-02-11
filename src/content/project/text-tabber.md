@@ -1,5 +1,4 @@
 ---
-title: Text Tabber
 techs: [javascript, react, sass, redux]
 previewDesktop: 'src/images/projects/text-tabber/preview-desktop.webp'
 previewMobile: 'src/images/projects/text-tabber/preview-mobile.webp'

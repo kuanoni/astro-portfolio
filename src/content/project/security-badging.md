@@ -1,5 +1,4 @@
 ---
-title: Security Badging System
 techs: ['javascript', 'react', react_query, 'sass', figma]
 previewDesktop: 'src/images/projects/security-badging-system/preview-desktop.webp'
 previewMobile: 'src/images/projects/security-badging-system/preview-mobile.webp'
