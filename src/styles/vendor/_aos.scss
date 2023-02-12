@@ -60,3 +60,15 @@ body[data-aos-duration='400'] [data-aos] {
 		}
 	}
 }
+
+[data-aos='bubble'] {
+	&.aos-animate {
+		.bubble {
+			animation-name: bubble;
+		}
+	}
+
+	.bubble {
+		animation-name: none;
+	}
+}
