@@ -4,21 +4,28 @@ import type { CollectionEntry } from 'astro:content';
 import LinkButton from './LinkButton.astro';
 import '@styles/components/blocks/ProjectCard.scss';
 
-type Props = Pick<CollectionEntry<'project'>, 'data' | 'body'>;
+type Props = {
+	project: CollectionEntry<'project'>;
+};
 
-const {
-	data: { title, techs, previewDesktop, previewMobile },
-	body,
-}: Props = Astro.props;
+const { project }: Props = Astro.props;
+
+const { techs, previewDesktop, previewMobile, color, liveUrl, sourceUrl } = project.data;
+const cardGlow = color ? color : '#ffffff33';
+
+const { Content, headings } = await project.render();
 
 const techLogoNames: { [i: string]: string } = {
 	react: 'logos:react',
+	next: 'nextjs',
 	javascript: 'logos:javascript',
+	typescript: 'logos:typescript-icon',
 	sass: 'logos:sass',
+	stiches: 'stiches',
 	figma: 'logos:figma',
 	react_query: 'reactQuery',
-	mongodb: 'logos:mongodb-icon',
-	express: 'skill-icons:expressjs-dark',
+	mongoDB: 'vscode-icons:file-type-mongo',
+	express: 'express',
 	redux: 'logos:redux',
 };
 
@@ -34,10 +41,15 @@ function capitalize(s: string) {
 }
 ---
 
-<article class='project-card' data-aos='fade-zoom' data-aos-mirror='true' data-aos-anchor-placement='top-center'>
+<article
+	class='project-card'
+	data-aos='fade-zoom'
+	data-aos-mirror='true'
+	data-aos-offset='50'
+	data-aos-anchor-placement='top-center'
+>
 	<div class='text-content'>
-		<h2>{title}</h2>
-		<p>{body}</p>
+		<Content />
 		<a href='#' class='read-more'>Read More...</a>
 	</div>
 	<div class='action-content'>
@@ -53,18 +65,32 @@ function capitalize(s: string) {
 			}
 		</ul>
 		<div class='links'>
-			<LinkButton href='#' class='live-link'>
-				<span>Live</span>
-				<Icon name='octicon:link-external-16' />
-			</LinkButton>
-			<LinkButton href='#' class='view-source'>
-				<span>Source</span>
-				<Icon name='mdi:application-brackets-outline' />
-			</LinkButton>
+			{
+				liveUrl && (
+					<LinkButton href={liveUrl} class='live-link'>
+						<span>Live</span>
+						<Icon name='octicon:link-external-16' />
+					</LinkButton>
+				)
+			}
+			{
+				sourceUrl && (
+					<LinkButton href={sourceUrl} class='view-source'>
+						<span>Source</span>
+						<Icon name='mdi:application-brackets-outline' />
+					</LinkButton>
+				)
+			}
 		</div>
 	</div>
 	<div class='preview-images'>
-		<img class='desktop' src={previewDesktop} alt={`${title} desktop preview`} />
-		<img class='mobile' src={previewMobile} alt={`${title} mobile preview`} />
+		<img class='desktop' src={previewDesktop} alt={`desktop preview`} />
+		<img class='mobile' src={previewMobile} alt={`mobile preview`} />
 	</div>
 </article>
+
+<style define:vars={{ cardGlow }}>
+	article.project-card .preview-images::before {
+		background: radial-gradient(40% 35% at 50% 60%, var(--cardGlow) 0%, #ffdb1900 100%);
+	}
+</style>
