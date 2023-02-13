@@ -11,6 +11,4 @@ sourceUrl: 'https://github.com/kuanoni/streamer-hub'
 
 The ultimate hub for fans of the (_made up_) streaming personality, KroyOoz!
 
-Features a robust **real-time chat** where fans can **sign up** and talk amongst eachother while watching the embedded stream.
-
-View recent tweets, hot posts on his subreddit, recently released YouTube videos, and recent broadcasts on the home page! This makes it easy to stay up to date with all of KroyOoz's latest activities, without having to jump between multiple platforms.
+Features a robust **real-time chat** where fans can **sign up** and talk amongst eachother while watching the embedded stream. View recent tweets, hot posts on his subreddit, recently released YouTube videos, and recent broadcasts on the home page!
