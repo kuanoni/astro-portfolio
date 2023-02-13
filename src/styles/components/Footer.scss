@@ -1,0 +1,76 @@
+footer {
+	background-color: $c-deepOcean;
+
+	.ocean-floor {
+		position: relative;
+		width: 100%;
+		height: 49px;
+		background-image: svg-load('ocean-floor.svg');
+		background-repeat: repeat-x;
+		background-position: bottom;
+	}
+
+	.content-wrapper {
+		position: relative;
+		background-color: #2b222f;
+
+		.decor {
+			position: relative;
+			max-width: $page-width;
+			margin: 0 auto;
+
+			& img,
+			& svg {
+				position: absolute;
+				bottom: 0;
+				filter: brightness(0.75);
+			}
+
+			.b1 {
+				left: 0;
+				bottom: 0;
+			}
+
+			.seaweed1 {
+				width: 96px;
+				left: 0;
+			}
+
+			.seaweed2 {
+				width: 96px;
+				right: calc(2% - min(2%, 32px));
+				transform: scaleX(-100%) scaleY(0.75);
+			}
+
+			.treasure {
+				width: 96px;
+				bottom: -8px;
+				right: 2%;
+				transform: rotate(5deg);
+			}
+
+			.shell {
+				width: 32px;
+				left: 48px;
+				bottom: -8px;
+				transform: rotate(-20deg);
+			}
+		}
+
+		.content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 16px;
+			max-width: $page-width;
+			margin: 0 auto;
+			padding: 16px;
+			color: $c-textMedium;
+			font-size: 0.875rem;
+
+			@include for-size(tablet, down) {
+				flex-direction: column-reverse;
+			}
+		}
+	}
+}
