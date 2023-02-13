@@ -1,10 +1,7 @@
 .project-card {
-	$images-hangoff: 116px;
-
 	display: grid;
 	row-gap: 32px;
 	max-width: $page-width;
-	margin-bottom: $images-hangoff;
 	padding: 32px;
 	border-radius: $b-rad;
 	grid-template-areas: 'text action' 'preview preview';
@@ -162,12 +159,11 @@
 		}
 	}
 
-	& .preview-images {
+	.preview-images {
 		display: flex;
 		gap: 24px;
 		position: relative;
 		max-width: 100%;
-		margin-bottom: -$images-hangoff;
 		grid-area: preview;
 		aspect-ratio: 1002 / 511;
 
