@@ -2,17 +2,26 @@
 import SocialsLinks from './blocks/SocialsLinks.astro';
 import '@styles/components/Footer.scss';
 import seaweed from '@images/svg/seaweed.svg';
+import treasure from '@images/svg/treasure.svg';
+import { Icon } from 'astro-icon';
+import Bubbles from './decor/Bubbles.astro';
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer>
-	<div data-aos='slide-up' data-aos-offset='-100' data-aos-anchor-placement='bottom-bottom'>
-		<div class='ocean-floor'></div>
-		<div class='content-wrapper'>
-			<img class='seaweed' src={seaweed} alt='asd' />
-			<div class='content'>
-				<div class='text'>© 2023 Kainoa Araiza Kuanoni. All rights reserved.</div>
-				<SocialsLinks />
-			</div>
+	<div class='ocean-floor'></div>
+	<div class='content-wrapper'>
+		<div class='decor' aria-hidden='true'>
+			<Bubbles class='b1' amount={3} animIterations={3} />
+			<img class='seaweed1' src={seaweed} alt='seaweed' />
+			<img class='seaweed2' src={seaweed} alt='seaweed' />
+			<img class='treasure' src={treasure} alt='treasure' />
+			<Icon class='shell' name='twemoji:spiral-shell' />
+		</div>
+		<div class='content'>
+			<small>Ⓒ {currentYear} Kainoa Araiza Kuanoni. All rights reserved.</small>
+			<SocialsLinks />
 		</div>
 	</div>
 </footer>
