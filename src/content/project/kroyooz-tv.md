@@ -1,7 +1,7 @@
 ---
 techs: [typescript, next, react, stiches, mongoDB, figma]
-previewDesktop: 'src/images/projects/kroyooz-tv/preview-desktop.webp'
-previewMobile: 'src/images/projects/kroyooz-tv/preview-mobile.webp'
+previewDesktop: 'images/projects/kroyooz-tv/preview-desktop.webp'
+previewMobile: 'images/projects/kroyooz-tv/preview-mobile.webp'
 color: '#6400A854'
 liveUrl: 'https://streamer-hub.fly.dev/'
 sourceUrl: 'https://github.com/kuanoni/streamer-hub'

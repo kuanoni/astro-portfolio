@@ -1,7 +1,7 @@
 ---
 techs: [javascript, react, express, mongoDB, sass, figma]
-previewDesktop: 'src/images/projects/security-badging-system/preview-desktop.webp'
-previewMobile: 'src/images/projects/security-badging-system/preview-mobile.webp'
+previewDesktop: 'images/projects/security-badging-system/preview-desktop.webp'
+previewMobile: 'images/projects/security-badging-system/preview-mobile.webp'
 color: '#1e71a169 '
 liveUrl: 'https://security-badging-system.web.app/'
 sourceUrl: 'https://github.com/kuanoni/react-security-badging-system'
