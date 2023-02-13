@@ -1,2 +1,18 @@
 ---
+import SocialsLinks from './blocks/SocialsLinks.astro';
+import '@styles/components/Footer.scss';
+import seaweed from '@images/svg/seaweed.svg';
 ---
+
+<footer>
+	<div data-aos='slide-up' data-aos-offset='-100' data-aos-anchor-placement='bottom-bottom'>
+		<div class='ocean-floor'></div>
+		<div class='content-wrapper'>
+			<img class='seaweed' src={seaweed} alt='asd' />
+			<div class='content'>
+				<div class='text'>© 2023 Kainoa Araiza Kuanoni. All rights reserved.</div>
+				<SocialsLinks />
+			</div>
+		</div>
+	</div>
+</footer>
