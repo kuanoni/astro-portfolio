@@ -1,13 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
-import '@styles/components/SectionProjects.scss';
 import ProjectCard from '@components/blocks/ProjectCard.astro';
+import Bubbles from '@components/decor/Bubbles.astro';
+import '@styles/components/SectionProjects.scss';
 
 // Get all entries from a collection. Requires the name of the collection as an argument.
 const allProjects = await getCollection('project');
 ---
 
 <section class='projects'>
+	<Bubbles class='b1' amount={70} animIterations={2} />
 	<div
 		class='header'
 		data-aos='fade-out-zoom'

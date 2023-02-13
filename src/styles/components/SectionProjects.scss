@@ -13,4 +13,9 @@
 		flex-direction: column;
 		gap: 32px;
 	}
+	.b1 {
+		top: 30vh;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 }
