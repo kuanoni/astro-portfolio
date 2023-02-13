@@ -1,0 +1,75 @@
+---
+import bubble from '@images/svg/bubble.svg';
+import '@styles/components/decor/Bubbles.scss';
+
+interface Props {
+	['class']?: string;
+	amount: number;
+	animIterations?: number;
+}
+
+const { class: className, amount, animIterations = 1 } = Astro.props;
+
+const randNum = (max: number, min: number = 0) => Math.floor(Math.random() * (max - min) + min);
+
+const sizeRange = [24, 32]; // size range of bubbles in px
+const areaSize = Math.floor(amount * sizeRange[1] * 0.75); // size of the bubbles container in px
+const maxOffset = (sizeRange[1] - sizeRange[0]) / 4;
+const animationDuration = 1.5;
+
+const bubblesList = [];
+const cellsTaken: number[][] = [];
+
+for (let i = 0; i < amount; i++) {
+	const img = bubble;
+	const size = randNum(sizeRange[1], sizeRange[0]);
+
+	// creates a "grid" of cells and tries to disperse the bubbles between the cells,
+	// with one bubble max per cell
+	while (true) {
+		const x = randNum(amount);
+		const y = randNum(amount);
+
+		// if cell is taken, try again
+		if (cellsTaken.find((c) => c[0] === x && c[1] === y)) continue;
+
+		cellsTaken.push([x, y]);
+		break;
+	}
+
+	const cell = cellsTaken.slice(-1).flat();
+
+	// calculate actual position
+	const left = cell[0] * (areaSize / amount) + randNum(maxOffset);
+	const top = cell[1] * (areaSize / amount) + randNum(maxOffset);
+
+	const style = `left: ${left}px;
+    top: ${top}px; 
+    width: ${size}px; 
+    height: ${size}px;
+    animation-timing-function: linear;
+    animation-duration: ${animationDuration}s;
+    animation-delay: ${(animationDuration / amount) * i}s !important;
+    animation-iteration-count: ${animIterations}`;
+
+	bubblesList.push({
+		img,
+		style,
+	});
+}
+---
+
+<div
+	class:list={['bubbles-container', className]}
+	style={`width: ${areaSize}px; height: ${areaSize}px;`}
+	data-aos='bubble'
+	data-aos-offset='0'
+>
+	{
+		bubblesList.map((bubble) => (
+			<div class='bubble' style={bubble.style} aria-hidden='true'>
+				<img src={bubble.img} />
+			</div>
+		))
+	}
+</div>
