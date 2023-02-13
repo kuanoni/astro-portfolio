@@ -33,6 +33,7 @@ html,
 body {
 	/* mobile viewport bug fix */
 	min-height: -webkit-fill-available;
+	background-color: var(--c-deepOcean);
 }
 
 body {
