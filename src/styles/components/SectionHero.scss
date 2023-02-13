@@ -61,7 +61,6 @@
 		overflow: hidden;
 		animation: spin-sky 200s linear reverse infinite;
 		@include pseudo;
-
 		@media (orientation: portrait) {
 			left: 50%;
 			width: 200vh;
@@ -144,18 +143,6 @@
 		animation: fade-in-up 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
 		animation-delay: 1.75s;
 
-		a {
-			&.contact {
-				background-color: $c-blood;
-				color: $c-spotlight;
-			}
-
-			&.work {
-				background-color: $c-seafoam;
-				color: $c-textLight;
-			}
-		}
-
 		@include for-size(phone, down) {
 			font-size: 1.125rem;
 
@@ -175,45 +162,63 @@
 			}
 		}
 
+		a {
+			&.contact {
+				color: $c-spotlight;
+				background-color: $c-blood;
+			}
+
+			&.work {
+				color: $c-textLight;
+				background-color: $c-seafoam;
+			}
+		}
+
 		& a:not(:last-child) {
 			margin-right: 2rem;
 		}
 	}
 
-	.boat {
+	.decor-wrapper {
 		position: absolute;
-		right: 0%;
-		bottom: 16px;
-		width: 100px;
-		height: 100px;
-		animation: boat-move 480s linear infinite;
-		animation-delay: -50s;
+		overflow: hidden;
+		inset: 0 0 0 0;
 
-		img {
+		.boat {
+			position: absolute;
+			right: 0%;
+			bottom: 16px;
+			width: 100px;
 			height: 100px;
-			transform-origin: bottom;
-			animation: boat-sway 4s ease infinite;
-		}
-	}
+			animation: boat-move 480s linear infinite;
+			animation-delay: -50s;
 
-	.waves {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		width: 200%;
-		height: 49px;
-		background-repeat: repeat-x;
-		background-position: bottom;
-
-		&.dark-waves {
-			background-image: svg-load('dark-waves.svg');
-			animation: waves-move 45s linear infinite;
+			img {
+				height: 100px;
+				transform-origin: bottom;
+				animation: boat-sway 4s ease infinite;
+			}
 		}
 
-		&.light-waves {
-			bottom: 8px;
-			background-image: svg-load('light-waves.svg');
-			animation: waves-move 45s linear reverse infinite;
+		.waves {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 200%;
+			height: 49px;
+			background-repeat: repeat-x;
+			background-position: bottom;
+
+			&.dark-waves {
+				background-image: svg-load('dark-waves.svg');
+				animation: waves-move 45s linear infinite;
+			}
+
+			&.light-waves {
+				bottom: 8px;
+				background-image: svg-load('light-waves.svg');
+				animation: waves-move 45s linear reverse infinite;
+			}
 		}
 	}
 }
