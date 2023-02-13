@@ -7,6 +7,7 @@ import FishSchool from '@components/decor/FishSchool.astro';
 import face from '@images/face.webp';
 import { Icon } from 'astro-icon';
 import { DEV_URL, GITHUB_URL, GITLAB_URL, LINKEDIN_URL, STACK_OVERFLOW_URL } from 'src/config';
+import Bubbles from '@components/decor/Bubbles.astro';
 ---
 
 <section id='about' class='about'>
@@ -14,10 +15,12 @@ import { DEV_URL, GITHUB_URL, GITLAB_URL, LINKEDIN_URL, STACK_OVERFLOW_URL } fro
 		<Icon name='bi:chevron-compact-down' />
 	</div>
 	<div class='fish-container'>
-		<FishSchool class='top-right' amount={8} sizeRange={[16, 28]} />
-		<FishSchool class='bottom-left go-left' amount={3} sizeRange={[16, 28]} />
-		<FishSchool class='bottom-right' amount={5} sizeRange={[16, 28]} />
+		<FishSchool class='f1' amount={8} sizeRange={[16, 28]} />
+		<FishSchool class='f2 go-left' amount={3} sizeRange={[16, 28]} />
 	</div>
+
+	<Bubbles class='b1' amount={2} />
+
 	<div class='body' data-aos='fade' data-aos-mirror='true' data-aos-offset='300'>
 		<div class='content'>
 			<h2>About me</h2>

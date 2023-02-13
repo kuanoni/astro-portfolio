@@ -13,6 +13,41 @@
 		flex-direction: column;
 		gap: 32px;
 	}
+
+	.fish-container {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+
+		.f1 {
+			top: 110vh;
+			left: 15%;
+
+			@include for-size(tablet, down) {
+				top: 160vh;
+			}
+		}
+
+		.f2 {
+			top: 210vh;
+			right: 15%;
+
+			@include for-size(tablet, down) {
+				top: 280vh;
+			}
+		}
+
+		.f3 {
+			top: 310vh;
+			left: 15%;
+
+			@include for-size(tablet, down) {
+				top: 380vh;
+			}
+		}
+	}
+
 	.b1 {
 		top: 30vh;
 		left: 50%;

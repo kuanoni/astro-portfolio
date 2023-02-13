@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import ProjectCard from '@components/blocks/ProjectCard.astro';
 import Bubbles from '@components/decor/Bubbles.astro';
+import FishSchool from '@components/decor/FishSchool.astro';
 import '@styles/components/SectionProjects.scss';
 
 // Get all entries from a collection. Requires the name of the collection as an argument.
@@ -10,6 +11,11 @@ const allProjects = await getCollection('project');
 
 <section class='projects'>
 	<Bubbles class='b1' amount={70} animIterations={2} />
+	<div class='fish-container'>
+		<FishSchool class='f1 go-left' amount={8} sizeRange={[16, 28]} />
+		<FishSchool class='f2 go-right' amount={8} sizeRange={[16, 28]} />
+		<FishSchool class='f3 go-left' amount={8} sizeRange={[16, 28]} />
+	</div>
 	<div
 		class='header'
 		data-aos='fade-out-zoom'
