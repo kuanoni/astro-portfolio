@@ -14,14 +14,13 @@
 
 	.cloud-wrapper {
 		position: absolute;
-		opacity: 0.85;
-		z-index: z(base);
 		width: 200vw;
+		opacity: 0.85;
 		animation: clouds-move 360s linear infinite;
 
 		.cloud-clone-middle {
-			right: 50%;
 			display: none;
+			right: 50%;
 		}
 
 		.cloud-clone-right {
@@ -37,8 +36,8 @@
 			width: $w;
 			max-height: $h;
 			margin-top: $h * 0.75;
-			border-radius: 100px;
 			background: linear-gradient(#f2f9fe 5%, #d6f0fd 100%);
+			border-radius: 100px;
 			aspect-ratio: 350 / 210;
 			transform: translateX(-100%) scale((math.div(100, math.random($limit: 30)) * 1%) + 50%);
 		}
@@ -47,9 +46,9 @@
 		.cloud::before {
 			position: absolute;
 			background: linear-gradient(#f2f9fe 5%, #d6f0fd 100%);
+			opacity: inherit;
 			z-index: -1;
 			content: ' ';
-			opacity: inherit;
 		}
 
 		.cloud::after {
@@ -73,8 +72,8 @@
 			bottom: -10px;
 			left: 50%;
 			width: 90%;
-			border-radius: 50%;
 			background: #000;
+			border-radius: 50%;
 			z-index: -1;
 			box-shadow: 0 0 25px 3px rgba(0, 0, 0, 0.3);
 			transform: translateX(-50%);
