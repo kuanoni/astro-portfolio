@@ -1,8 +1,6 @@
 .socials-links {
 	display: flex;
 	justify-content: space-between;
-	max-width: 240px;
-	margin-top: 32px;
 
 	@include for-size(phone, down) {
 		margin: 32px auto 0px auto;
