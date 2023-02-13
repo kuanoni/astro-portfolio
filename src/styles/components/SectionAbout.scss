@@ -215,4 +215,28 @@
 			}
 		}
 	}
+
+	.arrow-down {
+		position: absolute;
+		top: -16px;
+		width: 48px;
+		padding-bottom: 32px;
+		z-index: 1;
+		animation: pulse-glow 2s infinite;
+
+		@keyframes pulse-glow {
+			0% {
+				color: $c-textMedium;
+				transform: translateY(calc(3px));
+			}
+			50% {
+				color: $c-textLight;
+				transform: translateY(0px);
+			}
+			100% {
+				color: $c-textMedium;
+				transform: translateY(calc(3px));
+			}
+		}
+	}
 }
