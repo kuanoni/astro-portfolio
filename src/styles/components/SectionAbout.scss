@@ -140,44 +140,6 @@
 					font-weight: 300;
 				}
 			}
-
-			&-links {
-				display: flex;
-				justify-content: space-between;
-				max-width: 240px;
-				margin-top: 32px;
-
-				@include for-size(phone, down) {
-					margin: 32px auto 0px auto;
-				}
-
-				svg {
-					transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
-				}
-
-				[astro-icon='logos:linkedin-icon'] {
-					background-image: linear-gradient(#fff, #fff);
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: 90% 90%;
-				}
-
-				[astro-icon='logos:github-icon'] path,
-				[astro-icon='dev'] path {
-					fill: $c-textMedium;
-				}
-
-				a:hover svg {
-					transform: translateY(-3px);
-				}
-
-				a,
-				svg {
-					$size: 24px;
-					width: $size;
-					height: $size;
-				}
-			}
 		}
 	}
 
