@@ -41,7 +41,8 @@
 		transform: rotateY(180deg);
 	}
 
-	.fish {
+	div {
 		position: absolute;
+		animation-fill-mode: forwards;
 	}
 }

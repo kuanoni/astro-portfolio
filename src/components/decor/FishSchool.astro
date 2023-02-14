@@ -3,82 +3,43 @@ import '@styles/components/decor/FishSchool.scss';
 import fishNormal from '@images/svg/fish/FluentEmojiFish.svg';
 import fishTropical from '@images/svg/fish/FluentEmojiTropicalFish.svg';
 
-const randNum = (max: number, min: number = 0) => Math.floor(Math.random() * (max - min) + min);
-
 interface Props {
 	['class']?: string;
 	amount: number;
-	sizeRange: number[];
-	areaSizeOverride?: number;
-	inset?: string;
 }
 
-const { class: className, amount, sizeRange, areaSizeOverride } = Astro.props;
-
-// fish school config
-const fishImages = [fishNormal, fishTropical];
-const fishSizeRange = sizeRange;
-const areaSize = areaSizeOverride || Math.floor(amount * fishSizeRange[1] * 0.55);
-const maxOffset = (fishSizeRange[1] - fishSizeRange[0]) / 4;
-
-const fishList = [];
-const cellsTaken: number[][] = [];
-
-for (let i = 0; i < amount; i++) {
-	const img = fishImages[randNum(fishImages.length)];
-	const size = randNum(fishSizeRange[1], fishSizeRange[0]);
-	const animationDelay = randNum(7) / 10;
-	const animationDuration = randNum(16, 10) / 10;
-
-	// creates a "grid" of cells and tries to disperse the fish between the cells,
-	// with one fish max per cell
-	while (true) {
-		const x = randNum(amount);
-		const y = randNum(amount);
-
-		// if cell is taken, try again
-		if (cellsTaken.find((c) => c[0] === x && c[1] === y)) continue;
-
-		cellsTaken.push([x, y]);
-		break;
-	}
-
-	const cell = cellsTaken.slice(-1).flat();
-
-	// calculate actual position
-	const left = cell[0] * (areaSize / amount) + randNum(maxOffset);
-	const top = cell[1] * (areaSize / amount) + randNum(maxOffset);
-
-	const containerStyle = `left: ${left}px;
-    top: ${top}px; 
-    width: ${size}px; 
-    height: ${size}px;
-    animation: fish-jump ${animationDuration * 0.25}s ease-in ${animationDelay}s forwards, 
-    fish-swim-away ${animationDuration * 0.6}s ease-in ${animationDuration * 0.4 + animationDelay}s forwards;`;
-
-	const imgStyle = `animation: fish-turn ${
-		animationDuration * 0.4
-	}s ease-in forwards; animation-delay: ${animationDelay}s;`;
-
-	fishList.push({
-		img,
-		imgStyle,
-		containerStyle,
-	});
-}
+const { class: className, amount } = Astro.props;
 ---
 
 <div
 	class:list={['fish-school', className]}
-	style={`width: ${areaSize}px; height: ${areaSize}px;`}
+	data-amount={amount}
 	data-aos='swim-away'
 	data-aos-offset='0'
+	aria-hidden='true'
 >
-	{
-		fishList.map((fish) => (
-			<div class='fish' style={fish.containerStyle} aria-hidden='true'>
-				<img src={fish.img} style={fish.imgStyle} />
-			</div>
-		))
-	}
 </div>
+
+<script>
+	import createDecorGroups from '../../utils/createDecorGroups';
+
+	const setAnimations: SetAnimations = (i, e, img, delay, duration) => {
+		e.style.animation = `fish-jump ${duration * 0.25}s ease-in ${delay}s forwards, 
+        fish-swim-away ${duration * 0.6}s ease-in ${duration * 0.4 + delay}s forwards`;
+
+		img.style.animationDelay = `${delay}s`;
+		img.style.animation = `fish-turn ${duration * 0.4}s ease-in forwards`;
+	};
+
+	createDecorGroups(
+		'.fish-school',
+		['src/images/svg/fish/FluentEmojiFish.svg', 'src/images/svg/fish/FluentEmojiTropicalFish.svg'],
+		setAnimations,
+		{
+			sizeRange: [16, 28],
+			animDelayMax: 700,
+			animDurMin: 1000,
+			animDurMax: 1600,
+		}
+	);
+</script>

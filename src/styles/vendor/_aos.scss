@@ -52,7 +52,7 @@ body[data-aos-duration='400'] [data-aos] {
 [data-aos='swim-away'] {
 	transition-property: transform, opacity;
 
-	& .fish {
+	& div {
 		animation-name: none !important;
 	}
 
@@ -61,7 +61,7 @@ body[data-aos-duration='400'] [data-aos] {
 	}
 
 	&.aos-animate {
-		& .fish {
+		& div {
 			animation-name: fish-jump, fish-swim-away !important;
 		}
 
@@ -73,12 +73,12 @@ body[data-aos-duration='400'] [data-aos] {
 
 [data-aos='bubble'] {
 	&.aos-animate {
-		.bubble {
+		div {
 			animation-name: bubble;
 		}
 	}
 
-	.bubble {
+	div {
 		animation-name: none;
 	}
 }
