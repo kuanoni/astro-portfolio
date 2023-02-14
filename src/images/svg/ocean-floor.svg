@@ -1,9 +1,1 @@
-<svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg">
-    <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="390">
-        <stop offset="0" stop-color="#594164"></stop>
-        <stop offset="1" stop-color="#2b222f"></stop>
-    </linearGradient>
-    <path
-        d="M 0,400 C 0,400 0,200 0,200 C 127.22488038277513,231.44497607655504 254.44976076555025,262.8899521531101 336,269 C 417.55023923444975,275.1100478468899 453.42583732057415,255.88516746411483 534,259 C 614.5741626794259,262.11483253588517 739.8468899521532,287.5693779904306 844,272 C 948.1531100478468,256.4306220095694 1031.1866028708134,199.83732057416267 1127,181 C 1222.8133971291866,162.16267942583733 1331.4066985645932,181.08133971291866 1440,200 C 1440,200 1440,400 1440,400 Z"
-        stroke="none" stroke-width="0" fill="url(#b)" fill-opacity="1"></path>
-</svg>
+<svg viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg"><linearGradient id="prefix__a" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="390"><stop offset="0" stop-color="#594164"/><stop offset="1" stop-color="#2b222f"/></linearGradient><path d="M0 400V200c127.225 31.445 254.45 62.89 336 69 81.55 6.11 117.426-13.115 198-10s205.847 28.57 310 13c104.153-15.57 187.187-72.163 283-91 95.813-18.837 204.407.081 313 19v200z" fill="url(#prefix__a)"/></svg>
