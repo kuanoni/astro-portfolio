@@ -1,7 +1,5 @@
 ---
 import '@styles/components/decor/FishSchool.scss';
-import fishNormal from '@images/svg/fish/FluentEmojiFish.svg';
-import fishTropical from '@images/svg/fish/FluentEmojiTropicalFish.svg';
 
 interface Props {
 	['class']?: string;
@@ -33,7 +31,7 @@ const { class: className, amount } = Astro.props;
 
 	createDecorGroups(
 		'.fish-school',
-		['src/images/svg/fish/FluentEmojiFish.svg', 'src/images/svg/fish/FluentEmojiTropicalFish.svg'],
+		['images/svg/fish/FluentEmojiFish.svg', 'images/svg/fish/FluentEmojiTropicalFish.svg'],
 		setAnimations,
 		{
 			sizeRange: [16, 28],
