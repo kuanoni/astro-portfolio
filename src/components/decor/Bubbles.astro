@@ -1,5 +1,4 @@
 ---
-import bubble from '@images/svg/bubble.svg';
 import '@styles/components/decor/Bubbles.scss';
 
 interface Props {
@@ -22,7 +21,7 @@ const { class: className, amount } = Astro.props;
 		e.style.animationIterationCount = `2`;
 	};
 
-	createDecorGroups('.bubbles-container', ['src/images/svg/bubble.svg'], setAnimations, {
+	createDecorGroups('.bubbles-container', ['images/svg/bubble.svg'], setAnimations, {
 		sizeRange: [24, 32],
 		animDelayMax: 0,
 		animDurMin: 1500,
