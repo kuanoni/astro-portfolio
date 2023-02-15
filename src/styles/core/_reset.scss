@@ -37,11 +37,10 @@ body {
 }
 
 body {
-	// font-family: 'Playfair Display', 'Merriweather';
+	color: $c-textLight;
 	font-family: 'Merriweather', 'Playfair Display';
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	color: $c-textLight;
 }
 
 img,
@@ -70,7 +69,17 @@ h6 {
 	overflow-wrap: break-word;
 }
 
-#root,
-#__next {
-	isolation: isolate;
+a {
+	color: $c-skyBlue;
+	text-decoration: underline;
+
+	&:hover {
+		color: $c-blood;
+		cursor: pointer;
+	}
+}
+
+p {
+	color: $c-textMedium;
+	font-size: 0.875rem;
 }
