@@ -1,10 +1,10 @@
 ---
 import { Image } from '@astrojs/image/components';
 import { Icon } from 'astro-icon';
-import CardSmall from '@components/blocks/CardSmall.astro';
 import Bubbles from '@components/decor/Bubbles.astro';
 import FishSchool from '@components/decor/FishSchool.astro';
 
+import leavesBg from '@images/svg/squiggle-waves.svg';
 import face from '@images/face.webp';
 import '@styles/components/SectionAbout.scss';
 import SocialsLinks from '@components/blocks/SocialsLinks.astro';
@@ -29,29 +29,31 @@ import SocialsLinks from '@components/blocks/SocialsLinks.astro';
 				molestiae perferendis accusantium saepe culpa ea optio, adipisci ab facere blanditiis facilis officia
 				quam. Quisquam optio veniam sed commodi consequuntur doloribus, debitis alias voluptatum impedit ea.
 			</p>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, totam id molestias omnis quas
+				consequuntur cum perferendis recusandae atque maxime quidem laboriosam fuga sit! Eaque reprehenderit
+				adipisci voluptatum soluta natus!
+			</p>
+			<div class='label'>Tech Stack</div>
+			<ul>
+				<li>Typescript</li>
+				<li>React</li>
+				<li>Next.js</li>
+				<li>Astro</li>
+				<li>Sass</li>
+				<li>Figma</li>
+			</ul>
+			<div class='label'>Interests</div>
+			<ul>
+				<li>Web Development</li>
+				<li>Game Development</li>
+				<li>3D Modelling</li>
+				<li>Guitar</li>
+			</ul>
 		</div>
-		<div class='resume'>
-			<Image src={face} class='resume-picture' width={321} height={382} alt='my face' />
-			<div class='resume-content'>
-				<div class='resume-label'>Skills</div>
-				<div class='resume-info'>
-					<ul class='skills'>
-						<li>Frontend Development 💻</li>
-						<li>Backend Development 🧩</li>
-						<li>Game Development 🎮</li>
-					</ul>
-				</div>
-				<div class='resume-label'>Location</div>
-				<div class='resume-info'>🇺🇸 Vancouver, WA</div>
-				<div class='resume-label'>Email</div>
-				<div class='resume-info'>kainoaaraiza@gmail.com</div>
-				<div class='resume-label'>Languages</div>
-				<div class='resume-info'>
-					<ul>
-						<li>English</li>
-						<li>Spanish</li>
-					</ul>
-				</div>
+		<div class='picture'>
+			<div class='picture-wrapper'>
+				<Image src={face} alt='my face' class='picture-face' />
 				<SocialsLinks />
 			</div>
 		</div>
