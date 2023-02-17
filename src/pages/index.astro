@@ -1,12 +1,9 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from 'src/config';
 import BaseHead from '@components/BaseHead.astro';
-import Header from '@components/Header.astro';
-import SectionHero from '@components/pages/index/SectionHero.astro';
-import SectionAbout from '@components/pages/index/SectionAbout.astro';
-import SectionProjects from '@components/pages/index/SectionProjects.astro';
-import Footer from '@components/Footer.astro';
 import '@styles/pages/index.scss';
+import Header from '@components/Header.astro';
+import SectionWelcome from '@components/pages/index/SectionWelcome.astro';
 ---
 
 <!DOCTYPE html>
@@ -15,26 +12,12 @@ import '@styles/pages/index.scss';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<div id='home'></div>
-		<Header title={SITE_TITLE} />
+		<Header />
 		<main>
-			<SectionHero />
-			<SectionAbout />
-			<SectionProjects />
-			<Footer />
+			<SectionWelcome />
+			<section class='projects'></section>
+			<section class='about'></section>
+			<section class='other-stuff'></section>
 		</main>
-
-		<script>
-			import IoElement from '@utils/IoElement';
-
-			const header = document.querySelector('header');
-			const hero = new IoElement(document.querySelector('section.hero'));
-			hero.subscribe('top', (f) => {
-				if (!header) return console.error('header element not found.');
-
-				if (f.bottom.above) header.classList.add('submerged');
-				else header.classList.remove('submerged');
-			});
-		</script>
 	</body>
 </html>
