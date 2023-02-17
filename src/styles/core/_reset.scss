@@ -22,14 +22,33 @@ html,
 body {
 	/* mobile viewport bug fix */
 	min-height: -webkit-fill-available;
-	background-color: var(--c-deepOcean);
+	background-color: $c-background;
+	image-rendering: pixelated;
 }
 
 body {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: $c-textLight;
 	font-family: 'Windows';
+	color: $c-foreground;
+	overflow: hidden;
+
+	&::before {
+		content: '';
+		position: fixed;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAPElEQVRYR+3QwQkAMAgEwRPSU/rvLKYKH47ge4+pJLd/7KrLZ6ze4T+AAAECBAgQIECAAAECBAgQ2C3wAIPAA9EUsPAbAAAAAElFTkSuQmCC');
+		inset: 0;
+		animation: scan 0.5s linear infinite;
+		pointer-events: none;
+		z-index: 1000;
+
+		@keyframes scan {
+			from {
+				transform: translateY(0);
+			}
+			to {
+				transform: translateY(4px);
+			}
+		}
+	}
 }
 
 img,
@@ -48,7 +67,6 @@ select {
 	font: inherit;
 }
 
-p,
 h1,
 h2,
 h3,
@@ -59,7 +77,10 @@ h6 {
 	font-family: 'Venice Classic';
 }
 
-#root,
-#__next {
-	isolation: isolate;
+p {
+	line-height: 1.35;
+
+	&:not(:first-of-type) {
+		margin: 8px 0;
+	}
 }
