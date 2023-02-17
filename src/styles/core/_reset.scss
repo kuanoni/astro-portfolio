@@ -37,11 +37,10 @@ body {
 }
 
 body {
-	// font-family: 'Playfair Display', 'Merriweather';
-	font-family: 'Merriweather', 'Playfair Display';
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: $c-textLight;
+	font-family: 'Windows';
 }
 
 img,
@@ -68,6 +67,7 @@ h4,
 h5,
 h6 {
 	overflow-wrap: break-word;
+	font-family: 'Venice Classic';
 }
 
 #root,
