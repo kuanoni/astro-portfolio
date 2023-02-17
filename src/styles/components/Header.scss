@@ -1,139 +1,30 @@
 header {
-	position: sticky;
-	top: 0px;
-	right: 0;
-	left: 0;
-	background-color: $c-orange;
-	font-family: 'Playfair Display';
-	z-index: z(header);
-	transition: background-color 0.2s cubic-bezier(0, 0.55, 1, 0.48);
-
-	&.submerged {
-		background-color: $c-oxford-blue;
-
-		& .container {
-			background-color: $c-oxford-blue;
-		}
-
-		& .links a {
-			@include for-size(tablet-sm, down) {
-				background-color: $c-oceanSurface;
-
-				&:hover,
-				&:active {
-					background-color: $c-seafoam;
-				}
-			}
-		}
-	}
-
-	.container {
-		display: flex;
-		align-items: center;
-		position: relative;
-		max-width: $page-width;
-		height: 3.5rem;
-		margin: auto;
-		background-color: $c-orange;
-		transition: background-color 0.2s cubic-bezier(0, 0.55, 1, 0.48);
-
-		@include for-size(tablet-sm, down) {
-			max-width: 100%;
-		}
-
-		.brand {
-			margin-right: auto;
-			margin-left: 0;
-			color: $c-textLight;
-			text-decoration: none;
-			line-height: 1.25;
-			font-size: 2rem;
-
-			@include for-size(tablet-sm, down) {
-				margin-left: 32px;
-				line-height: 1.75;
-			}
-
-			&:hover {
-				text-decoration: none;
-			}
-		}
-
-		.nav-toggle-btn {
-			display: none;
-			height: 36px;
-			margin-right: 32px;
-			padding: 0;
-			max-width: 100%;
-			aspect-ratio: 1 / 1;
-			background-image: svg-load('hamburger.svg');
-			background-size: 100%;
-			background-color: transparent;
-			border: none;
-			cursor: pointer;
-			transform-origin: center;
-			transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
-
-			&:hover,
-			&:active {
-				transform: scale(1.05);
-			}
-
-			@include for-size(tablet-sm, down) {
-				display: block;
-			}
-		}
-	}
-}
-
-header nav {
 	display: flex;
+	height: 100px;
+	margin-top: 32px;
+	border: 1px solid $c-border;
+	border-bottom: none;
+	background-image: url('images/banner.jpg');
 
-	@include for-size(tablet-sm, down) {
-		flex-direction: column;
-		align-items: flex-start;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		z-index: -1;
-		transform: translateY(0%);
-		transition: 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+	@include fit-page;
 
-		&.open {
-			transform: translateY(100%);
-		}
-	}
-
-	.links {
+	nav {
 		display: flex;
-
-		@include for-size(tablet-sm, down) {
-			flex-direction: column;
-			width: 100%;
-		}
+		justify-content: right;
+		width: 100%;
+		gap: 24px;
+		margin-top: auto;
+		padding: 4px 16px;
+		background: linear-gradient(0deg, #000000bf 50%, transparent);
 
 		a {
-			margin-left: 32px;
-			color: $c-textLight;
-			text-decoration: none;
-			font-size: 1.25rem;
-
-			@include for-size(tablet-sm, down) {
-				width: 100%;
-				margin-left: 0;
-				padding: 0 32px;
-				background-color: $c-blood;
-				line-height: 1.75;
-
-				&:hover,
-				&:active {
-					background-color: $c-salmon;
-				}
-			}
+			color: $c-blood;
+			text-transform: uppercase;
+			text-shadow: 1px 1px 0px black;
+			font-weight: 900;
 
 			&:hover {
-				text-decoration: underline;
+				color: $c-foreground;
 			}
 		}
 	}
