@@ -1,23 +1,12 @@
-@mixin margin-x($v) {
-	margin: {
-		right: $v;
-		left: $v;
+@mixin fit-page {
+	max-width: $page-width;
+	margin-left: auto;
+	margin-right: auto;
+
+	@include for-size(700px, down) {
+		margin-left: 16px;
+		margin-right: 16px;
 	}
-}
-
-@mixin margin-y($v) {
-	margin: {
-		top: $v;
-		bottom: $v;
-	}
-}
-
-@mixin margin-x-auto {
-	@include margin-x(auto);
-}
-
-@mixin margin-y-auto {
-	@include margin-y(auto);
 }
 
 @mixin pseudo($display: block, $pos: absolute, $content: '') {
