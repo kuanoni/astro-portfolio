@@ -1,3 +1,8 @@
+$c-blood: var(--c-blood);
+$c-border: var(--c-border);
+$c-foreground: var(--c-light);
+$c-background: var(--c-dark);
+
 $z-indexes: ('modal', 'header', 'base');
 
 $breakpoints: (
@@ -9,23 +14,4 @@ $breakpoints: (
 	desktop: 1600px,
 );
 
-$page-width: min(1066px, 95vw);
-$b-rad: 8px;
-
-$c-deepOcean: var(--c-deepOcean);
-$c-oxford-blue: var(--c-oxford-blue);
-$c-oceanSurface: var(--c-oceanSurface);
-$c-skyBlue: var(--c-skyBlue);
-$c-seafoam: var(--c-seafoam);
-$c-blood: var(--c-blood);
-$c-orange: var(--c-orange);
-$c-salmon: var(--c-salmon);
-$c-spotlight: var(--c-spotlight);
-$c-cloth: var(--c-cloth);
-
-$c-t-white: var(--c-t-white);
-$c-t-blue: var(--c-t-blue);
-
-$c-textLight: var(--c-textLight);
-$c-textMedium: var(--c-textMedium);
-$c-textDark: var(--c-textDark);
+$page-width: min(700px, 100%);
