@@ -1,5 +1,6 @@
 :root {
-	--c-blood: #b43434;
+	--c-blood: #c43232;
+	--c-highlight: #d3d300;
 
 	--c-border: #505050;
 	--c-light: #f5f5f5;
@@ -18,35 +19,99 @@
 	line-height: calc(2px + 2.75ex + 2px);
 }
 
+html {
+	background-color: black;
+	image-rendering: pixelated;
+	// background-image: url('https://f4.bcbits.com/img/0029977892_130.jpg');
+}
+
 html,
 body {
 	/* mobile viewport bug fix */
 	min-height: -webkit-fill-available;
-	background-color: $c-background;
-	image-rendering: pixelated;
 	padding: 32px 0;
 }
 
 body {
-	font-family: 'Windows';
 	color: $c-foreground;
-	overflow: hidden;
+	font-family: 'Windows';
+
+	@keyframes flicker {
+		0% {
+			opacity: 0.27861;
+		}
+		5% {
+			opacity: 0.34769;
+		}
+		10% {
+			opacity: 0.23604;
+		}
+		15% {
+			opacity: 0.90626;
+		}
+		20% {
+			opacity: 0.18128;
+		}
+		25% {
+			opacity: 0.83891;
+		}
+		30% {
+			opacity: 0.65583;
+		}
+		35% {
+			opacity: 0.67807;
+		}
+		40% {
+			opacity: 0.26559;
+		}
+		45% {
+			opacity: 0.84693;
+		}
+		50% {
+			opacity: 0.96019;
+		}
+		100% {
+			opacity: 0.24387;
+		}
+	}
+
+	&::after {
+		display: block;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(18, 16, 16, 0.05);
+		opacity: 0;
+		z-index: 2;
+		content: ' ';
+		pointer-events: none;
+		animation: flicker 0.15s infinite;
+	}
 
 	&::before {
-		content: '';
+		display: block;
 		position: fixed;
-		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAPElEQVRYR+3QwQkAMAgEwRPSU/rvLKYKH47ge4+pJLd/7KrLZ6ze4T+AAAECBAgQIECAAAECBAgQ2C3wAIPAA9EUsPAbAAAAAElFTkSuQmCC');
-		inset: 0;
-		animation: scan 0.5s linear infinite;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+			linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+		opacity: 0.5;
+		z-index: 2;
+		content: ' ';
+		background-size: 100% 4px, 3px 100%;
 		pointer-events: none;
-		z-index: 1000;
+		animation: snac 0.5s steps(4) infinite;
 
-		@keyframes scan {
-			from {
-				transform: translateY(0);
+		@keyframes snac {
+			0% {
+				background-position: 0px 0px;
 			}
-			to {
-				transform: translateY(4px);
+			100% {
+				background-position: 0px 4px;
 			}
 		}
 	}
@@ -74,7 +139,6 @@ h3,
 h4,
 h5,
 h6 {
-	overflow-wrap: break-word;
 	font-family: 'Venice Classic';
 }
 
