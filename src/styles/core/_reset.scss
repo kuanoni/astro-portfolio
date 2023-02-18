@@ -140,12 +140,18 @@ h4,
 h5,
 h6 {
 	font-family: 'Venice Classic';
+	overflow-wrap: break-word;
 }
 
 p {
+	margin: 8px 0;
 	line-height: 1.35;
+}
 
-	&:not(:first-of-type) {
-		margin: 8px 0;
+a {
+	color: #ed6502;
+
+	&:hover {
+		color: #ffa767;
 	}
 }
