@@ -2,26 +2,27 @@ header {
 	display: flex;
 	height: 100px;
 	margin-top: 32px;
-	border: 1px solid $c-border;
+	background-image: url('images/banner.webp');
+	border: 2px solid $c-border;
 	border-bottom: none;
-	background-image: url('images/banner.jpg');
 
 	@include fit-page;
 
 	nav {
 		display: flex;
 		justify-content: right;
-		width: 100%;
 		gap: 24px;
+		width: 100%;
 		margin-top: auto;
 		padding: 4px 16px;
-		background: linear-gradient(0deg, #000000bf 50%, transparent);
+		padding-bottom: 0;
+		background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 75%, transparent);
 
 		a {
 			color: $c-blood;
 			text-transform: uppercase;
-			text-shadow: 1px 1px 0px black;
 			font-weight: 900;
+			text-shadow: 1px 1px 0px black;
 
 			&:hover {
 				color: $c-foreground;
