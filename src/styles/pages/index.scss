@@ -18,12 +18,15 @@ main {
 
 section.welcome {
 	.intro {
+		min-height: 136px;
+		box-sizing: content-box;
+
 		&-picture {
 			position: relative;
 			float: left;
 			min-width: 120px;
 			height: 120px;
-			margin-right: 20px;
+			margin-right: 16px;
 			margin-bottom: 16px;
 			padding: 4px;
 			background-color: $c-blood;
