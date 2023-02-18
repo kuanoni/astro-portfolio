@@ -12,6 +12,11 @@ main {
 		h1 {
 			color: $c-blood;
 			font-size: 2.5rem;
+
+			&::before {
+				font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+				content: '‡ ';
+			}
 		}
 	}
 }
