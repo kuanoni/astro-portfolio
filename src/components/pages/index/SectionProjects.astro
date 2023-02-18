@@ -1,35 +1,32 @@
 ---
-import { getCollection } from 'astro:content';
-import ProjectCard from '@components/blocks/ProjectCard.astro';
-import Bubbles from '@components/decor/Bubbles.astro';
-import FishSchool from '@components/decor/FishSchool.astro';
 import '@styles/components/SectionProjects.scss';
+import { getCollection } from 'astro:content';
 
-// Get all entries from a collection. Requires the name of the collection as an argument.
 const allProjects = await getCollection('project');
 ---
 
 <section class='projects'>
-	<Bubbles class='b1' amount={70} />
-	<div class='fish-container'>
-		<FishSchool class='f1 go-left' amount={8} />
-		<FishSchool class='f2 go-right' amount={8} />
-		<FishSchool class='f3 go-left' amount={8} />
-	</div>
-	<div
-		class='header'
-		data-aos='fade-out-zoom'
-		data-aos-mirror='true'
-		data-aos-anchor='section.about .body'
-		data-aos-offset='300'
-	>
-		<h2 class='title'>Let's look at some of my work</h2>
-	</div>
-	<div class='body'>
+	<h1>☆ Projects</h1>
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem porro, vitae aliquam illum recusandae,
+		architecto iste doloremque suscipit, natus nemo voluptates eum. Dolor suscipit tenetur repellendus est fuga, eos
+		cumque!
+	</p>
+	<ul class='projects-list'>
 		{
 			allProjects.map(async (project) => {
-				return <ProjectCard project={project} />;
+				const { title, liveUrl, sourceUrl } = project.data;
+				const { Content } = await project.render();
+
+				return (
+					<li>
+						<h2>{title}</h2>
+						<Content />
+						<a href={liveUrl}>Live site</a>
+						<a href={sourceUrl}>Source code</a>
+					</li>
+				);
 			})
 		}
-	</div>
+	</ul>
 </section>
