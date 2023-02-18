@@ -1,40 +1,63 @@
-main > section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-	overflow: hidden;
+main {
+	& > section {
+		padding: 0.75rem 1rem;
+		background-color: $c-background;
+		border: 2px solid $c-border;
+		@include fit-page;
 
-	.header {
-		.title {
-			text-align: center;
-			line-height: 1;
-			font-size: 3rem;
-			font-weight: 700;
-			font-family: 'Merriweather';
-
-			@include for-size(phone, down) {
-				font-size: 2.5rem;
-			}
-
-			@include for-size(phone-sm, down) {
-				font-size: 2rem;
-			}
+		&:not(:last-child) {
+			margin-bottom: 8px;
 		}
 
-		.subtitle {
-			margin-top: 1rem;
-			text-align: center;
-			font-size: 1.125rem;
+		h1 {
+			color: $c-blood;
+			font-size: 2.5rem;
 
-			@include for-size(phone, down) {
-				font-size: 1rem;
+			&::before {
+				font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+				content: '‡ ';
 			}
 		}
+	}
+}
 
-		span {
-			line-height: 0;
-			white-space: nowrap;
+section.welcome {
+	.intro {
+		min-height: 136px;
+		box-sizing: content-box;
+
+		&-picture {
+			position: relative;
+			float: left;
+			min-width: 120px;
+			height: 120px;
+			margin-right: 16px;
+			margin-bottom: 16px;
+			padding: 4px;
+			background-color: $c-blood;
+			border: 1px solid $c-border;
+
+			img {
+				position: absolute;
+				width: calc(100% - 8px);
+				height: calc(100% - 8px);
+			}
+
+			.spooky {
+				animation: spooky 1s linear infinite;
+
+				@keyframes spooky {
+					0% {
+						opacity: 0;
+					}
+					50% {
+						opacity: 0.25;
+					}
+					100% {
+						opacity: 0;
+					}
+				}
+			}
 		}
 	}
 }

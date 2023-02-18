@@ -1,0 +1,19 @@
+.bg-abstract {
+	position: fixed;
+	z-index: -1;
+
+	&-1 {
+		top: -100px;
+		right: -5%;
+	}
+
+	&-2 {
+		top: 375px;
+		left: -10%;
+	}
+
+	&-3 {
+		top: 800px;
+		right: -10%;
+	}
+}

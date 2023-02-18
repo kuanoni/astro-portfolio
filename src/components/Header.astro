@@ -3,53 +3,9 @@ import '@styles/components/Header.scss';
 ---
 
 <header>
-	<div class='container'>
-		<a href='/' class='brand'>KAK</a>
-		<button class='nav-toggle-btn'> </button>
-		<nav>
-			<div class='links'>
-				<a href='/#home'>Home</a>
-				<a href='/#about'>About</a>
-				<a href='/blog'>Blog</a>
-				<a href='https://github.com/withastro/astro' target='_blank'>GitHub</a>
-			</div>
-		</nav>
-	</div>
+	<nav>
+		<a href='#'>Home</a>
+		<a href='#'>Projects</a>
+		<a href='#'>Blog</a>
+	</nav>
 </header>
-
-<script>
-	const pathname = window.location.pathname;
-	const hashLinks = document.querySelectorAll(`a[href^="${pathname}#"]`);
-
-	hashLinks.forEach((link) => {
-		link.addEventListener('click', (e) => {
-			e.preventDefault();
-
-			const targetId = link.getAttribute('href');
-			if (!targetId) return;
-			const target = document.querySelector(targetId.replaceAll(pathname, ''));
-			if (!target) return;
-
-			target.scrollIntoView({ behavior: 'smooth' });
-		});
-	});
-
-	const nav = document.querySelector('header nav');
-	const navToggleBtn = document.querySelector('.nav-toggle-btn');
-	if (nav && navToggleBtn)
-		navToggleBtn.addEventListener('click', (e) => {
-			const isOpen = nav.classList.toggle('open');
-
-			e.stopImmediatePropagation();
-
-			// when it's open, a click anywhere on the page should close it
-			if (isOpen)
-				document.body.addEventListener(
-					'click',
-					() => {
-						nav.classList.remove('open');
-					},
-					{ once: true }
-				);
-		});
-</script>

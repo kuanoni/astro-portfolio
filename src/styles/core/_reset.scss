@@ -1,21 +1,11 @@
 :root {
-	--c-deepOcean: #000814;
-	--c-oxford-blue: #001d3d;
-	--c-oceanSurface: #003566;
-	--c-skyBlue: #00b4d8;
-	--c-seafoam: #4dac9d;
-	--c-blood: #aa3333;
-	--c-orange: #da390b;
-	--c-salmon: #f56c5e;
-	--c-spotlight: #ffd60a;
-	--c-cloth: #ede0d4;
+	--c-blood: #c43232;
+	--c-highlight: #d3d300;
 
-	--c-t-white: #ffffff0f;
-	--c-t-blue: #00abff7a;
-
-	--c-textLight: #ffffff;
-	--c-textMedium: #c4c4c4;
-	--c-textDark: #111011;
+	--c-border: #505050;
+	--c-light: #f5f5f5;
+	--c-medium: #c4c4c4;
+	--c-dark: #111011;
 }
 
 *,
@@ -29,19 +19,104 @@
 	line-height: calc(2px + 2.75ex + 2px);
 }
 
+html {
+	background-color: black;
+	// background-image: url('https://f4.bcbits.com/img/0029977892_130.jpg');
+	image-rendering: pixelated;
+}
+
 html,
 body {
 	/* mobile viewport bug fix */
 	min-height: -webkit-fill-available;
-	background-color: var(--c-deepOcean);
 }
 
 body {
-	// font-family: 'Playfair Display', 'Merriweather';
-	font-family: 'Merriweather', 'Playfair Display';
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: $c-textLight;
+	position: relative;
+	padding: 32px 0;
+	color: $c-foreground;
+	font-family: 'Windows';
+	overflow-x: hidden;
+
+	@keyframes flicker {
+		0% {
+			opacity: 0.27861;
+		}
+		5% {
+			opacity: 0.34769;
+		}
+		10% {
+			opacity: 0.23604;
+		}
+		15% {
+			opacity: 0.90626;
+		}
+		20% {
+			opacity: 0.18128;
+		}
+		25% {
+			opacity: 0.83891;
+		}
+		30% {
+			opacity: 0.65583;
+		}
+		35% {
+			opacity: 0.67807;
+		}
+		40% {
+			opacity: 0.26559;
+		}
+		45% {
+			opacity: 0.84693;
+		}
+		50% {
+			opacity: 0.96019;
+		}
+		100% {
+			opacity: 0.24387;
+		}
+	}
+
+	&::after {
+		display: block;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(18, 16, 16, 0.05);
+		opacity: 0;
+		z-index: 2;
+		content: ' ';
+		pointer-events: none;
+		animation: flicker 0.15s infinite;
+	}
+
+	&::before {
+		display: block;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+			linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+		opacity: 0.5;
+		z-index: 2;
+		content: ' ';
+		background-size: 100% 4px, 3px 100%;
+		pointer-events: none;
+		animation: snac 0.5s steps(4) infinite;
+
+		@keyframes snac {
+			0% {
+				background-position: 0px 0px;
+			}
+			100% {
+				background-position: 0px 4px;
+			}
+		}
+	}
 }
 
 img,
@@ -60,17 +135,25 @@ select {
 	font: inherit;
 }
 
-p,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+	font-family: 'Venice Classic';
 	overflow-wrap: break-word;
 }
 
-#root,
-#__next {
-	isolation: isolate;
+p {
+	margin: 8px 0;
+	line-height: 1.35;
+}
+
+a {
+	color: #ed6502;
+
+	&:hover {
+		color: #ffa767;
+	}
 }
