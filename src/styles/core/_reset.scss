@@ -21,20 +21,22 @@
 
 html {
 	background-color: black;
-	image-rendering: pixelated;
 	// background-image: url('https://f4.bcbits.com/img/0029977892_130.jpg');
+	image-rendering: pixelated;
 }
 
 html,
 body {
 	/* mobile viewport bug fix */
 	min-height: -webkit-fill-available;
-	padding: 32px 0;
 }
 
 body {
+	position: relative;
+	padding: 32px 0;
 	color: $c-foreground;
 	font-family: 'Windows';
+	overflow-x: hidden;
 
 	@keyframes flicker {
 		0% {
