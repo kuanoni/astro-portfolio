@@ -1,23 +1,15 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from 'src/config';
-import BaseHead from '@components/BaseHead.astro';
-import '@styles/pages/index.scss';
-import Header from '@components/Header.astro';
 import SectionWelcome from '@components/pages/index/SectionWelcome.astro';
+import SectionProjects from '@components/pages/index/SectionProjects.astro';
+import SectionOtherStuff from '@components/pages/index/SectionOtherStuff.astro';
+import BaseLayout from 'src/layouts/BaseLayout.astro';
+import '@styles/pages/index.scss';
 ---
 
-<!DOCTYPE html>
-<html lang='en'>
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<SectionWelcome />
-			<section class='projects'></section>
-			<section class='about'></section>
-			<section class='other-stuff'></section>
-		</main>
-	</body>
-</html>
+<BaseLayout>
+	<main>
+		<SectionWelcome />
+		<SectionProjects />
+		<SectionOtherStuff />
+	</main>
+</BaseLayout>
