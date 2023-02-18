@@ -1,0 +1,14 @@
+.bg-abstract {
+	position: absolute;
+	z-index: -1;
+
+	&-1 {
+		top: -100px;
+		right: -5%;
+	}
+
+	&-2 {
+		top: 450px;
+		left: -10%;
+	}
+}
