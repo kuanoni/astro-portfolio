@@ -7,6 +7,10 @@ section.projects {
 		h2 {
 			margin-top: 16px;
 			color: $c-blood;
+
+			&::before {
+				content: '♦ ';
+			}
 		}
 
 		p {
