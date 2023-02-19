@@ -67,37 +67,63 @@ section.projects {
 		padding: 0;
 		list-style: none;
 
-		li {
-			margin-top: 16px;
-		}
+		&__item {
+			margin-top: 24px;
 
-		.previews {
-			display: flex;
-			gap: 16px;
-			position: relative;
-			margin-top: 8px;
-			margin-bottom: 8px;
-		}
+			.techs {
+				display: flex;
+				flex-wrap: wrap;
+				row-gap: 8px;
+				column-gap: 16px;
+				margin: 8px 0;
+				padding: 0;
+				color: $c-foreground-medium;
+				list-style-type: none;
 
-		h2 {
-			color: $c-blood;
+				li {
+					margin-top: 0;
+					line-height: 1;
+					font-size: 0.875rem;
 
-			&::before {
-				font-family: 'Windows';
-				content: '† ';
+					a {
+						color: $c-foreground-medium;
+						line-height: 1;
+
+						&:hover {
+							color: $c-foreground;
+						}
+					}
+				}
 			}
-		}
 
-		p {
-			margin-bottom: 0;
-		}
+			.previews {
+				display: flex;
+				gap: 16px;
+				position: relative;
+				margin-top: 8px;
+				margin-bottom: 8px;
+			}
 
-		a {
-			margin-right: 16px;
-		}
+			h2 {
+				color: $c-blood;
 
-		strong {
-			color: $c-highlight;
+				&::before {
+					font-family: 'Windows';
+					content: '† ';
+				}
+			}
+
+			p {
+				margin-bottom: 0;
+			}
+
+			& > a {
+				margin-right: 16px;
+			}
+
+			strong {
+				color: $c-highlight;
+			}
 		}
 	}
 }

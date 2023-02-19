@@ -54,4 +54,8 @@ export const TECH_INFO: TechInfo = {
 		description: 'Node.js framework for creating web servers.',
 		url: 'https://expressjs.com/',
 	},
+	Redux: {
+		description: 'A application state managing library for Javascript.',
+		url: 'https://redux.js.org/',
+	},
 };
