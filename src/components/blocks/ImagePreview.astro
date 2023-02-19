@@ -1,0 +1,16 @@
+---
+import '@styles/components/ImagePreview.scss';
+
+interface Props {
+	src: string;
+}
+
+const { src } = Astro.props;
+---
+
+<div class='thumbnail'>
+	<img src={src} alt='' />
+	<span>
+		<img src={src} alt='' />
+	</span>
+</div>
