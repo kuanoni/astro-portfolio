@@ -60,3 +60,44 @@ section.welcome {
 		}
 	}
 }
+
+section.projects {
+	.projects-list {
+		margin: 16px 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			margin-top: 16px;
+		}
+
+		.previews {
+			display: flex;
+			gap: 16px;
+			position: relative;
+			margin-top: 8px;
+			margin-bottom: 8px;
+		}
+
+		h2 {
+			color: $c-blood;
+
+			&::before {
+				font-family: 'Windows';
+				content: '† ';
+			}
+		}
+
+		p {
+			margin-bottom: 0;
+		}
+
+		a {
+			margin-right: 16px;
+		}
+
+		strong {
+			color: $c-highlight;
+		}
+	}
+}
