@@ -2,6 +2,7 @@
 import { Image } from '@astrojs/image/components';
 import faceSpooky from '@images/face_small_spooky.webp';
 import faceNormal from '@images/face_small_normal.webp';
+import mt from '@images/mt.webp';
 ---
 
 <section class='welcome'>
@@ -29,5 +30,5 @@ import faceNormal from '@images/face_small_normal.webp';
 		<li>Lorem ipsum dolor sit.</li>
 		<li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium ratione iste accusamus!</li>
 	</ul>
-	<img src='images/mt.webp' alt='' style='margin: 0 auto; margin-top: 16px;' />
+	<Image src={mt} alt='a cool picture' style='margin: 0 auto; margin-top: 16px;' />
 </section>
