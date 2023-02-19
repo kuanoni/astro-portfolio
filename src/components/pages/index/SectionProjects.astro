@@ -1,4 +1,5 @@
 ---
+import ImagePreview from '@components/blocks/ImagePreview.astro';
 import '@styles/components/SectionProjects.scss';
 import { getCollection } from 'astro:content';
 
@@ -24,6 +25,9 @@ const allProjects = await getCollection('project');
 						<Content />
 						<a href={liveUrl}>Live site</a>
 						<a href={sourceUrl}>Source code</a>
+						<div class='previews'>
+							<ImagePreview src={`images/projects/${project.slug}/preview-desktop.webp`} />
+						</div>
 					</li>
 				);
 			})
