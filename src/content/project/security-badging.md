@@ -1,6 +1,7 @@
 ---
 title: Security Badging System
 techs: [javascript, react, express, mongoDB, sass, figma]
+previewImages: ['preview-desktop.webp', 'preview-mobile.webp', 'preview-tablet.webp']
 liveUrl: 'https://security-badging-system.web.app/'
 sourceUrl: 'https://github.com/kuanoni/react-security-badging-system'
 ---

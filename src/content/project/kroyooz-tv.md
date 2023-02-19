@@ -1,6 +1,7 @@
 ---
 title: KroyOoz.tv
 techs: [typescript, next, react, stiches, mongoDB, figma]
+previewImages: ['preview-desktop.webp', 'preview-mobile.webp']
 liveUrl: 'https://streamer-hub.fly.dev/'
 sourceUrl: 'https://github.com/kuanoni/streamer-hub'
 ---

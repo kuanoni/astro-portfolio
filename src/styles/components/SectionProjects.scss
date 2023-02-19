@@ -4,8 +4,19 @@ section.projects {
 		padding: 0;
 		list-style: none;
 
-		h2 {
+		li {
 			margin-top: 16px;
+		}
+
+		.previews {
+			display: flex;
+			gap: 16px;
+			position: relative;
+			margin-top: 8px;
+			margin-bottom: 8px;
+		}
+
+		h2 {
 			color: $c-blood;
 
 			&::before {
