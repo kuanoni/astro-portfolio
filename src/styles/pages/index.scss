@@ -60,3 +60,71 @@ section.welcome {
 		}
 	}
 }
+
+section.projects {
+	.projects-list {
+		margin: 16px 0;
+		padding: 0;
+		list-style: none;
+
+		&__item {
+			margin-top: 24px;
+
+			.techs {
+				display: flex;
+				flex-wrap: wrap;
+				row-gap: 8px;
+				column-gap: 16px;
+				margin: 8px 0;
+				padding: 0;
+				color: $c-foreground-medium;
+				list-style-type: none;
+
+				li {
+					margin-top: 0;
+					line-height: 1;
+					font-size: 0.875rem;
+
+					a {
+						color: $c-foreground-medium;
+						text-decoration: none;
+						line-height: 1;
+
+						&:hover {
+							color: $c-foreground;
+						}
+					}
+				}
+			}
+
+			.previews {
+				display: flex;
+				gap: 16px;
+				position: relative;
+				margin-top: 8px;
+				margin-bottom: 8px;
+			}
+
+			h2 {
+				color: $c-blood;
+
+				&::before {
+					font-family: 'Windows';
+					content: '† ';
+				}
+			}
+
+			p {
+				margin-bottom: 0;
+			}
+
+			& > a {
+				margin-right: 16px;
+			}
+
+			strong {
+				color: $c-highlight;
+			}
+		}
+	}
+}

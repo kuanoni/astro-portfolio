@@ -1,7 +1,7 @@
 ---
 import ImagePreview from '@components/blocks/ImagePreview.astro';
-import '@styles/components/SectionProjects.scss';
 import { getCollection } from 'astro:content';
+import { TECH_INFO } from 'src/config';
 
 const allProjects = await getCollection('project');
 ---
@@ -20,11 +20,24 @@ const allProjects = await getCollection('project');
 				const { Content } = await project.render();
 
 				return (
-					<li>
+					<li class='projects-list__item'>
 						<h2>{title}</h2>
 						<Content />
-						<a href={liveUrl}>Live site</a>
-						<a href={sourceUrl}>Source code</a>
+						<ul class='techs'>
+							{techs.map((techName) => {
+								if (!TECH_INFO[techName]) return <li>{techName}</li>;
+
+								const { description, url } = TECH_INFO[techName];
+
+								return (
+									<li title={description}>
+										<a href={url}>{techName}</a>
+									</li>
+								);
+							})}
+						</ul>
+						<a href={liveUrl}>Live site ↗</a>
+						<a href={sourceUrl}>Source code ↗</a>
 						<div class='previews'>
 							{previewImages.map((imgSrc, i) => (
 								<ImagePreview
