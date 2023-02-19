@@ -1,0 +1,24 @@
+.thumbnail {
+	height: 50px;
+
+	&:hover {
+		& > span > img {
+			display: block;
+		}
+	}
+
+	& > img {
+		height: 100%;
+		border: 1px solid var(--c-border);
+	}
+
+	& > span {
+		position: absolute;
+		z-index: 6;
+		pointer-events: none;
+
+		& > img {
+			display: none;
+		}
+	}
+}
