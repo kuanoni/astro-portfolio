@@ -26,8 +26,11 @@ const allProjects = await getCollection('project');
 						<a href={liveUrl}>Live site</a>
 						<a href={sourceUrl}>Source code</a>
 						<div class='previews'>
-							{previewImages.map((imgSrc) => (
-								<ImagePreview src={`images/projects/${project.slug}/${imgSrc}`} />
+							{previewImages.map((imgSrc, i) => (
+								<ImagePreview
+									src={`images/projects/${project.slug}/${imgSrc}`}
+									alt={`${title} preview #${i + 1}`}
+								/>
 							))}
 						</div>
 					</li>
