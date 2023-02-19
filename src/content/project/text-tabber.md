@@ -1,6 +1,6 @@
 ---
 title: Text Tabber
-techs: [javascript, react, sass, redux]
+techs: [Javascript, React, Sass, Redux]
 previewImages: ['preview-desktop.webp', 'preview-mobile.webp', 'preview-tablet.webp']
 liveUrl: 'https://text-tabber.com/'
 sourceUrl: 'https://github.com/kuanoni/react-guitar-tab-app'
