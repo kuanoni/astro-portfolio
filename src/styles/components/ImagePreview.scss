@@ -16,9 +16,11 @@
 		position: absolute;
 		z-index: 6;
 		pointer-events: none;
+		image-rendering: auto;
 
 		& > img {
 			display: none;
+			max-height: 500px;
 		}
 	}
 }

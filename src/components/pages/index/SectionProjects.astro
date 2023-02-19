@@ -16,7 +16,7 @@ const allProjects = await getCollection('project');
 	<ul class='projects-list'>
 		{
 			allProjects.map(async (project) => {
-				const { title, liveUrl, sourceUrl } = project.data;
+				const { title, techs, previewImages, liveUrl, sourceUrl } = project.data;
 				const { Content } = await project.render();
 
 				return (
@@ -26,7 +26,9 @@ const allProjects = await getCollection('project');
 						<a href={liveUrl}>Live site</a>
 						<a href={sourceUrl}>Source code</a>
 						<div class='previews'>
-							<ImagePreview src={`images/projects/${project.slug}/preview-desktop.webp`} />
+							{previewImages.map((imgSrc) => (
+								<ImagePreview src={`images/projects/${project.slug}/${imgSrc}`} />
+							))}
 						</div>
 					</li>
 				);
