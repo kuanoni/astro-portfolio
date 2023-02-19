@@ -20,7 +20,8 @@ section.projects {
 			color: $c-blood;
 
 			&::before {
-				content: '♦ ';
+				font-family: 'Windows';
+				content: '† ';
 			}
 		}
 
