@@ -1,7 +1,11 @@
 ---
+import { Image } from '@astrojs/image/components';
+import { SITE_TITLE, SITE_DESCRIPTION } from 'src/config';
 import Header from '@components/Header.astro';
 import BaseHead from '@components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from 'src/config';
+import abstract1 from '@images/abstract1.webp';
+import abstract2 from '@images/abstract2.webp';
+import abstract3 from '@images/abstract3.webp';
 import '@styles/layouts/BaseLayout.scss';
 
 interface Props {
@@ -18,9 +22,9 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 		<BaseHead title={title} description={description} />
 	</head>
 	<body>
-		<img class='bg-abstract bg-abstract-1' src='images/abstract1.webp' alt='' />
-		<img class='bg-abstract bg-abstract-2' src='images/abstract2.webp' alt='' />
-		<img class='bg-abstract bg-abstract-3' src='images/abstract3.webp' alt='' />
+		<Image class='bg-abstract bg-abstract-1' src={abstract1} alt='' />
+		<Image class='bg-abstract bg-abstract-2' src={abstract2} alt='' />
+		<Image class='bg-abstract bg-abstract-3' src={abstract3} alt='' />
 		<Header />
 		<slot />
 	</body>
