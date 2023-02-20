@@ -1,3 +1,26 @@
+main {
+	& > section {
+		padding: 0.75rem 1rem;
+		background-color: $c-background;
+		border: 2px solid $c-border;
+		@include fit-page;
+
+		&:not(:last-child) {
+			margin-bottom: 8px;
+		}
+
+		h1 {
+			color: $c-blood;
+			font-size: 2.5rem;
+
+			&::before {
+				font-family: 'Windows';
+				content: '‡ ';
+			}
+		}
+	}
+}
+
 .bg-abstract {
 	position: fixed;
 	z-index: -1;
