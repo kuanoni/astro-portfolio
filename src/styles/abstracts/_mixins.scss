@@ -4,8 +4,8 @@
 	margin-right: auto;
 
 	@include for-size(700px, down) {
-		margin-left: 16px;
-		margin-right: 16px;
+		margin-left: 8px;
+		margin-right: 8px;
 	}
 }
 
