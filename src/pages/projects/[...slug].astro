@@ -1,8 +1,6 @@
 ---
-import Date from '@components/blocks/Date.astro';
 import { CollectionEntry, getCollection } from 'astro:content';
-import BaseLayout from 'src/layouts/BaseLayout.astro';
-import '@styles/layouts/BlogPostLayout.scss';
+import BlogPostLayout from 'src/layouts/BlogPostLayout.astro';
 
 export async function getStaticPaths() {
 	const blogEntries = await getCollection('blog', ({ id }) => id.startsWith('projects/'));
@@ -18,26 +16,9 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, tags, datePublished, dateUpdated } = entry.data;
 const { Content } = await entry.render();
 ---
 
-<BaseLayout>
-	<main>
-		<section class='post'>
-			<h1>{title}</h1>
-			<span class='dates'>
-				<Date date={datePublished} />
-				{
-					dateUpdated && (
-						<Fragment>
-							{' '}
-							— Updated <Date date={dateUpdated} />
-						</Fragment>
-					)
-				}
-			</span>
-			<Content />
-		</section>
-	</main>
-</BaseLayout>
+<BlogPostLayout entry={entry}>
+	<Content />
+</BlogPostLayout>
