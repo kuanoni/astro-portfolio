@@ -159,3 +159,9 @@ a {
 		color: #ffa767;
 	}
 }
+
+ul {
+	@include for-size(phone) {
+		padding-left: 1rem;
+	}
+}
