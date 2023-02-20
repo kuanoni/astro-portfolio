@@ -6,6 +6,11 @@ footer {
 	text-align: center;
 	@include fit-page;
 
+	small {
+		display: block;
+		line-height: normal;
+	}
+
 	ul {
 		padding: 0;
 		font-size: 0.875rem;
