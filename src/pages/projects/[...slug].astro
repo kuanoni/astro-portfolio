@@ -1,6 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
-// 1. Generate a new path for every collection entry
+import Date from '@components/blocks/Date.astro';
+import { CollectionEntry, getCollection } from 'astro:content';
+import BaseLayout from 'src/layouts/BaseLayout.astro';
+import '@styles/layouts/BlogPostLayout.scss';
+
 export async function getStaticPaths() {
 	const blogEntries = await getCollection('blog', ({ id }) => id.startsWith('projects/'));
 
@@ -10,9 +13,31 @@ export async function getStaticPaths() {
 	}));
 }
 
-// 2. When it's time to render, you can get the entry directly from the prop
+interface Props {
+	entry: CollectionEntry<'blog'>;
+}
+
 const { entry } = Astro.props;
+const { title, tags, datePublished, dateUpdated } = entry.data;
 const { Content } = await entry.render();
 ---
 
-<Content />
+<BaseLayout>
+	<main>
+		<section class='post'>
+			<h1>{title}</h1>
+			<span class='dates'>
+				<Date date={datePublished} />
+				{
+					dateUpdated && (
+						<Fragment>
+							{' '}
+							— Updated <Date date={dateUpdated} />
+						</Fragment>
+					)
+				}
+			</span>
+			<Content />
+		</section>
+	</main>
+</BaseLayout>
