@@ -7,6 +7,7 @@ import abstract1 from '@images/abstract1.webp';
 import abstract2 from '@images/abstract2.webp';
 import abstract3 from '@images/abstract3.webp';
 import '@styles/layouts/BaseLayout.scss';
+import Footer from '@components/Footer.astro';
 
 interface Props {
 	title?: string;
@@ -27,5 +28,6 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 		<Image class='bg-abstract bg-abstract-3' src={abstract3} alt='' />
 		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>

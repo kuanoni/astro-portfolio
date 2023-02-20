@@ -1,0 +1,23 @@
+footer {
+	margin-top: 64px;
+	margin-bottom: 8px;
+	background-color: black;
+	border: 2px solid $c-border;
+	text-align: center;
+	@include fit-page;
+
+	small {
+		display: block;
+		line-height: normal;
+	}
+
+	ul {
+		padding: 0;
+		font-size: 0.875rem;
+
+		li {
+			display: inline;
+			margin-right: 8px;
+		}
+	}
+}
