@@ -1,0 +1,17 @@
+---
+import '@styles/components/Footer.scss';
+import { DEV_URL, GITHUB_URL, GITLAB_URL, LINKEDIN_URL, STACK_OVERFLOW_URL } from 'src/config';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+	<ul>
+		<li><a href={GITHUB_URL}>Github</a></li>
+		<li><a href={GITLAB_URL}>Gitlab</a></li>
+		<li><a href={LINKEDIN_URL}>Linkedin</a></li>
+		<li><a href={STACK_OVERFLOW_URL}>Stack Overflow</a></li>
+		<li><a href={DEV_URL}>DEV</a></li>
+	</ul>
+	<small>Ⓒ {currentYear} Kainoa Araiza Kuanoni. All rights reserved.</small>
+</footer>
