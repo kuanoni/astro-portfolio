@@ -35,6 +35,7 @@ body {
 	position: relative;
 	padding: 32px 0;
 	color: $c-foreground;
+	letter-spacing: 0.05em;
 	font-family: 'Windows';
 	overflow-x: hidden;
 
@@ -141,6 +142,7 @@ h3,
 h4,
 h5,
 h6 {
+	letter-spacing: normal;
 	font-family: 'Venice Classic';
 	overflow-wrap: break-word;
 }
