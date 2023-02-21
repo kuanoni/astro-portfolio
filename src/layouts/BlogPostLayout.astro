@@ -1,0 +1,33 @@
+---
+import Date from '@components/blocks/Date.astro';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import '@styles/layouts/PostLayout.scss';
+
+interface Props {
+	entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+const { title, datePublished, dateUpdated } = entry.data;
+---
+
+<BaseLayout>
+	<main>
+		<section class='post'>
+			<h1>{title}</h1>
+			<div class='dates'>
+				<Date date={datePublished} />
+				{
+					dateUpdated && (
+						<Fragment>
+							{' '}
+							— Updated <Date date={dateUpdated} />
+						</Fragment>
+					)
+				}
+			</div>
+			<slot />
+		</section>
+	</main>
+</BaseLayout>

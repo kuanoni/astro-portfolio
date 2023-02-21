@@ -142,11 +142,12 @@ h4,
 h5,
 h6 {
 	font-family: 'Venice Classic';
+	color: $c-blood;
 	overflow-wrap: break-word;
 }
 
 p {
-	margin: 8px 0;
+	margin: 0.5em 0;
 	line-height: 1.35;
 }
 
@@ -156,4 +157,12 @@ a {
 	&:hover {
 		color: #ffa767;
 	}
+}
+
+strong {
+	color: $c-highlight;
+}
+
+code {
+	tab-size: 4;
 }
