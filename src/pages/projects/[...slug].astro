@@ -1,24 +1,24 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
-import BlogPostLayout from 'src/layouts/BlogPostLayout.astro';
+import ProjectPostLayout from 'src/layouts/ProjectPostLayout.astro';
 
 export async function getStaticPaths() {
-	const blogEntries = await getCollection('blog', ({ id }) => id.startsWith('projects/'));
+	const projectEntries = await getCollection('project');
 
-	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug.replace('projects/', '') },
+	return projectEntries.map((entry) => ({
+		params: { slug: entry.slug },
 		props: { entry },
 	}));
 }
 
 interface Props {
-	entry: CollectionEntry<'blog'>;
+	entry: CollectionEntry<'project'>;
 }
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<BlogPostLayout entry={entry}>
+<ProjectPostLayout entry={entry}>
 	<Content />
-</BlogPostLayout>
+</ProjectPostLayout>
