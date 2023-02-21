@@ -28,7 +28,7 @@ const projectPostSchema = postSchema.extend({
 });
 
 export const collections = {
-	projectPreviews: defineCollection({ schema: projectPreviewSchema }),
+	projectPreview: defineCollection({ schema: projectPreviewSchema }),
 	blog: defineCollection({ schema: postSchema }),
 	project: defineCollection({ schema: projectPostSchema }),
 };
