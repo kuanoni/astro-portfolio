@@ -1,56 +1,20 @@
 ---
-import ImagePreview from '@components/blocks/ImagePreview.astro';
 import { getCollection } from 'astro:content';
-import { TECH_INFO } from 'src/config';
+import { FEATURED_PROJECTS } from 'src/config';
+import ProjectPreview from '@components/blocks/ProjectPreview.astro';
 
-const allProjects = await getCollection('project');
+const allPreviews = await getCollection('projectPreview', (entry) => FEATURED_PROJECTS.includes(entry.slug));
 ---
 
 <section class='projects'>
-	<h1>Projects</h1>
+	<h1>Featured Projects</h1>
 	<p>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem porro, vitae aliquam illum recusandae,
 		architecto iste doloremque suscipit, natus nemo voluptates eum. Dolor suscipit tenetur repellendus est fuga, eos
 		cumque!
 	</p>
 	<ul class='projects-list'>
-		{
-			allProjects.map(async (project) => {
-				const { title, techs, previewImages, liveUrl, sourceUrl } = project.data;
-				const { Content } = await project.render();
-
-				return (
-					<li class='projects-list__item'>
-						<h2>{title}</h2>
-						<Content />
-						<ul class='techs'>
-							{techs.map((techName) => {
-								if (!TECH_INFO[techName]) return <li>{techName}</li>;
-
-								const { description, url } = TECH_INFO[techName];
-
-								return (
-									<li title={description}>
-										<a href={url}>{techName}</a>
-									</li>
-								);
-							})}
-						</ul>
-						<a href={liveUrl}>Live site ↗</a>
-						<a href={sourceUrl}>Source code ↗</a>
-						<a href={`/projects/${project.slug}`}>Read about ↗</a>
-						<div class='previews'>
-							{previewImages.map((imgSrc, i) => (
-								<ImagePreview
-									src={`images/projects/${project.slug}/${imgSrc}`}
-									alt={`${title} preview #${i + 1}`}
-								/>
-							))}
-						</div>
-					</li>
-				);
-			})
-		}
+		{allPreviews.map((previewEntry) => <ProjectPreview previewEntry={previewEntry} />)}
 	</ul>
 	<p>Check out the <a href='#'>rest of them</a>.</p>
 </section>
