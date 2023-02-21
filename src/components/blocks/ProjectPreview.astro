@@ -1,0 +1,52 @@
+---
+import { CollectionEntry, getEntryBySlug } from 'astro:content';
+import { TECH_INFO } from 'src/config';
+import ImagePreview from './ImagePreview.astro';
+
+interface Props {
+	previewEntry: CollectionEntry<'projectPreviews'>;
+}
+
+const { previewEntry } = Astro.props;
+
+const projectEntry = await getEntryBySlug('project', previewEntry.slug);
+if (projectEntry === undefined)
+	throw new Error(`Failed to find matching project for projectPreview slug: ${previewEntry.slug}`);
+
+const { Content } = await previewEntry.render();
+const { previewImages } = previewEntry.data;
+const { title, techs, liveUrl, sourceUrl } = projectEntry.data;
+---
+
+<li class='projects-list__item'>
+	<h2>{title}</h2>
+	<Content />
+	<ul class='techs'>
+		{
+			techs.map((techName) => {
+				if (!TECH_INFO[techName]) return <li>{techName}</li>;
+
+				const { description, url } = TECH_INFO[techName];
+
+				return (
+					<li title={description}>
+						<a href={url}>{techName}</a>
+					</li>
+				);
+			})
+		}
+	</ul>
+	<a href={liveUrl}>Live site ↗</a>
+	<a href={sourceUrl}>Source code ↗</a>
+	<a href={`/projects/${projectEntry.slug}`}>Read about ↗</a>
+	<div class='previews'>
+		{
+			previewImages.map((imgSrc, i) => (
+				<ImagePreview
+					src={`images/projects/${projectEntry.slug}/${imgSrc}`}
+					alt={`${title} preview #${i + 1}`}
+				/>
+			))
+		}
+	</div>
+</li>
