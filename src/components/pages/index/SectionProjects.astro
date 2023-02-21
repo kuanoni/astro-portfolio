@@ -1,8 +1,9 @@
 ---
-import ProjectPreview from '@components/blocks/ProjectPreview.astro';
 import { getCollection } from 'astro:content';
+import { FEATURED_PROJECTS } from 'src/config';
+import ProjectPreview from '@components/blocks/ProjectPreview.astro';
 
-const allPreviews = await getCollection('projectPreviews');
+const allPreviews = await getCollection('projectPreviews', (entry) => FEATURED_PROJECTS.includes(entry.slug));
 ---
 
 <section class='projects'>
