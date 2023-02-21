@@ -16,7 +16,7 @@ const { title, datePublished, dateUpdated } = entry.data;
 	<main>
 		<section class='post'>
 			<h1>{title}</h1>
-			<span class='dates'>
+			<div class='dates'>
 				<Date date={datePublished} />
 				{
 					dateUpdated && (
@@ -26,7 +26,7 @@ const { title, datePublished, dateUpdated } = entry.data;
 						</Fragment>
 					)
 				}
-			</span>
+			</div>
 			<slot />
 		</section>
 	</main>
