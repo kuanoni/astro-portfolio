@@ -59,3 +59,6 @@ export const TECH_INFO: TechInfo = {
 		url: 'https://redux.js.org/',
 	},
 };
+
+// content slugs for projects to be featured on the home page
+export const FEATURED_PROJECTS = ['kroyooz-tv', 'text-tabber'];
