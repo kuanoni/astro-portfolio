@@ -30,6 +30,5 @@ const projectPostSchema = postSchema.merge(featuredProjectSchema.omit({ previewI
 export const collections = {
 	featuredProjects: defineCollection({ schema: featuredProjectSchema }),
 	blog: defineCollection({ schema: postSchema }),
-	article: defineCollection({ schema: postSchema }),
 	project: defineCollection({ schema: projectPostSchema }),
 };
