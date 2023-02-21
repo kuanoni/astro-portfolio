@@ -45,8 +45,6 @@ section.projects {
 		list-style: none;
 
 		&__item {
-			margin-top: 24px;
-
 			.techs {
 				display: flex;
 				flex-wrap: wrap;
@@ -83,7 +81,7 @@ section.projects {
 			}
 
 			h2 {
-				color: $c-blood;
+				margin-top: 0.875em;
 
 				&::before {
 					font-family: 'Windows';
@@ -91,16 +89,8 @@ section.projects {
 				}
 			}
 
-			p {
-				margin-bottom: 0;
-			}
-
 			& > a {
 				margin-right: 16px;
-			}
-
-			strong {
-				color: $c-highlight;
 			}
 		}
 	}

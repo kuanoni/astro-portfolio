@@ -4,4 +4,13 @@ section.post {
 		font-size: 0.875rem;
 		color: $c-foreground-medium;
 	}
+
+	h2 {
+		margin-top: 0.875em;
+
+		&::before {
+			font-family: 'Windows';
+			content: '† ';
+		}
+	}
 }
