@@ -1,9 +1,13 @@
 ---
 title: Security Badging System
 techs: [Javascript, React, Express, MongoDB, Sass, Figma]
-previewImages: ['preview-desktop.webp', 'preview-mobile.webp', 'preview-tablet.webp']
 liveUrl: 'https://security-badging-system.web.app/'
 sourceUrl: 'https://github.com/kuanoni/react-security-badging-system'
+
+tags: [project, front-end, web dev]
+datePublished: 02-20-2023
+dateUpdated: 02-22-2023
+draft: true
 ---
 
 A straightforward and user-friendly way to manage an employee badging system.
