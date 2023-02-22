@@ -15,6 +15,7 @@ const { title, datePublished, dateUpdated } = entry.data;
 <BaseLayout>
 	<main>
 		<section class='post'>
+			<slot name='pre-header' />
 			<h1>{title}</h1>
 			<div class='dates'>
 				<Date date={datePublished} />
