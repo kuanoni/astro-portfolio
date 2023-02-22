@@ -18,7 +18,7 @@ const { title, datePublished, dateUpdated } = entry.data;
 			<slot name='pre-header' />
 			<h1>{title}</h1>
 			<div class='dates'>
-				<Date date={datePublished} />
+				Published <Date date={datePublished} />
 				{
 					dateUpdated && (
 						<Fragment>
