@@ -10,5 +10,8 @@ const { entry } = Astro.props;
 ---
 
 <PostLayoutBase entry={entry}>
+	<div class='pre-header' slot='pre-header'>
+		<a href='/posts'>← View all posts</a>
+	</div>
 	<slot />
 </PostLayoutBase>
