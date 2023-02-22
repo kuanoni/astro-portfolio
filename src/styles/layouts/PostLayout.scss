@@ -1,8 +1,8 @@
 section.post {
 	.dates {
 		margin-bottom: 16px;
-		font-size: 0.875rem;
 		color: $c-foreground-medium;
+		font-size: 0.875rem;
 	}
 
 	h2 {
@@ -11,6 +11,21 @@ section.post {
 		&::before {
 			font-family: 'Windows';
 			content: '† ';
+		}
+	}
+
+	button.scroll-up {
+		display: block;
+		margin: 0 auto;
+		margin-top: 16px;
+		color: $c-link;
+		background-color: transparent;
+		border: none;
+		text-decoration: underline;
+
+		&:hover {
+			color: $c-link-hover;
+			cursor: pointer;
 		}
 	}
 }
