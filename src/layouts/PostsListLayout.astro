@@ -21,32 +21,57 @@ const sortedList = postsList.sort((a, b) => b.data.datePublished.valueOf() - a.d
 				<h1>{listTitle}</h1>
 				<fieldset class='sorting-controls'>
 					<legend> Sort by:</legend>
-					<input type='radio' id='asc' value='asc' name='sort' checked />
+					<input type='radio' id='asc' value='asc' name='asc' checked />
 					<label for='asc'>asc ↑</label>
-					<input type='radio' id='desc' value='desc' name='sort' />
+					<input type='radio' id='desc' value='desc' name='asc' />
 					<label for='desc'>desc ↓</label>
 				</fieldset>
 			</div>
-			{
-				sortedList.map((post) => {
-					const { title, datePublished } = post.data;
+			<div class='posts-list__posts'>
+				{
+					sortedList.map((post) => {
+						const { title, datePublished } = post.data;
 
-					return (
-						<article class='posts-list__item'>
-							<a href={`/${postDirectory}/${post.slug}`}>{title}</a>
-							<time>
-								{datePublished.toLocaleDateString('en-US', {
-									month: 'short',
-									day: '2-digit',
-									year: 'numeric',
-								})}
-							</time>
-						</article>
-					);
-				})
-			}
+						return (
+							<article data-published={datePublished.valueOf()}>
+								<a href={`/${postDirectory}/${post.slug}`}>{title}</a>
+								<time>
+									{datePublished.toLocaleDateString('en-US', {
+										month: 'short',
+										day: '2-digit',
+										year: 'numeric',
+									})}
+								</time>
+							</article>
+						);
+					})
+				}
+			</div>
 		</section>
 	</main>
 </BaseLayout>
 
-<script></script>
+<script>
+	const sortingControls = document.querySelector<HTMLFieldSetElement>('fieldset.sorting-controls');
+
+	if (sortingControls)
+		sortingControls.addEventListener('change', (e) => {
+			if (!e.target) return;
+
+			const posts = Array.from(document.querySelectorAll<HTMLDivElement>('article'));
+
+			const sortedPosts = posts.sort((postA, postB) => {
+				const a = postA.getAttribute('data-published');
+				const b = postB.getAttribute('data-published');
+
+				if (!a || !b) return 0;
+
+				// sort posts depending on fieldset value
+				if ((e.target as HTMLInputElement).value === 'asc') return parseInt(b) - parseInt(a);
+				else return parseInt(a) - parseInt(b);
+			});
+
+			const postsContainer = document.querySelector<HTMLDivElement>('.posts-list__posts');
+			if (postsContainer) postsContainer.replaceChildren(...sortedPosts);
+		});
+</script>

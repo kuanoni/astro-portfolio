@@ -54,25 +54,27 @@
 		}
 	}
 
-	&__item {
-		display: flex;
-		justify-content: space-between;
-		align-items: end;
-		margin-bottom: 8px;
-		border-bottom: 1px solid $c-border;
+	&__posts {
+		article {
+			display: flex;
+			justify-content: space-between;
+			align-items: end;
+			margin-bottom: 8px;
+			border-bottom: 1px solid $c-border;
 
-		a {
-			color: $c-foreground;
-			text-decoration: none;
+			a {
+				color: $c-foreground;
+				text-decoration: none;
 
-			&:hover {
-				text-decoration: underline;
+				&:hover {
+					text-decoration: underline;
+				}
 			}
-		}
 
-		time {
-			color: $c-foreground-medium;
-			font-size: 0.875rem;
+			time {
+				color: $c-foreground-medium;
+				font-size: 0.875rem;
+			}
 		}
 	}
 }
