@@ -12,6 +12,7 @@ const postSchema = z.object({
 		.string()
 		.transform((str) => new Date(str))
 		.optional(),
+	draft: z.boolean(),
 
 	// metaDescription: z.string(),
 	// featuredImage: z.string(),

@@ -5,8 +5,8 @@ liveUrl: 'https://security-badging-system.web.app/'
 sourceUrl: 'https://github.com/kuanoni/react-security-badging-system'
 
 tags: [project, front-end, web dev]
-draft: true
 datePublished: 11-19-2022
+draft: false
 ---
 
 A straightforward and user-friendly way to manage an employee badging system.
