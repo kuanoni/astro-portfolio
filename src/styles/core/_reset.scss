@@ -144,8 +144,8 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Venice Classic';
 	color: $c-blood;
+	font-family: 'Venice Classic';
 	overflow-wrap: break-word;
 }
 
@@ -168,4 +168,14 @@ strong {
 
 code {
 	tab-size: 4;
+}
+
+blockquote {
+	margin: 1em 2em;
+	padding-left: 0.5em;
+	border-left: 4px solid $c-border;
+}
+
+hr {
+	border-color: $c-border;
 }
