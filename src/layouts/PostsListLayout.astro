@@ -16,14 +16,23 @@ const sortedList = postsList.sort((a, b) => b.data.datePublished.valueOf() - a.d
 
 <BaseLayout>
 	<main>
-		<section class='posts-listing'>
-			<h1>{listTitle}</h1>
+		<section class='posts-list'>
+			<div class='posts-list__header'>
+				<h1>{listTitle}</h1>
+				<fieldset class='sorting-controls'>
+					<legend> Sort by:</legend>
+					<input type='radio' id='asc' value='asc' name='sort' checked />
+					<label for='asc'>asc ↑</label>
+					<input type='radio' id='desc' value='desc' name='sort' />
+					<label for='desc'>desc ↓</label>
+				</fieldset>
+			</div>
 			{
 				sortedList.map((post) => {
 					const { title, datePublished } = post.data;
 
 					return (
-						<article>
+						<article class='posts-list__item'>
 							<a href={`/${postDirectory}/${post.slug}`}>{title}</a>
 							<time>
 								{datePublished.toLocaleDateString('en-US', {
@@ -39,3 +48,5 @@ const sortedList = postsList.sort((a, b) => b.data.datePublished.valueOf() - a.d
 		</section>
 	</main>
 </BaseLayout>
+
+<script></script>
