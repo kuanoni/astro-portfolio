@@ -5,9 +5,8 @@ liveUrl: 'https://text-tabber.com/'
 sourceUrl: 'https://github.com/kuanoni/react-guitar-tab-app'
 
 tags: [project, front-end, web dev]
-datePublished: 02-20-2023
-dateUpdated: 02-22-2023
 draft: true
+datePublished: 10-23-2022
 ---
 
 An intuitive interface designed to make it easy to create shareable text-based guitar tablature.

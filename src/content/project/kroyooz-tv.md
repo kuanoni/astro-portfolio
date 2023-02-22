@@ -5,9 +5,8 @@ liveUrl: 'https://streamer-hub.fly.dev/'
 sourceUrl: 'https://github.com/kuanoni/streamer-hub'
 
 tags: [project, front-end, web dev]
-datePublished: 02-20-2023
-dateUpdated: 02-22-2023
 draft: true
+datePublished: 01-23-2023
 ---
 
 ## What is it?
