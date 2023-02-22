@@ -21,8 +21,6 @@
 			}
 
 			input {
-				width: 0;
-				height: 0;
 				appearance: none;
 
 				&:checked + label {
@@ -38,12 +36,8 @@
 				}
 
 				&:focus {
-					outline: none;
 					& + label {
-						outline-color: $c-highlight;
-						outline-style: solid;
-						outline-width: 2px;
-						outline-offset: 2px;
+						text-decoration: underline wavy;
 					}
 				}
 			}
