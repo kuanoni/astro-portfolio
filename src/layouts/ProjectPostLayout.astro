@@ -28,6 +28,18 @@ const { title, datePublished, dateUpdated } = entry.data;
 				}
 			</div>
 			<slot />
+			<div>
+				<button class='scroll-up'>Scroll to top</button>
+			</div>
 		</section>
 	</main>
 </BaseLayout>
+
+<script>
+	const scrollUpBtn = document.querySelector('button.scroll-up');
+
+	if (scrollUpBtn)
+		scrollUpBtn.addEventListener('click', () => {
+			window.scrollTo(0, 0);
+		});
+</script>
