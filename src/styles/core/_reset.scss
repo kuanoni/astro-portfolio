@@ -2,6 +2,9 @@
 	--c-blood: #c43232;
 	--c-highlight: #d3d300;
 
+	--c-link: #ed6502;
+	--c-link-hover: #ffa767;
+
 	--c-border: #505050;
 	--c-light: #f5f5f5;
 	--c-medium: #828282;
@@ -152,10 +155,10 @@ p {
 }
 
 a {
-	color: #ed6502;
+	color: $c-link;
 
 	&:hover {
-		color: #ffa767;
+		color: $c-link-hover;
 	}
 }
 
