@@ -19,12 +19,12 @@ const sortedList = postsList.sort((a, b) => b.data.datePublished.valueOf() - a.d
 		<section class='posts-list'>
 			<div class='posts-list__header'>
 				<h1>{listTitle}</h1>
-				<fieldset class='sorting-controls'>
+				<fieldset class='sorting-controls' role='radiogroup'>
 					<legend> Sort by:</legend>
 					<input type='radio' id='asc' value='asc' name='asc' checked />
-					<label for='asc'>asc ↑</label>
+					<label for='asc' title='ascending'>asc ↑</label>
 					<input type='radio' id='desc' value='desc' name='asc' />
-					<label for='desc'>desc ↓</label>
+					<label for='desc' title='descending'>desc ↓</label>
 				</fieldset>
 			</div>
 			<div class='posts-list__posts'>
