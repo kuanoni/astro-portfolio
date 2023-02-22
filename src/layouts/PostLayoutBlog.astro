@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostLayoutBase from './PostLayoutBase.astro';
+
+interface Props {
+	entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+---
+
+<PostLayoutBase entry={entry}>
+	<slot />
+</PostLayoutBase>
