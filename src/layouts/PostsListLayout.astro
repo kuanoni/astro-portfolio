@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from 'src/layouts/BaseLayout.astro';
+import '@styles/layouts/PostsListLayout.scss';
+
+interface Props {
+	listTitle: string;
+	postsList: CollectionEntry<'project'>[] | CollectionEntry<'blog'>[];
+	postDirectory: string;
+}
+
+const { listTitle, postsList, postDirectory } = Astro.props;
+
+const sortedList = postsList.sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf());
+---
+
+<BaseLayout>
+	<main>
+		<section class='posts-listing'>
+			<h1>{listTitle}</h1>
+			{
+				sortedList.map((post) => {
+					const { title, datePublished } = post.data;
+
+					return (
+						<article>
+							<a href={`/${postDirectory}/${post.slug}`}>{title}</a>
+							<time>
+								{datePublished.toLocaleDateString('en-US', {
+									month: 'short',
+									day: '2-digit',
+									year: 'numeric',
+								})}
+							</time>
+						</article>
+					);
+				})
+			}
+		</section>
+	</main>
+</BaseLayout>
