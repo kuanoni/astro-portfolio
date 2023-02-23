@@ -16,5 +16,5 @@ const allPreviews = await getCollection('projectPreview', (entry) => FEATURED_PR
 	<ul class='projects-list'>
 		{allPreviews.map((previewEntry) => <ProjectPreview previewEntry={previewEntry} />)}
 	</ul>
-	<p>Check out the <a href='#'>rest of them</a>.</p>
+	<p>Check out the <a href='/projects'>rest of my projects</a>.</p>
 </section>

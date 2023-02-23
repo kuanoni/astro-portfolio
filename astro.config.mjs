@@ -4,10 +4,9 @@ import sitemap from '@astrojs/sitemap';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import image from '@astrojs/image';
+import shikiTheme from './shikiTheme.json';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-// https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({
@@ -36,7 +35,7 @@ export default defineConfig({
 	markdown: {
 		shikiConfig: {
 			// https://github.com/shikijs/shiki/blob/main/docs/themes.md
-			theme: 'github-dark',
+			theme: shikiTheme,
 		},
 	},
 });

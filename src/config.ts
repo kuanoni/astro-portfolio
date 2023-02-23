@@ -6,7 +6,7 @@ export const SITE_DESCRIPTION = 'Welcome to my portfolio!';
 
 export const GITHUB_URL = 'https://github.com/kuanoni';
 export const GITLAB_URL = 'https://gitlab.com/kuanoni';
-export const LINKEDIN_URL = '';
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/kainoa-araiza-kuanoni-a658a0266/';
 export const STACK_OVERFLOW_URL = 'https://stackoverflow.com/users/20453324/kuanoni';
 export const DEV_URL = 'https://dev.to/kuanoni';
 
@@ -61,4 +61,4 @@ export const TECH_INFO: TechInfo = {
 };
 
 // content slugs for projects to be featured on the home page
-export const FEATURED_PROJECTS = ['kroyooz-tv', 'text-tabber'];
+export const FEATURED_PROJECTS = ['kroyooz-tv', 'security-badging', 'text-tabber'];
