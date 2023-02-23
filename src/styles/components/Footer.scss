@@ -9,6 +9,15 @@ footer {
 	small {
 		display: block;
 		line-height: normal;
+
+		a {
+			color: $c-foreground-medium;
+			text-decoration: none;
+
+			&:hover {
+				color: $c-foreground;
+			}
+		}
 	}
 
 	ul {
