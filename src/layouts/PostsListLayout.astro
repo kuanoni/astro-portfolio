@@ -14,7 +14,7 @@ const { listTitle, postsList, postDirectory } = Astro.props;
 const sortedList = postsList.sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf());
 ---
 
-<BaseLayout>
+<BaseLayout title={listTitle}>
 	<main>
 		<section class='posts-list'>
 			<div class='posts-list__header'>

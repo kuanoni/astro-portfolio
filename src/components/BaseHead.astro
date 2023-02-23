@@ -10,7 +10,7 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title = SITE_TITLE, description = SITE_DESCRIPTION, image = '/images/social-preview.png' } = Astro.props;
+const { title, description = SITE_DESCRIPTION, image = '/images/social-preview.png' } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -22,7 +22,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image = '/images/soc
 <link rel='canonical' href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
+<title>{SITE_TITLE}{title && ` | ${title}`}</title>
 <meta name='title' content={title} />
 <meta name='description' content={description} />
 <meta name='theme-color' content='#000000' />

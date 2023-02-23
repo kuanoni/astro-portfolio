@@ -14,7 +14,7 @@ const { title, datePublished, dateUpdated } = entry.data;
 const { headings } = await entry.render();
 ---
 
-<BaseLayout>
+<BaseLayout title={title}>
 	<main>
 		<section class='post'>
 			<slot name='pre-header' />
