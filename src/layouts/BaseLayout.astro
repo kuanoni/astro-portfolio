@@ -1,6 +1,6 @@
 ---
 import { Image } from '@astrojs/image/components';
-import { SITE_TITLE, SITE_DESCRIPTION } from 'src/config';
+import { SITE_DESCRIPTION } from 'src/config';
 import Header from '@components/Header.astro';
 import BaseHead from '@components/BaseHead.astro';
 import abstract1 from '@images/abstract1.webp';
@@ -14,13 +14,14 @@ interface Props {
 	description?: string;
 }
 
-const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const { title, description = SITE_DESCRIPTION } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang='en'>
 	<head>
 		<BaseHead title={title} description={description} />
+		<slot name='head' />
 	</head>
 	<body>
 		<Image class='bg-abstract bg-abstract-1' src={abstract1} alt='' />

@@ -6,6 +6,7 @@ const projectPreviewSchema = z.object({
 
 const postSchema = z.object({
 	title: z.string(),
+	description: z.string(),
 	tags: z.array(z.string()),
 	datePublished: z.string().transform((str) => new Date(str)),
 	dateUpdated: z
@@ -13,13 +14,6 @@ const postSchema = z.object({
 		.transform((str) => new Date(str))
 		.optional(),
 	draft: z.boolean(),
-
-	// metaDescription: z.string(),
-	// featuredImage: z.string(),
-	// featuredImageAlt: z.string(),
-	// ogImage: z.string(),
-	// ogSquareImage: z.string(),
-	// twitterImage: z.string(),
 });
 
 const projectPostSchema = postSchema.extend({

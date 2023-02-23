@@ -10,11 +10,16 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, datePublished, dateUpdated } = entry.data;
+const { title, description, datePublished, dateUpdated } = entry.data;
 const { headings } = await entry.render();
 ---
 
-<BaseLayout>
+<BaseLayout title={title} description={description}>
+	<Fragment slot='head'>
+		<meta property='article:author' content='Kainoa Araiza Kuanoni' />
+		<meta property='article:published_time' content={datePublished.toISOString()} />
+		{dateUpdated && <meta property='article:modified_time' content={dateUpdated.toISOString()} />}
+	</Fragment>
 	<main>
 		<section class='post'>
 			<slot name='pre-header' />

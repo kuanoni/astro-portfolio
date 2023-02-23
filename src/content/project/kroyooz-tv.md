@@ -1,5 +1,6 @@
 ---
 title: KroyOoz.tv
+description: The ultimate hub for fans of the (_made up_) streaming personality, KroyOoz!
 techs: [Typescript, Next, React, Stiches, MongoDB, Figma]
 liveUrl: 'https://streamer-hub.fly.dev/'
 sourceUrl: 'https://github.com/kuanoni/streamer-hub'

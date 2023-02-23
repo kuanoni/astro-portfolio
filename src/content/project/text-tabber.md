@@ -1,5 +1,6 @@
 ---
 title: Text Tabber
+description: Blank description
 techs: [Javascript, React, Sass, Redux]
 liveUrl: 'https://text-tabber.com/'
 sourceUrl: 'https://github.com/kuanoni/react-guitar-tab-app'
