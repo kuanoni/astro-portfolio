@@ -29,12 +29,11 @@ const { title, description = SITE_DESCRIPTION, image = '/images/social-preview.p
 <meta name='description' content={description} />
 
 <!-- Open Graph / Facebook -->
-<meta property='og:type' content='website' />
-<meta property='og:url' content={Astro.url} />
 <meta property='og:title' content={title} />
-<meta property='og:description' content={description} />
-<meta property='og:image' content={new URL(image, Astro.url)} />
+<meta property='og:type' content='website' />
 <meta property='og:url' content={canonicalURL} />
+<meta property='og:image' content={new URL(image, Astro.url)} />
+<meta property='og:description' content={description} />
 <meta property='og:site_name' content={SITE_TITLE} />
 
 <!-- Twitter -->
