@@ -5,8 +5,6 @@ datePublished: 02-21-23
 draft: false
 ---
 
-# Markdown: Syntax
-
 **Note:** This document is itself written using Markdown; you
 can [see the source for it by adding '.text' to the URL](/projects/markdown/syntax.text).
 
@@ -286,3 +284,5 @@ Unlike a pre-formatted code block, a code span indicates code within a
 normal paragraph. For example:
 
 Use the `printf()` function.
+
+#### test
