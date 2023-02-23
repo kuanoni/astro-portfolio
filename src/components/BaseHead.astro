@@ -11,6 +11,8 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description = SITE_DESCRIPTION, image = '/images/social-preview.png' } = Astro.props;
+
+const actualTitle = SITE_TITLE + (title ? ` | ${title}` : '');
 ---
 
 <!-- Global Metadata -->
@@ -24,8 +26,8 @@ const { title, description = SITE_DESCRIPTION, image = '/images/social-preview.p
 <link rel='canonical' href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{SITE_TITLE}{title && ` | ${title}`}</title>
-<meta name='title' content={title} />
+<title>{actualTitle}</title>
+<meta name='title' content={actualTitle} />
 <meta name='description' content={description} />
 
 <!-- Open Graph / Facebook -->
