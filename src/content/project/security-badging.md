@@ -1,5 +1,6 @@
 ---
 title: Security Badging System
+description: Blank description
 techs: [Javascript, React, Express, MongoDB, Sass, Figma]
 liveUrl: 'https://security-badging-system.web.app/'
 sourceUrl: 'https://github.com/kuanoni/react-security-badging-system'
