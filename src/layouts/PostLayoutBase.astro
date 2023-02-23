@@ -3,6 +3,7 @@ import Date from '@components/blocks/Date.astro';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import '@styles/layouts/PostLayout.scss';
+import TableOfContents from '@components/blocks/TableOfContents.astro';
 
 interface Props {
 	entry: CollectionEntry<'project'> | CollectionEntry<'blog'>;
@@ -10,6 +11,7 @@ interface Props {
 
 const { entry } = Astro.props;
 const { title, datePublished, dateUpdated } = entry.data;
+const { headings } = await entry.render();
 ---
 
 <BaseLayout>
@@ -28,6 +30,7 @@ const { title, datePublished, dateUpdated } = entry.data;
 					)
 				}
 			</div>
+			<TableOfContents headings={headings} />
 			<slot />
 			<div>
 				<button class='scroll-up'>Scroll to top</button>
