@@ -36,6 +36,13 @@ section.welcome {
 			}
 		}
 	}
+
+	& > img {
+		height: min-content;
+		margin: 0 auto;
+		margin-top: 16px;
+		object-fit: contain;
+	}
 }
 
 section.projects {
