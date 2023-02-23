@@ -1,15 +1,16 @@
 ---
+import { SITE_TITLE, SITE_DESCRIPTION } from 'src/config';
 import '../styles/main.scss';
 
 export interface Props {
-	title: string;
-	description: string;
+	title?: string;
+	description?: string;
 	image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, image = '/images/social-preview.png' } = Astro.props;
 ---
 
 <!-- Global Metadata -->
