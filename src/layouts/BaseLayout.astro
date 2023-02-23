@@ -21,6 +21,7 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 <html lang='en'>
 	<head>
 		<BaseHead title={title} description={description} />
+		<slot name='head' />
 	</head>
 	<body>
 		<Image class='bg-abstract bg-abstract-1' src={abstract1} alt='' />
