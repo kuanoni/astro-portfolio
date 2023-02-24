@@ -7,7 +7,6 @@ const projectPreviewSchema = z.object({
 const postSchema = z.object({
 	title: z.string(),
 	description: z.string(),
-	tags: z.array(z.string()),
 	datePublished: z.string().transform((str) => new Date(str)),
 	dateUpdated: z
 		.string()

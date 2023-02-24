@@ -5,7 +5,6 @@ techs: [Javascript, React, Express, MongoDB, Sass, Figma]
 liveUrl: 'https://security-badging-system.web.app/'
 sourceUrl: 'https://github.com/kuanoni/react-security-badging-system'
 
-tags: [project, front-end, web dev]
 datePublished: 11-19-2022
 draft: false
 ---

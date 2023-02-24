@@ -5,7 +5,6 @@ techs: [Typescript, Next, React, Stiches, MongoDB, Figma]
 liveUrl: 'https://streamer-hub.fly.dev/'
 sourceUrl: 'https://github.com/kuanoni/streamer-hub'
 
-tags: [project, front-end, web dev]
 datePublished: 01-23-2023
 draft: false
 ---

@@ -5,7 +5,6 @@ techs: [Javascript, React, Sass, Redux]
 liveUrl: 'https://text-tabber.com/'
 sourceUrl: 'https://github.com/kuanoni/react-guitar-tab-app'
 
-tags: [project, front-end, web dev]
 datePublished: 10-23-2022
 draft: false
 ---
