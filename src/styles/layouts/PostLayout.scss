@@ -9,17 +9,30 @@ section.post {
 		font-size: 0.875rem;
 	}
 
-	h2 {
-		margin-top: 0.875em;
+	img {
+		margin-bottom: 32px;
+	}
 
-		&::before {
-			font-family: 'Windows';
-			content: '† ';
-		}
+	:not(pre) > code {
+		padding: 0 0.25em;
+		background-color: $c-background;
+		border: 1px solid $c-border;
 	}
 
 	pre {
+		$line-height: 1.3;
+		margin: 1.5em 0;
 		padding: 4px;
+		line-height: $line-height;
+
+		code {
+			background-color: transparent;
+			line-height: $line-height;
+
+			span {
+				line-height: $line-height;
+			}
+		}
 	}
 
 	button.scroll-up {
