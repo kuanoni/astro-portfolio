@@ -40,6 +40,10 @@ body {
 	color: $c-foreground;
 	font-family: 'FreePixel';
 	overflow-x: hidden;
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: grayscale;
+	font-smoothing: none;
+	text-rendering: geometricprecision;
 
 	@keyframes flicker {
 		0% {
