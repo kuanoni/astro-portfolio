@@ -24,7 +24,6 @@
 
 html {
 	background-color: black;
-	// background-image: url('https://f4.bcbits.com/img/0029977892_130.jpg');
 	image-rendering: pixelated;
 }
 
@@ -164,10 +163,6 @@ a {
 	&:hover {
 		color: $c-link-hover;
 	}
-}
-
-strong {
-	color: $c-highlight;
 }
 
 code {
