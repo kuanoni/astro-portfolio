@@ -24,7 +24,6 @@
 
 html {
 	background-color: black;
-	// background-image: url('https://f4.bcbits.com/img/0029977892_130.jpg');
 	image-rendering: pixelated;
 }
 
@@ -38,8 +37,12 @@ body {
 	position: relative;
 	padding-top: 32px;
 	color: $c-foreground;
-	font-family: 'Windows';
+	font-family: 'FreePixel';
 	overflow-x: hidden;
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: grayscale;
+	font-smoothing: none;
+	text-rendering: geometricprecision;
 
 	@keyframes flicker {
 		0% {
@@ -145,7 +148,7 @@ h4,
 h5,
 h6 {
 	color: $c-blood;
-	font-family: 'Venice Classic';
+	font-family: 'Alagard';
 	overflow-wrap: break-word;
 }
 
@@ -160,10 +163,6 @@ a {
 	&:hover {
 		color: $c-link-hover;
 	}
-}
-
-strong {
-	color: $c-highlight;
 }
 
 code {
