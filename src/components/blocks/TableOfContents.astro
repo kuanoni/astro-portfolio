@@ -29,4 +29,7 @@ const listHtml = headings
 	.join('');
 ---
 
-<ol class='toc' set:html={listHtml} />
+		<details class='toc' open>
+			<summary>Contents</summary>
+			<ol set:html={listHtml} />
+		</details>
