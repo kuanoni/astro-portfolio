@@ -2,7 +2,10 @@
 import { getCollection } from 'astro:content';
 import PostsListLayout from 'src/layouts/PostsListLayout.astro';
 
-const allBlogPosts = await getCollection('blog', (entry) => !entry.data.draft);
+const allBlogPosts = await getCollection(
+	'blog',
+	(entry) => process.env.NODE_ENV === 'development' || !entry.data.draft
+);
 ---
 
 <PostsListLayout postsList={allBlogPosts} listTitle='Blog' postDirectory='posts' />
