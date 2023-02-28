@@ -1,24 +1,27 @@
 .toc {
 	display: inline-block;
-	counter-reset: item;
-	padding: 8px;
 	margin-bottom: 16px;
+	padding: 8px;
 	border: 1px solid $c-border;
 
-	ol {
+	& > ol {
+		padding: 0;
 		counter-reset: item;
-		padding-left: 1.5em;
+
+		ol {
+			padding-left: 1.5em;
+			counter-reset: item;
+		}
 	}
 
 	li {
 		display: block;
 		line-height: 0.75;
-		font-size: 0.95em;
 
 		&::before {
+			margin-right: 0.5em;
 			content: counters(item, '.');
 			counter-increment: item;
-			margin-right: 0.5em;
 		}
 
 		&:hover {
@@ -29,8 +32,8 @@
 		}
 
 		a {
-			line-height: 1.15;
 			text-decoration: none;
+			line-height: 1.15;
 		}
 	}
 }
