@@ -29,7 +29,11 @@ const listHtml = headings
 	.join('');
 ---
 
+{
+	listHtml && headings.length > 1 ? (
 		<details class='toc' open>
 			<summary>Contents</summary>
 			<ol set:html={listHtml} />
 		</details>
+	) : null
+}
