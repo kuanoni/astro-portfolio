@@ -6,7 +6,7 @@ liveUrl: 'https://text-tabber.com/'
 sourceUrl: 'https://github.com/kuanoni/react-guitar-tab-app'
 
 datePublished: 10-23-2022
-draft: false
+draft: true
 ---
 
 ## Gemitusque et contra orbe suspiria aevi

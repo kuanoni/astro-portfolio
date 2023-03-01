@@ -6,7 +6,7 @@ liveUrl: 'https://security-badging-system.web.app/'
 sourceUrl: 'https://github.com/kuanoni/react-security-badging-system'
 
 datePublished: 11-19-2022
-draft: false
+draft: true
 ---
 
 
