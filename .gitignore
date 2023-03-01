@@ -19,5 +19,6 @@ pnpm-debug.log*
 .DS_Store
 
 .astro
+.local
 .vscode
 *.kra
