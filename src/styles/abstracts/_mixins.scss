@@ -2,7 +2,7 @@
 	max-width: $page-width;
 	margin-right: auto;
 	margin-left: auto;
-	transform: translate3d(0, 0, 0);
+	-webkit-transform: translateZ(0px); // used to fix subpixel text rendering
 
 	@include for-size(700px, down) {
 		margin-right: 8px;

@@ -13,7 +13,6 @@ main {
 			margin-bottom: 8px;
 			color: $c-blood;
 			line-height: 0.8;
-			font-size: 2.5rem;
 
 			&::before {
 				margin-right: 0.25em;
@@ -23,9 +22,7 @@ main {
 			}
 		}
 
-		h2,
-		h3,
-		h4 {
+		h2 {
 			margin-top: 2em;
 			margin-bottom: 0.25em;
 			border-bottom: 1px solid $c-border;
@@ -34,6 +31,7 @@ main {
 			&::before {
 				margin-right: 0.25em;
 				font-family: 'FreePixel';
+				font-weight: 400;
 				content: '†';
 			}
 		}
