@@ -29,6 +29,8 @@ section.post {
 
 		figcaption {
 			padding-inline: 0.25em;
+			transform: translateZ(0px);
+			-webkit-transform: translateZ(0px);
 		}
 	}
 
