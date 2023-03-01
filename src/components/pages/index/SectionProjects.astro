@@ -9,12 +9,12 @@ const allPreviews = await getCollection('projectPreview', (entry) => FEATURED_PR
 <section class='projects'>
 	<h1>Featured Projects</h1>
 	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem porro, vitae aliquam illum recusandae,
-		architecto iste doloremque suscipit, natus nemo voluptates eum. Dolor suscipit tenetur repellendus est fuga, eos
-		cumque!
+		These are projects that I'm particularly proud of. Some may be demos for learning purposes, others are real
+		published apps! You can view the rest of my projects including full writeups on each of them <a href='/projects'
+			>here</a
+		>.
 	</p>
 	<ul class='projects-list'>
 		{allPreviews.map((previewEntry) => <ProjectPreview previewEntry={previewEntry} />)}
 	</ul>
-	<p>Check out the <a href='/projects'>rest of my projects</a>.</p>
 </section>
