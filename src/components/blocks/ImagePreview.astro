@@ -11,7 +11,26 @@ const { src, alt } = Astro.props;
 
 <div class='thumbnail'>
 	<img src={src} alt={alt} />
-	<span>
-		<img src={src} alt={alt} />
-	</span>
 </div>
+
+<script>
+	document.querySelectorAll('.thumbnail').forEach((thumbnail) => {
+		thumbnail.addEventListener('click', (e) => {
+			e.stopImmediatePropagation();
+
+			const portal = document.querySelector('#modal-portal');
+			const img = thumbnail.querySelector('img');
+			if (!img || !portal) return;
+
+			const src = img.getAttribute('src');
+			const alt = img.getAttribute('alt');
+			if (!src || !alt) return;
+
+			const imgEle = document.createElement('img');
+			imgEle.setAttribute('src', src);
+			imgEle.setAttribute('alt', alt);
+
+			portal.appendChild(imgEle);
+		});
+	});
+</script>
