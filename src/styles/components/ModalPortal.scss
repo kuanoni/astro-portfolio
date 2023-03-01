@@ -1,0 +1,22 @@
+#modal-portal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	inset: 0;
+	background-color: hsl(0, 0%, 0%, 0.8);
+	z-index: 999;
+
+	&:empty {
+		display: none;
+	}
+
+	img {
+		image-rendering: auto;
+		max-width: revert;
+		max-height: 80%;
+		padding: 16px;
+		background-color: $c-background;
+		border: 2px solid $c-border;
+	}
+}

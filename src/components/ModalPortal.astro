@@ -1,0 +1,16 @@
+---
+import '@styles/components/ModalPortal.scss';
+---
+
+<div id='modal-portal'></div>
+
+<script>
+	const portal = document.querySelector('#modal-portal');
+
+	if (portal)
+		portal.addEventListener('click', (e) => {
+			e.stopImmediatePropagation();
+
+			portal.innerHTML = '';
+		});
+</script>
