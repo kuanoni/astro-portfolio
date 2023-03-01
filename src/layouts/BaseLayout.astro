@@ -6,8 +6,9 @@ import BaseHead from '@components/BaseHead.astro';
 import abstract1 from '@images/abstract1.webp';
 import abstract2 from '@images/abstract2.webp';
 import abstract3 from '@images/abstract3.webp';
-import '@styles/layouts/BaseLayout.scss';
 import Footer from '@components/Footer.astro';
+import ModalPortal from '@components/ModalPortal.astro';
+import '@styles/layouts/BaseLayout.scss';
 
 interface Props {
 	title?: string;
@@ -30,5 +31,6 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 		<Header />
 		<slot />
 		<Footer />
+		<ModalPortal />
 	</body>
 </html>
