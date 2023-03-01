@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'Alagard';
 	font-weight: 500;
-	src: url('/fonts/Alagard.ttf');
+	src: url('/fonts/Alagard.woff2') format('woff2');
 	font-style: normal;
 	font-display: block;
 }
@@ -9,7 +9,7 @@
 @font-face {
 	font-family: 'FreePixel';
 	font-weight: normal;
-	src: url('/fonts/FreePixel.ttf');
+	src: url('/fonts/FreePixel.woff2') format('woff2');
 	font-style: normal;
 	font-display: block;
 }
@@ -17,7 +17,7 @@
 @font-face {
 	font-family: 'FreePixel';
 	font-weight: 700;
-	src: url('/fonts/FreePixelBold.ttf');
+	src: url('/fonts/FreePixelBold.woff2') format('woff2');
 	font-style: normal;
 	font-display: block;
 }
