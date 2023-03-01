@@ -2,6 +2,9 @@
 	--c-blood: #c43232;
 	--c-highlight: #d3d300;
 
+	--c-link: #ed6502;
+	--c-link-hover: #ffa767;
+
 	--c-border: #505050;
 	--c-light: #f5f5f5;
 	--c-medium: #828282;
@@ -21,7 +24,6 @@
 
 html {
 	background-color: black;
-	// background-image: url('https://f4.bcbits.com/img/0029977892_130.jpg');
 	image-rendering: pixelated;
 }
 
@@ -33,11 +35,14 @@ body {
 
 body {
 	position: relative;
-	padding: 32px 0;
+	padding-top: 32px;
 	color: $c-foreground;
-	letter-spacing: 0.05em;
-	font-family: 'Windows';
+	font-family: 'FreePixel';
+	font-size: $font-size-normal;
 	overflow-x: hidden;
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: geometricprecision;
 
 	@keyframes flicker {
 		0% {
@@ -102,14 +107,14 @@ body {
 		left: 0;
 		background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
 			linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-		opacity: 0.5;
+		opacity: 0.3;
 		z-index: 2;
 		content: ' ';
 		background-size: 100% 4px, 3px 100%;
 		pointer-events: none;
-		animation: snac 0.5s steps(4) infinite;
+		animation: scan 1s steps(4) infinite;
 
-		@keyframes snac {
+		@keyframes scan {
 			0% {
 				background-position: 0px 0px;
 			}
@@ -142,26 +147,50 @@ h3,
 h4,
 h5,
 h6 {
-	letter-spacing: normal;
-	font-family: 'Venice Classic';
+	color: $c-blood;
+	font-family: 'Alagard';
 	overflow-wrap: break-word;
 }
 
+h1 {
+	font-size: $h1-size;
+}
+
+h2 {
+	font-size: $h2-size;
+}
+
+h3 {
+	font-size: $h3-size;
+}
+
+h4 {
+	font-size: $h4-size;
+}
+
 p {
-	margin: 8px 0;
+	margin: 0.5em 0;
 	line-height: 1.35;
 }
 
 a {
-	color: #ed6502;
+	color: $c-link;
 
 	&:hover {
-		color: #ffa767;
+		color: $c-link-hover;
 	}
 }
 
-ul {
-	@include for-size(phone) {
-		padding-left: 1rem;
-	}
+code {
+	tab-size: 4;
+}
+
+blockquote {
+	margin: 1em 2em;
+	padding-left: 0.5em;
+	border-left: 4px solid $c-border;
+}
+
+hr {
+	border-color: $c-border;
 }

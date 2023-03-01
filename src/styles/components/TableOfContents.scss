@@ -1,0 +1,39 @@
+.toc {
+	display: inline-block;
+	margin-bottom: 16px;
+	padding: 8px;
+	border: 1px solid $c-border;
+
+	& > ol {
+		padding: 0;
+		counter-reset: item;
+
+		ol {
+			padding-left: 1.5em;
+			counter-reset: item;
+		}
+	}
+
+	li {
+		display: block;
+		line-height: 0.75;
+
+		&::before {
+			margin-right: 0.5em;
+			content: counters(item, '.');
+			counter-increment: item;
+		}
+
+		&:hover {
+			&::before,
+			a {
+				text-decoration: underline;
+			}
+		}
+
+		a {
+			text-decoration: none;
+			line-height: 1.15;
+		}
+	}
+}

@@ -1,0 +1,54 @@
+---
+import Date from '@components/blocks/Date.astro';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import '@styles/layouts/PostLayout.scss';
+import TableOfContents from '@components/blocks/TableOfContents.astro';
+
+interface Props {
+	entry: CollectionEntry<'project'> | CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+const { title, description, datePublished, dateUpdated } = entry.data;
+const { headings } = await entry.render();
+---
+
+<BaseLayout title={title} description={description}>
+	<Fragment slot='head'>
+		<meta property='article:author' content='Kainoa Araiza Kuanoni' />
+		<meta property='article:published_time' content={datePublished.toISOString()} />
+		{dateUpdated && <meta property='article:modified_time' content={dateUpdated.toISOString()} />}
+	</Fragment>
+	<main>
+		<section class='post'>
+			<slot name='pre-header' />
+			<h1>{title}</h1>
+			<div class='dates'>
+				Published <Date date={datePublished} />
+				{
+					dateUpdated && (
+						<Fragment>
+							{' '}
+							— Updated <Date date={dateUpdated} />
+						</Fragment>
+					)
+				}
+			</div>
+			<TableOfContents headings={headings} />
+			<slot />
+			<div>
+				<button class='scroll-up'>Scroll to top</button>
+			</div>
+		</section>
+	</main>
+</BaseLayout>
+
+<script>
+	const scrollUpBtn = document.querySelector('button.scroll-up');
+
+	if (scrollUpBtn)
+		scrollUpBtn.addEventListener('click', () => {
+			window.scrollTo(0, 0);
+		});
+</script>

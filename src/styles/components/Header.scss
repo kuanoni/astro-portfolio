@@ -1,7 +1,6 @@
 header {
 	display: flex;
 	height: 100px;
-	background-image: url('images/banner.webp');
 	border: 2px solid $c-border;
 	border-bottom: none;
 
@@ -20,6 +19,7 @@ header {
 		a {
 			color: $c-blood;
 			text-transform: uppercase;
+			font-size: $font-size-large;
 			font-weight: 900;
 			text-shadow: 1px 1px 0px black;
 

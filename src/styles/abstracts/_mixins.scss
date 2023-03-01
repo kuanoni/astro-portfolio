@@ -1,11 +1,12 @@
 @mixin fit-page {
 	max-width: $page-width;
-	margin-left: auto;
 	margin-right: auto;
+	margin-left: auto;
+	-webkit-transform: translateZ(0px); // used to fix subpixel text rendering
 
 	@include for-size(700px, down) {
-		margin-left: 16px;
-		margin-right: 16px;
+		margin-right: 8px;
+		margin-left: 8px;
 	}
 }
 

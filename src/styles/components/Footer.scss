@@ -1,0 +1,32 @@
+footer {
+	margin-top: 64px;
+	margin-bottom: 8px;
+	background-color: black;
+	border: 2px solid $c-border;
+	text-align: center;
+	@include fit-page;
+
+	small {
+		display: block;
+		line-height: normal;
+
+		a {
+			color: $c-foreground-medium;
+			text-decoration: none;
+
+			&:hover {
+				color: $c-foreground;
+			}
+		}
+	}
+
+	ul {
+		padding: 0;
+		font-size: $font-size-small;
+
+		li {
+			display: inline;
+			margin-right: 8px;
+		}
+	}
+}

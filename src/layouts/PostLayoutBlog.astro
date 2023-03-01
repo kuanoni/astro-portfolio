@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostLayoutBase from './PostLayoutBase.astro';
+
+interface Props {
+	entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+---
+
+<PostLayoutBase entry={entry}>
+	<div class='pre-header' slot='pre-header'>
+		<a href='/posts'>← View all posts</a>
+	</div>
+	<slot />
+</PostLayoutBase>

@@ -1,12 +1,12 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'Kainoa Araiza K.';
+export const SITE_TITLE = 'kainoa.us';
 export const SITE_DESCRIPTION = 'Welcome to my portfolio!';
 
 export const GITHUB_URL = 'https://github.com/kuanoni';
 export const GITLAB_URL = 'https://gitlab.com/kuanoni';
-export const LINKEDIN_URL = '';
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/kainoa-araiza-kuanoni-a658a0266/';
 export const STACK_OVERFLOW_URL = 'https://stackoverflow.com/users/20453324/kuanoni';
 export const DEV_URL = 'https://dev.to/kuanoni';
 
@@ -59,3 +59,6 @@ export const TECH_INFO: TechInfo = {
 		url: 'https://redux.js.org/',
 	},
 };
+
+// content slugs for projects to be featured on the home page
+export const FEATURED_PROJECTS = ['kroyooz-tv', 'security-badging', 'text-tabber'];
