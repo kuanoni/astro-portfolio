@@ -2,7 +2,9 @@
 import '@styles/components/ModalPortal.scss';
 ---
 
-<div id='modal-portal'></div>
+<div id='modal-portal' tabindex='-1'>
+	<div id='modal-content'></div>
+</div>
 
 <script>
 	const portal = document.querySelector('#modal-portal');
