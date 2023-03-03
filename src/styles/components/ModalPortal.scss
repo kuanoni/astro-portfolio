@@ -7,16 +7,33 @@
 	&.open {
 		display: block;
 	}
+
+	button.close-btn {
+		position: absolute;
+		top: 32px;
+		right: 32px;
+		width: 36px;
+		height: 36px;
+		background-color: transparent;
+		border: none;
+		padding: 0;
+
+		color: $c-foreground;
+
+		&:hover {
+			cursor: pointer;
+			color: $c-highlight;
+		}
+	}
 }
 
 #modal-content {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: fixed;
-	inset: 0;
+	width: 100%;
+	height: 100%;
 	background-color: hsl(0, 0%, 0%, 0.8);
-	z-index: 999;
 
 	&:empty {
 		display: none;
