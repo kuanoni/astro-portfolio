@@ -41,8 +41,8 @@
 
 	img {
 		image-rendering: auto;
-		max-width: revert;
-		max-height: 80%;
+		max-width: 100vw;
+		max-height: 80vh;
 		padding: 16px;
 		background-color: $c-background;
 		border: 2px solid $c-border;
