@@ -1,27 +1,15 @@
 .thumbnail {
 	height: 50px;
+	border: none;
+	background-color: transparent;
+	padding: 0;
 
 	&:hover {
-		& > span > img {
-			display: block;
-		}
+		cursor: pointer;
 	}
 
 	& > img {
 		height: 100%;
 		border: 1px solid var(--c-border);
-	}
-
-	& > span {
-		position: absolute;
-		width: 100%;
-		z-index: 3;
-		pointer-events: none;
-		image-rendering: auto;
-
-		& > img {
-			display: none;
-			max-height: 500px;
-		}
 	}
 }

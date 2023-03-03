@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon';
+import '@styles/components/ModalPortal.scss';
+---
+
+<div id='modal-portal' tabindex='-1'>
+	<button class='close-btn'>
+		<Icon name='close-box' />
+	</button>
+	<div id='modal-content'></div>
+</div>
+
+<script>
+	import ModalHelper from '@utils/ModalHelper';
+
+	const closeBtn = document.querySelector('#modal-portal .close-btn');
+
+	if (closeBtn) closeBtn.addEventListener('click', (e) => ModalHelper.close());
+</script>

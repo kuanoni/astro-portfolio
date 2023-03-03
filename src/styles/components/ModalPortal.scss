@@ -1,0 +1,50 @@
+#modal-portal {
+	display: none;
+	position: fixed;
+	inset: 0;
+	z-index: 999;
+
+	&.open {
+		display: block;
+	}
+
+	button.close-btn {
+		position: absolute;
+		top: 32px;
+		right: 32px;
+		width: 36px;
+		height: 36px;
+		background-color: transparent;
+		border: none;
+		padding: 0;
+
+		color: $c-foreground;
+
+		&:hover {
+			cursor: pointer;
+			color: $c-highlight;
+		}
+	}
+}
+
+#modal-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background-color: hsl(0, 0%, 0%, 0.8);
+
+	&:empty {
+		display: none;
+	}
+
+	img {
+		image-rendering: auto;
+		max-width: 100vw;
+		max-height: 80vh;
+		padding: 16px;
+		background-color: $c-background;
+		border: 2px solid $c-border;
+	}
+}

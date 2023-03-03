@@ -9,9 +9,30 @@ interface Props {
 const { src, alt } = Astro.props;
 ---
 
-<div class='thumbnail'>
+<button class='thumbnail'>
 	<img src={src} alt={alt} />
-	<span>
-		<img src={src} alt={alt} />
-	</span>
-</div>
+</button>
+
+<script>
+	import ModalHelper from '@utils/ModalHelper';
+
+	document.querySelectorAll<HTMLButtonElement>('.thumbnail').forEach((thumbnail) => {
+		thumbnail.addEventListener('click', (e) => {
+			e.stopImmediatePropagation();
+
+			const img = thumbnail.querySelector('img');
+			if (!img) return;
+
+			const src = img.getAttribute('src');
+			const alt = img.getAttribute('alt');
+			if (!src || !alt) return;
+
+			const imgEle = document.createElement('img');
+			imgEle.setAttribute('src', src);
+			imgEle.setAttribute('alt', alt);
+
+			ModalHelper.addContent(imgEle);
+			ModalHelper.open(thumbnail);
+		});
+	});
+</script>
