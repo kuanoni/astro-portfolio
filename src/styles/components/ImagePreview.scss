@@ -1,5 +1,8 @@
 .thumbnail {
 	height: 50px;
+	border: none;
+	background-color: transparent;
+	padding: 0;
 
 	&:hover {
 		cursor: pointer;

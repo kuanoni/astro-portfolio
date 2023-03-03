@@ -9,18 +9,19 @@ interface Props {
 const { src, alt } = Astro.props;
 ---
 
-<div class='thumbnail'>
+<button class='thumbnail'>
 	<img src={src} alt={alt} />
-</div>
+</button>
 
 <script>
-	document.querySelectorAll('.thumbnail').forEach((thumbnail) => {
+	import ModalHelper from '@utils/ModalHelper';
+
+	document.querySelectorAll<HTMLButtonElement>('.thumbnail').forEach((thumbnail) => {
 		thumbnail.addEventListener('click', (e) => {
 			e.stopImmediatePropagation();
 
-			const portal = document.querySelector('#modal-portal');
 			const img = thumbnail.querySelector('img');
-			if (!img || !portal) return;
+			if (!img) return;
 
 			const src = img.getAttribute('src');
 			const alt = img.getAttribute('alt');
@@ -30,7 +31,8 @@ const { src, alt } = Astro.props;
 			imgEle.setAttribute('src', src);
 			imgEle.setAttribute('alt', alt);
 
-			portal.appendChild(imgEle);
+			ModalHelper.addContent(imgEle);
+			ModalHelper.open(thumbnail);
 		});
 	});
 </script>
