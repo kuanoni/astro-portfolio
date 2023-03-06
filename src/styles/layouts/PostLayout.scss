@@ -17,14 +17,14 @@ section.post {
 		width: min-content;
 		max-width: 100%;
 		margin: 32px auto;
+		color: $c-foreground-medium;
 		border: 1px solid $c-border;
 		overflow-x: auto;
-		color: $c-foreground-medium;
 
 		img {
 			max-width: revert;
-			object-fit: cover;
 			border-bottom: 1px solid $c-border;
+			object-fit: cover;
 		}
 
 		figcaption {
@@ -56,6 +56,7 @@ section.post {
 		code {
 			background-color: transparent;
 			line-height: $line-height;
+			font-size: $font-size-small;
 
 			span {
 				line-height: $line-height;
