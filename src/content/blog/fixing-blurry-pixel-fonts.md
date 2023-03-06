@@ -23,7 +23,7 @@ However, I was running into a strange issue with the way my text was rendering o
 
 If the width of the viewport was an odd number: blurry text. Even number: crisp. On top of that, on some parts of my page, the text looked blurry either way. So what gives?
 
-After playing around with it for a while, I found that the blurriness occurred when the **text was offset by a non-integer pixel amount**. If your text is offset by say, 0.5px, the browser will try to compensate for that 0.5px by placing the text "inbetween pixels". This process is done by the browser's rendering engine and is called [interpolation](https://www.cambridgeincolour.com/tutorials/image-interpolation.htm). For most fonts which are vector based this isn't much of an issue, however thin pixel fonts can be blurred drastically.
+After playing around with it for a while, I found that the blurriness occurred when the **text was offset by a non-integer pixel amount**. If your text is offset by say, 0.5px, the browser will try to compensate for that 0.5px by placing the text "inbetween pixels". This process is done by the browser's rendering engine and is called [interpolation](https://www.cambridgeincolour.com/tutorials/image-interpolation.htm). For most fonts which are vector based this isn't much of an issue, however thinner fonts can be blurred drastically.
 
 <figure>
 <img src="/images/posts/fixing-blurry-pixel-fonts/interpolation_small.webp" alt="A comparison of the blurry and crisp text" />

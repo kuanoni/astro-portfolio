@@ -10,9 +10,7 @@ const allPreviews = await getCollection('projectPreview', (entry) => FEATURED_PR
 	<h1>Featured Projects</h1>
 	<p>
 		These are projects that I'm particularly proud of. Some may be demos for learning purposes, others are real
-		published apps! You can view the rest of my projects including full writeups on each of them <a href='/projects'
-			>here</a
-		>.
+		published apps! You can also view the <a href='/projects'>rest of my projects</a> including full writeups.
 	</p>
 	<ul class='projects-list'>
 		{allPreviews.map((previewEntry) => <ProjectPreview previewEntry={previewEntry} />)}

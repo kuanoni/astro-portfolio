@@ -6,7 +6,7 @@ main {
 		@include fit-page;
 
 		&:not(:last-child) {
-			margin-bottom: 8px;
+			margin-bottom: 16px;
 		}
 
 		h1 {

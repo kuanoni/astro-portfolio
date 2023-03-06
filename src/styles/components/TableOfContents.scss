@@ -4,11 +4,16 @@
 	padding: 8px;
 	border: 1px solid $c-border;
 
+	summary {
+		cursor: pointer;
+	}
+
 	& > ol {
 		padding: 0;
 		counter-reset: item;
 
 		ol {
+			margin: 0;
 			padding-left: 1.5em;
 			counter-reset: item;
 		}
