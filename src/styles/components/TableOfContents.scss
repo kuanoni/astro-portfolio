@@ -4,6 +4,10 @@
 	padding: 8px;
 	border: 1px solid $c-border;
 
+	summary {
+		cursor: pointer;
+	}
+
 	& > ol {
 		padding: 0;
 		counter-reset: item;
