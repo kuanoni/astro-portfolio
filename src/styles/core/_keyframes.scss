@@ -1,0 +1,47 @@
+@keyframes flicker {
+	0% {
+		opacity: 0.27861;
+	}
+	5% {
+		opacity: 0.34769;
+	}
+	10% {
+		opacity: 0.23604;
+	}
+	15% {
+		opacity: 0.90626;
+	}
+	20% {
+		opacity: 0.18128;
+	}
+	25% {
+		opacity: 0.83891;
+	}
+	30% {
+		opacity: 0.65583;
+	}
+	35% {
+		opacity: 0.67807;
+	}
+	40% {
+		opacity: 0.26559;
+	}
+	45% {
+		opacity: 0.84693;
+	}
+	50% {
+		opacity: 0.96019;
+	}
+	100% {
+		opacity: 0.24387;
+	}
+}
+
+@keyframes scan {
+	0% {
+		background-position: 0px 0px;
+	}
+	100% {
+		background-position: 0px 4px;
+	}
+}
