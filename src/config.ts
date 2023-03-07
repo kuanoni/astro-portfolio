@@ -58,6 +58,10 @@ export const TECH_INFO: TechInfo = {
 		description: 'A application state managing library for Javascript.',
 		url: 'https://redux.js.org/',
 	},
+	'Socket.IO': {
+		description: 'A well-known websocket wrapper library for both the server and client.',
+		url: 'https://socket.io/',
+	},
 };
 
 // content slugs for projects to be featured on the home page
