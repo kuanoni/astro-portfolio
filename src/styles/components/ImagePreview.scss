@@ -9,6 +9,7 @@
 	}
 
 	& > img {
+		width: min-content;
 		height: 100%;
 		border: 1px solid var(--c-border);
 	}
