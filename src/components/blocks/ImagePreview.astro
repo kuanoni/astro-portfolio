@@ -2,11 +2,11 @@
 import '@styles/components/ImagePreview.scss';
 
 interface Props {
-	src: string;
+	img: ImageMetadata;
 	alt: string;
 }
 
-const { src, alt } = Astro.props;
+const { img, alt } = Astro.props;
 ---
 
 <button class='thumbnail'>
