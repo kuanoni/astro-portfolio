@@ -35,7 +35,7 @@ styles/
 ```
 
 Here's a breakdown of each directory:
-- **abstracts/**: Variables, mixins, functions, and other things that dont output any CSS when compiled.
+- **abstracts/**: Variables, mixins, functions, and other things that don't output any CSS when compiled.
 - **components/**: Your component styles. Mirrors your `src/components` directory.
 - **core/**: Any styles used globally in your project such as resets.
 - **layouts/**: Your layout styles. Mirrors your `src/layouts` directory.
