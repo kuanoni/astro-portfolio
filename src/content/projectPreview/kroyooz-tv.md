@@ -1,5 +1,5 @@
 ---
-previewImages: ['preview-desktop.webp', 'preview-desktop2.webp', 'preview-mobile.webp', 'preview-mobile2.webp']
+previewImages: ['preview-desktop', 'preview-desktop2', 'preview-mobile', 'preview-mobile2']
 ---
 
 The ultimate hub for fans of the (_made up_) streaming personality, KroyOoz!

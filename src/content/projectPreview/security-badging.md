@@ -1,5 +1,5 @@
 ---
-previewImages: ['preview-desktop.webp', 'preview-mobile.webp', 'preview-tablet.webp']
+previewImages: ['preview-desktop', 'preview-mobile', 'preview-tablet']
 ---
 
 A straightforward and user-friendly way to manage an employee badging system.
