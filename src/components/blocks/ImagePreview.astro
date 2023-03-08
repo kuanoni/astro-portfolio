@@ -1,4 +1,5 @@
 ---
+import { Image } from '@astrojs/image/components';
 import '@styles/components/ImagePreview.scss';
 
 interface Props {
@@ -10,7 +11,7 @@ const { img, alt } = Astro.props;
 ---
 
 <button class='thumbnail'>
-	<img src={src} alt={alt} />
+	<Image src={img} alt={alt} />
 </button>
 
 <script>
