@@ -13,7 +13,7 @@ draft: false
 
 KroyOoz.tv is a proof-of-concept project for fans of a fake livestreaming personality called KroyOoz.
 
-Users can sign up and create their accounts using Google or Discord OAuth 2.0 and then choose a username. After choosing a username, users can head to the *Stream* page to participate in the real-time chat while watching the embeded livestream. The chat includes emotes and options that can be tailored to each user's preferences. The chat is also role-based, giving priviledged users like administrators access to chat moderation commands.
+Users can sign up and create their accounts using Google or Discord OAuth 2.0 and then choose a username. After choosing a username, users can head to the *Stream* page to participate in the real-time chat while watching the embedded livestream. The chat includes emotes and options that can be tailored to each user's preferences. The chat is also role-based, giving privileged users like administrators access to chat moderation commands.
 
 On the home page, past broadcasts and recently published videos can be seen from *KroyOoz's* Youtube. You can also view his latest tweets, and hot posts from his subreddit.
 
@@ -23,9 +23,9 @@ Originally, like some of my most ambitious projects, the planned scope of KroyOo
 
 Livestreaming simultaneously on multiple platforms (like Twitch, Youtube, Facebook, etc.) is a great idea for a livestreamer because it increases their discoverability and exposure to new fans. It does come with a downside though, in that each platform has their own separate chatting service. This can create a split in the livestreamer's community of fans, where half of them are chatting on Youtube, and the other half are chatting on Twitch. 
 
-The idea for this site was that it should allow a livestreamer to gather fans onto one semi-independant platform while still reaping the benefits of other large platforms. It should:
+The idea for this site was that it should allow a livestreamer to gather fans onto one semi-independent platform while still reaping the benefits of other large platforms. It should:
 - Create a place where fans can easily engage with content surrounding the specific livestreamer.
-- Utilize livestream embeds from other platforms to avoid the massive amount of bandwidth it would take to host it independantly.
+- Utilize livestream embeds from other platforms to avoid the massive amount of bandwidth it would take to host it independently.
 - Give the livestreamer more control over the chat and the ability to create custom experiences that couldn't happen happen on larger platforms.
 
 
@@ -91,7 +91,7 @@ socket.on(SocketEvents.CLIENT_SEND_MSG, () => {
 
 ### Stiches
 
-Before this project, I had always used SCSS/CSS modules for any web app styling. However I occasionally found it frustrating to have to manage the separation of files between my components and their styles. So a CSS-in-JS solution was the next step. Stiches is a CSS-in-JS library that claims a *near-zero runtime*. I was immediatly intrigued. 
+Before this project, I had always used SCSS/CSS modules for any web app styling. However I occasionally found it frustrating to have to manage the separation of files between my components and their styles. So a CSS-in-JS solution was the next step. Stiches is a CSS-in-JS library that claims a *near-zero runtime*. I was immediately intrigued. 
 
 Uniquely, instead of using [tagged template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates), Stiches uses object style syntax to create components like so:
 

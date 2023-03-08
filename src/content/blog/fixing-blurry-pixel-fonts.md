@@ -44,5 +44,5 @@ A few things can cause this. In my case, it was due to the container of my text 
 
 In general:
 1. Make sure that the padding/margins of the container, text, or anything that would affect the position of the text, is an exact pixel value.
-2. Make sure that all of the glyphs you use from your font are pixel based. If you try to use a glyph that doesnt exist in your font, the glyph will fallback to a default font, which is vector based and likely have a non-integer width.
+2. Make sure that all of the glyphs you use from your font are pixel based. If you try to use a glyph that doesn't exist in your font, the glyph will fallback to a default font, which is vector based and likely have a non-integer width.
 3. Force hardware acceleration on whichever container element is offset by a non-integer value. This will cause the text inside to be rendered on an exact pixel value rather than the non-integer value. The result will depend on the browser, but this can be done by adding something like `-webkit-transform: translateZ(0px);` to the element. This is technically a hack and can cause some performance issues if overused. You can read more about forced hardware acceleration [here](https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/).
