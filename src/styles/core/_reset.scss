@@ -96,9 +96,7 @@ select {
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
+h4 {
 	color: $c-blood;
 	font-family: 'Alagard';
 	overflow-wrap: break-word;
@@ -118,6 +116,7 @@ h3 {
 
 h4 {
 	font-size: $h4-size;
+	color: $c-foreground;
 }
 
 p {
