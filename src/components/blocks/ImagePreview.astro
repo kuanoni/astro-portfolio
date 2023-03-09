@@ -15,7 +15,7 @@ const { img } = await renderImg({ src, alt });
 
 <button class='thumbnail'>
 	<Img src={src} alt={alt} height={75} />
-	<div class='full-size-img'>
+	<div class='modal-img' aria-hidden='true'>
 		<Fragment set:html={img} />
 	</div>
 </button>
@@ -27,7 +27,7 @@ const { img } = await renderImg({ src, alt });
 		thumbnail.addEventListener('click', (e) => {
 			e.stopImmediatePropagation();
 
-			const img = thumbnail.querySelector<HTMLImageElement>('.full-size-img img');
+			const img = thumbnail.querySelector<HTMLImageElement>('.modal-img img');
 			if (!img) return;
 
 			ModalHelper.addContent(img.cloneNode());
