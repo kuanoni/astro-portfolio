@@ -41,11 +41,12 @@ const { title, techs, liveUrl, sourceUrl } = projectEntry.data;
 	<a href={`/projects/${projectEntry.slug}`}>Read about ↗</a>
 	<div class='previews'>
 		{
-			previewImages.map(async (imgSrc, i) => {
-				const img = await import(`../../images/projects/${projectEntry.slug}/${imgSrc}.webp`);
-
-				return <ImagePreview img={img.default} alt={`${title} preview #${i + 1}`} />;
-			})
+			previewImages.map(async (imgSrc, i) => (
+				<ImagePreview
+					src={`src/images/projects/${projectEntry.slug}/${imgSrc}.webp`}
+					alt={`${title} preview #${i + 1}`}
+				/>
+			))
 		}
 	</div>
 </li>
