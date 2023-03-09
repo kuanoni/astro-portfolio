@@ -19,7 +19,11 @@
 		}
 	}
 
-	li {
+	li.sublist::marker {
+		content: '';
+	}
+
+	li:not(li.sublist) {
 		display: block;
 
 		@include for-size(tablet) {
