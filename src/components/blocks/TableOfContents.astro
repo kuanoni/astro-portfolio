@@ -16,13 +16,13 @@ const listHtml = headings
 		let liStr = `<li><a href="#${cur.slug}">${cur.text}</a></li>`;
 		const next = headings[i + 1];
 
-		if (!next) return liStr + '</ol>'.repeat(cur.depth - minDepth);
+		if (!next) return liStr + '</ol></li>'.repeat(cur.depth - minDepth);
 
 		// cur is the end of the current list
-		if (cur.depth < next.depth) liStr += '<ol>'.repeat(next.depth - cur.depth);
+		if (cur.depth < next.depth) liStr += '<li class="sublist"><ol>'.repeat(next.depth - cur.depth);
 
 		// next is the start of a new list
-		if (cur.depth > next.depth) liStr += '</ol>'.repeat(cur.depth - next.depth);
+		if (cur.depth > next.depth) liStr += '</ol></li>'.repeat(cur.depth - next.depth);
 
 		return liStr;
 	})

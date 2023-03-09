@@ -19,9 +19,16 @@
 		}
 	}
 
-	li {
+	li.sublist::marker {
+		content: '';
+	}
+
+	li:not(li.sublist) {
 		display: block;
-		line-height: 0.75;
+
+		@include for-size(tablet) {
+			margin: 6px 0;
+		}
 
 		&::before {
 			margin-right: 0.5em;
