@@ -108,7 +108,7 @@ With IDE extensions easily solving the issue of auto-completion inside the templ
 Like most CSS-in-JS libraries, Stiches takes care of the annoying problem of naming CSS classes. However, this comes at the cost where trying to read your browser's *DevTools Inspector* becomes a waking nightmare.
 
 <figure>
-<img src="/images/projects/kroyooz-tv/stiches-devtools.webp">
+<img src="/images/projects/kroyooz-tv/stiches-devtools.webp" alt="screenshot of Chrome DevTools inspector of a project styled with Stiches">
 <figcaption>The "randomly generated classname" soup of Stiches.</figcaption>
 </figure>
 
