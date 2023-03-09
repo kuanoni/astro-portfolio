@@ -41,9 +41,9 @@ const { title, techs, liveUrl, sourceUrl } = projectEntry.data;
 	<a href={`/projects/${projectEntry.slug}`}>Read about ↗</a>
 	<div class='previews'>
 		{
-			previewImages.map((imgSrc, i) => (
+			previewImages.map(async (imgSrc, i) => (
 				<ImagePreview
-					src={`images/projects/${projectEntry.slug}/${imgSrc}`}
+					src={`src/images/projects/${projectEntry.slug}/${imgSrc}.webp`}
 					alt={`${title} preview #${i + 1}`}
 				/>
 			))

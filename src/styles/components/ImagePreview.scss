@@ -1,5 +1,4 @@
 .thumbnail {
-	height: 50px;
 	border: none;
 	background-color: transparent;
 	padding: 0;
@@ -9,7 +8,12 @@
 	}
 
 	& > img {
+		width: min-content;
 		height: 100%;
 		border: 1px solid var(--c-border);
+	}
+
+	.modal-img {
+		display: none;
 	}
 }

@@ -1,4 +1,6 @@
 ---
+import { Img } from 'astro-imagetools/components';
+import { renderImg } from 'astro-imagetools/api';
 import '@styles/components/ImagePreview.scss';
 
 interface Props {
@@ -7,10 +9,15 @@ interface Props {
 }
 
 const { src, alt } = Astro.props;
+
+const { img } = await renderImg({ src, alt });
 ---
 
 <button class='thumbnail'>
-	<img src={src} alt={alt} />
+	<Img src={src} alt={alt} height={75} />
+	<div class='modal-img' aria-hidden='true'>
+		<Fragment set:html={img} />
+	</div>
 </button>
 
 <script>
@@ -20,18 +27,10 @@ const { src, alt } = Astro.props;
 		thumbnail.addEventListener('click', (e) => {
 			e.stopImmediatePropagation();
 
-			const img = thumbnail.querySelector('img');
+			const img = thumbnail.querySelector<HTMLImageElement>('.modal-img img');
 			if (!img) return;
 
-			const src = img.getAttribute('src');
-			const alt = img.getAttribute('alt');
-			if (!src || !alt) return;
-
-			const imgEle = document.createElement('img');
-			imgEle.setAttribute('src', src);
-			imgEle.setAttribute('alt', alt);
-
-			ModalHelper.addContent(imgEle);
+			ModalHelper.addContent(img.cloneNode());
 			ModalHelper.open(thumbnail);
 		});
 	});

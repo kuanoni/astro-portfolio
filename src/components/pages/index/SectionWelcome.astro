@@ -9,8 +9,21 @@ import mt from '@images/mt.webp';
 	<h1>Hi, I'm Kai</h1>
 	<div class='intro'>
 		<div class='intro-picture'>
-			<Image class='normal' src={faceNormal} alt='' />
-			<Image class='spooky' src={faceSpooky} alt='' />
+			<img
+				class='normal'
+				src={faceNormal.src}
+				width={faceNormal.width}
+				height={faceNormal.height}
+				alt='my face'
+			/>
+			<img
+				class='spooky'
+				src={faceSpooky.src}
+				width={faceSpooky.width}
+				height={faceSpooky.height}
+				alt=''
+				aria-hidden='true'
+			/>
 		</div>
 		<div class='intro-content'>
 			<p>
