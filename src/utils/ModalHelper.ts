@@ -24,7 +24,7 @@ class ModalHelper {
 		});
 	}
 
-	addContent(element: HTMLElement | null) {
+	addContent(element: HTMLElement | Node | null) {
 		if (element) this.modalContent.appendChild(element);
 		else throw new Error(`Failed to add element to modal: ${element}`);
 	}
