@@ -55,8 +55,7 @@ section.projects {
 			.techs {
 				display: flex;
 				flex-wrap: wrap;
-				row-gap: 8px;
-				column-gap: 16px;
+				gap: 16px;
 				margin: 8px 0;
 				padding: 0;
 				color: $c-foreground-medium;
@@ -79,16 +78,23 @@ section.projects {
 				}
 			}
 
+			.links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 16px;
+				margin: 16px 0;
+
+				a {
+					white-space: nowrap;
+				}
+			}
+
 			.previews {
 				display: flex;
-				gap: 16px;
+				gap: 24px;
 				position: relative;
 				margin-top: 8px;
 				margin-bottom: 8px;
-			}
-
-			& > a {
-				margin-right: 16px;
 			}
 		}
 	}

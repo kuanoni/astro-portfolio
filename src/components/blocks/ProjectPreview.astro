@@ -36,9 +36,11 @@ const { title, techs, liveUrl, sourceUrl } = projectEntry.data;
 			})
 		}
 	</ul>
-	<a href={liveUrl}>Live site ↗</a>
-	<a href={sourceUrl}>Source code ↗</a>
-	<a href={`/projects/${projectEntry.slug}`}>Read about ↗</a>
+	<div class='links'>
+		<a href={liveUrl}>Live site ↗</a>
+		<a href={sourceUrl}>Source code ↗</a>
+		<a href={`/projects/${projectEntry.slug}`}>Read about ↗</a>
+	</div>
 	<div class='previews'>
 		{
 			previewImages.map(async (imgSrc, i) => (
