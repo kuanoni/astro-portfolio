@@ -4,5 +4,9 @@ section.gallery {
 		gap: 32px;
 		margin-top: 16px;
 		grid-template-columns: repeat(2, 1fr);
+
+		@include for-size(phone) {
+			grid-template-columns: 1fr;
+		}
 	}
 }
