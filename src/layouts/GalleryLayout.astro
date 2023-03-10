@@ -1,0 +1,23 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '@styles/layouts/GalleryLayout.scss';
+
+interface Props {
+	galleryTitle: string;
+}
+
+const { galleryTitle } = Astro.props;
+---
+
+<BaseLayout title={galleryTitle}>
+	<main>
+		<section class='gallery'>
+			<h1>{galleryTitle}</h1>
+			<slot name='intro-text' />
+			<hr />
+			<div class='gallery-content'>
+				<slot />
+			</div>
+		</section>
+	</main>
+</BaseLayout>

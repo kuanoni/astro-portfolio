@@ -1,0 +1,8 @@
+section.gallery {
+	.gallery-content {
+		display: grid;
+		gap: 32px;
+		margin-top: 16px;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
