@@ -9,6 +9,10 @@
 		background-size: cover;
 		aspect-ratio: 1.7778;
 
+		@include for-size(phone) {
+			margin-bottom: 10px;
+		}
+
 		&:hover .youtube-button {
 			opacity: 1;
 			filter: none;
@@ -39,6 +43,7 @@
 	time {
 		display: block;
 		color: $c-foreground-medium;
+		line-height: 1;
 		font-size: $font-size-small;
 	}
 }
