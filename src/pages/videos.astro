@@ -12,5 +12,13 @@ const sortedVideos = allVideos.sort((a, b) => b.data.dateUploaded.getTime() - a.
 		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam nulla laborum nesciunt voluptas ratione autem
 		dolore tempore hic quis voluptatum!
 	</p>
-	{sortedVideos.map((video) => <YoutubeThumbnail videoId={video.data.videoId} />)}
+	{
+		sortedVideos.map((video) => (
+			<YoutubeThumbnail
+				title={video.data.title}
+				videoId={video.data.videoId}
+				dateUploaded={video.data.dateUploaded}
+			/>
+		))
+	}
 </GalleryLayout>

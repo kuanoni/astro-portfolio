@@ -3,20 +3,26 @@ import { BackgroundImage } from 'astro-imagetools/components';
 import '@styles/components/YoutubeThumbnail.scss';
 
 interface Props {
+	title: string;
 	videoId: string;
+	dateUploaded: Date;
 }
 
-const { videoId } = Astro.props;
+const { title, videoId, dateUploaded } = Astro.props;
 const imgSrc = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 ---
 
-<BackgroundImage
-	src={imgSrc}
-	tag='button'
-	attributes={{ container: { class: 'youtube-thumbnail', 'data-video-id': videoId } }}
->
-	<div class='youtube-button'></div>
-</BackgroundImage>
+<article class='video'>
+	<BackgroundImage
+		src={imgSrc}
+		tag='button'
+		attributes={{ container: { class: 'youtube-thumbnail', 'data-video-id': videoId } }}
+	>
+		<div class='youtube-button'></div>
+	</BackgroundImage>
+	<a href={`https://www.youtube.com/watch?v=${videoId}`}>{title}</a>
+	<time>{dateUploaded.toLocaleDateString()}</time>
+</article>
 
 <script>
 	import ModalHelper from '@utils/ModalHelper';
