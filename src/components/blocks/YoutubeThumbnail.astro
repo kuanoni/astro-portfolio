@@ -16,7 +16,7 @@ const imgSrc = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 	<BackgroundImage
 		src={imgSrc}
 		tag='button'
-		attributes={{ container: { class: 'youtube-thumbnail', 'data-video-id': videoId } }}
+		attributes={{ container: { class: 'youtube-thumbnail', 'data-video-id': videoId, 'aria-label': title } }}
 	>
 		<div class='youtube-button'></div>
 	</BackgroundImage>
