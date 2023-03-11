@@ -1,17 +1,10 @@
 ---
 import YoutubeThumbnail from '@components/blocks/YoutubeThumbnail.astro';
+import { getCollection } from 'astro:content';
 import GalleryLayout from 'src/layouts/GalleryLayout.astro';
 
-const videoIds = [
-	'Btx2gRfingM',
-	'ocvSRI7AisQ',
-	'hYQ9ituz4Tw',
-	'-AZ-cUobMl4',
-	'5QnMbkT-Uuw',
-	'6muYOLsKkVI',
-	'mYOq8X7shfY',
-	'Dgv2UhjYnHI',
-];
+const allVideos = await getCollection('videos');
+const sortedVideos = allVideos.sort((a, b) => b.data.dateUploaded.getTime() - a.data.dateUploaded.getTime());
 ---
 
 <GalleryLayout galleryTitle='Videos'>
@@ -19,5 +12,5 @@ const videoIds = [
 		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam nulla laborum nesciunt voluptas ratione autem
 		dolore tempore hic quis voluptatum!
 	</p>
-	{videoIds.map((id) => <YoutubeThumbnail videoId={id} />)}
+	{sortedVideos.map((video) => <YoutubeThumbnail videoId={video.data.videoId} />)}
 </GalleryLayout>
