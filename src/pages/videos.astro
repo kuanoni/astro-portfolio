@@ -1,0 +1,23 @@
+---
+import YoutubeThumbnail from '@components/blocks/YoutubeThumbnail.astro';
+import GalleryLayout from 'src/layouts/GalleryLayout.astro';
+
+const videoIds = [
+	'Btx2gRfingM',
+	'ocvSRI7AisQ',
+	'hYQ9ituz4Tw',
+	'-AZ-cUobMl4',
+	'5QnMbkT-Uuw',
+	'6muYOLsKkVI',
+	'mYOq8X7shfY',
+	'Dgv2UhjYnHI',
+];
+---
+
+<GalleryLayout galleryTitle='Videos'>
+	<p slot='intro-text'>
+		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam nulla laborum nesciunt voluptas ratione autem
+		dolore tempore hic quis voluptatum!
+	</p>
+	{videoIds.map((id) => <YoutubeThumbnail videoId={id} />)}
+</GalleryLayout>
