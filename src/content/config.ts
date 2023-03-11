@@ -21,8 +21,17 @@ const projectPostSchema = postSchema.extend({
 	sourceUrl: z.string().optional(),
 });
 
+const videosSchema = z.object({
+	title: z.string(),
+	videoId: z.string(),
+	datePublished: z.string().transform((str) => new Date(str)),
+	dateUploaded: z.string().transform((str) => new Date(str)),
+});
+
 export const collections = {
 	projectPreview: defineCollection({ schema: projectPreviewSchema }),
 	blog: defineCollection({ schema: postSchema }),
 	project: defineCollection({ schema: projectPostSchema }),
+
+	videos: defineCollection({ schema: videosSchema }),
 };
