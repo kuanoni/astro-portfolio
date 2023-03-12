@@ -1,0 +1,24 @@
+---
+import YoutubeThumbnail from '@components/blocks/YoutubeThumbnail.astro';
+import { getCollection } from 'astro:content';
+import GalleryLayout from 'src/layouts/GalleryLayout.astro';
+
+const allVideos = await getCollection('videos');
+const sortedVideos = allVideos.sort((a, b) => b.data.dateUploaded.getTime() - a.data.dateUploaded.getTime());
+---
+
+<GalleryLayout galleryTitle='Videos'>
+	<p slot='intro-text'>
+		These are some Youtube videos I've created. Some are inside jokes and others are just random animations that I
+		pulled out of my brain.
+	</p>
+	{
+		sortedVideos.map((video) => (
+			<YoutubeThumbnail
+				title={video.data.title}
+				videoId={video.data.videoId}
+				dateUploaded={video.data.dateUploaded}
+			/>
+		))
+	}
+</GalleryLayout>

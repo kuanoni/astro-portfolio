@@ -1,0 +1,50 @@
+---
+import { BackgroundImage } from 'astro-imagetools/components';
+import '@styles/components/YoutubeThumbnail.scss';
+
+interface Props {
+	title: string;
+	videoId: string;
+	dateUploaded: Date;
+}
+
+const { title, videoId, dateUploaded } = Astro.props;
+const imgSrc = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+---
+
+<article class='video'>
+	<BackgroundImage
+		src={imgSrc}
+		tag='button'
+		attributes={{ container: { class: 'youtube-thumbnail', 'data-video-id': videoId, 'aria-label': title } }}
+	>
+		<div class='youtube-button'></div>
+	</BackgroundImage>
+	<a href={`https://www.youtube.com/watch?v=${videoId}`}>{title}</a>
+	<time>{dateUploaded.toLocaleDateString()}</time>
+</article>
+
+<script>
+	import ModalHelper from '@utils/ModalHelper';
+
+	const youtubeThumbnails = document.querySelectorAll('.youtube-thumbnail');
+	youtubeThumbnails.forEach((thumbnail) => {
+		thumbnail.addEventListener('click', () => {
+			const videoId = thumbnail.getAttribute('data-video-id');
+			if (!videoId) return;
+
+			const embedIframe = document.createElement('iframe');
+			embedIframe.classList.add('youtube-embed');
+			embedIframe.setAttribute('allowFullScreen', 'allowFullScreen');
+			embedIframe.setAttribute('allowtransparency', 'true');
+			embedIframe.setAttribute('frameborder', '0');
+			embedIframe.setAttribute(
+				'src',
+				`https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1&origin=localhost:3000`
+			);
+
+			ModalHelper.addContent(embedIframe);
+			ModalHelper.open(null);
+		});
+	});
+</script>
