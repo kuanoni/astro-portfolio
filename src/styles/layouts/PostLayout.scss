@@ -20,6 +20,7 @@ section.post {
 		color: $c-foreground-medium;
 		border: 1px solid $c-border;
 		overflow-x: auto;
+		overscroll-behavior: none;
 
 		img {
 			max-width: revert;
