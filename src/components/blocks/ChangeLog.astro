@@ -73,21 +73,21 @@ function injectListItemToMarkdownContent(x: string, mdContent: string) {
 }
 ---
 
-<article class='change-log'>
-	<strong>Change Log</strong>
-	<div class='change-log__content'>
+<section class='change-log' aria-labelledby='change-log-title'>
+	<strong id='change-log-title'>Change Log</strong>
+	<ul class='change-log__content'>
 		{
 			Object.keys(changeLogsContent)
 				.sort()
 				.reverse()
 				.map((date) => {
 					return (
-						<article class='change-log__day'>
+						<li class='change-log__day'>
 							<time>{new Date(parseInt(date)).toLocaleDateString()}</time>
 							<Fragment set:html={changeLogsContent[date]} />
-						</article>
+						</li>
 					);
 				})
 		}
-	</div>
-</article>
+	</ul>
+</section>

@@ -4,17 +4,18 @@
 		padding: 8px;
 		background-color: black;
 		border: 1px solid $c-border;
+		list-style: none;
 		overflow-y: auto;
+
+		ul {
+			color: $c-foreground-medium;
+			li {
+				line-height: 1;
+			}
+		}
 	}
 
 	&__day:not(:first-child) {
 		margin-top: 16px;
-	}
-
-	ul {
-		color: $c-foreground-medium;
-		li {
-			line-height: 1;
-		}
 	}
 }
