@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import '@styles/components/ChangeLog.scss';
+
+const changeLogEntries = await Astro.glob('/src/content/changeLog/*.md');
+const allBlogPosts = await getCollection('blog');
+const allProjects = await getCollection('project');
+
+const changeLogsContent: { [i: string]: string } = {};
+
+changeLogEntries.map((entry) => {
+	const dateString = entry.file.slice(-11).replace('.md', '');
+	const date = new Date(dateString).getTime();
+	changeLogsContent[date] = entry.compiledContent();
+});
+
+allBlogPosts.forEach((entry) => {
+	const publishedDate = entry.data.datePublished.getTime();
+	const updatedDate = entry.data.dateUpdated?.getTime();
+
+	if (changeLogsContent[publishedDate])
+		changeLogsContent[publishedDate] = injectListItemToMarkdownContent(
+			`Added blog post: ${entry.data.title}`,
+			changeLogsContent[publishedDate]
+		);
+	else
+		changeLogsContent[publishedDate] = `<ul><li>Added blog post: <a href="/posts/${entry.slug}">
+            ${entry.data.title}
+        </a></li></ul>`;
+
+	if (updatedDate && changeLogsContent[updatedDate])
+		changeLogsContent[updatedDate] = injectListItemToMarkdownContent(
+			`Updated blog post: <a href="/posts/${entry.slug}">
+                ${entry.data.title}
+            </a>"`,
+			changeLogsContent[updatedDate]
+		);
+});
+
+allProjects.forEach((entry) => {
+	const publishedDate = entry.data.datePublished.getTime();
+	const updatedDate = entry.data.dateUpdated?.getTime();
+
+	if (changeLogsContent[publishedDate])
+		changeLogsContent[publishedDate] = injectListItemToMarkdownContent(
+			`Added project writeup:
+        <a href="/projects/${entry.slug}">
+        ${entry.data.title}
+        </a>`,
+			changeLogsContent[publishedDate]
+		);
+	else
+		changeLogsContent[publishedDate] = `<ul><li>Added project writeup: <a href="/projects/${entry.slug}">
+            ${entry.data.title}
+        </a></li></ul>`;
+
+	if (updatedDate && changeLogsContent[updatedDate])
+		changeLogsContent[updatedDate] = injectListItemToMarkdownContent(
+			`Updated project writeup: <a href="/projects/${entry.slug}">
+                ${entry.data.title}
+            </a>`,
+			changeLogsContent[updatedDate]
+		);
+});
+
+function injectListItemToMarkdownContent(x: string, mdContent: string) {
+	if (mdContent.slice(-5) !== '</ul>') throw new Error(`Invalid changelog markdown: ${mdContent}`);
+
+	let result = mdContent.substring(0, mdContent.length - 5);
+	result += `<li>${x}</li>\n`;
+	return result + '</ul>';
+}
+---
+
+<article class='change-log'>
+	{
+		Object.keys(changeLogsContent)
+			.sort()
+			.reverse()
+			.map((date) => {
+				return (
+					<div class='change-log__day'>
+						<time>{new Date(parseInt(date)).toLocaleDateString()}</time>
+						<Fragment set:html={changeLogsContent[date]} />
+					</div>
+				);
+			})
+	}
+</article>

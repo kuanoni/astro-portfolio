@@ -1,0 +1,17 @@
+.change-log {
+	padding: 8px;
+	background-color: black;
+	border: 1px solid $c-border;
+	overflow-y: auto;
+
+	&__day:not(:first-child) {
+		margin-top: 16px;
+	}
+
+	ul {
+		color: $c-foreground-medium;
+		li {
+			line-height: 1;
+		}
+	}
+}
