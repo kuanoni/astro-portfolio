@@ -1,10 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import '@styles/components/ChangeLog.scss';
+import draftPostFilter from '@utils/draftPostFilter';
 
 const changeLogEntries = await Astro.glob('/src/content/changeLog/*.md');
-const allBlogPosts = await getCollection('blog');
-const allProjects = await getCollection('project');
+const allBlogPosts = await getCollection('blog', draftPostFilter);
+const allProjects = await getCollection('project', draftPostFilter);
 
 const changeLogsContent: { [i: string]: string } = {};
 
