@@ -1,8 +1,11 @@
 .change-log {
-	padding: 8px;
-	background-color: black;
-	border: 1px solid $c-border;
-	overflow-y: auto;
+	&__content {
+		max-height: 150px;
+		padding: 8px;
+		background-color: black;
+		border: 1px solid $c-border;
+		overflow-y: auto;
+	}
 
 	&__day:not(:first-child) {
 		margin-top: 16px;
