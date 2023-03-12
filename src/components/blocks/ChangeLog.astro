@@ -1,93 +1,134 @@
 ---
-import { getCollection } from 'astro:content';
-import '@styles/components/ChangeLog.scss';
+import { CollectionEntry, getCollection } from 'astro:content';
 import draftPostFilter from '@utils/draftPostFilter';
+import '@styles/components/ChangeLog.scss';
 
 const changeLogEntries = await Astro.glob('/src/content/changeLog/*.md');
 const allBlogPosts = await getCollection('blog', draftPostFilter);
 const allProjects = await getCollection('project', draftPostFilter);
+const allVideos = await getCollection('videos');
 
-const changeLogsContent: { [i: string]: string } = {};
+interface ListItemData {
+	depth: number;
+	text: string;
+}
 
+interface PostData {
+	title: string;
+	slug: string;
+}
+
+type PostsData = { [i: string]: PostData[] };
+
+// create posts data from collection entries
+function createPostsData(collection: CollectionEntry<any>[]) {
+	const postsData: PostsData = {};
+
+	collection.forEach((entry) => {
+		const date = entry.data.datePublished.getTime();
+
+		// initialize posts array if not already initialized
+		if (!postsData[date]) postsData[date] = [];
+
+		const postData = { title: entry.data.title, slug: entry.slug };
+		postsData[date].push(postData);
+	});
+
+	return postsData;
+}
+
+function addPostsDataToChangeLogContent(postsData: PostsData, label: string, linkUrlPrefix?: string) {
+	Object.keys(postsData).forEach((date) => {
+		// initialize changeLogsLists array if not already initialized
+		if (!changeLogsLists[date]) changeLogsLists[date] = [];
+
+		const hasMultiplePosts = postsData[date].length > 1;
+
+		// add sublist label
+		if (hasMultiplePosts) changeLogsLists[date].push({ depth: 1, text: `Added ${label}s:` });
+
+		const singlePostPrefix = hasMultiplePosts ? '' : `Added ${label}: `;
+
+		postsData[date].forEach((post) => {
+			const anchorStart = linkUrlPrefix ? `<a href="/${linkUrlPrefix}/${post.slug}">` : '';
+			const anchorEnd = linkUrlPrefix ? '</a>' : '';
+
+			const depth = hasMultiplePosts ? 2 : 1;
+			const text = `${singlePostPrefix}${anchorStart}${post.title}${anchorEnd}`;
+
+			changeLogsLists[date].push({ depth, text });
+		});
+	});
+}
+
+function addCollectionPosts(collection: CollectionEntry<any>[], label: string, linkUrlPrefix?: string) {
+	const postsData = createPostsData(collection);
+	addPostsDataToChangeLogContent(postsData, label, linkUrlPrefix);
+}
+
+const changeLogsLists: { [i: string]: ListItemData[] } = {};
+
+// initialize the changeLogEntries using the changeLogEntries
 changeLogEntries.map((entry) => {
+	// use the entry file path to get the date key
 	const dateString = entry.file.slice(-11).replace('.md', '');
 	const date = new Date(dateString).getTime();
-	changeLogsContent[date] = entry.compiledContent();
+
+	const cleanedHtml: ListItemData[] = [];
+	let depth = 0;
+
+	const htmlLines = entry.compiledContent().split('\n');
+	htmlLines.forEach((line) => {
+		// calculate the current list depth using "ul" HTML tags
+		const curDepth = depth + (line.match('<ul>') || []).length - (line.match('</ul>') || []).length;
+		depth += curDepth - depth;
+
+		// remove list HTML tags
+		const text = line.replaceAll('<ul>', '').replaceAll('</ul>', '').replaceAll('<li>', '').replaceAll('</li>', '');
+		if (!text) return;
+
+		cleanedHtml.push({ depth, text });
+	});
+
+	changeLogsLists[date] = cleanedHtml;
 });
 
-allBlogPosts.forEach((entry) => {
-	const publishedDate = entry.data.datePublished.getTime();
-	const updatedDate = entry.data.dateUpdated?.getTime();
+addCollectionPosts(allBlogPosts, 'blog post', 'posts');
+addCollectionPosts(allProjects, 'project writeup', 'projects');
+addCollectionPosts(allVideos, 'video');
 
-	if (changeLogsContent[publishedDate])
-		changeLogsContent[publishedDate] = injectListItemToMarkdownContent(
-			`Added blog post: ${entry.data.title}`,
-			changeLogsContent[publishedDate]
-		);
-	else
-		changeLogsContent[publishedDate] = `<ul><li>Added blog post: <a href="/posts/${entry.slug}">
-            ${entry.data.title}
-        </a></li></ul>`;
+// map through changeLogsLists to create raw HTML using the ListItemData
+const changeLogDaysHtml = Object.keys(changeLogsLists).map((dateTime) => {
+	const datetimeString = new Date(parseInt(dateTime)).toISOString();
+	const dateString = new Date(parseInt(dateTime)).toLocaleDateString();
 
-	if (updatedDate && changeLogsContent[updatedDate])
-		changeLogsContent[updatedDate] = injectListItemToMarkdownContent(
-			`Updated blog post: <a href="/posts/${entry.slug}">
-                ${entry.data.title}
-            </a>"`,
-			changeLogsContent[updatedDate]
-		);
+	const minDepth = Math.min(...changeLogsLists[dateTime].map((h) => h.depth));
+
+	const liHtml = changeLogsLists[dateTime]
+		.map((liData, i) => {
+			// list item string
+			let liStr = `<li>${liData.text}</li>`;
+			const next = changeLogsLists[dateTime][i + 1];
+
+			if (!next) return liStr + '</ul></li>'.repeat(liData.depth - minDepth);
+
+			// cur is the end of the current list
+			if (liData.depth < next.depth) liStr += '<li class="sublist"><ul>'.repeat(next.depth - liData.depth);
+
+			// next is the start of a new list
+			if (liData.depth > next.depth) liStr += '</ul></li>'.repeat(liData.depth - next.depth);
+
+			return liStr;
+		})
+		.join('');
+
+	return `<time datetime="${datetimeString}">${dateString}</time><ul>${liHtml}</ul>`;
 });
-
-allProjects.forEach((entry) => {
-	const publishedDate = entry.data.datePublished.getTime();
-	const updatedDate = entry.data.dateUpdated?.getTime();
-
-	if (changeLogsContent[publishedDate])
-		changeLogsContent[publishedDate] = injectListItemToMarkdownContent(
-			`Added project writeup:
-        <a href="/projects/${entry.slug}">
-        ${entry.data.title}
-        </a>`,
-			changeLogsContent[publishedDate]
-		);
-	else
-		changeLogsContent[publishedDate] = `<ul><li>Added project writeup: <a href="/projects/${entry.slug}">
-            ${entry.data.title}
-        </a></li></ul>`;
-
-	if (updatedDate && changeLogsContent[updatedDate])
-		changeLogsContent[updatedDate] = injectListItemToMarkdownContent(
-			`Updated project writeup: <a href="/projects/${entry.slug}">
-                ${entry.data.title}
-            </a>`,
-			changeLogsContent[updatedDate]
-		);
-});
-
-function injectListItemToMarkdownContent(x: string, mdContent: string) {
-	if (mdContent.slice(-5) !== '</ul>') throw new Error(`Invalid changelog markdown: ${mdContent}`);
-
-	let result = mdContent.substring(0, mdContent.length - 5);
-	result += `<li>${x}</li>\n`;
-	return result + '</ul>';
-}
 ---
 
 <section class='change-log' aria-labelledby='change-log-title'>
 	<strong id='change-log-title'>Change Log</strong>
 	<ul class='change-log__content'>
-		{
-			Object.keys(changeLogsContent)
-				.sort()
-				.reverse()
-				.map((date) => {
-					return (
-						<li class='change-log__day'>
-							<time>{new Date(parseInt(date)).toLocaleDateString()}</time>
-							<Fragment set:html={changeLogsContent[date]} />
-						</li>
-					);
-				})
-		}
+		{changeLogDaysHtml.map((dayHtml) => <li class='change-log__day' set:html={dayHtml} />)}
 	</ul>
 </section>

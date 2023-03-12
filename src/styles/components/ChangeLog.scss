@@ -9,8 +9,17 @@
 
 		ul {
 			color: $c-foreground-medium;
+
+			li.sublist::marker {
+				content: '';
+			}
+
 			li {
 				line-height: 1;
+
+				a {
+					line-height: 1.15;
+				}
 			}
 		}
 	}
