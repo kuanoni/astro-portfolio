@@ -15,12 +15,12 @@ const tracks = await client
 		throw new Error(err);
 	});
 
-const songIds = await Promise.all(
+const songs = await Promise.all(
 	tracks.map(async (track) => {
 		return await client
 			.getSongInfo(track.url)
 			.then(async (song) => {
-				return song.id;
+				return { id: song.id, title: song.title };
 			})
 			.catch((err) => {
 				throw new Error(err);
@@ -30,7 +30,7 @@ const songIds = await Promise.all(
 
 if (!tracks) throw new Error(`Failed to fetch Soundcloud tracks: ${tracks}`);
 
-if (!songIds) throw new Error(`Failed to fetch Soundcloud tracks: ${songIds}`);
+if (!songs) throw new Error(`Failed to fetch Soundcloud tracks: ${songs}`);
 ---
 
 <BaseLayout>
@@ -43,10 +43,12 @@ if (!songIds) throw new Error(`Failed to fetch Soundcloud tracks: ${songIds}`);
 			</p>
 			<hr />
 			{
-				songIds.map((songId) => {
+				songs.map((song) => {
 					return (
 						<iframe
-							src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${songId}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
+							title={`SoundCloud track "${song.title}" by ${SOUNDCLOUD_USERNAME}`}
+							scrolling='no'
+							src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${song.id}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
 						/>
 					);
 				})
