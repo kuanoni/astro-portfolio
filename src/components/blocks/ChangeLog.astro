@@ -69,7 +69,7 @@ function addCollectionPosts(collection: CollectionEntry<any>[], label: string, l
 const changeLogsLists: { [i: string]: ListItemData[] } = {};
 
 // initialize the changeLogEntries using the changeLogEntries
-changeLogEntries.map((entry) => {
+changeLogEntries.forEach((entry) => {
 	// use the entry file path to get the date key
 	const dateString = entry.file.slice(-11).replace('.md', '');
 	const date = new Date(dateString).getTime();
@@ -97,8 +97,10 @@ addCollectionPosts(allBlogPosts, 'blog post', 'posts');
 addCollectionPosts(allProjects, 'project writeup', 'projects');
 addCollectionPosts(allVideos, 'video');
 
+const changeLogDateTimes = Object.keys(changeLogsLists).sort((a, b) => parseInt(b) - parseInt(a));
+
 // map through changeLogsLists to create raw HTML using the ListItemData
-const changeLogDaysHtml = Object.keys(changeLogsLists).map((dateTime) => {
+const changeLogDaysHtml = changeLogDateTimes.map((dateTime) => {
 	const datetimeString = new Date(parseInt(dateTime)).toISOString();
 	const dateString = new Date(parseInt(dateTime)).toLocaleDateString();
 
