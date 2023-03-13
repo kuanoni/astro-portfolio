@@ -1,30 +1,58 @@
 header {
 	display: flex;
-	height: 100px;
+	height: 130px;
 	border: 2px solid $c-border;
 	border-bottom: none;
 
 	@include fit-page;
 
 	nav {
-		display: flex;
-		justify-content: right;
-		gap: 24px;
 		width: 100%;
 		margin-top: auto;
-		padding: 4px 16px;
-		padding-bottom: 0;
-		background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 75%, transparent);
 
-		a {
-			color: $c-blood;
-			text-transform: uppercase;
-			font-size: 1.25rem;
-			font-weight: 900;
-			text-shadow: 1px 1px 0px black;
+		.main,
+		.sub {
+			display: flex;
+			gap: 24px;
+			padding-top: 6px;
+			padding-inline: 16px;
+		}
 
-			&:hover {
-				color: $c-foreground;
+		.main {
+			justify-content: right;
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 75%, transparent);
+			border-bottom: 2px solid $c-border;
+
+			a {
+				color: $c-blood;
+				text-transform: uppercase;
+				font-size: 1.25rem;
+				font-weight: 900;
+				text-shadow: 1px 1px 0px black;
+
+				&:hover {
+					color: $c-foreground;
+				}
+			}
+		}
+
+		.sub {
+			overflow-x: auto;
+			background: #000;
+
+			a {
+				color: $c-foreground-medium;
+				text-transform: lowercase;
+				text-decoration: none;
+
+				&:first-child {
+					margin-left: auto;
+				}
+
+				&:hover {
+					color: $c-foreground;
+					text-decoration: underline;
+				}
 			}
 		}
 	}
