@@ -17,7 +17,8 @@
         "astro": "^2.0.4",
         "astro-icon": "^0.8.0",
         "astro-imagetools": "^0.8.1",
-        "sass": "^1.58.0"
+        "sass": "^1.58.0",
+        "soundcloud-scraper": "^5.0.3"
     },
     "devDependencies": {
         "postcss-inline-svg": "^5.0.0"
