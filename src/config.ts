@@ -10,6 +10,8 @@ export const LINKEDIN_URL = 'https://www.linkedin.com/in/kainoa-araiza-kuanoni-a
 export const STACK_OVERFLOW_URL = 'https://stackoverflow.com/users/20453324/kuanoni';
 export const DEV_URL = 'https://dev.to/kuanoni';
 
+export const SOUNDCLOUD_USERNAME = 'kuanoni97';
+
 interface TechInfo {
 	[i: string]: {
 		description: string;
