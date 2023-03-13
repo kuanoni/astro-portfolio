@@ -1,0 +1,56 @@
+---
+import SoundCloud from 'soundcloud-scraper';
+import BaseLayout from 'src/layouts/BaseLayout.astro';
+import { SOUNDCLOUD_USERNAME } from 'src/config';
+import '@styles/pages/music.scss';
+
+const client = new SoundCloud.Client();
+
+const tracks = await client
+	.getUser(SOUNDCLOUD_USERNAME)
+	.then(async (user) => {
+		return user.tracks;
+	})
+	.catch((err) => {
+		throw new Error(err);
+	});
+
+const songIds = await Promise.all(
+	tracks.map(async (track) => {
+		return await client
+			.getSongInfo(track.url)
+			.then(async (song) => {
+				return song.id;
+			})
+			.catch((err) => {
+				throw new Error(err);
+			});
+	})
+);
+
+if (!tracks) throw new Error(`Failed to fetch Soundcloud tracks: ${tracks}`);
+
+if (!songIds) throw new Error(`Failed to fetch Soundcloud tracks: ${songIds}`);
+---
+
+<BaseLayout>
+	<main>
+		<section class='music'>
+			<h1>Music</h1>
+			<p>
+				Sometimes I make music for fun. You can view the rest of my tracks on
+				<a href={`https://soundcloud.com/${SOUNDCLOUD_USERNAME}`}>my soundcloud</a>.
+			</p>
+			<hr />
+			{
+				songIds.map((songId) => {
+					return (
+						<iframe
+							src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${songId}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
+						/>
+					);
+				})
+			}
+		</section>
+	</main>
+</BaseLayout>
