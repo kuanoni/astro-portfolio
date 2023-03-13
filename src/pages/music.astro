@@ -6,17 +6,31 @@ import '@styles/pages/music.scss';
 
 const client = new SoundCloud.Client();
 
-const tracks = await client.getUser(SOUNDCLOUD_USERNAME).then(async (user) => {
-	return user.tracks;
-});
+const tracks = await client
+	.getUser(SOUNDCLOUD_USERNAME)
+	.then(async (user) => {
+		return user.tracks;
+	})
+	.catch((err) => {
+		throw new Error(err);
+	});
 
 const songIds = await Promise.all(
 	tracks.map(async (track) => {
-		return await client.getSongInfo(track.url).then(async (song) => {
-			return song.id;
-		});
+		return await client
+			.getSongInfo(track.url)
+			.then(async (song) => {
+				return song.id;
+			})
+			.catch((err) => {
+				throw new Error(err);
+			});
 	})
 );
+
+if (!tracks) throw new Error(`Failed to fetch Soundcloud tracks: ${tracks}`);
+
+if (!songIds) throw new Error(`Failed to fetch Soundcloud tracks: ${songIds}`);
 ---
 
 <BaseLayout>
