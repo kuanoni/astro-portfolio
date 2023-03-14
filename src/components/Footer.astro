@@ -1,6 +1,6 @@
 ---
 import '@styles/components/Footer.scss';
-import { DEV_URL, GITHUB_URL, GITLAB_URL, LINKEDIN_URL, STACK_OVERFLOW_URL } from 'src/config';
+import { DEV_URL, GITHUB_URL, GITLAB_URL, LINKEDIN_URL, SITE_EMAIL, STACK_OVERFLOW_URL } from 'src/config';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -16,7 +16,7 @@ const currentYear = new Date().getFullYear();
 	<small>Ⓒ {currentYear} Kainoa Araiza Kuanoni. All rights reserved.</small>
 	<address>
 		<small>
-			<a href='mailto: me@kainoa.us'>me@kainoa.us</a>
+			<a href={`mailto: ${SITE_EMAIL}`}>{SITE_EMAIL}</a>
 		</small>
 	</address>
 </footer>
