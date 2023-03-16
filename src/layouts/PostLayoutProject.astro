@@ -16,8 +16,12 @@ const { sourceUrl, liveUrl } = entry.data;
 	<div class='pre-header' slot='pre-header'>
 		<div class='links'>
 			<a href='/projects' class='back'>← View all projects</a>
-			<a href={sourceUrl} title='Source code' target='_blank'><Icon name='source-code' /></a>
-			<a href={liveUrl} title='Live site' target='_blank'><Icon name='external-link' /></a>
+			<a href={sourceUrl} title='Source code' aria-label='Source code' target='_blank'>
+				<Icon name='source-code' />
+			</a>
+			<a href={liveUrl} title='Live site' aria-label='Live site' target='_blank'>
+				<Icon name='external-link' />
+			</a>
 		</div>
 	</div>
 	<slot />
