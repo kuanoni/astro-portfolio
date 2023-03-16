@@ -8,7 +8,7 @@ figure.captioned-image {
 	overscroll-behavior: none;
 
 	img {
-		max-width: revert;
+		max-width: unset;
 		border-bottom: 1px solid $c-border;
 		object-fit: cover;
 	}
