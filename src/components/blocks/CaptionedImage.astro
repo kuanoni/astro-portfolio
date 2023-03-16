@@ -1,4 +1,6 @@
 ---
+import '@styles/components/CaptionedImage.scss';
+
 interface Props {
 	src: string;
 	alt: string;
@@ -8,7 +10,7 @@ interface Props {
 const { src, alt, caption } = Astro.props;
 ---
 
-<figure>
+<figure class='captioned-image'>
 	<img src={src} alt={alt} />
 	<figcaption>{caption}</figcaption>
 </figure>
