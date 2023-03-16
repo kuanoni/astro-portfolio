@@ -30,6 +30,13 @@ const { img } = await renderImg({ src, alt });
 			const img = thumbnail.querySelector<HTMLImageElement>('.modal-img img');
 			if (!img) return;
 
+			const thumbnailImg = thumbnail.querySelector<HTMLImageElement>('img');
+			if (!thumbnailImg) return;
+
+			img.style.backgroundImage = getComputedStyle(thumbnailImg).backgroundImage;
+			img.style.backgroundPosition = '50% 50%';
+			img.style.backgroundSize = 'cover';
+
 			ModalHelper.addContent(img.cloneNode());
 			ModalHelper.open(thumbnail);
 		});
