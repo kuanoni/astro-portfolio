@@ -31,7 +31,7 @@ const listHtml = headings
 
 {
 	listHtml && headings.length > 1 ? (
-		<details class='toc' open>
+		<details class='toc' open aria-label='Table of contents'>
 			<summary>Contents</summary>
 			<ol set:html={listHtml} />
 		</details>

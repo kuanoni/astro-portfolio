@@ -1,0 +1,17 @@
+---
+import { Img } from 'astro-imagetools/components';
+import '@styles/components/CaptionedImage.scss';
+
+interface Props {
+	src: string;
+	alt: string;
+	caption: string;
+}
+
+const { src, alt, caption } = Astro.props;
+---
+
+<figure class='captioned-image'>
+	<Img src={src} alt={alt} layout='fixed' />
+	<figcaption>{caption}</figcaption>
+</figure>
