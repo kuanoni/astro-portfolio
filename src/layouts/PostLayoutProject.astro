@@ -1,17 +1,28 @@
 ---
+import { Icon } from 'astro-icon';
 import type { CollectionEntry } from 'astro:content';
 import PostLayoutBase from './PostLayoutBase.astro';
+import '@styles/layouts/PostLayoutProject.scss';
 
 interface Props {
 	entry: CollectionEntry<'project'>;
 }
 
 const { entry } = Astro.props;
+const { sourceUrl, liveUrl } = entry.data;
 ---
 
 <PostLayoutBase entry={entry}>
 	<div class='pre-header' slot='pre-header'>
-		<a href='/projects'>← View all projects</a>
+		<div class='links'>
+			<a href='/projects' class='back'>← View all projects</a>
+			<a href={sourceUrl} title='Source code' aria-label='Source code' target='_blank'>
+				<Icon name='source-code' />
+			</a>
+			<a href={liveUrl} title='Live site' aria-label='Live site' target='_blank'>
+				<Icon name='external-link' />
+			</a>
+		</div>
 	</div>
 	<slot />
 </PostLayoutBase>

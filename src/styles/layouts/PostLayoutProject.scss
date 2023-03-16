@@ -1,0 +1,29 @@
+.pre-header {
+	margin-bottom: 24px;
+	.links {
+		display: flex;
+		align-items: end;
+		gap: 24px;
+
+		a {
+			&.back {
+				margin-right: auto;
+			}
+
+			svg {
+				width: 1.5rem;
+				padding: 2px;
+				border: 1px solid $c-link;
+
+				&:hover {
+					border-color: $c-link-hover;
+				}
+
+				&:active {
+					color: $c-background;
+					background-color: $c-link-hover;
+				}
+			}
+		}
+	}
+}
