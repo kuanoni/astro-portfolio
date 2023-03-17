@@ -36,16 +36,13 @@
 			counter-increment: item;
 		}
 
-		&:hover {
-			&::before,
-			a {
-				text-decoration: underline;
-			}
-		}
-
 		a {
 			text-decoration: none;
 			line-height: 1.15;
+
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 }
