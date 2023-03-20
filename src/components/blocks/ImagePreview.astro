@@ -48,7 +48,7 @@ function getImageDataFromHtml(html: string) {
 }
 
 const { img: thumbnailHtml } = await renderImg({ src, alt, height: 75 });
-const { img: fullsizeHtml } = await renderImg({ src, alt });
+const { img: fullsizeHtml } = await renderImg({ src, alt, breakpoints: { count: 3, minWidth: 320 } });
 
 const fullsizeData = getImageDataFromHtml(fullsizeHtml);
 const thumbnailData = getImageDataFromHtml(thumbnailHtml);
