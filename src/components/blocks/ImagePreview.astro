@@ -1,5 +1,4 @@
 ---
-import { Img } from 'astro-imagetools/components';
 import { renderImg } from 'astro-imagetools/api';
 import '@styles/components/ImagePreview.scss';
 
@@ -12,25 +11,6 @@ const { src, alt } = Astro.props;
 
 interface ImageEleData {
 	[i: string]: string;
-}
-
-const { img: thumbnailHtml, style: thumbnailStyle } = await renderImg({ src, alt, height: 75 });
-const { img: fullsizeHtml } = await renderImg({ src, alt });
-
-const fullsizeData = getImageDataFromHtml(fullsizeHtml);
-const thumbnailData = getImageDataFromHtml(thumbnailHtml);
-
-function renderImageData(img: ImageEleData) {
-	const { src, alt, srcset, sizes, loading, width, height } = img;
-	return `<img
-    src="${src}"
-    alt="${alt}"
-    srcset="${srcset}"
-    sizes="${sizes}"
-    loading="${loading}"
-    width="${width}"
-    height="${height}"
-    />`;
 }
 
 function cleanImageData(img: ImageEleData) {
@@ -66,12 +46,31 @@ function getImageDataFromHtml(html: string) {
 
 	return cleanImageData(result);
 }
+
+const { img: thumbnailHtml } = await renderImg({ src, alt, height: 75 });
+const { img: fullsizeHtml } = await renderImg({ src, alt });
+
+const fullsizeData = getImageDataFromHtml(fullsizeHtml);
+const thumbnailData = getImageDataFromHtml(thumbnailHtml);
 ---
 
 <button class='thumbnail'>
-	<Fragment set:html={renderImageData(thumbnailData)} />
+	<img
+		src={thumbnailData.src}
+		alt={thumbnailData.alt}
+		width={thumbnailData.width}
+		height={thumbnailData.height}
+		loading='lazy'
+	/>
 	<div class='modal-img'>
-		<Fragment set:html={renderImageData(fullsizeData)} />
+		<img
+			src={fullsizeData.src}
+			alt={fullsizeData.alt}
+			srcset={fullsizeData.srcset}
+			sizes={fullsizeData.sizes}
+			width={fullsizeData.width}
+			height={fullsizeData.height}
+		/>
 	</div>
 </button>
 
