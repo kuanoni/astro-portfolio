@@ -1,5 +1,4 @@
 ---
-import { Img } from 'astro-imagetools/components';
 import { renderImg } from 'astro-imagetools/api';
 import '@styles/components/ImagePreview.scss';
 
@@ -10,13 +9,68 @@ interface Props {
 
 const { src, alt } = Astro.props;
 
-const { img } = await renderImg({ src, alt });
+interface ImageEleData {
+	[i: string]: string;
+}
+
+function cleanImageData(img: ImageEleData) {
+	if (!img.srcset) return img;
+	const srcset = img.srcset.split(', ');
+	const realSrc = srcset[0].split(' ')[0];
+
+	img.src = realSrc;
+
+	if (!img.width || !img.sizes) return img;
+
+	const oldWidth = img.width;
+	const roundedWidth = Math.round(parseInt(oldWidth)).toString();
+
+	img.width = roundedWidth;
+	img.sizes = img.sizes.replaceAll(oldWidth, roundedWidth);
+
+	return img;
+}
+
+function getImageDataFromHtml(html: string) {
+	const htmlLines = html.split('\n');
+	const result: ImageEleData = {};
+
+	for (const line of htmlLines) {
+		const trimmedLine = line.trim();
+		if (!trimmedLine.includes('=')) continue;
+
+		const [key, value] = trimmedLine.split('=');
+
+		result[key] = value.replaceAll('"', '');
+	}
+
+	return cleanImageData(result);
+}
+
+const { img: thumbnailHtml } = await renderImg({ src, alt, height: 75 });
+const { img: fullsizeHtml } = await renderImg({ src, alt, breakpoints: { count: 3, minWidth: 320 } });
+
+const fullsizeData = getImageDataFromHtml(fullsizeHtml);
+const thumbnailData = getImageDataFromHtml(thumbnailHtml);
 ---
 
 <button class='thumbnail'>
-	<Img src={src} alt={alt} height={75} />
-	<div class='modal-img' aria-hidden='true'>
-		<Fragment set:html={img} />
+	<img
+		src={thumbnailData.src}
+		alt={thumbnailData.alt}
+		width={thumbnailData.width}
+		height={thumbnailData.height}
+		loading='lazy'
+	/>
+	<div class='modal-img'>
+		<img
+			src={fullsizeData.src}
+			alt={fullsizeData.alt}
+			srcset={fullsizeData.srcset}
+			sizes={fullsizeData.sizes}
+			width={fullsizeData.width}
+			height={fullsizeData.height}
+		/>
 	</div>
 </button>
 
@@ -33,9 +87,12 @@ const { img } = await renderImg({ src, alt });
 			const thumbnailImg = thumbnail.querySelector<HTMLImageElement>('img');
 			if (!thumbnailImg) return;
 
-			img.style.backgroundImage = getComputedStyle(thumbnailImg).backgroundImage;
+			const thumbnailSrc = thumbnailImg.getAttribute('src') || '';
+
+			img.style.backgroundImage = `url("${thumbnailSrc}")`;
 			img.style.backgroundPosition = '50% 50%';
 			img.style.backgroundSize = 'cover';
+			img.style.height = 'auto';
 
 			ModalHelper.addContent(img.cloneNode());
 			ModalHelper.open(thumbnail);
