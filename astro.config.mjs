@@ -10,6 +10,9 @@ import shikiTheme from './shikiTheme.json';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://kainoa.us',
+	build: {
+		format: 'file',
+	},
 	integrations: [mdx(), sitemap(), image(), robotsTxt(), compress(), astroImageTools],
 	vite: {
 		css: {
