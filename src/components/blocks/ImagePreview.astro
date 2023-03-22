@@ -62,7 +62,7 @@ const thumbnailData = getImageDataFromHtml(thumbnailHtml);
 		height={thumbnailData.height}
 		loading='lazy'
 	/>
-	<div class='modal-img'>
+	<div class='fullsize-img'>
 		<img
 			src={fullsizeData.src}
 			alt={fullsizeData.alt}
@@ -82,8 +82,9 @@ const thumbnailData = getImageDataFromHtml(thumbnailHtml);
 		thumbnail.addEventListener('click', (e) => {
 			e.stopImmediatePropagation();
 
-			const img = thumbnail.querySelector<HTMLImageElement>('.modal-img img');
-			if (!img) return;
+			const originalImg = thumbnail.querySelector<HTMLImageElement>('.fullsize-img img');
+			if (!originalImg) return;
+			const img = originalImg.cloneNode() as HTMLImageElement;
 
 			const thumbnailImg = thumbnail.querySelector<HTMLImageElement>('img');
 			if (!thumbnailImg) return;
@@ -91,11 +92,14 @@ const thumbnailData = getImageDataFromHtml(thumbnailHtml);
 			const thumbnailSrc = thumbnailImg.getAttribute('src') || '';
 
 			img.style.backgroundImage = `url("${thumbnailSrc}")`;
-			img.style.backgroundPosition = '50% 50%';
-			img.style.backgroundSize = 'cover';
-			img.style.height = 'auto';
 
-			ModalHelper.addContent(img.cloneNode());
+			const container = document.createElement('div');
+
+			container.style.aspectRatio = `${img.width} / ${img.height}`;
+			container.classList.add('modal-image');
+			container.appendChild(img);
+
+			ModalHelper.addContent(container);
 			ModalHelper.open(thumbnail);
 		});
 	});
