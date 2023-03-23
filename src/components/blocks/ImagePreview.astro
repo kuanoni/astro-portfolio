@@ -55,14 +55,8 @@ const thumbnailData = getImageDataFromHtml(thumbnailHtml);
 ---
 
 <button class='thumbnail'>
-	<img
-		src={thumbnailData.src}
-		alt={thumbnailData.alt}
-		width={thumbnailData.width}
-		height={thumbnailData.height}
-		loading='lazy'
-	/>
-	<div class='fullsize-img'>
+	<img src={thumbnailData.src} alt={thumbnailData.alt} width={thumbnailData.width} height={thumbnailData.height} />
+	<div class='modal-img'>
 		<img
 			src={fullsizeData.src}
 			alt={fullsizeData.alt}
@@ -82,8 +76,9 @@ const thumbnailData = getImageDataFromHtml(thumbnailHtml);
 		thumbnail.addEventListener('click', (e) => {
 			e.stopImmediatePropagation();
 
-			const originalImg = thumbnail.querySelector<HTMLImageElement>('.fullsize-img img');
+			const originalImg = thumbnail.querySelector<HTMLImageElement>('.modal-img img');
 			if (!originalImg) return;
+
 			const img = originalImg.cloneNode() as HTMLImageElement;
 
 			const thumbnailImg = thumbnail.querySelector<HTMLImageElement>('img');
@@ -93,13 +88,7 @@ const thumbnailData = getImageDataFromHtml(thumbnailHtml);
 
 			img.style.backgroundImage = `url("${thumbnailSrc}")`;
 
-			const container = document.createElement('div');
-
-			container.style.aspectRatio = `${img.width} / ${img.height}`;
-			container.classList.add('modal-image');
-			container.appendChild(img);
-
-			ModalHelper.addContent(container);
+			ModalHelper.addContent(img);
 			ModalHelper.open(thumbnail);
 		});
 	});
