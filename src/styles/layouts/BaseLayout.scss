@@ -40,20 +40,38 @@ main {
 
 .bg-abstract {
 	position: fixed;
+	right: 50%;
 	z-index: -1;
+
+	@include for-size(700px) {
+		transform: none !important;
+	}
 
 	&-1 {
 		top: -100px;
-		right: -50px;
+		transform: translate(520px, 0);
+
+		@include for-size(700px) {
+			right: -10%;
+		}
 	}
 
 	&-2 {
 		top: 375px;
-		left: -100px;
+		transform: translate(-350px, 0);
+
+		@include for-size(700px) {
+			top: 40%;
+		}
 	}
 
 	&-3 {
 		top: 800px;
-		right: -120px;
+		transform: translate(650px, 0);
+
+		@include for-size(700px) {
+			top: 90%;
+			right: -50%;
+		}
 	}
 }

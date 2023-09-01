@@ -24,9 +24,33 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 		<slot name='head' />
 	</head>
 	<body>
-		<img class='bg-abstract bg-abstract-1' src={abstract1.src} loading='eager' alt='' aria-hidden='true' />
-		<img class='bg-abstract bg-abstract-2' src={abstract2.src} loading='eager' alt='' aria-hidden='true' />
-		<img class='bg-abstract bg-abstract-3' src={abstract3.src} loading='eager' alt='' aria-hidden='true' />
+		<img
+			class='bg-abstract bg-abstract-1'
+			src={abstract1.src}
+			width='210'
+			height='317'
+			loading='eager'
+			alt=''
+			aria-hidden='true'
+		/>
+		<img
+			class='bg-abstract bg-abstract-2'
+			src={abstract2.src}
+			width='354'
+			height='401'
+			loading='eager'
+			alt=''
+			aria-hidden='true'
+		/>
+		<img
+			class='bg-abstract bg-abstract-3'
+			src={abstract3.src}
+			width='458'
+			height='290'
+			loading='eager'
+			alt=''
+			aria-hidden='true'
+		/>
 		<Header />
 		<slot />
 		<Footer />
