@@ -1,12 +1,26 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import draftPostFilter from '@utils/draftPostFilter';
 import '@styles/components/ChangeLog.scss';
 
-const changeLogEntries = await Astro.glob('/src/content/changeLog/*.md');
-const allBlogPosts = await getCollection('blog', draftPostFilter);
-const allProjects = await getCollection('project', draftPostFilter);
-const allVideos = await getCollection('videos');
+interface ChangeLogEntry {
+	file: string,
+	compiledContent: () => Promise<string>,
+	frontmatter: {
+		title: string;
+		date: string;
+	};
+}
+
+interface ListItemData {
+	depth: number;
+	text: string;
+}
+
+const changeLogEntries = Object.values(import.meta.glob<ChangeLogEntry>('/src/content/changeLog/*.md', {eager:true}));
+const blogCollection = await getCollection('blog', draftPostFilter);
+const projectCollection = await getCollection('project', draftPostFilter);
+const videoCollection = await getCollection('videos');
 
 interface ListItemData {
 	depth: number;
@@ -21,7 +35,7 @@ interface PostData {
 type PostsData = { [i: string]: PostData[] };
 
 // create posts data from collection entries
-function createPostsData(collection: CollectionEntry<any>[]) {
+function createPostsData(collection: CollectionEntry<'project' | 'blog' | 'videos'>[]) {
 	const postsData: PostsData = {};
 
 	collection.forEach((entry) => {
@@ -35,6 +49,11 @@ function createPostsData(collection: CollectionEntry<any>[]) {
 	});
 
 	return postsData;
+}
+
+function addCollectionPosts(collection: CollectionEntry<'project' | 'blog' | 'videos'>[], label: string, linkUrlPrefix?: string) {
+	const postsData = createPostsData(collection);
+	addPostsDataToChangeLogContent(postsData, label, linkUrlPrefix);
 }
 
 function addPostsDataToChangeLogContent(postsData: PostsData, label: string, linkUrlPrefix?: string) {
@@ -61,15 +80,10 @@ function addPostsDataToChangeLogContent(postsData: PostsData, label: string, lin
 	});
 }
 
-function addCollectionPosts(collection: CollectionEntry<any>[], label: string, linkUrlPrefix?: string) {
-	const postsData = createPostsData(collection);
-	addPostsDataToChangeLogContent(postsData, label, linkUrlPrefix);
-}
-
 const changeLogsLists: { [i: string]: ListItemData[] } = {};
 
 // initialize the changeLogEntries using the changeLogEntries
-changeLogEntries.forEach((entry) => {
+changeLogEntries.forEach(async (entry) => {
 	// use the entry file path to get the date key
 	const dateString = entry.file.slice(-11).replace('.md', '');
 	const date = new Date(dateString).getTime();
@@ -77,7 +91,7 @@ changeLogEntries.forEach((entry) => {
 	const cleanedHtml: ListItemData[] = [];
 	let depth = 0;
 
-	const htmlLines = entry.compiledContent().split('\n');
+	const htmlLines = (await entry.compiledContent()).split('\n');
 	htmlLines.forEach((line) => {
 		// calculate the current list depth using "ul" HTML tags
 		const curDepth = depth + (line.match('<ul>') || []).length - (line.match('</ul>') || []).length;
@@ -93,9 +107,9 @@ changeLogEntries.forEach((entry) => {
 	changeLogsLists[date] = cleanedHtml;
 });
 
-addCollectionPosts(allBlogPosts, 'blog post', 'posts');
-addCollectionPosts(allProjects, 'project writeup', 'projects');
-addCollectionPosts(allVideos, 'video');
+addCollectionPosts(blogCollection, 'blog post', 'posts');
+addCollectionPosts(projectCollection, 'project writeup', 'projects');
+addCollectionPosts(videoCollection, 'video');
 
 const changeLogDateTimes = Object.keys(changeLogsLists).sort((a, b) => parseInt(b) - parseInt(a));
 
@@ -134,3 +148,4 @@ const changeLogDaysHtml = changeLogDateTimes.map((dateTime) => {
 		{changeLogDaysHtml.map((dayHtml) => <li class='change-log__day' set:html={dayHtml} />)}
 	</ul>
 </section>
+

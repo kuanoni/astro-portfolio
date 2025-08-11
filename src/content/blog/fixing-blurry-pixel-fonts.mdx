@@ -12,7 +12,7 @@ import CaptionedImage from '@components/blocks/CaptionedImage.astro';
 As I was building my personal site, I was using a font called "FreePixel". As you can probably guess, it's a pixel based font. The font is supposed to be 16px in height and the glyphs are made up of 1px wide aliased lines.
 
 <CaptionedImage
-	src='/images/posts/fixing-blurry-pixel-fonts/FreePixel_example.webp'
+	src='posts/fixing-blurry-pixel-fonts/FreePixel_example.webp'
 	alt='FreePixel font example'
 	caption='A sample of the FreePixel font.'
 />
@@ -20,7 +20,7 @@ As I was building my personal site, I was using a font called "FreePixel". As yo
 However, I was running into a strange issue with the way my text was rendering on the page. Sometimes the text would look blurry, and other times it would look crisp and pixelated as it should.
 
 <CaptionedImage
-	src='/images/posts/fixing-blurry-pixel-fonts/blurry_crisp_comparison.webp'
+	src='posts/fixing-blurry-pixel-fonts/blurry_crisp_comparison.webp'
 	alt='A comparison of the blurry and crisp text'
 	caption='Crisp (top) vs Blurry (bottom)'
 />
@@ -30,7 +30,7 @@ If the width of the viewport was an odd number: blurry text. Even number: crisp.
 After playing around with it for a while, I found that the blurriness occurred when the **text was offset by a non-integer pixel amount**. If your text is offset by say, 0.5px, the browser will try to compensate for that 0.5px by placing the text "inbetween pixels". This process is done by the browser's rendering engine and is called [interpolation](https://www.cambridgeincolour.com/tutorials/image-interpolation.htm). For most fonts which are vector based this isn't much of an issue, however thinner fonts can be blurred drastically.
 
 <CaptionedImage
-	src='/images/posts/fixing-blurry-pixel-fonts/interpolation_small.webp'
+	src='posts/fixing-blurry-pixel-fonts/interpolation_small.webp'
 	alt='A comparison of the blurry and crisp text'
 	caption='My attempt at visualizing pixel interpolation. This is the letter "m" being translated 0.5px to the right.'
 />

@@ -1,37 +1,37 @@
+// @ts-check
 import { defineConfig } from 'astro/config';
-import { astroImageTools } from 'astro-imagetools';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import image from '@astrojs/image';
-import robotsTxt from 'astro-robots-txt';
-import compress from 'astro-compress';
-import shikiTheme from './shikiTheme.json';
 
-// https://astro.build/config
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
+import icon from 'astro-icon';
+import mdx from '@astrojs/mdx';
+import remarkMagic from './src/remark/remarkMagic.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 export default defineConfig({
-	site: 'https://kainoa.us',
-	build: {
-		format: 'file',
-	},
-	integrations: [mdx(), sitemap(), image(), robotsTxt(), compress(), astroImageTools],
-	vite: {
-		css: {
-			preprocessorOptions: {
-				scss: {
-					additionalData: `
-                    @use 'sass:math';
-                    @import "src/styles/abstracts/_variables"; 
-                    @import "src/styles/abstracts/_functions"; 
-                    @import "src/styles/abstracts/_mixins";
-                    `,
-				},
-			},
-		},
-	},
-	markdown: {
-		shikiConfig: {
-			// https://github.com/shikijs/shiki/blob/main/docs/themes.md
-			theme: shikiTheme,
-		},
-	},
+  site: 'https://kainoa.us',
+  build: {
+    format: 'file',
+  },
+  image: {
+    domains: ["api.scryfall.com", "cards.scryfall.io"],
+  },
+  vite: {
+    resolve: {
+      alias: { '@/': `${path.resolve(__dirname, 'src')}/` },
+    },
+  },
+  integrations: [icon({
+    iconDir: "src/assets/icons",
+  }), mdx({
+    remarkPlugins: [[remarkMagic],]
+  })],
+  markdown: {
+    shikiConfig: {
+      // https://github.com/shikijs/shiki/blob/main/docs/themes.md
+      theme: 'dracula',
+    },
+  },
 });

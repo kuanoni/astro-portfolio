@@ -1,5 +1,6 @@
 ---
-import { CollectionEntry, getEntryBySlug } from 'astro:content';
+import { getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { TECH_INFO } from 'src/config';
 import ImagePreview from './ImagePreview.astro';
 
@@ -9,7 +10,7 @@ interface Props {
 
 const { previewEntry } = Astro.props;
 
-const projectEntry = await getEntryBySlug('project', previewEntry.slug);
+const projectEntry = await getEntry('project', previewEntry.slug);
 if (projectEntry === undefined)
 	throw new Error(`Failed to find matching project for projectPreview slug: ${previewEntry.slug}`);
 
@@ -23,7 +24,7 @@ const { title, techs, liveUrl, sourceUrl } = projectEntry.data;
 	<Content />
 	<ul class='techs'>
 		{
-			techs.map((techName) => {
+			techs.map((techName: string) => {
 				if (!TECH_INFO[techName]) return <li>{techName}</li>;
 
 				const { description, url } = TECH_INFO[techName];
@@ -45,7 +46,7 @@ const { title, techs, liveUrl, sourceUrl } = projectEntry.data;
 		{
 			previewImages.map(async (imgSrc, i) => (
 				<ImagePreview
-					src={`src/images/projects/${projectEntry.slug}/${imgSrc}.webp`}
+					src={`projects/${projectEntry.slug}/${imgSrc}.webp`}
 					alt={`${title} preview #${i + 1}`}
 				/>
 			))

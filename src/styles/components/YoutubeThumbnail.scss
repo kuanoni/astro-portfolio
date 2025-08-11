@@ -1,5 +1,9 @@
+@use "src/styles/abstracts/variables" as *; 
+@use "src/styles/abstracts/mixins" as *; 
+
 .video {
 	.youtube-thumbnail {
+		position:relative;
 		width: 100%;
 		background-color: $c-border;
 		background-position: center center;

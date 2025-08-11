@@ -1,6 +1,7 @@
 ---
-import { renderImg } from 'astro-imagetools/api';
+import { Image } from 'astro:assets';
 import '@styles/components/ImagePreview.scss';
+import dynamicImage from '@utils/dynamicImage';
 
 interface Props {
 	src: string;
@@ -9,62 +10,15 @@ interface Props {
 
 const { src, alt } = Astro.props;
 
-interface ImageEleData {
-	[i: string]: string;
-}
-
-function cleanImageData(img: ImageEleData) {
-	if (!img.srcset) return img;
-	const srcset = img.srcset.split(', ');
-	const realSrc = srcset[0].split(' ')[0];
-
-	img.src = realSrc;
-
-	if (!img.width || !img.sizes) return img;
-
-	const oldWidth = img.width;
-	const roundedWidth = Math.round(parseInt(oldWidth)).toString();
-
-	img.width = roundedWidth;
-	img.sizes = img.sizes.replaceAll(oldWidth, roundedWidth);
-
-	return img;
-}
-
-function getImageDataFromHtml(html: string) {
-	const htmlLines = html.split('\n');
-	const result: ImageEleData = {};
-
-	for (const line of htmlLines) {
-		const trimmedLine = line.trim();
-		if (!trimmedLine.includes('=')) continue;
-
-		const [key, value] = trimmedLine.split('=');
-
-		result[key] = value.replaceAll('"', '');
-	}
-
-	return cleanImageData(result);
-}
-
-const { img: thumbnailHtml } = await renderImg({ src, alt, height: 75 });
-const { img: fullsizeHtml } = await renderImg({ src, alt, breakpoints: { count: 3, minWidth: 320 } });
-
-const fullsizeData = getImageDataFromHtml(fullsizeHtml);
-const thumbnailData = getImageDataFromHtml(thumbnailHtml);
+const img = dynamicImage(src);
 ---
 
 <button class='thumbnail'>
-	<img src={thumbnailData.src} alt={thumbnailData.alt} width={thumbnailData.width} height={thumbnailData.height} />
+	<Image src={img} alt={alt} height={75} />
 	<div class='modal-img'>
-		<img
-			src={fullsizeData.src}
-			alt={fullsizeData.alt}
-			srcset={fullsizeData.srcset}
-			sizes={fullsizeData.sizes}
-			width={fullsizeData.width}
-			height={fullsizeData.height}
-			loading='lazy'
+		<Image
+			src={img}
+			alt={alt}
 		/>
 	</div>
 </button>

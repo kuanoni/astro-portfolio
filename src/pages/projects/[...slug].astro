@@ -1,6 +1,6 @@
 ---
 import draftPostFilter from '@utils/draftPostFilter';
-import { CollectionEntry, getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import PostLayoutProject from 'src/layouts/PostLayoutProject.astro';
 
 export async function getStaticPaths() {

@@ -1,7 +1,8 @@
 ---
-import { Img } from 'astro-imagetools/components';
+import { Image } from 'astro:assets';
 import { SITE_EMAIL } from 'src/config';
 import BaseLayout from 'src/layouts/BaseLayout.astro';
+import splashImage from 'src/assets/images/mt.webp'
 import '@styles/pages/404.scss';
 ---
 
@@ -9,7 +10,7 @@ import '@styles/pages/404.scss';
 	<main>
 		<section class='page-missing'>
 			<h1>404 - Page is missing</h1>
-			<Img src='src/images/mt.webp' alt='A cool image to ease your mind' />
+			<Image src={splashImage} alt='A cool image to ease your mind' />
 			<p>Chances are, it's my fault you're here.</p>
 			<p>
 				You can yell at me about it (<a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>) or just return to the <a
