@@ -13,16 +13,17 @@
 	}
 
 	@include for-size(700px) {
-		width: 90vw;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
+		display: flex;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
 
 		&>img {
 			width: 90vw !important;
+			height: auto;
 			max-height: none !important;
 			max-width: 500px;
-			height: auto;
 		}
 	}
 

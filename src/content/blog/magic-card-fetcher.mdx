@@ -1,12 +1,51 @@
 ---
-title: Magic Card Fetcher
-description: An easy and organized way to setup your Sass or SCSS files and imports
-datePublished: 08-08-25
-draft: true
+title: Magic the Gathering Card Fetcher
+description: Turning [[...]] into Magic card previews in Astro
+datePublished: 08-11-25
+draft: false
 ---
 
 import MagicCardPreview from '@components/blocks/MagicCardPreview.astro';
 
-## Fetching Magic the Gathering cards
+I wanted to drop Magic: The Gathering card previews straight into my posts without stopping to write HTML for each individual card. My “authoring syntax” is simple:
 
-I'm sitting down for what must be my eighth or ninth game of the day at MagicCon Amsterdam. [[Voja|Voja Jaws of the Conclave]] is doing what Voja does best: smashing Elves and Wolves together in a depraved multi-species orgy of value. [[Be'lakor the Dark Master|Be'lakor the Dark Master]] sits to his left, badly crippled by my [[Bear|Wilson Refined Grizzly]] and his questionably acquired peerage.
+- {"[[Lightning Bolt]]"} → a preview for [[Lightning Bolt]]
+
+- {"[[Mox Sapphire (Alpha)|Mox Sapphire]]"} → label on the page is “Mox Sapphire (Alpha)”, but the lookup uses “[[Mox Sapphire]]”
+
+## How it works (big picture)
+- I added a tiny Markdown/MDX transform using Remark so that anything in double brackets gets turned into a <code>{"<MagicCardPreview>"}</code> element.
+- That component asks Scryfall for the card, grabs the image, and displays it.
+- To be a good citizen, requests are rate-limited so I stay under 10 per second even during hot reloads.
+
+That’s basically it — type a card name in brackets, get a card.
+
+## Writing posts
+In MDX I just write:
+
+```mdx
+Red decks be like: [[Lightning Bolt]].
+Specific print, friendlier label: [[Mox Sapphire (Alpha)|Mox Sapphire]]
+```
+
+## The MDX transform (in plain English)
+A small remark plugin looks for <code>{"[[...]]"}</code> in my content.
+
+If it finds <code>{"[[label|value]]"}</code>, it creates <code>{`<MagicCardPreview cardName="value">label</MagicCardPreview>`}</code>.
+
+If it finds <code>{"[[text]]"}</code>, it uses the same text for both label and lookup.
+
+I also made it ignore code blocks and links, so it won’t touch things inside backticks.
+
+## The preview component
+{"<MagicCardPreview>"} receives cardName, calls Scryfall’s “fuzzy named” search, and uses the first image it finds (works for single-faced and double-faced cards). In pseudocode:
+
+```js
+const url = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(cardName)}`;
+const data = await fetch(url).then(r => r.json());
+const src = data.image_uris?.png ?? data.card_faces?.[0]?.image_uris?.png;
+// render using that image URL
+```
+
+## Being nice to Scryfall
+Hot reloads and pages with many previews can fire off a lot of requests. I added a tiny “traffic cop” that paces calls so I stay under 10 requests per second. If Scryfall ever replies “slow down” (HTTP 429), I pause briefly and try again. You don’t see this in the UI; it just keeps dev smooth and friendly to their servers.

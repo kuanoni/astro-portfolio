@@ -2,5 +2,6 @@
 @use "src/styles/abstracts/mixins" as *;
 
 .mcp-element {
+    cursor: pointer;
     color: $c-highlight;
 }

@@ -1,21 +1,24 @@
 ---
 import { getImage } from "astro:assets";
 import "@styles/components/MagicCardPreview.scss";
+import { getCardByFuzzy } from "@utils/scryfallClient";
 
 interface Props {
     cardName: string;
 }
-
 const { cardName } = Astro.props;
 
-const requestStr =
-    "https://api.scryfall.com/cards/named?fuzzy=" +
-    cardName.split(" ").join("+");
-const response = await fetch(requestStr);
-const data = await response.json();
+if (!cardName)
+    throw new Error(`Tried to load card without valid 'cardName': ${cardName}`);
+
+const data = await getCardByFuzzy(cardName);
+
+let scryfallSrc: string | undefined = data?.image_uris?.png;
+if (!scryfallSrc) scryfallSrc = data?.card_faces?.[0]?.image_uris?.png;
+if (!scryfallSrc) throw new Error(`No image for card "${cardName}"`);
 
 const img = await getImage({
-    src: data?.image_uris?.png,
+    src: scryfallSrc,
     inferSize: true,
 });
 ---
