@@ -1,8 +1,9 @@
-@use "src/styles/abstracts/variables" as *; 
-@use "src/styles/abstracts/mixins" as *; 
+@use "src/styles/abstracts/variables" as *;
+@use "src/styles/abstracts/mixins" as *;
 
 .pre-header {
 	margin-bottom: 24px;
+
 	.links {
 		display: flex;
 		align-items: end;
@@ -15,6 +16,7 @@
 
 			svg {
 				width: 1.5rem;
+				height: 1.5rem;
 				padding: 2px;
 				border: 1px solid $c-link;
 
