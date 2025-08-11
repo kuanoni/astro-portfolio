@@ -1,48 +1,34 @@
 import { findAndReplace } from 'mdast-util-find-and-replace';
 
-/**
- * [[label|value]] -> <MagicCardPreview cardName="value">label</MagicCardPreview>
- * [[text]]        -> <MagicCardPreview>text</MagicCardPreview> (still supported)
- *
- * Options:
- *  - tag: string (default: 'MagicCardPreview')
- *  - attrs: object of extra static attributes (e.g., { foo: 'bar' })
- */
-export default function remarkMagic(options = {}) {
+export default function remarkMagic() {
     const tag = 'MagicCardPreview';
-    const extraAttrs = options.attrs || {};
 
-    const staticAttrs = Object.entries(extraAttrs).map(([name, value]) => ({
-        type: 'mdxJsxAttribute',
-        name,
-        value, // string literal
-    }));
+    const splitFirstUnescapedPipe = (s) => {
+        let esc = false;
+        for (let i = 0; i < s.length; i++) {
+            const c = s[i];
+            if (esc) { esc = false; continue; }
+            if (c === '\\') { esc = true; continue; }
+            if (c === '|') return [s.slice(0, i), s.slice(i + 1)];
+        }
+        return [s, null];
+    };
+
+    const unescape = (s) =>
+        s.replace(/\\\|/g, '|').replace(/\\\\/g, '\\');
 
     return (tree) => {
         findAndReplace(
             tree,
             [
                 [/\[\[([\s\S]+?)\]\]/g, (_, inner) => {
-                    // Split on the FIRST pipe only
-                    let label = inner;
-                    let value = null;
+                    let [label, value] = splitFirstUnescapedPipe(inner);
+                    label = unescape(label.trim());
+                    value = value == null ? label : unescape(value.trim()); // ← both forms supported
 
-                    const pipeIndex = inner.indexOf('|');
-                    if (pipeIndex !== -1) {
-                        label = inner.slice(0, pipeIndex);
-                        value = inner.slice(pipeIndex + 1);
-                    }
-
-                    label = label.trim();
-                    if (value != null) value = value.trim();
-
-                    const attrs = [...staticAttrs];
-                    if (value != null && value !== '') {
-                        attrs.push({
-                            type: 'mdxJsxAttribute',
-                            name: 'cardName',
-                            value, // string literal
-                        });
+                    const attrs = [];
+                    if (value !== '') {
+                        attrs.push({ type: 'mdxJsxAttribute', name: 'cardName', value });
                     }
 
                     return {
