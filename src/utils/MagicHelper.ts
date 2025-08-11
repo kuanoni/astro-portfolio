@@ -37,10 +37,8 @@ class MagicHelper {
         this.imgElement.src = imgSrc;
         this.imgElement.alt = alt;
 
-        this.portal.style.top = (element.offsetTop - window.scrollY) + "px";
-        this.portal.style.left = element.offsetLeft + "px";
-
-        console.log(element.offsetTop, window.scrollY)
+        this.portal.style.top = (element.offsetTop - window.scrollY + 150) + "px";
+        this.portal.style.left = (element.getBoundingClientRect().left - 100) + "px";
 
         if (window.innerWidth <= 600) {
             this.portal.style.top = "";
