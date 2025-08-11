@@ -1,3 +1,6 @@
+@use "src/styles/abstracts/variables" as *; 
+@use "src/styles/abstracts/mixins" as *; 
+
 section.gallery {
 	.gallery-content {
 		display: grid;

@@ -1,6 +1,6 @@
 ---
-import { BackgroundImage } from 'astro-imagetools/components';
 import '@styles/components/YoutubeThumbnail.scss';
+import { getImage } from "astro:assets";
 
 interface Props {
 	title: string;
@@ -10,16 +10,23 @@ interface Props {
 
 const { title, videoId, dateUploaded } = Astro.props;
 const imgSrc = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+
+const img = await getImage({
+	src: imgSrc,
+	format: "jpg",
+	inferSize: true
+})
 ---
 
 <article class='video'>
-	<BackgroundImage
-		src={imgSrc}
-		tag='button'
-		attributes={{ container: { class: 'youtube-thumbnail', 'data-video-id': videoId, 'aria-label': title } }}
+	<button
+		class="youtube-thumbnail"
+		data-video-id={videoId}
+		aria-label={title}
+		style={`background-image: url(${img.src});`}
 	>
 		<div class='youtube-button'></div>
-	</BackgroundImage>
+	</button>
 	<a href={`https://www.youtube.com/watch?v=${videoId}`}>{title}</a>
 	<time>{dateUploaded.toLocaleDateString()}</time>
 </article>

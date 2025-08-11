@@ -1,14 +1,84 @@
 ---
-import SectionWelcome from '@components/pages/index/SectionWelcome.astro';
-import SectionProjects from '@components/pages/index/SectionProjects.astro';
-import SectionOtherStuff from '@components/pages/index/SectionOtherStuff.astro';
-import BaseLayout from 'src/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { FEATURED_PROJECTS } from 'src/config';
+import ProjectPreview from '@components/blocks/ProjectPreview.astro';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import faceSpooky from '@images/face_small_spooky.webp';
+import faceNormal from '@images/face_small_normal.webp';
+import ChangeLog from '@components/blocks/ChangeLog.astro';
 import '@styles/pages/index.scss';
+
+const allPreviews = await getCollection('projectPreview', (entry: CollectionEntry<'projectPreview'>) => FEATURED_PROJECTS.includes(entry.slug));
 ---
 
 <BaseLayout>
-	<main>
-		<SectionWelcome />
-		<SectionProjects />
-	</main>
+    <main>
+        <section class='welcome'>
+            <h1>Hi, I'm Kai</h1>
+            <div class='intro'>
+                <div class='intro-picture'>
+                    <img
+                        class='normal'
+                        src={faceNormal.src}
+                        width={faceNormal.width}
+                        height={faceNormal.height}
+                        alt='my face'
+                    />
+                    <img
+                        class='spooky'
+                        src={faceSpooky.src}
+                        width={faceSpooky.width}
+                        height={faceSpooky.height}
+                        alt=''
+                        aria-hidden='true'
+                    />
+                </div>
+                <div class='intro-content'>
+                    <p>
+                        This my personal site. I use it to showcase my <a href='/projects'>portfolio work</a> and other <a
+                            href='/random.html'>random</a
+                        > things I've created.
+                    </p>
+                    <p>
+                        I've always been in love with programming and at the moment my focus lies in web development. I've
+                        worked with both front-end and backend technologies (although mostly front-end) and I'm constantly
+                        looking to improve and expand my skills.
+                    </p>
+                </div>
+            </div>
+            <p>Some quick facts about me:</p>
+            <ul>
+                <li>I started learning C++ and fell in love with programming at 11 years old.</li>
+                <li>
+                    My first experience learning HTML/CSS was on <a href='https://en.wikipedia.org/wiki/Neopets'>Neopets</a>.
+                </li>
+                <li>
+                    I enjoy game development, 3D modelling, video editing/animation, making music, and pretty much any other
+                    creative pursuit that can be done sitting at a computer.
+                    <ul><li>I also play guitar...usually sitting at my computer.</li></ul>
+                </li>
+                <li>
+                    As a child I lived in Ensenada, BC Mexico.
+                    <ul>
+                        <li>That means I can fluently speak, read, and write Spanish.</li>
+                    </ul>
+                </li>
+            </ul>
+            <ChangeLog />
+        </section>
+
+        <section class='projects'>
+            <h1>Featured Projects</h1>
+            <p>
+                These are projects that I'm particularly proud of. Some may be demos for learning purposes, others are real
+                published apps! You can also view the <a href='/projects'>rest of my projects</a> including full writeups.
+            </p>
+            <ul class='projects-list'>
+                {allPreviews.map((previewEntry: CollectionEntry<'projectPreview'>) => <ProjectPreview previewEntry={previewEntry} />)}
+            </ul>
+        </section>
+
+    </main>
 </BaseLayout>

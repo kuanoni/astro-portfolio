@@ -1,5 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 
+const changeLogSchema = z.object({});
+
 const projectPreviewSchema = z.object({
 	previewImages: z.array(z.string()),
 });
@@ -29,9 +31,9 @@ const videosSchema = z.object({
 });
 
 export const collections = {
+	changeLog: defineCollection({ schema: changeLogSchema }),
 	projectPreview: defineCollection({ schema: projectPreviewSchema }),
 	blog: defineCollection({ schema: postSchema }),
 	project: defineCollection({ schema: projectPostSchema }),
-
 	videos: defineCollection({ schema: videosSchema }),
 };

@@ -1,3 +1,6 @@
+@use "src/styles/abstracts/variables" as *; 
+@use "src/styles/abstracts/mixins" as *; 
+
 section.post {
 	.pre-header {
 		margin-bottom: 16px;
