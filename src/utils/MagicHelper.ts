@@ -19,10 +19,11 @@ class MagicHelper {
                 const alt = element.attributes.getNamedItem("data-alt")?.value;
                 if (!src) throw new Error(`Couldn't find "data-src" value for mcp-element: ${element}`);
                 if (!alt) throw new Error(`Couldn't find "data-alt" value for mcp-element: ${element}`);
+
                 this.showCard(src, alt, element);
             });
 
-            element.addEventListener("mouseleave", (e) => {
+            element.addEventListener("mouseout", (e) => {
                 this.hideCard();
             });
         })
