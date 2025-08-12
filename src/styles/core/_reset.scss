@@ -1,4 +1,4 @@
-@use "src/styles/abstracts/variables" as *; 
+@use "src/styles/abstracts/variables" as *;
 
 :root {
 	color-scheme: dark;
@@ -123,7 +123,7 @@ h4 {
 }
 
 p {
-	margin: 0.5em 0;
+	margin: 1.25em 0;
 	line-height: 1.35;
 
 	& * {

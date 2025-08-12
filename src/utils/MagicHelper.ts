@@ -19,10 +19,11 @@ class MagicHelper {
                 const alt = element.attributes.getNamedItem("data-alt")?.value;
                 if (!src) throw new Error(`Couldn't find "data-src" value for mcp-element: ${element}`);
                 if (!alt) throw new Error(`Couldn't find "data-alt" value for mcp-element: ${element}`);
+
                 this.showCard(src, alt, element);
             });
 
-            element.addEventListener("mouseleave", (e) => {
+            element.addEventListener("mouseout", (e) => {
                 this.hideCard();
             });
         })
@@ -31,18 +32,56 @@ class MagicHelper {
         this.imgElement = imgElement;
     }
 
-    showCard(imgSrc: string, alt: string, element: HTMLElement) {
-        this.portal.classList.remove("hide");
+    showCard(imgSrc: string, alt: string, anchor: HTMLElement) {
+        const portal = this.portal;
+        const img = this.imgElement;
 
-        this.imgElement.src = imgSrc;
-        this.imgElement.alt = alt;
+        img.src = imgSrc;
+        img.alt = alt;
 
-        this.portal.style.top = (element.offsetTop - window.scrollY + 150) + "px";
-        this.portal.style.left = (element.getBoundingClientRect().left - 100) + "px";
+        portal.style.position = 'fixed';
+        portal.classList.remove('hide');
 
-        if (window.innerWidth <= 600) {
-            this.portal.style.top = "";
-            this.portal.style.left = "";
+        // Temporarily place offscreen so we can measure size
+        portal.style.top = '-9999px';
+        portal.style.left = '-9999px';
+
+        const place = () => {
+            const margin = 8;
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+
+            const a = anchor.getBoundingClientRect();
+            const r = portal.getBoundingClientRect();
+
+            const gap = 12;
+            let top = a.bottom + gap;
+            if (top + r.height + margin > vh) {
+                top = a.top - r.height - gap;
+            }
+            // Clamp vertically
+            top = Math.max(margin, Math.min(top, vh - r.height - margin));
+
+            let left = a.left - 100;
+            if (left + r.width + margin > vw) {
+                left = vw - r.width - margin;
+            }
+            if (left < margin) left = margin;
+
+            portal.style.top = `${top}px`;
+            portal.style.left = `${left}px`;
+
+            if (vw <= 600) {
+                portal.style.top = '';
+                portal.style.left = '';
+            }
+        };
+
+        // if image isn’t loaded yet place after it loads
+        if (!img.complete || img.naturalWidth === 0) {
+            img.onload = () => { place(); img.onload = null; };
+        } else {
+            place();
         }
     }
 
