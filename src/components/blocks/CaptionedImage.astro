@@ -1,22 +1,26 @@
 ---
-import { Image } from 'astro:assets';
-import '@styles/components/CaptionedImage.scss';
-import dynamicImage from '@utils/dynamicImage';
+import { Image } from "astro:assets";
+import "@styles/components/CaptionedImage.scss";
+import dynamicImage from "@utils/dynamicImage";
 
 interface Props {
 	src: string;
 	alt: string;
 	caption: string;
+	fitPage: boolean;
 }
 
-const { src, alt, caption } = Astro.props;
-
+const { src, alt, caption, fitPage } = Astro.props;
 
 const img = dynamicImage(src);
-
 ---
 
-<figure class='captioned-image'>
-	<Image src={img} alt={alt} layout='fixed' />
+<figure class="captioned-image">
+	<Image
+		src={img}
+		alt={alt}
+		layout="fixed"
+		class={fitPage ? "fit-page" : ""}
+	/>
 	<figcaption>{caption}</figcaption>
 </figure>
