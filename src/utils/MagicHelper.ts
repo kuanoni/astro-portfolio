@@ -13,6 +13,11 @@ class MagicHelper {
 
         const cardElements = document.querySelectorAll<HTMLSpanElement>('.mcp-element');
 
+        portal.addEventListener("click", (e) => {
+            e.stopPropagation();
+            this.hideCard();
+        })
+
         cardElements.forEach(element => {
             element.addEventListener("mouseover", (e) => {
                 const src = element.attributes.getNamedItem("data-src")?.value;
