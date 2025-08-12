@@ -13,13 +13,22 @@ class MagicHelper {
 
         const cardElements = document.querySelectorAll<HTMLSpanElement>('.mcp-element');
 
-        cardElements.forEach(element => {
-            element.addEventListener("mouseover", (e) => {
-                const src = element.attributes.getNamedItem("data-src")?.value;
-                const alt = element.attributes.getNamedItem("data-alt")?.value;
-                if (!src) throw new Error(`Couldn't find "data-src" value for mcp-element: ${element}`);
-                if (!alt) throw new Error(`Couldn't find "data-alt" value for mcp-element: ${element}`);
+        portal.addEventListener("click", (e) => {
+            e.stopPropagation();
+            this.hideCard();
+        })
 
+        cardElements.forEach(element => {
+            const src = element.attributes.getNamedItem("data-src")?.value;
+            const alt = element.attributes.getNamedItem("data-alt")?.value;
+            if (!src) throw new Error(`Couldn't find "data-src" value for mcp-element: ${element}`);
+            if (!alt) throw new Error(`Couldn't find "data-alt" value for mcp-element: ${element}`);
+
+            element.addEventListener("touchend", (e) => {
+                this.showCard(src, alt, element);
+            });
+
+            element.addEventListener("mouseover", (e) => {
                 this.showCard(src, alt, element);
             });
 
