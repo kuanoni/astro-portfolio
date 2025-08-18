@@ -12,7 +12,7 @@ interface Props {
 
 const { src, alt, caption, fitPage } = Astro.props;
 
-const img = dynamicImage(src);
+const img = dynamicImage(`/src/assets/images/${src}`);
 ---
 
 <figure class="captioned-image">
