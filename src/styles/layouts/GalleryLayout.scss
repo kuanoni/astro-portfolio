@@ -9,7 +9,7 @@ section.gallery {
 		grid-template-columns: repeat(2, 1fr);
 
 		@include for-size(phone) {
-			grid-template-columns: 1fr;
+			grid-template-columns: 1fr !important;
 		}
 
 		img {
