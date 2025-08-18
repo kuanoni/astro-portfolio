@@ -1,21 +1,27 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import '@styles/layouts/GalleryLayout.scss';
+import BaseLayout from "./BaseLayout.astro";
+import "@styles/layouts/GalleryLayout.scss";
 
 interface Props {
 	galleryTitle: string;
+	columns?: number;
 }
 
-const { galleryTitle } = Astro.props;
+const { galleryTitle, columns } = Astro.props;
 ---
 
 <BaseLayout title={galleryTitle}>
 	<main>
-		<section class='gallery'>
-			<h1>{galleryTitle}</h1>
-			<slot name='intro-text' />
+		<section class="gallery">
+			<h1>
+				{galleryTitle}
+			</h1>
+			<slot name="intro-text" />
 			<hr />
-			<div class='gallery-content'>
+			<div
+				class="gallery-content"
+				style={`grid-template-columns: repeat(${columns ? columns : 2}, 1fr)`}
+			>
 				<slot />
 			</div>
 		</section>

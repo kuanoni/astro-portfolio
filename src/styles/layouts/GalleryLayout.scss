@@ -13,9 +13,7 @@ section.gallery {
 		}
 
 		img {
-			height: auto;
 			image-rendering: auto;
-			z-index: 999;
 			border: 1px solid $c-border;
 		}
 	}
