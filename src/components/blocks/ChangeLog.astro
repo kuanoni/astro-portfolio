@@ -1,11 +1,11 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
-import draftPostFilter from '@utils/draftPostFilter';
-import '@styles/components/ChangeLog.scss';
+import { getCollection, type CollectionEntry } from "astro:content";
+import draftPostFilter from "@utils/draftPostFilter";
+import "@styles/components/ChangeLog.scss";
 
 interface ChangeLogEntry {
-	file: string,
-	compiledContent: () => Promise<string>,
+	file: string;
+	compiledContent: () => Promise<string>;
 	frontmatter: {
 		title: string;
 		date: string;
@@ -17,10 +17,14 @@ interface ListItemData {
 	text: string;
 }
 
-const changeLogEntries = Object.values(import.meta.glob<ChangeLogEntry>('/src/content/changeLog/*.md', {eager:true}));
-const blogCollection = await getCollection('blog', draftPostFilter);
-const projectCollection = await getCollection('project', draftPostFilter);
-const videoCollection = await getCollection('videos');
+const changeLogEntries = Object.values(
+	import.meta.glob<ChangeLogEntry>("/src/content/changeLog/*.md", {
+		eager: true,
+	}),
+);
+const blogCollection = await getCollection("blog", draftPostFilter);
+const projectCollection = await getCollection("project", draftPostFilter);
+const videoCollection = await getCollection("videos");
 
 interface ListItemData {
 	depth: number;
@@ -35,7 +39,9 @@ interface PostData {
 type PostsData = { [i: string]: PostData[] };
 
 // create posts data from collection entries
-function createPostsData(collection: CollectionEntry<'project' | 'blog' | 'videos'>[]) {
+function createPostsData(
+	collection: CollectionEntry<"project" | "blog" | "videos">[],
+) {
 	const postsData: PostsData = {};
 
 	collection.forEach((entry) => {
@@ -51,12 +57,20 @@ function createPostsData(collection: CollectionEntry<'project' | 'blog' | 'video
 	return postsData;
 }
 
-function addCollectionPosts(collection: CollectionEntry<'project' | 'blog' | 'videos'>[], label: string, linkUrlPrefix?: string) {
+function addCollectionPosts(
+	collection: CollectionEntry<"project" | "blog" | "videos">[],
+	label: string,
+	linkUrlPrefix?: string,
+) {
 	const postsData = createPostsData(collection);
 	addPostsDataToChangeLogContent(postsData, label, linkUrlPrefix);
 }
 
-function addPostsDataToChangeLogContent(postsData: PostsData, label: string, linkUrlPrefix?: string) {
+function addPostsDataToChangeLogContent(
+	postsData: PostsData,
+	label: string,
+	linkUrlPrefix?: string,
+) {
 	Object.keys(postsData).forEach((date) => {
 		// initialize changeLogsLists array if not already initialized
 		if (!changeLogsLists[date]) changeLogsLists[date] = [];
@@ -64,13 +78,16 @@ function addPostsDataToChangeLogContent(postsData: PostsData, label: string, lin
 		const hasMultiplePosts = postsData[date].length > 1;
 
 		// add sublist label
-		if (hasMultiplePosts) changeLogsLists[date].push({ depth: 1, text: `Added ${label}s:` });
+		if (hasMultiplePosts)
+			changeLogsLists[date].push({ depth: 1, text: `Added ${label}s:` });
 
-		const singlePostPrefix = hasMultiplePosts ? '' : `Added ${label}: `;
+		const singlePostPrefix = hasMultiplePosts ? "" : `Added ${label}: `;
 
 		postsData[date].forEach((post) => {
-			const anchorStart = linkUrlPrefix ? `<a href="/${linkUrlPrefix}/${post.slug}">` : '';
-			const anchorEnd = linkUrlPrefix ? '</a>' : '';
+			const anchorStart = linkUrlPrefix
+				? `<a href="/${linkUrlPrefix}/${post.slug}">`
+				: "";
+			const anchorEnd = linkUrlPrefix ? "</a>" : "";
 
 			const depth = hasMultiplePosts ? 2 : 1;
 			const text = `${singlePostPrefix}${anchorStart}${post.title}${anchorEnd}`;
@@ -82,36 +99,50 @@ function addPostsDataToChangeLogContent(postsData: PostsData, label: string, lin
 
 const changeLogsLists: { [i: string]: ListItemData[] } = {};
 
-// initialize the changeLogEntries using the changeLogEntries
-changeLogEntries.forEach(async (entry) => {
+const promises = changeLogEntries.map(async (entry) => {
 	// use the entry file path to get the date key
-	const dateString = entry.file.slice(-11).replace('.md', '');
-	const date = new Date(dateString).getTime();
+	const dateString = entry.file.slice(-11).replace(".md", "");
+	const datetime = new Date(dateString).getTime();
 
 	const cleanedHtml: ListItemData[] = [];
 	let depth = 0;
 
-	const htmlLines = (await entry.compiledContent()).split('\n');
+	const htmlLines = (await entry.compiledContent()).split("\n");
 	htmlLines.forEach((line) => {
 		// calculate the current list depth using "ul" HTML tags
-		const curDepth = depth + (line.match('<ul>') || []).length - (line.match('</ul>') || []).length;
+		const curDepth =
+			depth +
+			(line.match("<ul>") || []).length -
+			(line.match("</ul>") || []).length;
 		depth += curDepth - depth;
 
 		// remove list HTML tags
-		const text = line.replaceAll('<ul>', '').replaceAll('</ul>', '').replaceAll('<li>', '').replaceAll('</li>', '');
+		const text = line
+			.replaceAll("<ul>", "")
+			.replaceAll("</ul>", "")
+			.replaceAll("<li>", "")
+			.replaceAll("</li>", "");
 		if (!text) return;
 
 		cleanedHtml.push({ depth, text });
 	});
 
-	changeLogsLists[date] = cleanedHtml;
+	return { datetime, cleanedHtml };
 });
 
-addCollectionPosts(blogCollection, 'blog post', 'posts');
-addCollectionPosts(projectCollection, 'project writeup', 'projects');
-addCollectionPosts(videoCollection, 'video');
+const results = await Promise.all(promises);
 
-const changeLogDateTimes = Object.keys(changeLogsLists).sort((a, b) => parseInt(b) - parseInt(a));
+results.forEach((r) => {
+	changeLogsLists[r.datetime] = r.cleanedHtml;
+});
+
+addCollectionPosts(blogCollection, "blog post", "posts");
+addCollectionPosts(projectCollection, "project writeup", "projects");
+addCollectionPosts(videoCollection, "video");
+
+const changeLogDateTimes = Object.keys(changeLogsLists).sort(
+	(a, b) => parseInt(b) - parseInt(a),
+);
 
 // map through changeLogsLists to create raw HTML using the ListItemData
 const changeLogDaysHtml = changeLogDateTimes.map((dateTime) => {
@@ -126,26 +157,34 @@ const changeLogDaysHtml = changeLogDateTimes.map((dateTime) => {
 			let liStr = `<li>${liData.text}</li>`;
 			const next = changeLogsLists[dateTime][i + 1];
 
-			if (!next) return liStr + '</ul></li>'.repeat(liData.depth - minDepth);
+			if (!next)
+				return liStr + "</ul></li>".repeat(liData.depth - minDepth);
 
 			// cur is the end of the current list
-			if (liData.depth < next.depth) liStr += '<li class="sublist"><ul>'.repeat(next.depth - liData.depth);
+			if (liData.depth < next.depth)
+				liStr += '<li class="sublist"><ul>'.repeat(
+					next.depth - liData.depth,
+				);
 
 			// next is the start of a new list
-			if (liData.depth > next.depth) liStr += '</ul></li>'.repeat(liData.depth - next.depth);
+			if (liData.depth > next.depth)
+				liStr += "</ul></li>".repeat(liData.depth - next.depth);
 
 			return liStr;
 		})
-		.join('');
+		.join("");
 
 	return `<time datetime="${datetimeString}">${dateString}</time><ul>${liHtml}</ul>`;
 });
 ---
 
-<section class='change-log' aria-labelledby='change-log-title'>
-	<strong id='change-log-title'>Change Log</strong>
-	<ul class='change-log__content'>
-		{changeLogDaysHtml.map((dayHtml) => <li class='change-log__day' set:html={dayHtml} />)}
+<section class="change-log" aria-labelledby="change-log-title">
+	<strong id="change-log-title">Change Log</strong>
+	<ul class="change-log__content">
+		{
+			changeLogDaysHtml.map((dayHtml) => (
+				<li class="change-log__day" set:html={dayHtml} />
+			))
+		}
 	</ul>
 </section>
-
