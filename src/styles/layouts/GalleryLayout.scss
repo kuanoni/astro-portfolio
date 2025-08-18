@@ -1,5 +1,5 @@
-@use "src/styles/abstracts/variables" as *; 
-@use "src/styles/abstracts/mixins" as *; 
+@use "src/styles/abstracts/variables" as *;
+@use "src/styles/abstracts/mixins" as *;
 
 section.gallery {
 	.gallery-content {
@@ -9,7 +9,16 @@ section.gallery {
 		grid-template-columns: repeat(2, 1fr);
 
 		@include for-size(phone) {
-			grid-template-columns: 1fr;
+			grid-template-columns: 1fr !important;
+		}
+
+		p {
+			grid-column: 1 / -1;
+		}
+
+		img {
+			image-rendering: auto;
+			border: 1px solid $c-border;
 		}
 	}
 }
