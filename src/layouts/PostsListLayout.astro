@@ -1,45 +1,55 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseLayout from 'src/layouts/BaseLayout.astro';
-import '@styles/layouts/PostsListLayout.scss';
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import "@styles/layouts/PostsListLayout.scss";
 
 interface Props {
 	listTitle: string;
-	postsList: CollectionEntry<'project'>[] | CollectionEntry<'blog'>[];
+	postsList: CollectionEntry<"project" | "blog" | "magicProxies">[];
 	postDirectory: string;
 }
 
 const { listTitle, postsList, postDirectory } = Astro.props;
 
-const sortedList = postsList.sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf());
+const sortedList = postsList.sort(
+	(a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
+);
 ---
 
 <BaseLayout title={listTitle}>
 	<main>
-		<section class='posts-list'>
-			<div class='posts-list__header'>
+		<section class="posts-list">
+			<div class="posts-list__header">
 				<h1>{listTitle}</h1>
-				<fieldset class='sorting-controls' role='radiogroup'>
+				<fieldset class="sorting-controls" role="radiogroup">
 					<legend> Sort by:</legend>
-					<input type='radio' id='asc' value='asc' name='asc' checked />
-					<label for='asc' title='ascending'>asc ↑</label>
-					<input type='radio' id='desc' value='desc' name='asc' />
-					<label for='desc' title='descending'>desc ↓</label>
+					<input
+						type="radio"
+						id="asc"
+						value="asc"
+						name="asc"
+						checked
+					/>
+					<label for="asc" title="ascending">asc ↑</label>
+					<input type="radio" id="desc" value="desc" name="asc" />
+					<label for="desc" title="descending">desc ↓</label>
 				</fieldset>
 			</div>
-			<div class='posts-list__posts'>
+			<div class="posts-list__posts">
 				{
 					sortedList.map((post) => {
 						const { title, datePublished } = post.data;
 
 						return (
 							<article data-published={datePublished.valueOf()}>
-								<a href={`/${postDirectory}/${post.slug}`}>{title}</a>
+								<a href={`/${postDirectory}/${post.slug}`}>
+									{title}
+								</a>
 								<time>
-									{datePublished.toLocaleDateString('en-US', {
-										month: 'short',
-										day: '2-digit',
-										year: 'numeric',
+									{datePublished.toLocaleDateString("en-US", {
+										month: "short",
+										day: "2-digit",
+										year: "numeric",
 									})}
 								</time>
 							</article>
@@ -52,26 +62,32 @@ const sortedList = postsList.sort((a, b) => b.data.datePublished.valueOf() - a.d
 </BaseLayout>
 
 <script>
-	const sortingControls = document.querySelector<HTMLFieldSetElement>('fieldset.sorting-controls');
+	const sortingControls = document.querySelector<HTMLFieldSetElement>(
+		"fieldset.sorting-controls",
+	);
 
 	if (sortingControls)
-		sortingControls.addEventListener('change', (e) => {
+		sortingControls.addEventListener("change", (e) => {
 			if (!e.target) return;
 
-			const posts = Array.from(document.querySelectorAll<HTMLDivElement>('article'));
+			const posts = Array.from(
+				document.querySelectorAll<HTMLDivElement>("article"),
+			);
 
 			const sortedPosts = posts.sort((postA, postB) => {
-				const a = postA.getAttribute('data-published');
-				const b = postB.getAttribute('data-published');
+				const a = postA.getAttribute("data-published");
+				const b = postB.getAttribute("data-published");
 
 				if (!a || !b) return 0;
 
 				// sort posts depending on fieldset value
-				if ((e.target as HTMLInputElement).value === 'asc') return parseInt(b) - parseInt(a);
+				if ((e.target as HTMLInputElement).value === "asc")
+					return parseInt(b) - parseInt(a);
 				else return parseInt(a) - parseInt(b);
 			});
 
-			const postsContainer = document.querySelector<HTMLDivElement>('.posts-list__posts');
+			const postsContainer =
+				document.querySelector<HTMLDivElement>(".posts-list__posts");
 			if (postsContainer) postsContainer.replaceChildren(...sortedPosts);
 		});
 </script>

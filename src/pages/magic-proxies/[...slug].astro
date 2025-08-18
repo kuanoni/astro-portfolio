@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import draftPostFilter from "@utils/draftPostFilter";
+import { type CollectionEntry, getCollection } from "astro:content";
+import GalleryLayout from "src/layouts/GalleryLayout.astro";
+import "@styles/components/ImagePreview.scss";
+
+export async function getStaticPaths() {
+    const blogEntries = await getCollection("magicProxies", draftPostFilter);
+
+    return blogEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+interface Props {
+    entry: CollectionEntry<"magicProxies">;
+}
+
+const { entry } = Astro.props;
+
+const allImgRecords = import.meta.glob<{ default: ImageMetadata }>(
+    `src/assets/images/magic-proxies/**/*.{jpeg,jpg,png,gif,webp}`,
+    { eager: true },
+);
+
+const imgRecords = Object.values(allImgRecords).filter((img) =>
+    img.default.src.includes(entry.data.imgSrcFolder),
+);
+
+const images = imgRecords.map((img) => img.default);
+---
+
+<GalleryLayout galleryTitle={entry.data.title} columns={3}>
+    {
+        images.map((img) => (
+            <button class="thumbnail">
+                <Image src={img} alt={""} />
+                <div class="modal-img">
+                    <Image src={img} alt={""} loading="lazy" />
+                </div>
+            </button>
+        ))
+    }
+</GalleryLayout>
+
+<script>
+    import ModalHelper from "@utils/ModalHelper";
+
+    document
+        .querySelectorAll<HTMLButtonElement>(".thumbnail")
+        .forEach((thumbnail) => {
+            thumbnail.addEventListener("click", (e) => {
+                e.stopImmediatePropagation();
+
+                const originalImg =
+                    thumbnail.querySelector<HTMLImageElement>(".modal-img img");
+                if (!originalImg) return;
+
+                const img = originalImg.cloneNode() as HTMLImageElement;
+
+                const thumbnailImg =
+                    thumbnail.querySelector<HTMLImageElement>("img");
+                if (!thumbnailImg) return;
+
+                const thumbnailSrc = thumbnailImg.getAttribute("src") || "";
+
+                img.style.backgroundImage = `url("${thumbnailSrc}")`;
+
+                ModalHelper.addContent(img);
+                ModalHelper.open(thumbnail);
+            });
+        });
+</script>
