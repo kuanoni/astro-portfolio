@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+import PostsListLayout from "src/layouts/PostsListLayout.astro";
+
+const allBlogPosts = await getCollection(
+	"blog",
+	(entry) => process.env.NODE_ENV === "development" || !entry.data.draft,
+);
+---
+
+<PostsListLayout
+	postsList={allBlogPosts}
+	listTitle="Magic Proxies"
+	postDirectory="magic-proxies"
+/>
