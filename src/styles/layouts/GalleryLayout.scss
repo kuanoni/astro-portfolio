@@ -12,6 +12,10 @@ section.gallery {
 			grid-template-columns: 1fr !important;
 		}
 
+		p {
+			grid-column: 1 / -1;
+		}
+
 		img {
 			image-rendering: auto;
 			border: 1px solid $c-border;

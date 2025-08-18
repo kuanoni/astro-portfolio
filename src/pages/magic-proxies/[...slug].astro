@@ -33,6 +33,7 @@ const images = imgRecords.map((img) => img.default);
 ---
 
 <GalleryLayout galleryTitle={entry.data.title} columns={3}>
+    <p>{entry.body}</p>
     {
         images.map((img) => (
             <button class="thumbnail">
