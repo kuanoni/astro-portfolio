@@ -1,28 +1,30 @@
 ---
-import { getEntry } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-import { TECH_INFO } from 'src/config';
-import ImagePreview from './ImagePreview.astro';
+import { getEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { TECH_INFO } from "src/config";
+import ImagePreview from "./ImagePreview.astro";
 
 interface Props {
-	previewEntry: CollectionEntry<'projectPreview'>;
+	previewEntry: CollectionEntry<"projectPreview">;
 }
 
 const { previewEntry } = Astro.props;
 
-const projectEntry = await getEntry('project', previewEntry.slug);
+const projectEntry = await getEntry("project", previewEntry.slug);
 if (projectEntry === undefined)
-	throw new Error(`Failed to find matching project for projectPreview slug: ${previewEntry.slug}`);
+	throw new Error(
+		`Failed to find matching project for projectPreview slug: ${previewEntry.slug}`,
+	);
 
 const { Content } = await previewEntry.render();
 const { previewImages } = previewEntry.data;
 const { title, techs, liveUrl, sourceUrl } = projectEntry.data;
 ---
 
-<li class='projects-list__item'>
+<li class="projects-list__item">
 	<h2>{title}</h2>
 	<Content />
-	<ul class='techs'>
+	<ul class="techs">
 		{
 			techs.map((techName: string) => {
 				if (!TECH_INFO[techName]) return <li>{techName}</li>;
@@ -37,16 +39,16 @@ const { title, techs, liveUrl, sourceUrl } = projectEntry.data;
 			})
 		}
 	</ul>
-	<div class='links'>
+	<div class="links">
 		<a href={liveUrl}>Live site ↗</a>
 		<a href={sourceUrl}>Source code ↗</a>
 		<a href={`/projects/${projectEntry.slug}`}>Read about ↗</a>
 	</div>
-	<div class='previews'>
+	<div class="previews">
 		{
 			previewImages.map(async (imgSrc, i) => (
 				<ImagePreview
-					src={`projects/${projectEntry.slug}/${imgSrc}.webp`}
+					src={`/src/assets/images/projects/${projectEntry.slug}/${imgSrc}.webp`}
 					alt={`${title} preview #${i + 1}`}
 				/>
 			))
