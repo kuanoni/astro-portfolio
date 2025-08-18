@@ -1,7 +1,7 @@
 ---
 title: "Warhammer: Horus Heresy"
 imgSrcFolder: 30k-horus-heresy
-datePublished: 08-19-25
+datePublished: 08-18-25
 draft: false
 ---
 

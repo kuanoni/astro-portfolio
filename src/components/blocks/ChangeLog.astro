@@ -24,6 +24,10 @@ const changeLogEntries = Object.values(
 );
 const blogCollection = await getCollection("blog", draftPostFilter);
 const projectCollection = await getCollection("project", draftPostFilter);
+const magicProxiesCollection = await getCollection(
+	"magicProxies",
+	draftPostFilter,
+);
 const videoCollection = await getCollection("videos");
 
 interface ListItemData {
@@ -40,7 +44,9 @@ type PostsData = { [i: string]: PostData[] };
 
 // create posts data from collection entries
 function createPostsData(
-	collection: CollectionEntry<"project" | "blog" | "videos">[],
+	collection: CollectionEntry<
+		"project" | "blog" | "videos" | "magicProxies"
+	>[],
 ) {
 	const postsData: PostsData = {};
 
@@ -58,7 +64,9 @@ function createPostsData(
 }
 
 function addCollectionPosts(
-	collection: CollectionEntry<"project" | "blog" | "videos">[],
+	collection: CollectionEntry<
+		"project" | "blog" | "videos" | "magicProxies"
+	>[],
 	label: string,
 	linkUrlPrefix?: string,
 ) {
@@ -138,6 +146,7 @@ results.forEach((r) => {
 
 addCollectionPosts(blogCollection, "blog post", "posts");
 addCollectionPosts(projectCollection, "project writeup", "projects");
+addCollectionPosts(magicProxiesCollection, "magic proxie", "magic-proxies");
 addCollectionPosts(videoCollection, "video");
 
 const changeLogDateTimes = Object.keys(changeLogsLists).sort(
