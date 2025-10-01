@@ -1,0 +1,50 @@
+@use "src/styles/abstracts/variables" as *;
+@use "src/styles/abstracts/mixins" as *;
+
+section.pen-generator #form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        margin-top: 1rem;
+    }
+
+    select,
+    input {
+        font-size: 16px;
+        height: 30px;
+    }
+
+    .radio-container {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        justify-items: start;
+        column-gap: 8px;
+
+        label {
+            margin-top: auto;
+        }
+
+        input {
+            height: auto;
+        }
+    }
+
+    #jizz-input-container {
+        display: flex;
+        flex-direction: column;
+
+        &.hide {
+            display: none;
+        }
+    }
+}
+
+section.pen-generator #output {
+    padding: 0.5rem;
+    font-size: 32px;
+    // font-size: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid $c-border;
+    background-color: black;
+}
