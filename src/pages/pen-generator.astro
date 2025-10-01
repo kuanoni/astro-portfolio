@@ -1,0 +1,247 @@
+---
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import "@styles/pages/pen-generator.scss";
+---
+
+<BaseLayout title={"Penis Generator"}>
+    <main>
+        <section class="pen-generator">
+            <h1>Penis Generator</h1>
+            <div id="output"></div>
+            <div id="form">
+                <label>Orientation</label>
+                <div class="radio-container">
+                    <input
+                        type="radio"
+                        name="orientation"
+                        id="orientation-right"
+                        value="right"
+                        checked="checked"
+                    />
+                    <label for="orientation-right">Right</label>
+                    <input
+                        type="radio"
+                        name="orientation"
+                        id="orientation-left"
+                        value="left"
+                    />
+                    <label for="orientation-left">Left</label>
+                </div>
+
+                <label for="head-type">Head</label>
+                <select name="head-type" id="head-type"> </select>
+
+                <label for="balls-type">Ball</label>
+                <select name="balls-type" id="balls-type"></select>
+
+                <label for="shaft-type">Shaft</label>
+                <select name="shaft-type" id="shaft-type">
+                    <option value="=">=</option>
+                    <option value="-">-</option>
+                    <option value=":">:</option>
+                    <option value="#">#</option>
+                </select>
+
+                <label for="shaft-length">Length (inches)</label>
+                <input
+                    name="shaft-length"
+                    id="shaft-length"
+                    type="range"
+                    step="1"
+                    min="0"
+                    max="10"
+                    value="3"
+                />
+
+                <div class="radio-container">
+                    <label for="jizz-toggle">Jizz?</label>
+                    <input
+                        type="checkbox"
+                        name="jizz-toggle"
+                        id="jizz-toggle"
+                        value="jizz-toggle"
+                    />
+                </div>
+
+                <div id="jizz-input-container" class="hide">
+                    <label for="jizz-type">Spum</label>
+                    <select name="jizz-type" id="jizz-type">
+                        <option value="~">~</option>
+                        <option value="-">-</option>
+                    </select>
+
+                    <label for="jizz-length">Length (feet)</label>
+                    <input
+                        name="jizz-length"
+                        id="jizz-length"
+                        type="range"
+                        step="1"
+                        min="0"
+                        max="10"
+                        value="3"
+                    />
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
+
+<script>
+    const headRightHtml = `
+        <option value="D">D</option>
+        <option value="O">O</option>
+        <option value=">">></option>
+        `;
+
+    const headLeftHtml = `
+        <option value="C">C</option>
+        <option value="c">c</option>
+        <option value="O">O</option>
+        <option value="<"><</option>
+        `;
+
+    const ballsRightHtml = `
+        <option value="8">8</option>
+        <option value="3">3</option>
+        <option value="ε">ε</option>
+        <option value="B">B</option>
+        <option value="6">6</option>
+        <option value="9">9</option>
+        <option value="(__)_)">(__)_)</option>
+        `;
+
+    const ballsLeftHtml = `
+        <option value="8">8</option>
+        <option value="3">3</option>
+        <option value="ε">ε</option>
+        <option value="B">B</option>
+        <option value="6">6</option>
+        <option value="9">9</option>
+        <option value="(_(__)">(_(__)</option>
+        `;
+
+    const oriRightEle: HTMLInputElement | null =
+        document.querySelector("#orientation-right");
+    const oriLeftEle: HTMLInputElement | null =
+        document.querySelector("#orientation-left");
+    const headEle: HTMLInputElement | null =
+        document.querySelector("#head-type");
+    const ballsEle: HTMLInputElement | null =
+        document.querySelector("#balls-type");
+    const shaftEle: HTMLInputElement | null =
+        document.querySelector("#shaft-type");
+    const shaftLengthEle: HTMLInputElement | null =
+        document.querySelector("#shaft-length");
+    const jizzToggleEle: HTMLInputElement | null =
+        document.querySelector("#jizz-toggle");
+    const jizzEle: HTMLInputElement | null =
+        document.querySelector("#jizz-type");
+    const jizzLengthEle: HTMLInputElement | null =
+        document.querySelector("#jizz-length");
+
+    const outputEle = document.querySelector("#output");
+
+    function setup() {
+        oriRightEle?.addEventListener("change", () => {
+            if (!headEle) throw new Error("Cannot find head select element.");
+            headEle.innerHTML = headRightHtml;
+            if (!ballsEle) throw new Error("Cannot find balls select element.");
+            ballsEle.innerHTML = ballsRightHtml;
+            update();
+        });
+        oriLeftEle?.addEventListener("change", () => {
+            if (!headEle) throw new Error("Cannot find head select element.");
+            headEle.innerHTML = headLeftHtml;
+            if (!ballsEle) throw new Error("Cannot find balls select element.");
+            ballsEle.innerHTML = ballsLeftHtml;
+            update();
+        });
+        headEle?.addEventListener("change", () => update());
+        ballsEle?.addEventListener("change", () => update());
+        shaftEle?.addEventListener("change", () => update());
+        shaftLengthEle?.addEventListener("change", (e) => {
+            if (Number(shaftLengthEle.value) < 0) shaftLengthEle.value = "0";
+            update();
+        });
+
+        jizzToggleEle?.addEventListener("change", () => {
+            const ele = document.querySelector("#jizz-input-container");
+            if (!ele) throw new Error("Cannot find jizz container element.");
+            if (ele.classList.contains("hide")) ele.classList.remove("hide");
+            else ele.classList.add("hide");
+            update();
+        });
+        jizzEle?.addEventListener("change", () => update());
+        jizzLengthEle?.addEventListener("change", () => update());
+
+        if (!headEle) throw new Error("Cannot find head select element.");
+        headEle.innerHTML = headRightHtml;
+        if (!ballsEle) throw new Error("Cannot find balls select element.");
+        ballsEle.innerHTML = ballsRightHtml;
+    }
+
+    function update() {
+        if (!outputEle) throw new Error("Cannot find output element.");
+        outputEle.textContent = buildString();
+    }
+
+    function getOrientation(): "right" | "left" {
+        if (!oriRightEle || !oriLeftEle)
+            throw new Error("Cannot find orientation elements.");
+        return oriRightEle.checked ? "right" : "left";
+    }
+
+    function getHead() {
+        if (!headEle) throw new Error("Cannot find head select element.");
+        return headEle.value;
+    }
+
+    function getBalls() {
+        if (!ballsEle) throw new Error("Cannot find balls select element.");
+        return ballsEle.value;
+    }
+
+    function getShaft() {
+        if (!shaftEle) throw new Error("Cannot find shaft select element.");
+        return shaftEle.value;
+    }
+
+    function getShaftLength() {
+        if (!shaftLengthEle)
+            throw new Error("Cannot find shaft length input element.");
+        return Number(shaftLengthEle.value);
+    }
+
+    function getJizz() {
+        if (!jizzEle) throw new Error("Cannot find jizz select element.");
+        return jizzEle.value;
+    }
+
+    function getJizzLength() {
+        if (!jizzLengthEle)
+            throw new Error("Cannot find jizz length input element.");
+        return Number(jizzLengthEle.value);
+    }
+
+    function buildString() {
+        const head = getHead();
+        const balls = getBalls();
+        const shaft = getShaft();
+        const shaftLength = getShaftLength();
+        const jizz = getJizz();
+        const jizzLength = getJizzLength();
+
+        const jizzString = jizzToggleEle?.checked
+            ? jizz.repeat(jizzLength)
+            : "";
+
+        if (getOrientation() === "right") {
+            return balls + shaft.repeat(shaftLength) + head + jizzString;
+        } else {
+            return jizzString + head + shaft.repeat(shaftLength) + balls;
+        }
+    }
+
+    setup();
+    update();
+</script>
